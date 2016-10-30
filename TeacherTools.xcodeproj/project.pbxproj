@@ -34,6 +34,17 @@
 		A14160C31DC66FE500C4F5BB /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14160A01DC66CCA00C4F5BB /* FirebaseCore.framework */; };
 		A14160C41DC66FE500C4F5BB /* FirebaseCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A14160A01DC66CCA00C4F5BB /* FirebaseCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A14160C61DC66FE500C4F5BB /* FirebaseAuth.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A141609E1DC66CB600C4F5BB /* FirebaseAuth.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A14160D31DC6758700C4F5BB /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160C81DC6758700C4F5BB /* Error.swift */; };
+		A14160D41DC6758700C4F5BB /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160C91DC6758700C4F5BB /* JSON.swift */; };
+		A14160D51DC6758700C4F5BB /* KeyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160CA1DC6758700C4F5BB /* KeyType.swift */; };
+		A14160D61DC6758700C4F5BB /* MarshalDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160CB1DC6758700C4F5BB /* MarshalDictionary.swift */; };
+		A14160D71DC6758700C4F5BB /* MarshaledObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160CC1DC6758700C4F5BB /* MarshaledObject.swift */; };
+		A14160D81DC6758700C4F5BB /* Marshaling.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160CD1DC6758700C4F5BB /* Marshaling.swift */; };
+		A14160D91DC6758700C4F5BB /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160CE1DC6758700C4F5BB /* Operators.swift */; };
+		A14160DA1DC6758700C4F5BB /* Unmarshaling.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160CF1DC6758700C4F5BB /* Unmarshaling.swift */; };
+		A14160DB1DC6758700C4F5BB /* UnmarshalingWithContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160D01DC6758700C4F5BB /* UnmarshalingWithContext.swift */; };
+		A14160DC1DC6758700C4F5BB /* UnmarshalUpdating.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160D11DC6758700C4F5BB /* UnmarshalUpdating.swift */; };
+		A14160DD1DC6758700C4F5BB /* ValueType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160D21DC6758700C4F5BB /* ValueType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -79,6 +90,17 @@
 		A14160BA1DC66F2600C4F5BB /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		A14160BC1DC66F2E00C4F5BB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		A14160BE1DC66F4500C4F5BB /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		A14160C81DC6758700C4F5BB /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		A14160C91DC6758700C4F5BB /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
+		A14160CA1DC6758700C4F5BB /* KeyType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyType.swift; sourceTree = "<group>"; };
+		A14160CB1DC6758700C4F5BB /* MarshalDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarshalDictionary.swift; sourceTree = "<group>"; };
+		A14160CC1DC6758700C4F5BB /* MarshaledObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarshaledObject.swift; sourceTree = "<group>"; };
+		A14160CD1DC6758700C4F5BB /* Marshaling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Marshaling.swift; sourceTree = "<group>"; };
+		A14160CE1DC6758700C4F5BB /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
+		A14160CF1DC6758700C4F5BB /* Unmarshaling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unmarshaling.swift; sourceTree = "<group>"; };
+		A14160D01DC6758700C4F5BB /* UnmarshalingWithContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnmarshalingWithContext.swift; sourceTree = "<group>"; };
+		A14160D11DC6758700C4F5BB /* UnmarshalUpdating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnmarshalUpdating.swift; sourceTree = "<group>"; };
+		A14160D21DC6758700C4F5BB /* ValueType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +157,7 @@
 				A14160901DC669F100C4F5BB /* LaunchScreen.storyboard */,
 				A14160931DC669F100C4F5BB /* Info.plist */,
 				A141608B1DC669F100C4F5BB /* TeacherTools.xcdatamodeld */,
+				A14160DE1DC6758D00C4F5BB /* Marshal */,
 				A14160A61DC66D3800C4F5BB /* Helpers */,
 				A141609D1DC66C9600C4F5BB /* Frameworks */,
 			);
@@ -170,6 +193,24 @@
 				A14160B61DC66ED900C4F5BB /* CFNetwork.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A14160DE1DC6758D00C4F5BB /* Marshal */ = {
+			isa = PBXGroup;
+			children = (
+				A14160C81DC6758700C4F5BB /* Error.swift */,
+				A14160C91DC6758700C4F5BB /* JSON.swift */,
+				A14160CA1DC6758700C4F5BB /* KeyType.swift */,
+				A14160CB1DC6758700C4F5BB /* MarshalDictionary.swift */,
+				A14160CC1DC6758700C4F5BB /* MarshaledObject.swift */,
+				A14160CD1DC6758700C4F5BB /* Marshaling.swift */,
+				A14160CE1DC6758700C4F5BB /* Operators.swift */,
+				A14160CF1DC6758700C4F5BB /* Unmarshaling.swift */,
+				A14160D01DC6758700C4F5BB /* UnmarshalingWithContext.swift */,
+				A14160D11DC6758700C4F5BB /* UnmarshalUpdating.swift */,
+				A14160D21DC6758700C4F5BB /* ValueType.swift */,
+			);
+			name = Marshal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,18 +288,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				A14160B41DC66E0300C4F5BB /* User.swift in Sources */,
+				A14160DC1DC6758700C4F5BB /* UnmarshalUpdating.swift in Sources */,
+				A14160D91DC6758700C4F5BB /* Operators.swift in Sources */,
+				A14160DB1DC6758700C4F5BB /* UnmarshalingWithContext.swift in Sources */,
+				A14160D61DC6758700C4F5BB /* MarshalDictionary.swift in Sources */,
 				A14160B01DC66DEC00C4F5BB /* SaveNewUser.swift in Sources */,
 				A14160B21DC66DF300C4F5BB /* UpdateUser.swift in Sources */,
+				A14160D51DC6758700C4F5BB /* KeyType.swift in Sources */,
 				A141608D1DC669F100C4F5BB /* TeacherTools.xcdatamodeld in Sources */,
+				A14160DD1DC6758700C4F5BB /* ValueType.swift in Sources */,
 				A14160871DC669F100C4F5BB /* ClassListViewController.swift in Sources */,
+				A14160D81DC6758700C4F5BB /* Marshaling.swift in Sources */,
 				A14160A51DC66D2F00C4F5BB /* StoryboardInitializable.swift in Sources */,
+				A14160D41DC6758700C4F5BB /* JSON.swift in Sources */,
 				A14160AA1DC66D6700C4F5BB /* FirebaseNetworkAccess.swift in Sources */,
 				A14160AE1DC66DC900C4F5BB /* UserMiddleware.swift in Sources */,
 				A14160851DC669F100C4F5BB /* AppDelegate.swift in Sources */,
+				A14160D71DC6758700C4F5BB /* MarshaledObject.swift in Sources */,
 				A141609A1DC66BBC00C4F5BB /* AppState.swift in Sources */,
 				A141609C1DC66BEC00C4F5BB /* Reactor.swift in Sources */,
 				A14160AC1DC66DBC00C4F5BB /* GetICloudUser.swift in Sources */,
+				A14160D31DC6758700C4F5BB /* Error.swift in Sources */,
 				A14160A81DC66D4800C4F5BB /* SegueHandlerType.swift in Sources */,
+				A14160DA1DC6758700C4F5BB /* Unmarshaling.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

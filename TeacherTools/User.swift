@@ -14,20 +14,6 @@ final class User: Marshaling, Unmarshaling {
     var cloudKitId: String?
     var deviceId:  String
     var creationDate: Date
-    var company: Company
-    var firstName: String?
-    var lastName: String?
-    var rollName: String? {
-        guard let last = lastName, let first = firstName else { return nil }
-        return "\(last), \(first)"
-    }
-    var tags: [Tag]
-    var gasPin: String?
-    var vehicle: Vehicle?
-    var routeArea: String?
-    var routeId: String?
-    var routeIdMid: String?
-
     
     init(id: String = "", cloudKitId: String? = nil, deviceId: String = "", creationDate: Date = Date(),company: Company = TargetHelper.currentCompany, firstName: String? = nil, lastName: String? = nil, tags: [Tag] = [Tag](), gasPin: String? = nil, vehicle: Vehicle? = nil, routeArea: String?, routeId: String? = nil, routeIdMid: String? = nil) {
         self.id = id
