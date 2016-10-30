@@ -64,7 +64,16 @@ extension GroupListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        let cell = tableView.dequeueReusableCell(withIdentifier: GroupTableViewCell.reuseIdentifier) as! GroupTableViewCell
+        cell.update(with: groups[indexPath.row], theme: core.state.theme)
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        core.fire(event: Selected<Group>(groups[indexPath.row]))
+//        let groupDetailVC = GroupDetailViewController.initializeFromStoryboard()
+//        navigationController?.pushViewController(groupDetailVC, animated: true)
     }
     
 }

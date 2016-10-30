@@ -15,6 +15,17 @@ class GroupTableViewCell: UITableViewCell, AutoReuseIdentifiable {
     
     func update(with group: Group, theme: Theme) {
         titleLabel.text = group.name
+        subtitleLabel.text = String(format: "%d students", group.students.count)
+        update(with: theme)
+    }
+    
+    func update(with theme: Theme) {
+        var size = titleLabel.font.pointSize
+        titleLabel.font = theme.fontType.font(withSize: size)
+        titleLabel.textColor = theme.textColor
+        size = subtitleLabel.font.pointSize
+        subtitleLabel.font = theme.fontType.font(withSize: size)
+        subtitleLabel.textColor = theme.textColor
     }
     
 }

@@ -12,6 +12,17 @@ struct Theme {
     
     var mainColor: UIColor
     var tintColor: UIColor
-    var font: UIFont
+    var textColor: UIColor
+    var fontType: FontType
+    
+}
+
+enum FontType {
+    case chalkDuster = "Chalkduster"
+    case appleSD = "AppleSDGothicNeo-Regular"
+    
+    func font(withSize size: CGFloat) -> UIFont {
+        return UIFont(name: <#T##String#>, size: <#T##CGFloat#>)
+    }
     
 }
