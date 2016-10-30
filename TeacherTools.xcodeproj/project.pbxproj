@@ -13,6 +13,8 @@
 		A141608D1DC669F100C4F5BB /* TeacherTools.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A141608B1DC669F100C4F5BB /* TeacherTools.xcdatamodeld */; };
 		A141608F1DC669F100C4F5BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A141608E1DC669F100C4F5BB /* Assets.xcassets */; };
 		A14160921DC669F100C4F5BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14160901DC669F100C4F5BB /* LaunchScreen.storyboard */; };
+		A141609A1DC66BBC00C4F5BB /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160991DC66BBC00C4F5BB /* AppState.swift */; };
+		A141609C1DC66BEC00C4F5BB /* Reactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A141609B1DC66BEC00C4F5BB /* Reactor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		A141608E1DC669F100C4F5BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A14160911DC669F100C4F5BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A14160931DC669F100C4F5BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A14160991DC66BBC00C4F5BB /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		A141609B1DC66BEC00C4F5BB /* Reactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reactor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +61,8 @@
 			isa = PBXGroup;
 			children = (
 				A14160841DC669F100C4F5BB /* AppDelegate.swift */,
+				A14160991DC66BBC00C4F5BB /* AppState.swift */,
+				A141609B1DC66BEC00C4F5BB /* Reactor.swift */,
 				A14160861DC669F100C4F5BB /* ClassListViewController.swift */,
 				A14160881DC669F100C4F5BB /* Main.storyboard */,
 				A141608E1DC669F100C4F5BB /* Assets.xcassets */,
@@ -143,6 +149,8 @@
 				A141608D1DC669F100C4F5BB /* TeacherTools.xcdatamodeld in Sources */,
 				A14160871DC669F100C4F5BB /* ClassListViewController.swift in Sources */,
 				A14160851DC669F100C4F5BB /* AppDelegate.swift in Sources */,
+				A141609A1DC66BBC00C4F5BB /* AppState.swift in Sources */,
+				A141609C1DC66BEC00C4F5BB /* Reactor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
