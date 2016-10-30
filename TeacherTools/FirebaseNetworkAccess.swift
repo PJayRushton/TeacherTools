@@ -7,7 +7,16 @@
 //
 
 import Foundation
-import Firebase
+//import Firebase
+
+protocol Identifiable: Equatable {
+    var id: String { get set }
+}
+
+func ==<T: Identifiable>(lhs: T, rhs: T) -> Bool {
+    return lhs.id == rhs.id
+}
+
 
 enum FirebaseError: Error {
     case nilUser
@@ -19,7 +28,6 @@ struct FirebaseNetworkAccess {
     
     // MARK: - Properties
     
-    let storage = FIRStorage.storage()
     let rootRef = FIRDatabase.database().reference()
     var core = App.core
     
@@ -29,42 +37,18 @@ struct FirebaseNetworkAccess {
         return rootRef.child("users")
     }
     
-    /// **root/directory**
-    var directoryRef: FIRDatabaseReference {
-        return rootRef.child("directory")
+    /// **root/groups/{userId}**
+    func groupsRef(userId: String) -> FIRDatabaseReference {
+        return rootRef.child("groups").child(userId)
     }
     
-    /// **root/documents/(wasatch/iosepa)**
-    var documentsRef: FIRDatabaseReference {
-        return rootRef.child("documents").child(TargetHelper.currentCompanyString)
+    /// **root/students/{userId}
+    func studentsRef(userId: String) -> FIRDatabaseReference {
+        return rootRef.child("students").child(userId)
     }
+
     
-    /// **root/receipts/(wasatch/iosepa)**
-    var receiptRef: FIRDatabaseReference {
-        return rootRef.child("receipts")
-    }
-    
-    /// **root/messages/
-    var messagesRef: FIRDatabaseReference {
-        return rootRef.child("messages")
-    }
-    
-    /// **root/config/(wasatch/iosepa)**
-    var configRef: FIRDatabaseReference {
-        return rootRef.child("config").child(TargetHelper.currentCompanyString)
-    }
-    
-    var rollsRef: FIRDatabaseReference {
-        return rootRef.child("studentRolls")
-    }
-    
-    /// **root/checklists**
-    var checklistsRef: FIRDatabaseReference {
-        return rootRef.child("checklists")
-    }
-    
-    
-    func setValue(atRef ref: FIRDatabaseReference, parameters: JSONObject, completion: ResultCompletion?) {
+    func setValue(at ref: FIRDatabaseReference, parameters: JSONObject, completion: ResultCompletion?) {
         ref.setValue(parameters) { error, ref in
             if let error = error {
                 completion?(Result.error(error))
@@ -74,7 +58,7 @@ struct FirebaseNetworkAccess {
         }
     }
     
-    func createNewAutoChild(atRef ref: FIRDatabaseReference, parameters: JSONObject, completion: @escaping ResultCompletion) {
+    func createNewAutoChild(at ref: FIRDatabaseReference, parameters: JSONObject, completion: @escaping ResultCompletion) {
         ref.childByAutoId().setValue(parameters) { error, ref in
             if let error = error {
                 completion(Result.error(error))
@@ -88,7 +72,7 @@ struct FirebaseNetworkAccess {
     
     // Retrieve
     
-    func getData(atRef ref: FIRDatabaseReference, completion: ResultCompletion?) {
+    func getData(at ref: FIRDatabaseReference, completion: ResultCompletion?) {
         ref.observeSingleEvent(of: .value, with: { snap in
             if let snapJSON = snap.value as? JSONObject , snap.exists() {
                 completion?(Result.ok(snapJSON))
@@ -98,7 +82,7 @@ struct FirebaseNetworkAccess {
         })
     }
     
-    func getKeys(atRef ref: FIRDatabaseReference, completion: @escaping ((Result<[String]>) -> Void)) {
+    func getKeys(at ref: FIRDatabaseReference, completion: @escaping ((Result<[String]>) -> Void)) {
         ref.observeSingleEvent(of: FIRDataEventType.value, with: { snap in
             if let usernames = (snap.value as AnyObject).allKeys as? [String] , snap.exists() {
                 completion(Result.ok(usernames))
@@ -111,7 +95,7 @@ struct FirebaseNetworkAccess {
     
     // Update
     
-    func updateObject(atRef ref: FIRDatabaseReference, parameters: JSONObject, completion: ResultCompletion?) {
+    func updateObject(at ref: FIRDatabaseReference, parameters: JSONObject, completion: ResultCompletion?) {
         ref.updateChildValues(parameters) { error, firebase in
             if let error = error {
                 completion?(Result.error(error))
@@ -121,7 +105,7 @@ struct FirebaseNetworkAccess {
         }
     }
     
-    func addObject(atRef ref: FIRDatabaseReference, parameters: JSONObject, completion: ResultCompletion?) {
+    func addObject(at ref: FIRDatabaseReference, parameters: JSONObject, completion: ResultCompletion?) {
         ref.updateChildValues(parameters) { error, ref in
             if let error = error {
                 completion?(Result.error(error))
@@ -134,7 +118,7 @@ struct FirebaseNetworkAccess {
     
     // Delete
     
-    func deleteObject(atRef ref: FIRDatabaseReference, completion: ResultCompletion?) {
+    func deleteObject(at ref: FIRDatabaseReference, completion: ResultCompletion?) {
         ref.removeValue { error, ref in
             if let error = error {
                 completion?(Result.error(error))
@@ -147,7 +131,7 @@ struct FirebaseNetworkAccess {
     
     // MARK: - Subscriptions
     
-    func subscribe(toRef ref: FIRDatabaseReference, completion: @escaping ResultCompletion) {
+    func subscribe(to ref: FIRDatabaseReference, completion: @escaping ResultCompletion) {
         ref.observe(.value, with: { snap in
             if let snapJSON = snap.value as? JSONObject , snap.exists() {
                 completion(Result.ok(snapJSON))
@@ -157,7 +141,7 @@ struct FirebaseNetworkAccess {
         })
     }
     
-    func unsubscribe(toRef ref: FIRDatabaseReference) {
+    func unsubscribe(from ref: FIRDatabaseReference) {
         ref.removeAllObservers()
     }
     
@@ -168,7 +152,7 @@ struct FirebaseNetworkAccess {
         self.setupAuthListener()
         FIRAuth.auth()?.signIn(withEmail: email, password: password) { fUser, error in
             if let error = error {
-                App.core.fire(event: DisplayErrorMessage(error: error, message: error.firebaseAuthErrorMessage))
+                App.core.fire(event: ErrorEvent(error: error, message: error.firebaseAuthErrorMessage))
             } else if let user = fUser {
                 App.core.fire(event: UserIdentified(userId: user.uid))
             }
@@ -193,7 +177,7 @@ struct FirebaseNetworkAccess {
             core.fire(event: UserLoggedOut())
         } catch {
             print(error)
-            core.fire(event: DisplayErrorMessage(error: error, message: "Network error"))
+            core.fire(event: ErrorEvent(error: error, message: "Network error"))
         }
     }
     

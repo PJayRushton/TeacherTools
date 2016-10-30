@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A14160851DC669F100C4F5BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160841DC669F100C4F5BB /* AppDelegate.swift */; };
-		A14160871DC669F100C4F5BB /* ClassListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160861DC669F100C4F5BB /* ClassListViewController.swift */; };
+		A14160871DC669F100C4F5BB /* GroupListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160861DC669F100C4F5BB /* GroupListViewController.swift */; };
 		A141608A1DC669F100C4F5BB /* ClassListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14160881DC669F100C4F5BB /* ClassListViewController.storyboard */; };
 		A141608D1DC669F100C4F5BB /* TeacherTools.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A141608B1DC669F100C4F5BB /* TeacherTools.xcdatamodeld */; };
 		A141608F1DC669F100C4F5BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A141608E1DC669F100C4F5BB /* Assets.xcassets */; };
@@ -19,7 +19,6 @@
 		A14160A31DC66CD800C4F5BB /* FirebaseDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14160A21DC66CD800C4F5BB /* FirebaseDatabase.framework */; };
 		A14160A51DC66D2F00C4F5BB /* StoryboardInitializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160A41DC66D2F00C4F5BB /* StoryboardInitializable.swift */; };
 		A14160A81DC66D4800C4F5BB /* SegueHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160A71DC66D4800C4F5BB /* SegueHandlerType.swift */; };
-		A14160AA1DC66D6700C4F5BB /* FirebaseNetworkAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160A91DC66D6700C4F5BB /* FirebaseNetworkAccess.swift */; };
 		A14160AC1DC66DBC00C4F5BB /* GetICloudUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160AB1DC66DBC00C4F5BB /* GetICloudUser.swift */; };
 		A14160AE1DC66DC900C4F5BB /* UserMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160AD1DC66DC900C4F5BB /* UserMiddleware.swift */; };
 		A14160B01DC66DEC00C4F5BB /* SaveNewUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160AF1DC66DEC00C4F5BB /* SaveNewUser.swift */; };
@@ -45,6 +44,20 @@
 		A14160DB1DC6758700C4F5BB /* UnmarshalingWithContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160D01DC6758700C4F5BB /* UnmarshalingWithContext.swift */; };
 		A14160DC1DC6758700C4F5BB /* UnmarshalUpdating.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160D11DC6758700C4F5BB /* UnmarshalUpdating.swift */; };
 		A14160DD1DC6758700C4F5BB /* ValueType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160D21DC6758700C4F5BB /* ValueType.swift */; };
+		A14160E51DC6787F00C4F5BB /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160E41DC6787F00C4F5BB /* DateHelper.swift */; };
+		A14160E61DC67AA900C4F5BB /* FirebaseNetworkAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160A91DC66D6700C4F5BB /* FirebaseNetworkAccess.swift */; };
+		A14160E81DC67E1700C4F5BB /* DeleteUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160E71DC67E1700C4F5BB /* DeleteUsers.swift */; };
+		A14160EB1DC67E7700C4F5BB /* SubscribeToUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160EA1DC67E7700C4F5BB /* SubscribeToUsers.swift */; };
+		A14160ED1DC6806200C4F5BB /* ErrorHUDMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160EC1DC6806200C4F5BB /* ErrorHUDMiddleware.swift */; };
+		A14160EF1DC6833200C4F5BB /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160EE1DC6833200C4F5BB /* Group.swift */; };
+		A14160F11DC683C400C4F5BB /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160F01DC683C400C4F5BB /* Student.swift */; };
+		A14160F31DC686FF00C4F5BB /* Arrays.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160F21DC686FF00C4F5BB /* Arrays.swift */; };
+		A14160F51DC6888200C4F5BB /* SubscribeToGroups.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160F41DC6888200C4F5BB /* SubscribeToGroups.swift */; };
+		A14160F91DC68C2300C4F5BB /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160F81DC68C2300C4F5BB /* Result.swift */; };
+		A14160FB1DC68F9400C4F5BB /* SubscribeToStudents.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160FA1DC68F9400C4F5BB /* SubscribeToStudents.swift */; };
+		A14160FD1DC6904400C4F5BB /* SubscribeToAllTheThings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160FC1DC6904400C4F5BB /* SubscribeToAllTheThings.swift */; };
+		A14160FF1DC694BA00C4F5BB /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160FE1DC694BA00C4F5BB /* GroupTableViewCell.swift */; };
+		A141611F1DC69AEB00C4F5BB /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A141611E1DC69AEB00C4F5BB /* Theme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -66,7 +79,7 @@
 /* Begin PBXFileReference section */
 		A14160811DC669F100C4F5BB /* TeacherTools.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeacherTools.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A14160841DC669F100C4F5BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A14160861DC669F100C4F5BB /* ClassListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassListViewController.swift; sourceTree = "<group>"; };
+		A14160861DC669F100C4F5BB /* GroupListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListViewController.swift; sourceTree = "<group>"; };
 		A14160891DC669F100C4F5BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ClassListViewController.storyboard; sourceTree = "<group>"; };
 		A141608C1DC669F100C4F5BB /* TeacherTools.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TeacherTools.xcdatamodel; sourceTree = "<group>"; };
 		A141608E1DC669F100C4F5BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -101,6 +114,19 @@
 		A14160D01DC6758700C4F5BB /* UnmarshalingWithContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnmarshalingWithContext.swift; sourceTree = "<group>"; };
 		A14160D11DC6758700C4F5BB /* UnmarshalUpdating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnmarshalUpdating.swift; sourceTree = "<group>"; };
 		A14160D21DC6758700C4F5BB /* ValueType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueType.swift; sourceTree = "<group>"; };
+		A14160E41DC6787F00C4F5BB /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
+		A14160E71DC67E1700C4F5BB /* DeleteUsers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteUsers.swift; sourceTree = "<group>"; };
+		A14160EA1DC67E7700C4F5BB /* SubscribeToUsers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscribeToUsers.swift; sourceTree = "<group>"; };
+		A14160EC1DC6806200C4F5BB /* ErrorHUDMiddleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorHUDMiddleware.swift; sourceTree = "<group>"; };
+		A14160EE1DC6833200C4F5BB /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		A14160F01DC683C400C4F5BB /* Student.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
+		A14160F21DC686FF00C4F5BB /* Arrays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Arrays.swift; sourceTree = "<group>"; };
+		A14160F41DC6888200C4F5BB /* SubscribeToGroups.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscribeToGroups.swift; sourceTree = "<group>"; };
+		A14160F81DC68C2300C4F5BB /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		A14160FA1DC68F9400C4F5BB /* SubscribeToStudents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscribeToStudents.swift; sourceTree = "<group>"; };
+		A14160FC1DC6904400C4F5BB /* SubscribeToAllTheThings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscribeToAllTheThings.swift; sourceTree = "<group>"; };
+		A14160FE1DC694BA00C4F5BB /* GroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
+		A141611E1DC69AEB00C4F5BB /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,20 +169,13 @@
 			isa = PBXGroup;
 			children = (
 				A14160841DC669F100C4F5BB /* AppDelegate.swift */,
-				A14160991DC66BBC00C4F5BB /* AppState.swift */,
-				A14160A91DC66D6700C4F5BB /* FirebaseNetworkAccess.swift */,
-				A14160B11DC66DF300C4F5BB /* UpdateUser.swift */,
-				A14160AB1DC66DBC00C4F5BB /* GetICloudUser.swift */,
-				A14160AF1DC66DEC00C4F5BB /* SaveNewUser.swift */,
-				A14160B31DC66E0300C4F5BB /* User.swift */,
-				A14160AD1DC66DC900C4F5BB /* UserMiddleware.swift */,
-				A141609B1DC66BEC00C4F5BB /* Reactor.swift */,
-				A14160861DC669F100C4F5BB /* ClassListViewController.swift */,
-				A14160881DC669F100C4F5BB /* ClassListViewController.storyboard */,
+				A14160E01DC6769200C4F5BB /* Infrastructure */,
+				A14160DF1DC6768100C4F5BB /* Reactor */,
+				A14160E31DC6770A00C4F5BB /* Model */,
+				A14160E21DC6770300C4F5BB /* UI */,
+				A14160E11DC676B400C4F5BB /* Storyboards */,
 				A141608E1DC669F100C4F5BB /* Assets.xcassets */,
-				A14160901DC669F100C4F5BB /* LaunchScreen.storyboard */,
 				A14160931DC669F100C4F5BB /* Info.plist */,
-				A141608B1DC669F100C4F5BB /* TeacherTools.xcdatamodeld */,
 				A14160DE1DC6758D00C4F5BB /* Marshal */,
 				A14160A61DC66D3800C4F5BB /* Helpers */,
 				A141609D1DC66C9600C4F5BB /* Frameworks */,
@@ -177,6 +196,9 @@
 		A14160A61DC66D3800C4F5BB /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				A14160F81DC68C2300C4F5BB /* Result.swift */,
+				A14160F21DC686FF00C4F5BB /* Arrays.swift */,
+				A14160E41DC6787F00C4F5BB /* DateHelper.swift */,
 				A14160A71DC66D4800C4F5BB /* SegueHandlerType.swift */,
 				A14160A41DC66D2F00C4F5BB /* StoryboardInitializable.swift */,
 			);
@@ -211,6 +233,71 @@
 				A14160D21DC6758700C4F5BB /* ValueType.swift */,
 			);
 			name = Marshal;
+			sourceTree = "<group>";
+		};
+		A14160DF1DC6768100C4F5BB /* Reactor */ = {
+			isa = PBXGroup;
+			children = (
+				A141609B1DC66BEC00C4F5BB /* Reactor.swift */,
+				A14160991DC66BBC00C4F5BB /* AppState.swift */,
+				A141611E1DC69AEB00C4F5BB /* Theme.swift */,
+				A14160AD1DC66DC900C4F5BB /* UserMiddleware.swift */,
+				A14160EC1DC6806200C4F5BB /* ErrorHUDMiddleware.swift */,
+				A14160E91DC67E3E00C4F5BB /* Commands */,
+			);
+			name = Reactor;
+			sourceTree = "<group>";
+		};
+		A14160E01DC6769200C4F5BB /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				A141608B1DC669F100C4F5BB /* TeacherTools.xcdatamodeld */,
+				A14160A91DC66D6700C4F5BB /* FirebaseNetworkAccess.swift */,
+			);
+			name = Infrastructure;
+			sourceTree = "<group>";
+		};
+		A14160E11DC676B400C4F5BB /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				A14160881DC669F100C4F5BB /* ClassListViewController.storyboard */,
+				A14160901DC669F100C4F5BB /* LaunchScreen.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		A14160E21DC6770300C4F5BB /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				A14160861DC669F100C4F5BB /* GroupListViewController.swift */,
+				A14160FE1DC694BA00C4F5BB /* GroupTableViewCell.swift */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		A14160E31DC6770A00C4F5BB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A14160B31DC66E0300C4F5BB /* User.swift */,
+				A14160EE1DC6833200C4F5BB /* Group.swift */,
+				A14160F01DC683C400C4F5BB /* Student.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		A14160E91DC67E3E00C4F5BB /* Commands */ = {
+			isa = PBXGroup;
+			children = (
+				A14160E71DC67E1700C4F5BB /* DeleteUsers.swift */,
+				A14160AB1DC66DBC00C4F5BB /* GetICloudUser.swift */,
+				A14160AF1DC66DEC00C4F5BB /* SaveNewUser.swift */,
+				A14160B11DC66DF300C4F5BB /* UpdateUser.swift */,
+				A14160FC1DC6904400C4F5BB /* SubscribeToAllTheThings.swift */,
+				A14160EA1DC67E7700C4F5BB /* SubscribeToUsers.swift */,
+				A14160F41DC6888200C4F5BB /* SubscribeToGroups.swift */,
+				A14160FA1DC68F9400C4F5BB /* SubscribeToStudents.swift */,
+			);
+			name = Commands;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -287,26 +374,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A14160EF1DC6833200C4F5BB /* Group.swift in Sources */,
+				A14160E51DC6787F00C4F5BB /* DateHelper.swift in Sources */,
 				A14160B41DC66E0300C4F5BB /* User.swift in Sources */,
 				A14160DC1DC6758700C4F5BB /* UnmarshalUpdating.swift in Sources */,
 				A14160D91DC6758700C4F5BB /* Operators.swift in Sources */,
 				A14160DB1DC6758700C4F5BB /* UnmarshalingWithContext.swift in Sources */,
+				A14160F51DC6888200C4F5BB /* SubscribeToGroups.swift in Sources */,
 				A14160D61DC6758700C4F5BB /* MarshalDictionary.swift in Sources */,
+				A14160FF1DC694BA00C4F5BB /* GroupTableViewCell.swift in Sources */,
 				A14160B01DC66DEC00C4F5BB /* SaveNewUser.swift in Sources */,
 				A14160B21DC66DF300C4F5BB /* UpdateUser.swift in Sources */,
 				A14160D51DC6758700C4F5BB /* KeyType.swift in Sources */,
+				A14160E61DC67AA900C4F5BB /* FirebaseNetworkAccess.swift in Sources */,
 				A141608D1DC669F100C4F5BB /* TeacherTools.xcdatamodeld in Sources */,
 				A14160DD1DC6758700C4F5BB /* ValueType.swift in Sources */,
-				A14160871DC669F100C4F5BB /* ClassListViewController.swift in Sources */,
+				A14160F31DC686FF00C4F5BB /* Arrays.swift in Sources */,
+				A14160FB1DC68F9400C4F5BB /* SubscribeToStudents.swift in Sources */,
+				A14160F11DC683C400C4F5BB /* Student.swift in Sources */,
+				A14160FD1DC6904400C4F5BB /* SubscribeToAllTheThings.swift in Sources */,
+				A14160EB1DC67E7700C4F5BB /* SubscribeToUsers.swift in Sources */,
+				A14160871DC669F100C4F5BB /* GroupListViewController.swift in Sources */,
+				A14160E81DC67E1700C4F5BB /* DeleteUsers.swift in Sources */,
 				A14160D81DC6758700C4F5BB /* Marshaling.swift in Sources */,
 				A14160A51DC66D2F00C4F5BB /* StoryboardInitializable.swift in Sources */,
+				A14160F91DC68C2300C4F5BB /* Result.swift in Sources */,
 				A14160D41DC6758700C4F5BB /* JSON.swift in Sources */,
-				A14160AA1DC66D6700C4F5BB /* FirebaseNetworkAccess.swift in Sources */,
 				A14160AE1DC66DC900C4F5BB /* UserMiddleware.swift in Sources */,
 				A14160851DC669F100C4F5BB /* AppDelegate.swift in Sources */,
+				A14160ED1DC6806200C4F5BB /* ErrorHUDMiddleware.swift in Sources */,
 				A14160D71DC6758700C4F5BB /* MarshaledObject.swift in Sources */,
 				A141609A1DC66BBC00C4F5BB /* AppState.swift in Sources */,
 				A141609C1DC66BEC00C4F5BB /* Reactor.swift in Sources */,
+				A141611F1DC69AEB00C4F5BB /* Theme.swift in Sources */,
 				A14160AC1DC66DBC00C4F5BB /* GetICloudUser.swift in Sources */,
 				A14160D31DC6758700C4F5BB /* Error.swift in Sources */,
 				A14160A81DC66D4800C4F5BB /* SegueHandlerType.swift in Sources */,
