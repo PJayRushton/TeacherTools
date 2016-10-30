@@ -9,25 +9,76 @@
 /* Begin PBXBuildFile section */
 		A14160851DC669F100C4F5BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160841DC669F100C4F5BB /* AppDelegate.swift */; };
 		A14160871DC669F100C4F5BB /* ClassListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160861DC669F100C4F5BB /* ClassListViewController.swift */; };
-		A141608A1DC669F100C4F5BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14160881DC669F100C4F5BB /* Main.storyboard */; };
+		A141608A1DC669F100C4F5BB /* ClassListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14160881DC669F100C4F5BB /* ClassListViewController.storyboard */; };
 		A141608D1DC669F100C4F5BB /* TeacherTools.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A141608B1DC669F100C4F5BB /* TeacherTools.xcdatamodeld */; };
 		A141608F1DC669F100C4F5BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A141608E1DC669F100C4F5BB /* Assets.xcassets */; };
 		A14160921DC669F100C4F5BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14160901DC669F100C4F5BB /* LaunchScreen.storyboard */; };
 		A141609A1DC66BBC00C4F5BB /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160991DC66BBC00C4F5BB /* AppState.swift */; };
 		A141609C1DC66BEC00C4F5BB /* Reactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A141609B1DC66BEC00C4F5BB /* Reactor.swift */; };
+		A141609F1DC66CB600C4F5BB /* FirebaseAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A141609E1DC66CB600C4F5BB /* FirebaseAuth.framework */; };
+		A14160A31DC66CD800C4F5BB /* FirebaseDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14160A21DC66CD800C4F5BB /* FirebaseDatabase.framework */; };
+		A14160A51DC66D2F00C4F5BB /* StoryboardInitializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160A41DC66D2F00C4F5BB /* StoryboardInitializable.swift */; };
+		A14160A81DC66D4800C4F5BB /* SegueHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160A71DC66D4800C4F5BB /* SegueHandlerType.swift */; };
+		A14160AA1DC66D6700C4F5BB /* FirebaseNetworkAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160A91DC66D6700C4F5BB /* FirebaseNetworkAccess.swift */; };
+		A14160AC1DC66DBC00C4F5BB /* GetICloudUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160AB1DC66DBC00C4F5BB /* GetICloudUser.swift */; };
+		A14160AE1DC66DC900C4F5BB /* UserMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160AD1DC66DC900C4F5BB /* UserMiddleware.swift */; };
+		A14160B01DC66DEC00C4F5BB /* SaveNewUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160AF1DC66DEC00C4F5BB /* SaveNewUser.swift */; };
+		A14160B21DC66DF300C4F5BB /* UpdateUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160B11DC66DF300C4F5BB /* UpdateUser.swift */; };
+		A14160B41DC66E0300C4F5BB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160B31DC66E0300C4F5BB /* User.swift */; };
+		A14160B71DC66ED900C4F5BB /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14160B61DC66ED900C4F5BB /* CFNetwork.framework */; };
+		A14160B91DC66F1200C4F5BB /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14160B81DC66F1200C4F5BB /* CloudKit.framework */; };
+		A14160BB1DC66F2600C4F5BB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14160BA1DC66F2600C4F5BB /* Security.framework */; };
+		A14160BD1DC66F2E00C4F5BB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14160BC1DC66F2E00C4F5BB /* SystemConfiguration.framework */; };
+		A14160BF1DC66F4500C4F5BB /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A14160BE1DC66F4500C4F5BB /* libsqlite3.tbd */; };
+		A14160C21DC66FE500C4F5BB /* FirebaseDatabase.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A14160A21DC66CD800C4F5BB /* FirebaseDatabase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A14160C31DC66FE500C4F5BB /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14160A01DC66CCA00C4F5BB /* FirebaseCore.framework */; };
+		A14160C41DC66FE500C4F5BB /* FirebaseCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A14160A01DC66CCA00C4F5BB /* FirebaseCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A14160C61DC66FE500C4F5BB /* FirebaseAuth.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A141609E1DC66CB600C4F5BB /* FirebaseAuth.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A14160C71DC66FE500C4F5BB /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A14160C61DC66FE500C4F5BB /* FirebaseAuth.framework in Embed Frameworks */,
+				A14160C41DC66FE500C4F5BB /* FirebaseCore.framework in Embed Frameworks */,
+				A14160C21DC66FE500C4F5BB /* FirebaseDatabase.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		A14160811DC669F100C4F5BB /* TeacherTools.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeacherTools.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A14160841DC669F100C4F5BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A14160861DC669F100C4F5BB /* ClassListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassListViewController.swift; sourceTree = "<group>"; };
-		A14160891DC669F100C4F5BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A14160891DC669F100C4F5BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ClassListViewController.storyboard; sourceTree = "<group>"; };
 		A141608C1DC669F100C4F5BB /* TeacherTools.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TeacherTools.xcdatamodel; sourceTree = "<group>"; };
 		A141608E1DC669F100C4F5BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A14160911DC669F100C4F5BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A14160931DC669F100C4F5BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A14160991DC66BBC00C4F5BB /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		A141609B1DC66BEC00C4F5BB /* Reactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reactor.swift; sourceTree = "<group>"; };
+		A141609E1DC66CB600C4F5BB /* FirebaseAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseAuth.framework; sourceTree = "<group>"; };
+		A14160A01DC66CCA00C4F5BB /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = "<group>"; };
+		A14160A21DC66CD800C4F5BB /* FirebaseDatabase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseDatabase.framework; sourceTree = "<group>"; };
+		A14160A41DC66D2F00C4F5BB /* StoryboardInitializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardInitializable.swift; sourceTree = "<group>"; };
+		A14160A71DC66D4800C4F5BB /* SegueHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueHandlerType.swift; sourceTree = "<group>"; };
+		A14160A91DC66D6700C4F5BB /* FirebaseNetworkAccess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseNetworkAccess.swift; sourceTree = "<group>"; };
+		A14160AB1DC66DBC00C4F5BB /* GetICloudUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetICloudUser.swift; sourceTree = "<group>"; };
+		A14160AD1DC66DC900C4F5BB /* UserMiddleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMiddleware.swift; sourceTree = "<group>"; };
+		A14160AF1DC66DEC00C4F5BB /* SaveNewUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveNewUser.swift; sourceTree = "<group>"; };
+		A14160B11DC66DF300C4F5BB /* UpdateUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateUser.swift; sourceTree = "<group>"; };
+		A14160B31DC66E0300C4F5BB /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		A14160B61DC66ED900C4F5BB /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		A14160B81DC66F1200C4F5BB /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		A14160BA1DC66F2600C4F5BB /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		A14160BC1DC66F2E00C4F5BB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		A14160BE1DC66F4500C4F5BB /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +86,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A14160BF1DC66F4500C4F5BB /* libsqlite3.tbd in Frameworks */,
+				A14160BD1DC66F2E00C4F5BB /* SystemConfiguration.framework in Frameworks */,
+				A14160BB1DC66F2600C4F5BB /* Security.framework in Frameworks */,
+				A14160B91DC66F1200C4F5BB /* CloudKit.framework in Frameworks */,
+				A14160B71DC66ED900C4F5BB /* CFNetwork.framework in Frameworks */,
+				A14160C31DC66FE500C4F5BB /* FirebaseCore.framework in Frameworks */,
+				A14160A31DC66CD800C4F5BB /* FirebaseDatabase.framework in Frameworks */,
+				A141609F1DC66CB600C4F5BB /* FirebaseAuth.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +105,7 @@
 			children = (
 				A14160831DC669F100C4F5BB /* TeacherTools */,
 				A14160821DC669F100C4F5BB /* Products */,
+				A14160B51DC66ED900C4F5BB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,15 +122,54 @@
 			children = (
 				A14160841DC669F100C4F5BB /* AppDelegate.swift */,
 				A14160991DC66BBC00C4F5BB /* AppState.swift */,
+				A14160A91DC66D6700C4F5BB /* FirebaseNetworkAccess.swift */,
+				A14160B11DC66DF300C4F5BB /* UpdateUser.swift */,
+				A14160AB1DC66DBC00C4F5BB /* GetICloudUser.swift */,
+				A14160AF1DC66DEC00C4F5BB /* SaveNewUser.swift */,
+				A14160B31DC66E0300C4F5BB /* User.swift */,
+				A14160AD1DC66DC900C4F5BB /* UserMiddleware.swift */,
 				A141609B1DC66BEC00C4F5BB /* Reactor.swift */,
 				A14160861DC669F100C4F5BB /* ClassListViewController.swift */,
-				A14160881DC669F100C4F5BB /* Main.storyboard */,
+				A14160881DC669F100C4F5BB /* ClassListViewController.storyboard */,
 				A141608E1DC669F100C4F5BB /* Assets.xcassets */,
 				A14160901DC669F100C4F5BB /* LaunchScreen.storyboard */,
 				A14160931DC669F100C4F5BB /* Info.plist */,
 				A141608B1DC669F100C4F5BB /* TeacherTools.xcdatamodeld */,
+				A14160A61DC66D3800C4F5BB /* Helpers */,
+				A141609D1DC66C9600C4F5BB /* Frameworks */,
 			);
 			path = TeacherTools;
+			sourceTree = "<group>";
+		};
+		A141609D1DC66C9600C4F5BB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A14160A21DC66CD800C4F5BB /* FirebaseDatabase.framework */,
+				A14160A01DC66CCA00C4F5BB /* FirebaseCore.framework */,
+				A141609E1DC66CB600C4F5BB /* FirebaseAuth.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A14160A61DC66D3800C4F5BB /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A14160A71DC66D4800C4F5BB /* SegueHandlerType.swift */,
+				A14160A41DC66D2F00C4F5BB /* StoryboardInitializable.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		A14160B51DC66ED900C4F5BB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A14160BE1DC66F4500C4F5BB /* libsqlite3.tbd */,
+				A14160BC1DC66F2E00C4F5BB /* SystemConfiguration.framework */,
+				A14160BA1DC66F2600C4F5BB /* Security.framework */,
+				A14160B81DC66F1200C4F5BB /* CloudKit.framework */,
+				A14160B61DC66ED900C4F5BB /* CFNetwork.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +182,7 @@
 				A141607D1DC669F100C4F5BB /* Sources */,
 				A141607E1DC669F100C4F5BB /* Frameworks */,
 				A141607F1DC669F100C4F5BB /* Resources */,
+				A14160C71DC66FE500C4F5BB /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -135,7 +235,7 @@
 			files = (
 				A14160921DC669F100C4F5BB /* LaunchScreen.storyboard in Resources */,
 				A141608F1DC669F100C4F5BB /* Assets.xcassets in Resources */,
-				A141608A1DC669F100C4F5BB /* Main.storyboard in Resources */,
+				A141608A1DC669F100C4F5BB /* ClassListViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,23 +246,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A14160B41DC66E0300C4F5BB /* User.swift in Sources */,
+				A14160B01DC66DEC00C4F5BB /* SaveNewUser.swift in Sources */,
+				A14160B21DC66DF300C4F5BB /* UpdateUser.swift in Sources */,
 				A141608D1DC669F100C4F5BB /* TeacherTools.xcdatamodeld in Sources */,
 				A14160871DC669F100C4F5BB /* ClassListViewController.swift in Sources */,
+				A14160A51DC66D2F00C4F5BB /* StoryboardInitializable.swift in Sources */,
+				A14160AA1DC66D6700C4F5BB /* FirebaseNetworkAccess.swift in Sources */,
+				A14160AE1DC66DC900C4F5BB /* UserMiddleware.swift in Sources */,
 				A14160851DC669F100C4F5BB /* AppDelegate.swift in Sources */,
 				A141609A1DC66BBC00C4F5BB /* AppState.swift in Sources */,
 				A141609C1DC66BEC00C4F5BB /* Reactor.swift in Sources */,
+				A14160AC1DC66DBC00C4F5BB /* GetICloudUser.swift in Sources */,
+				A14160A81DC66D4800C4F5BB /* SegueHandlerType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		A14160881DC669F100C4F5BB /* Main.storyboard */ = {
+		A14160881DC669F100C4F5BB /* ClassListViewController.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				A14160891DC669F100C4F5BB /* Base */,
 			);
-			name = Main.storyboard;
+			name = ClassListViewController.storyboard;
 			sourceTree = "<group>";
 		};
 		A14160901DC669F100C4F5BB /* LaunchScreen.storyboard */ = {
@@ -272,6 +380,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = WPG96H2MFE;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TeacherTools",
+				);
 				INFOPLIST_FILE = TeacherTools/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.AppsByPJ.TeacherTools;
@@ -285,6 +397,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = WPG96H2MFE;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TeacherTools",
+				);
 				INFOPLIST_FILE = TeacherTools/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.AppsByPJ.TeacherTools;
