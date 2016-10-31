@@ -35,6 +35,10 @@ class GroupListViewController: UIViewController, AutoStoryboardInitializable {
     }
     
     @IBAction func plusButtonPressed(_ sender: UIBarButtonItem) {
+        
+    }
+    
+    func loadTestData() {
         core.fire(command: LoadFakeUser())
         core.fire(command: LoadFakeStudents())
         core.fire(command: LoadFakeGroups())
@@ -58,6 +62,11 @@ extension GroupListViewController {
     func setUp() {
         tableView.rowHeight = 80.0
         plusButton.tintColor = core.state.theme.tintColor
+        
+        let gr = UITapGestureRecognizer()
+        gr.numberOfTapsRequired = 3
+        gr.addTarget(self, action: #selector(loadTestData))
+        navigationController?.navigationBar.addGestureRecognizer(gr)
     }
     
 }
@@ -80,8 +89,8 @@ extension GroupListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         core.fire(event: Selected<Group>(groups[indexPath.row]))
-        let groupDetailVC = GroupDetailViewController.initializeFromStoryboard()
-        navigationController?.pushViewController(groupDetailVC, animated: true)
+        let toolsVC = ToolsViewController.initializeFromStoryboard()
+        navigationController?.pushViewController(toolsVC, animated: true)
     }
     
 }

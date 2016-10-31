@@ -8,6 +8,21 @@
 
 import UIKit
 
-class GroupToolCollectionViewCell: UICollectionViewCell {
+class GroupToolCollectionViewCell: UICollectionViewCell, AutoReuseIdentifiable {
+    
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var textLabel: UILabel!
+    
+    func update(with tool: Tool, theme: Theme) {
+        imageView.image = tool.image
+        textLabel.text = tool.title
+        update(with: theme)
+    }
+    
+    func update(with theme: Theme) {
+        imageView.tintColor = theme.tintColor
+        let fontSize = textLabel.font.pointSize
+        textLabel.font = theme.fontType.font(withSize: fontSize)
+    }
     
 }

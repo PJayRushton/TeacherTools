@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Epx-o3-fip">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Tools-->
+        <scene sceneID="Egj-o3-cYK">
+            <objects>
+                <viewController storyboardIdentifier="ToolsViewController" id="Epx-o3-fip" customClass="ToolsViewController" customModule="TeacherTools" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Y5j-Zo-SED"/>
+                        <viewControllerLayoutGuide type="bottom" id="Fej-tK-UFH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uhk-tc-oxg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3Nb-JX-5Z1">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0BS-WY-SCa">
+                                    <size key="itemSize" width="192" height="196"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GroupToolCollectionViewCell" id="ckS-7W-r1U" customClass="GroupToolCollectionViewCell" customModule="TeacherTools" customModuleProvider="target">
+                                        <rect key="frame" x="91.5" y="0.0" width="192" height="196"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="192" height="196"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="O10-Fp-eGP">
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5PO-s1-JzC"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="thp-r9-UlB">
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="30" id="wwC-mq-SQI"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="20"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="topMargin" secondItem="O10-Fp-eGP" secondAttribute="top" id="EkT-Ck-yjv"/>
+                                            <constraint firstAttribute="leadingMargin" secondItem="O10-Fp-eGP" secondAttribute="leading" constant="8" id="Ujy-BI-peD"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="O10-Fp-eGP" secondAttribute="trailing" constant="8" id="uok-cY-JVx"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="O10-Fp-eGP" secondAttribute="bottom" id="xw8-V5-f1F"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="imageView" destination="5PO-s1-JzC" id="Too-ct-Sv2"/>
+                                            <outlet property="textLabel" destination="thp-r9-UlB" id="lLT-vW-2G0"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="Epx-o3-fip" id="Pn1-0P-1ym"/>
+                                    <outlet property="delegate" destination="Epx-o3-fip" id="oKc-C1-utR"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3Nb-JX-5Z1" firstAttribute="leading" secondItem="uhk-tc-oxg" secondAttribute="leading" id="7gv-Qg-B1E"/>
+                            <constraint firstItem="Fej-tK-UFH" firstAttribute="top" secondItem="3Nb-JX-5Z1" secondAttribute="bottom" id="eOh-OA-yxr"/>
+                            <constraint firstItem="3Nb-JX-5Z1" firstAttribute="top" secondItem="uhk-tc-oxg" secondAttribute="topMargin" id="hMC-RV-KjP"/>
+                            <constraint firstAttribute="trailing" secondItem="3Nb-JX-5Z1" secondAttribute="trailing" id="uF2-N2-5rg"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Tools" id="HgE-TD-Opy"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="collectionView" destination="3Nb-JX-5Z1" id="91j-cQ-d7l"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="geO-u4-0r4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="48.799999999999997" y="26.53673163418291"/>
+        </scene>
+    </scenes>
+</document>

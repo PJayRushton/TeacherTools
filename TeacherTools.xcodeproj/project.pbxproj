@@ -11,6 +11,7 @@
 		A11EE95D1DC6CD3C002C9228 /* NSDate+ValueType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11EE95C1DC6CD3C002C9228 /* NSDate+ValueType.swift */; };
 		A11EE95F1DC6CEB6002C9228 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A11EE95E1DC6CEB6002C9228 /* GoogleService-Info.plist */; };
 		A11EE9611DC6F19E002C9228 /* TestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11EE9601DC6F19E002C9228 /* TestHelper.swift */; };
+		A11EE9631DC7096A002C9228 /* ToolsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A11EE9621DC7096A002C9228 /* ToolsViewController.storyboard */; };
 		A14160851DC669F100C4F5BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160841DC669F100C4F5BB /* AppDelegate.swift */; };
 		A14160871DC669F100C4F5BB /* GroupListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160861DC669F100C4F5BB /* GroupListViewController.swift */; };
 		A141608A1DC669F100C4F5BB /* GroupListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14160881DC669F100C4F5BB /* GroupListViewController.storyboard */; };
@@ -51,7 +52,7 @@
 		A14160FD1DC6904400C4F5BB /* SubscribeToAllTheThings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160FC1DC6904400C4F5BB /* SubscribeToAllTheThings.swift */; };
 		A14160FF1DC694BA00C4F5BB /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160FE1DC694BA00C4F5BB /* GroupTableViewCell.swift */; };
 		A141611F1DC69AEB00C4F5BB /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A141611E1DC69AEB00C4F5BB /* Theme.swift */; };
-		A14161211DC6A50F00C4F5BB /* GroupDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14161201DC6A50F00C4F5BB /* GroupDetailViewController.swift */; };
+		A14161211DC6A50F00C4F5BB /* ToolsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14161201DC6A50F00C4F5BB /* ToolsViewController.swift */; };
 		A14161231DC6A55300C4F5BB /* GroupToolCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14161221DC6A55300C4F5BB /* GroupToolCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +76,7 @@
 		A11EE95C1DC6CD3C002C9228 /* NSDate+ValueType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+ValueType.swift"; sourceTree = "<group>"; };
 		A11EE95E1DC6CEB6002C9228 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A11EE9601DC6F19E002C9228 /* TestHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestHelper.swift; sourceTree = "<group>"; };
+		A11EE9621DC7096A002C9228 /* ToolsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ToolsViewController.storyboard; sourceTree = "<group>"; };
 		A14160811DC669F100C4F5BB /* TeacherTools.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeacherTools.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A14160841DC669F100C4F5BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A14160861DC669F100C4F5BB /* GroupListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListViewController.swift; sourceTree = "<group>"; };
@@ -122,7 +124,7 @@
 		A14160FC1DC6904400C4F5BB /* SubscribeToAllTheThings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscribeToAllTheThings.swift; sourceTree = "<group>"; };
 		A14160FE1DC694BA00C4F5BB /* GroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
 		A141611E1DC69AEB00C4F5BB /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
-		A14161201DC6A50F00C4F5BB /* GroupDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupDetailViewController.swift; sourceTree = "<group>"; };
+		A14161201DC6A50F00C4F5BB /* ToolsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolsViewController.swift; sourceTree = "<group>"; };
 		A14161221DC6A55300C4F5BB /* GroupToolCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupToolCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -254,6 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				A14160881DC669F100C4F5BB /* GroupListViewController.storyboard */,
+				A11EE9621DC7096A002C9228 /* ToolsViewController.storyboard */,
 				A14160901DC669F100C4F5BB /* LaunchScreen.storyboard */,
 			);
 			name = Storyboards;
@@ -264,7 +267,7 @@
 			children = (
 				A14160861DC669F100C4F5BB /* GroupListViewController.swift */,
 				A14160FE1DC694BA00C4F5BB /* GroupTableViewCell.swift */,
-				A14161201DC6A50F00C4F5BB /* GroupDetailViewController.swift */,
+				A14161201DC6A50F00C4F5BB /* ToolsViewController.swift */,
 				A14161221DC6A55300C4F5BB /* GroupToolCollectionViewCell.swift */,
 			);
 			name = UI;
@@ -363,6 +366,7 @@
 				A141608F1DC669F100C4F5BB /* Assets.xcassets in Resources */,
 				A141608A1DC669F100C4F5BB /* GroupListViewController.storyboard in Resources */,
 				A11EE95F1DC6CEB6002C9228 /* GoogleService-Info.plist in Resources */,
+				A11EE9631DC7096A002C9228 /* ToolsViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,7 +451,7 @@
 				A14160D81DC6758700C4F5BB /* Marshaling.swift in Sources */,
 				A14160A51DC66D2F00C4F5BB /* StoryboardInitializable.swift in Sources */,
 				A14160F91DC68C2300C4F5BB /* Result.swift in Sources */,
-				A14161211DC6A50F00C4F5BB /* GroupDetailViewController.swift in Sources */,
+				A14161211DC6A50F00C4F5BB /* ToolsViewController.swift in Sources */,
 				A14160D41DC6758700C4F5BB /* JSON.swift in Sources */,
 				A14160AE1DC66DC900C4F5BB /* UserMiddleware.swift in Sources */,
 				A14160851DC669F100C4F5BB /* AppDelegate.swift in Sources */,
