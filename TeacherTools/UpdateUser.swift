@@ -14,7 +14,7 @@ struct UpdateUser: Command {
     
     func execute(state: AppState, core: Core<AppState>) {
         let ref = networkAccess.usersRef.child(user.id)
-        networkAccess.updateObject(atRef: ref, parameters: user.marshaled(), completion: nil)
+        networkAccess.updateObject(at: ref, parameters: user.marshaled(), completion: nil)
     }
 
 }

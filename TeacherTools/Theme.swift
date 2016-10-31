@@ -17,12 +17,14 @@ struct Theme {
     
 }
 
-enum FontType {
+let defaultTheme = Theme(mainColor: .white, tintColor: .blue, textColor: .darkGray, fontType: .chalkDuster)
+
+enum FontType: String {
     case chalkDuster = "Chalkduster"
     case appleSD = "AppleSDGothicNeo-Regular"
     
     func font(withSize size: CGFloat) -> UIFont {
-        return UIFont(name: <#T##String#>, size: <#T##CGFloat#>)
+        return UIFont(name: self.rawValue, size: size)!
     }
     
 }

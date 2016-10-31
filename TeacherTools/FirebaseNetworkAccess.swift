@@ -7,7 +7,7 @@
 //
 
 import Foundation
-//import Firebase
+import Firebase
 
 protocol Identifiable: Equatable {
     var id: String { get set }
@@ -51,9 +51,9 @@ struct FirebaseNetworkAccess {
     func setValue(at ref: FIRDatabaseReference, parameters: JSONObject, completion: ResultCompletion?) {
         ref.setValue(parameters) { error, ref in
             if let error = error {
-                completion?(Result.error(error))
+                completion?(Result.failure(error))
             } else {
-                completion?(Result.ok(JSONObject()))
+                completion?(Result.success(JSONObject()))
             }
         }
     }
@@ -61,10 +61,10 @@ struct FirebaseNetworkAccess {
     func createNewAutoChild(at ref: FIRDatabaseReference, parameters: JSONObject, completion: @escaping ResultCompletion) {
         ref.childByAutoId().setValue(parameters) { error, ref in
             if let error = error {
-                completion(Result.error(error))
+                completion(Result.failure(error))
             } else {
                 let responseJSON: JSONObject = ["ref": ref]
-                completion(Result.ok(responseJSON))
+                completion(Result.success(responseJSON))
             }
         }
     }
@@ -75,9 +75,9 @@ struct FirebaseNetworkAccess {
     func getData(at ref: FIRDatabaseReference, completion: ResultCompletion?) {
         ref.observeSingleEvent(of: .value, with: { snap in
             if let snapJSON = snap.value as? JSONObject , snap.exists() {
-                completion?(Result.ok(snapJSON))
+                completion?(Result.success(snapJSON))
             } else {
-                completion?(Result.error(FirebaseError.incorrectlyFormedData))
+                completion?(Result.failure(FirebaseError.incorrectlyFormedData))
             }
         })
     }
@@ -85,9 +85,9 @@ struct FirebaseNetworkAccess {
     func getKeys(at ref: FIRDatabaseReference, completion: @escaping ((Result<[String]>) -> Void)) {
         ref.observeSingleEvent(of: FIRDataEventType.value, with: { snap in
             if let usernames = (snap.value as AnyObject).allKeys as? [String] , snap.exists() {
-                completion(Result.ok(usernames))
+                completion(Result.success(usernames))
             } else {
-                completion(Result.error(FirebaseError.incorrectlyFormedData))
+                completion(Result.failure(FirebaseError.incorrectlyFormedData))
             }
         })
     }
@@ -98,9 +98,9 @@ struct FirebaseNetworkAccess {
     func updateObject(at ref: FIRDatabaseReference, parameters: JSONObject, completion: ResultCompletion?) {
         ref.updateChildValues(parameters) { error, firebase in
             if let error = error {
-                completion?(Result.error(error))
+                completion?(Result.failure(error))
             } else {
-                completion?(Result.ok(JSONObject()))
+                completion?(Result.success(JSONObject()))
             }
         }
     }
@@ -108,9 +108,9 @@ struct FirebaseNetworkAccess {
     func addObject(at ref: FIRDatabaseReference, parameters: JSONObject, completion: ResultCompletion?) {
         ref.updateChildValues(parameters) { error, ref in
             if let error = error {
-                completion?(Result.error(error))
+                completion?(Result.failure(error))
             } else {
-                completion?(Result.ok(JSONObject()))
+                completion?(Result.success(JSONObject()))
             }
         }
     }
@@ -121,9 +121,9 @@ struct FirebaseNetworkAccess {
     func deleteObject(at ref: FIRDatabaseReference, completion: ResultCompletion?) {
         ref.removeValue { error, ref in
             if let error = error {
-                completion?(Result.error(error))
+                completion?(Result.failure(error))
             } else {
-                completion?(Result.ok(JSONObject()))
+                completion?(Result.success(JSONObject()))
             }
         }
     }
@@ -134,9 +134,9 @@ struct FirebaseNetworkAccess {
     func subscribe(to ref: FIRDatabaseReference, completion: @escaping ResultCompletion) {
         ref.observe(.value, with: { snap in
             if let snapJSON = snap.value as? JSONObject , snap.exists() {
-                completion(Result.ok(snapJSON))
+                completion(Result.success(snapJSON))
             } else {
-                completion(Result.error(FirebaseError.incorrectlyFormedData))
+                completion(Result.failure(FirebaseError.incorrectlyFormedData))
             }
         })
     }
@@ -145,40 +145,5 @@ struct FirebaseNetworkAccess {
         ref.removeAllObservers()
     }
     
-    
-    // MARK: - Users
-    
-    func logInUser(with email: String, password: String) {
-        self.setupAuthListener()
-        FIRAuth.auth()?.signIn(withEmail: email, password: password) { fUser, error in
-            if let error = error {
-                App.core.fire(event: ErrorEvent(error: error, message: error.firebaseAuthErrorMessage))
-            } else if let user = fUser {
-                App.core.fire(event: UserIdentified(userId: user.uid))
-            }
-        }
-    }
-    
-    func setupAuthListener() {
-        FIRAuth.auth()?.addStateDidChangeListener { fAuth, fUser in
-            if let user = fUser {
-                self.core.fire(event: UserIdentified(userId: user.uid))
-            } else if fAuth.currentUser == nil {
-                self.core.fire(event: UserIdentified(userId: nil))
-            } else {
-                self.core.fire(event: DisplayMessage(message: "Something went wrong. . . I'm sorry"))
-            }
-        }
-    }
-    
-    func logOut() {
-        do {
-            try FIRAuth.auth()?.signOut()
-            core.fire(event: UserLoggedOut())
-        } catch {
-            print(error)
-            core.fire(event: ErrorEvent(error: error, message: "Network error"))
-        }
-    }
     
 }

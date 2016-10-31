@@ -12,11 +12,17 @@ struct SubscribeToGroups: Command {
     
     func execute(state: AppState, core: Core<AppState>) {
         guard let currentUser = state.currentUser else { return }
-        let ref = networkAccess.groupsRef(currentUser.id)
+        let ref = networkAccess.groupsRef(userId: currentUser.id)
         networkAccess.subscribe(to: ref) { result in
             let groupsResult = result.map { (json: JSONObject) -> [Group] in
-                let classIds = Array(json.keys)
-                return classIds.map { Group(object: $0) }
+                let groupIds = Array(json.keys)
+                var groups = [Group]()
+                for groupId in groupIds {
+                    var groupObject: JSONObject = try json.value(for: groupId)
+                    groupObject["id"] = groupId
+                    groups.append(try Group(object: groupObject))
+                }
+                return groups
             }
             switch groupsResult {
             case let .success(groups):

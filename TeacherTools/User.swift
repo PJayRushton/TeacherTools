@@ -1,6 +1,6 @@
 //
 //  User.swift
-//  Amanda's Recipes
+//  TeacherTools
 //
 //  Created by Parker Rushton on 1/3/16.
 //  Copyright © 2016 AppsByPJ. All rights reserved.
@@ -8,59 +8,36 @@
 
 import UIKit
 
-final class User: Marshaling, Unmarshaling {
+final class User: Marshaling, Unmarshaling, Identifiable {
     
     var id: String
     var cloudKitId: String?
     var deviceId:  String
     var creationDate: Date
+    var firstName: String?
     
-    init(id: String = "", cloudKitId: String? = nil, deviceId: String = "", creationDate: Date = Date(),company: Company = TargetHelper.currentCompany, firstName: String? = nil, lastName: String? = nil, tags: [Tag] = [Tag](), gasPin: String? = nil, vehicle: Vehicle? = nil, routeArea: String?, routeId: String? = nil, routeIdMid: String? = nil) {
+    init(id: String = "", cloudKitId: String? = nil, deviceId: String = "", creationDate: Date = Date(), firstName: String? = nil) {
         self.id = id
         self.cloudKitId = cloudKitId
         self.deviceId = deviceId
         self.creationDate = creationDate
-        self.company = company
         self.firstName = firstName
-        self.lastName = lastName
-        self.tags = tags
-        self.gasPin = gasPin
-        self.vehicle = vehicle
-        self.routeArea = routeArea
-        self.routeId = routeId
-        self.routeIdMid = routeIdMid
     }
     
     init(object: MarshaledObject) throws {
-        id = try object <| "id"
-        cloudKitId = try object <| "ckId"
-        deviceId = try object <| "deviceId"
-        creationDate = try object <| "creationDate"
-        company = try object <| "company"
-        firstName = try object <| "firstName"
-        lastName = try object <| "lastName"
-        let tagsDict: JSONObject = try object <| "tags"
-        tags = Array(tagsDict.keys).flatMap { Tag(key: $0) }
-        gasPin = try object <| "gasPin"
-        vehicle = try object <| "vehicle"
-        routeArea = try object <| "routeArea"
-        routeId = try object <| "routeId"
-        routeIdMid = try object <| "routeIdMid"
+        id = try object.value(for: "id")
+        cloudKitId = try object.value(for: "iCloudId")
+        deviceId = try object.value(for: "deviceId")
+        creationDate = try object.value(for: "creationDate")
+        firstName = try object.value(for: "firstName")
     }
     
     func marshaled() -> JSONObject {
         var json = JSONObject()
-        json["ckId"] = cloudKitId
+        json["iCloudId"] = cloudKitId
         json["deviceId"] = deviceId
-        json["company"] = company.rawValue
-        json[Keys.firstNameKey] = firstName 
-        json[Keys.lastNameKey] = lastName
-        json["tags"] = tags.map { $0.key }.marshaled()
-        json["gasPin"] = gasPin
-        json["vehicle"] = vehicle?.marshaled()
-        json["routeArea"] = routeArea
-        json["routeId"] = routeId
-        json["routeIdMid"] = routeIdMid
+        json["creationDate"] = creationDate.iso8601String
+        json["firstName"] = firstName
         
         return json
     }

@@ -1,0 +1,755 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00D0E09A88C2FFC87006FBD803BBB689 /* Pods-TeacherTools-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F1D095B671FC2E77E5B79805ADEA9C1D /* Pods-TeacherTools-dummy.m */; };
+		03FC9419CE79A90C250F1A267ADF4AE9 /* ColorList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6786D66B9D5D4AE4B2451A489B56A706 /* ColorList.swift */; };
+		2319C3CCCFF1A49BFA06B8FE6F483D17 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2A6FF208CEC4C2861F1E9D42D651453 /* Foundation.framework */; };
+		2A90A2DC67AE018EA62CD4F0CC8237E0 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8BA76CDBE3BBDEBA80DA475063B6B4 /* Message.swift */; };
+		3A632FAA2B21D8C52A195372A34C228F /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FFC8B8DA6F2ECC4A2ACA8216439826 /* Config.swift */; };
+		3B0A9E60A81190796140B9EEE8E9E571 /* Whisper-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D4148F6CB9A50AD29432DE63DE724EAA /* Whisper-dummy.m */; };
+		401ED577B467351F8A9450DAD48CB60A /* WhisperFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688C7019B9D547543433F193CE3B6496 /* WhisperFactory.swift */; };
+		60CD8D816E5F7451B726A3BFB1CDC2AD /* WhisperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A22356F8D279E1B4A019D6D3357BC9 /* WhisperView.swift */; };
+		8106B48B1DC5EB63EE0C047400452E1B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E86668F20F252C440D1015B816BE59C5 /* UIKit.framework */; };
+		8237446455E4E188620D760445AAFED5 /* ShoutFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D67FFE850A03CC30FA823DB44CFAC31 /* ShoutFactory.swift */; };
+		A95C8EFEE59DA35182A9935E71BC78C7 /* Pods-TeacherTools-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 17EDDC1B4B26172A145A1FE71A01758E /* Pods-TeacherTools-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD4AD021C37BE16B6D7FB9E1AED0A3C9 /* Showing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DBF87ED477D0F22FAF4E3559D02C80 /* Showing.swift */; };
+		D1D1CA2BD3B5BC7C3343AD3C7BA2BDA7 /* FontList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2500C7C3F424A2A4737AA29091DC2659 /* FontList.swift */; };
+		E76E4825D42221FF1921020D81BA4D49 /* WhistleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8FF0FBC27ED5C40F00AE09C654388C /* WhistleFactory.swift */; };
+		EDC830A65CEAA480E1CB44564E46B1A9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2A6FF208CEC4C2861F1E9D42D651453 /* Foundation.framework */; };
+		EF8FF053410F7DF5101735DA2E940316 /* Whisper-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E8143C0CD5479265479A2B937F820232 /* Whisper-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1FDC72E82DE92C5DB09BB8CC3322AC29 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B2B22A4E9CAE18868F64756DF12B56CB;
+			remoteInfo = Whisper;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		017627B5B712B78150F4D7A7D27C9B2F /* Pods-TeacherTools.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-TeacherTools.modulemap"; sourceTree = "<group>"; };
+		11BE273C1E8A41AB0ADDE27D45C6461E /* GoogleInterchangeUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleInterchangeUtilities.framework; path = Frameworks/frameworks/GoogleInterchangeUtilities.framework; sourceTree = "<group>"; };
+		17EDDC1B4B26172A145A1FE71A01758E /* Pods-TeacherTools-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-TeacherTools-umbrella.h"; sourceTree = "<group>"; };
+		183520D33C6493D0D32D95A94AD19739 /* Whisper.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Whisper.modulemap; sourceTree = "<group>"; };
+		202B06BD41147AE43CE2ADB8D21053CB /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2500C7C3F424A2A4737AA29091DC2659 /* FontList.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontList.swift; path = Source/Configuration/FontList.swift; sourceTree = "<group>"; };
+		2CF1BD23488F98D12C3ECC09C7286DDA /* Pods-TeacherTools-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TeacherTools-frameworks.sh"; sourceTree = "<group>"; };
+		3C8BA76CDBE3BBDEBA80DA475063B6B4 /* Message.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Message.swift; path = Source/Message.swift; sourceTree = "<group>"; };
+		3D67FFE850A03CC30FA823DB44CFAC31 /* ShoutFactory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ShoutFactory.swift; path = Source/ShoutFactory.swift; sourceTree = "<group>"; };
+		41032D33DBA9F5C1CACA1F5E8722EF9D /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = Frameworks/frameworks/GoogleUtilities.framework; sourceTree = "<group>"; };
+		422418C5491E4235F9B64C83CA66EC71 /* Pods-TeacherTools.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TeacherTools.release.xcconfig"; sourceTree = "<group>"; };
+		502594E13D288CEA7045EE23A35E785E /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Frameworks/frameworks/FirebaseInstanceID.framework; sourceTree = "<group>"; };
+		520D73AF436FAFA9043C2F09B655E631 /* FirebaseAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAuth.framework; path = Frameworks/frameworks/FirebaseAuth.framework; sourceTree = "<group>"; };
+		57B851F0295DC14AAD90C7FD7C2ACC19 /* FirebaseStorage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseStorage.framework; path = Frameworks/frameworks/FirebaseStorage.framework; sourceTree = "<group>"; };
+		5C7C6F18CDDFBB492050B059B7198278 /* FirebaseDatabase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseDatabase.framework; path = Frameworks/FirebaseDatabase.framework; sourceTree = "<group>"; };
+		60DBF87ED477D0F22FAF4E3559D02C80 /* Showing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Showing.swift; path = Source/Showing.swift; sourceTree = "<group>"; };
+		614B1AB4926C312EFEDA35FC543E72A9 /* Pods-TeacherTools-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TeacherTools-acknowledgements.markdown"; sourceTree = "<group>"; };
+		62A22356F8D279E1B4A019D6D3357BC9 /* WhisperView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WhisperView.swift; path = Source/WhisperView.swift; sourceTree = "<group>"; };
+		657941F650FF9248B563D7DD02EB0EAB /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6786D66B9D5D4AE4B2451A489B56A706 /* ColorList.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ColorList.swift; path = Source/Configuration/ColorList.swift; sourceTree = "<group>"; };
+		688C7019B9D547543433F193CE3B6496 /* WhisperFactory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WhisperFactory.swift; path = Source/WhisperFactory.swift; sourceTree = "<group>"; };
+		74012918F3CE9770D8FEB3425E3AA2EA /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCore.framework; path = Frameworks/frameworks/FirebaseCore.framework; sourceTree = "<group>"; };
+		7590C59FFD8A07E185F6305132A53D89 /* GoogleNetworkingUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleNetworkingUtilities.framework; path = Frameworks/frameworks/GoogleNetworkingUtilities.framework; sourceTree = "<group>"; };
+		76C861A7C2A3A80EFE32953FFC4E9D53 /* Whisper.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Whisper.xcconfig; sourceTree = "<group>"; };
+		7835523A508026210AA86343A3AB37C3 /* Whisper-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Whisper-prefix.pch"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9A53F6D19DE2CA59D30D59278D381AB0 /* Pods-TeacherTools-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TeacherTools-resources.sh"; sourceTree = "<group>"; };
+		9F2D55B7A11382061858B8D5FFE84572 /* Firebase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Firebase.h; path = Core/Sources/Firebase.h; sourceTree = "<group>"; };
+		A23ED65BE4AAC165527A455A5BA4BF19 /* FIRInstanceID.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstanceID.h; path = Sources/FIRInstanceID.h; sourceTree = "<group>"; };
+		A2A6FF208CEC4C2861F1E9D42D651453 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		A8FFC8B8DA6F2ECC4A2ACA8216439826 /* Config.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Config.swift; path = Source/Config.swift; sourceTree = "<group>"; };
+		B9B76205776B821A8DBCDF0F170E0454 /* GoogleSymbolUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSymbolUtilities.framework; path = Frameworks/frameworks/GoogleSymbolUtilities.framework; sourceTree = "<group>"; };
+		C37ECE0BEB2B29CA91A2F66B773EA550 /* Pods_TeacherTools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TeacherTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C62D0BFB76506D73471D6CC3BC0419AF /* Pods-TeacherTools-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TeacherTools-acknowledgements.plist"; sourceTree = "<group>"; };
+		D4148F6CB9A50AD29432DE63DE724EAA /* Whisper-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Whisper-dummy.m"; sourceTree = "<group>"; };
+		D45329AFAADE31A9B9133F6D1306EB24 /* Whisper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Whisper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D48C75BA9BC07F93AFF4266E7F2DA73A /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Frameworks/frameworks/FirebaseAnalytics.framework; sourceTree = "<group>"; };
+		E8143C0CD5479265479A2B937F820232 /* Whisper-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Whisper-umbrella.h"; sourceTree = "<group>"; };
+		E86668F20F252C440D1015B816BE59C5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		F18A2686CFF4C7D0865F7D31AD03BA44 /* Pods-TeacherTools.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TeacherTools.debug.xcconfig"; sourceTree = "<group>"; };
+		F1D095B671FC2E77E5B79805ADEA9C1D /* Pods-TeacherTools-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TeacherTools-dummy.m"; sourceTree = "<group>"; };
+		FB8FF0FBC27ED5C40F00AE09C654388C /* WhistleFactory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WhistleFactory.swift; path = Source/WhistleFactory.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		301C0AD1945FD065FCFD1730BF91F150 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDC830A65CEAA480E1CB44564E46B1A9 /* Foundation.framework in Frameworks */,
+				8106B48B1DC5EB63EE0C047400452E1B /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		553D3A3FA6FF9C4C55FD3BC74C498C97 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2319C3CCCFF1A49BFA06B8FE6F483D17 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		087E40B7A431E401B33E51B6A4EC8204 /* FirebaseAuth */ = {
+			isa = PBXGroup;
+			children = (
+				6EF4B7D8AC9D8A866B067E40F842EBF7 /* Frameworks */,
+			);
+			path = FirebaseAuth;
+			sourceTree = "<group>";
+		};
+		1AB3EAAC690C733F7798EB5D1A65C447 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				74012918F3CE9770D8FEB3425E3AA2EA /* FirebaseCore.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1B8442BDB1417621D1B1E57A7C91196F /* GoogleUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				3F3417BF37D8AAA0459FC142E714A77E /* Frameworks */,
+			);
+			path = GoogleUtilities;
+			sourceTree = "<group>";
+		};
+		20813F81D618C11D230E6B71C5C227B1 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				CD204ACA90A12FBB3B64D6CEFFB0E892 /* Pods-TeacherTools */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		2C8D7DA438CFB33B2070BD059ED38E8D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C37ECE0BEB2B29CA91A2F66B773EA550 /* Pods_TeacherTools.framework */,
+				D45329AFAADE31A9B9133F6D1306EB24 /* Whisper.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3BC6DA473BE8C532859530CD49B6E9C1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				11BE273C1E8A41AB0ADDE27D45C6461E /* GoogleInterchangeUtilities.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3F3417BF37D8AAA0459FC142E714A77E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				41032D33DBA9F5C1CACA1F5E8722EF9D /* GoogleUtilities.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		433CD3331B6C3787F473C941B61FC68F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F302CD3B306AF1ED96B9AF31FCDBC26C /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4680E36C961ABC3C47F35741BCFA7E87 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5C7C6F18CDDFBB492050B059B7198278 /* FirebaseDatabase.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		50B08F870EC32CB744AF9B8EDBD42CA5 /* GoogleNetworkingUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				64ACEE6996DE1621AD212ADCC398FDE5 /* Frameworks */,
+			);
+			path = GoogleNetworkingUtilities;
+			sourceTree = "<group>";
+		};
+		5A061FC2E5A737EC23FB3EF57100E955 /* GoogleSymbolUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				80E0174E3AC88AAC01A9D2C77A219D80 /* Frameworks */,
+			);
+			path = GoogleSymbolUtilities;
+			sourceTree = "<group>";
+		};
+		600F3D0630C8FE6BBBBB0E41B38560E2 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				9F2D55B7A11382061858B8D5FFE84572 /* Firebase.h */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		64ACEE6996DE1621AD212ADCC398FDE5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7590C59FFD8A07E185F6305132A53D89 /* GoogleNetworkingUtilities.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6A0D7A6A654244FAD4CA7D0B4E07A613 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				57B851F0295DC14AAD90C7FD7C2ACC19 /* FirebaseStorage.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6DE5CA23A43A79B58DD75F0C1CEDAD08 /* FirebaseAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				98D6DC2723304D1107337433C78B10E3 /* Frameworks */,
+			);
+			path = FirebaseAnalytics;
+			sourceTree = "<group>";
+		};
+		6E7E87B7B17E5EBA3B0F0417051110B3 /* GoogleInterchangeUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				3BC6DA473BE8C532859530CD49B6E9C1 /* Frameworks */,
+			);
+			path = GoogleInterchangeUtilities;
+			sourceTree = "<group>";
+		};
+		6EF4B7D8AC9D8A866B067E40F842EBF7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				520D73AF436FAFA9043C2F09B655E631 /* FirebaseAuth.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				433CD3331B6C3787F473C941B61FC68F /* Frameworks */,
+				EF0C0D2BA33B14F08AE129BAA6307B9B /* Pods */,
+				2C8D7DA438CFB33B2070BD059ED38E8D /* Products */,
+				20813F81D618C11D230E6B71C5C227B1 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		80E0174E3AC88AAC01A9D2C77A219D80 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B9B76205776B821A8DBCDF0F170E0454 /* GoogleSymbolUtilities.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		94F770AA9B0F863A482B7A5FFCD258BD /* FirebaseDatabase */ = {
+			isa = PBXGroup;
+			children = (
+				4680E36C961ABC3C47F35741BCFA7E87 /* Frameworks */,
+			);
+			path = FirebaseDatabase;
+			sourceTree = "<group>";
+		};
+		98D6DC2723304D1107337433C78B10E3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D48C75BA9BC07F93AFF4266E7F2DA73A /* FirebaseAnalytics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BCC588D591F418FCFC43FC319157D1C5 /* Whisper */ = {
+			isa = PBXGroup;
+			children = (
+				6786D66B9D5D4AE4B2451A489B56A706 /* ColorList.swift */,
+				A8FFC8B8DA6F2ECC4A2ACA8216439826 /* Config.swift */,
+				2500C7C3F424A2A4737AA29091DC2659 /* FontList.swift */,
+				3C8BA76CDBE3BBDEBA80DA475063B6B4 /* Message.swift */,
+				3D67FFE850A03CC30FA823DB44CFAC31 /* ShoutFactory.swift */,
+				60DBF87ED477D0F22FAF4E3559D02C80 /* Showing.swift */,
+				688C7019B9D547543433F193CE3B6496 /* WhisperFactory.swift */,
+				62A22356F8D279E1B4A019D6D3357BC9 /* WhisperView.swift */,
+				FB8FF0FBC27ED5C40F00AE09C654388C /* WhistleFactory.swift */,
+				D241731D8587D078A648A74E0BDBD70D /* Support Files */,
+			);
+			path = Whisper;
+			sourceTree = "<group>";
+		};
+		C0B7A17C2549F3EBA277CD61E6DA1A60 /* FirebaseStorage */ = {
+			isa = PBXGroup;
+			children = (
+				6A0D7A6A654244FAD4CA7D0B4E07A613 /* Frameworks */,
+			);
+			path = FirebaseStorage;
+			sourceTree = "<group>";
+		};
+		CD204ACA90A12FBB3B64D6CEFFB0E892 /* Pods-TeacherTools */ = {
+			isa = PBXGroup;
+			children = (
+				657941F650FF9248B563D7DD02EB0EAB /* Info.plist */,
+				017627B5B712B78150F4D7A7D27C9B2F /* Pods-TeacherTools.modulemap */,
+				614B1AB4926C312EFEDA35FC543E72A9 /* Pods-TeacherTools-acknowledgements.markdown */,
+				C62D0BFB76506D73471D6CC3BC0419AF /* Pods-TeacherTools-acknowledgements.plist */,
+				F1D095B671FC2E77E5B79805ADEA9C1D /* Pods-TeacherTools-dummy.m */,
+				2CF1BD23488F98D12C3ECC09C7286DDA /* Pods-TeacherTools-frameworks.sh */,
+				9A53F6D19DE2CA59D30D59278D381AB0 /* Pods-TeacherTools-resources.sh */,
+				17EDDC1B4B26172A145A1FE71A01758E /* Pods-TeacherTools-umbrella.h */,
+				F18A2686CFF4C7D0865F7D31AD03BA44 /* Pods-TeacherTools.debug.xcconfig */,
+				422418C5491E4235F9B64C83CA66EC71 /* Pods-TeacherTools.release.xcconfig */,
+			);
+			name = "Pods-TeacherTools";
+			path = "Target Support Files/Pods-TeacherTools";
+			sourceTree = "<group>";
+		};
+		D241731D8587D078A648A74E0BDBD70D /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				202B06BD41147AE43CE2ADB8D21053CB /* Info.plist */,
+				183520D33C6493D0D32D95A94AD19739 /* Whisper.modulemap */,
+				76C861A7C2A3A80EFE32953FFC4E9D53 /* Whisper.xcconfig */,
+				D4148F6CB9A50AD29432DE63DE724EAA /* Whisper-dummy.m */,
+				7835523A508026210AA86343A3AB37C3 /* Whisper-prefix.pch */,
+				E8143C0CD5479265479A2B937F820232 /* Whisper-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Whisper";
+			sourceTree = "<group>";
+		};
+		D2E865106E5F680C4EFDDA26C5C90A7E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				502594E13D288CEA7045EE23A35E785E /* FirebaseInstanceID.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E4B9D40E2D04FA96F5F39C002D8583EB /* FirebaseCore */ = {
+			isa = PBXGroup;
+			children = (
+				1AB3EAAC690C733F7798EB5D1A65C447 /* Frameworks */,
+			);
+			path = FirebaseCore;
+			sourceTree = "<group>";
+		};
+		EF0C0D2BA33B14F08AE129BAA6307B9B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F8107A6092A43AEF522387FB1776C10B /* Firebase */,
+				6DE5CA23A43A79B58DD75F0C1CEDAD08 /* FirebaseAnalytics */,
+				087E40B7A431E401B33E51B6A4EC8204 /* FirebaseAuth */,
+				E4B9D40E2D04FA96F5F39C002D8583EB /* FirebaseCore */,
+				94F770AA9B0F863A482B7A5FFCD258BD /* FirebaseDatabase */,
+				F56A230F1CA23DD7D8944D4DFA565865 /* FirebaseInstanceID */,
+				C0B7A17C2549F3EBA277CD61E6DA1A60 /* FirebaseStorage */,
+				6E7E87B7B17E5EBA3B0F0417051110B3 /* GoogleInterchangeUtilities */,
+				50B08F870EC32CB744AF9B8EDBD42CA5 /* GoogleNetworkingUtilities */,
+				5A061FC2E5A737EC23FB3EF57100E955 /* GoogleSymbolUtilities */,
+				1B8442BDB1417621D1B1E57A7C91196F /* GoogleUtilities */,
+				BCC588D591F418FCFC43FC319157D1C5 /* Whisper */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F302CD3B306AF1ED96B9AF31FCDBC26C /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				A2A6FF208CEC4C2861F1E9D42D651453 /* Foundation.framework */,
+				E86668F20F252C440D1015B816BE59C5 /* UIKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		F56A230F1CA23DD7D8944D4DFA565865 /* FirebaseInstanceID */ = {
+			isa = PBXGroup;
+			children = (
+				A23ED65BE4AAC165527A455A5BA4BF19 /* FIRInstanceID.h */,
+				D2E865106E5F680C4EFDDA26C5C90A7E /* Frameworks */,
+			);
+			path = FirebaseInstanceID;
+			sourceTree = "<group>";
+		};
+		F8107A6092A43AEF522387FB1776C10B /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				600F3D0630C8FE6BBBBB0E41B38560E2 /* Core */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		92905A560B6F117C060BB0D3505E77FE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF8FF053410F7DF5101735DA2E940316 /* Whisper-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF4516BD3A13E45D21E65A3EF7D71D33 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A95C8EFEE59DA35182A9935E71BC78C7 /* Pods-TeacherTools-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		AF44068A0CD0925D6AB62B743815118C /* Pods-TeacherTools */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3BBFF790A3241D6C9A23C0467A250042 /* Build configuration list for PBXNativeTarget "Pods-TeacherTools" */;
+			buildPhases = (
+				F995A2DD4440A63DF8DF59294A0D8538 /* Sources */,
+				553D3A3FA6FF9C4C55FD3BC74C498C97 /* Frameworks */,
+				EF4516BD3A13E45D21E65A3EF7D71D33 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7AFE845C7C73480DEA6D98C5EA35E458 /* PBXTargetDependency */,
+			);
+			name = "Pods-TeacherTools";
+			productName = "Pods-TeacherTools";
+			productReference = C37ECE0BEB2B29CA91A2F66B773EA550 /* Pods_TeacherTools.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		B2B22A4E9CAE18868F64756DF12B56CB /* Whisper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3314B97AD429CC4748361897FCF029D0 /* Build configuration list for PBXNativeTarget "Whisper" */;
+			buildPhases = (
+				1DE0308E6A32B5EFFF0EAFC83088908B /* Sources */,
+				301C0AD1945FD065FCFD1730BF91F150 /* Frameworks */,
+				92905A560B6F117C060BB0D3505E77FE /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Whisper;
+			productName = Whisper;
+			productReference = D45329AFAADE31A9B9133F6D1306EB24 /* Whisper.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 2C8D7DA438CFB33B2070BD059ED38E8D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AF44068A0CD0925D6AB62B743815118C /* Pods-TeacherTools */,
+				B2B22A4E9CAE18868F64756DF12B56CB /* Whisper */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1DE0308E6A32B5EFFF0EAFC83088908B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03FC9419CE79A90C250F1A267ADF4AE9 /* ColorList.swift in Sources */,
+				3A632FAA2B21D8C52A195372A34C228F /* Config.swift in Sources */,
+				D1D1CA2BD3B5BC7C3343AD3C7BA2BDA7 /* FontList.swift in Sources */,
+				2A90A2DC67AE018EA62CD4F0CC8237E0 /* Message.swift in Sources */,
+				8237446455E4E188620D760445AAFED5 /* ShoutFactory.swift in Sources */,
+				CD4AD021C37BE16B6D7FB9E1AED0A3C9 /* Showing.swift in Sources */,
+				3B0A9E60A81190796140B9EEE8E9E571 /* Whisper-dummy.m in Sources */,
+				401ED577B467351F8A9450DAD48CB60A /* WhisperFactory.swift in Sources */,
+				60CD8D816E5F7451B726A3BFB1CDC2AD /* WhisperView.swift in Sources */,
+				E76E4825D42221FF1921020D81BA4D49 /* WhistleFactory.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F995A2DD4440A63DF8DF59294A0D8538 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00D0E09A88C2FFC87006FBD803BBB689 /* Pods-TeacherTools-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7AFE845C7C73480DEA6D98C5EA35E458 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Whisper;
+			target = B2B22A4E9CAE18868F64756DF12B56CB /* Whisper */;
+			targetProxy = 1FDC72E82DE92C5DB09BB8CC3322AC29 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		360A7CF35DD0CC651669A1A4B2323C29 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F18A2686CFF4C7D0865F7D31AD03BA44 /* Pods-TeacherTools.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-TeacherTools/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-TeacherTools/Pods-TeacherTools.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_TeacherTools;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		42287DDF97330524BA3EF220F0276DA6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		430E7536BE842F75916EC9D72254B06C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 76C861A7C2A3A80EFE32953FFC4E9D53 /* Whisper.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Whisper/Whisper-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Whisper/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Whisper/Whisper.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = Whisper;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		71AA709909F658C2BB4B98E2B1254C01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 76C861A7C2A3A80EFE32953FFC4E9D53 /* Whisper.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Whisper/Whisper-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Whisper/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Whisper/Whisper.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = Whisper;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		AE9439C22469D35336242DD983DB5C5F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		D9098A850EFB2FEB1C3037D3210C1EB5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 422418C5491E4235F9B64C83CA66EC71 /* Pods-TeacherTools.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-TeacherTools/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-TeacherTools/Pods-TeacherTools.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_TeacherTools;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE9439C22469D35336242DD983DB5C5F /* Debug */,
+				42287DDF97330524BA3EF220F0276DA6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3314B97AD429CC4748361897FCF029D0 /* Build configuration list for PBXNativeTarget "Whisper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				71AA709909F658C2BB4B98E2B1254C01 /* Debug */,
+				430E7536BE842F75916EC9D72254B06C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3BBFF790A3241D6C9A23C0467A250042 /* Build configuration list for PBXNativeTarget "Pods-TeacherTools" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				360A7CF35DD0CC651669A1A4B2323C29 /* Debug */,
+				D9098A850EFB2FEB1C3037D3210C1EB5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

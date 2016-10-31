@@ -13,21 +13,27 @@ struct Student: Marshaling, Unmarshaling, Identifiable {
     var id: String
     var firstName: String
     var lastName: String?
-    var groupIds: [String]
+    var tickets = 1
+    
+    init(id: String, firstName: String, lastName: String? = nil, tickets: Int = 1) {
+        self.id = id
+        self.firstName = firstName
+        self.lastName = lastName
+        self.tickets = tickets
+    }
     
     init(object: MarshaledObject) throws {
         id = try object.value(for: "id")
         firstName = try object.value(for: "firstName")
         lastName = try object.value(for: "lastName")
-        let groupsObject: JSONObject = try object.value(for: "groupIds")
-        groupIds = Array(groupsObject.keys)
+        tickets = try object.value(for: "tickets")
     }
     
     func marshaled() -> JSONObject {
         var json = JSONObject()
         json["firstName"] = firstName
         json["lastName"] = lastName
-        json["groupIds"] = groupIds.marshaled()
+        json["tickets"] = tickets
         
         return json
     }

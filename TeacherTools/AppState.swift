@@ -27,7 +27,7 @@ struct AppState: State {
     var groups = [Group]()
     var selectedGroup: Group?
     var allStudents = [Student]()
-    var theme: Theme
+    var theme = defaultTheme
     
     mutating func react(to event: Event) {
         switch event {
@@ -38,21 +38,21 @@ struct AppState: State {
             // USERS
         case let event as Selected<User>:
             currentUser = event.item
-            currentICloudId = event.item == nil ? nil : currentICloudId
-        case let event as Updated<[User]>:
-            allUsers = event.payload
+            currentICloudId = event.item == nil ? nil : event.item?.cloudKitId
             
-            // Groups
+            // GROUPS
         case let event as Updated<[Group]>:
             groups = event.payload
         case let event as Selected<Group>:
             selectedGroup = event.item
+            
+            // STUDENTS
         case let event as Updated<[Student]>:
             allStudents = event.payload
             
             // APPEARANCE
         case let event as Selected<Theme>:
-            theme = event.item
+            theme = event.item!
         default:
             break
         }
