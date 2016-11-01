@@ -11,16 +11,35 @@ import UIKit
 var hasSavedNewUser = false
 var isSubscribed = false
  
+class EntityDatabase {
+    static let shared = EntityDatabase()
+    
+    var users = [User]()
+}
+ 
 struct UserMiddleware: Middleware {
     
     func process(event: Event, state: AppState) {
         switch event {
+        case let event as Updated<[User]>:
+            print("USERS UPDATED (\(event.payload.count))")
+            EntityDatabase.shared.users = event.payload
+            if state.currentUser == nil {
+                App.core.fire(command: GetICloudUser())
+            }
         case let event as ICloudUserIdentified:
-            let identifiedUsersByCK = state.allUsers.filter { $0.cloudKitId == event.icloudId }
-            let identifiedUsersByDevice = state.allUsers.filter { $0.deviceId == UIDevice.current.identifierForVendor?.uuidString }
+            print("iCLOUD ID IDENTIFIED: \(event.icloudId)")
+            guard EntityDatabase.shared.users.isEmpty == false else {
+                App.core.fire(command: SubscribeToUsers())
+                return
+            }
+            let identifiedUsersByCK = EntityDatabase.shared.users.filter { $0.cloudKitId == event.icloudId }
+            let identifiedUsersByDevice = EntityDatabase.shared.users.filter { $0.deviceId == UIDevice.current.identifierForVendor?.uuidString }
             if identifiedUsersByCK.count == 1 && event.icloudId != nil {
                 App.core.fire(event: Selected<User>(identifiedUsersByCK.first!))
+                print("USER IDENTIFIED BY iCLOUD ID \(identifiedUsersByCK.first!.cloudKitId)")
             } else if identifiedUsersByDevice.count == 1 {
+                print("USER IDENTIFIED BY DEVICE ID \(identifiedUsersByCK.first!.deviceId)")
                 App.core.fire(event: Selected<User>(identifiedUsersByDevice.first!))
             } else if identifiedUsersByCK.count > 1 {
                 App.core.fire(command: DeleteUsers(users: identifiedUsersByCK))
@@ -32,9 +51,9 @@ struct UserMiddleware: Middleware {
                 App.core.fire(command: SaveNewUser())
             }
         case let event as Selected<User>:
-            guard let user = event.item, isSubscribed == false else { return }
+            guard let _ = event.item, isSubscribed == false else { return }
             isSubscribed = true
-//            App.core.fire(command: SubscribeToAllTheThings())
+            App.core.fire(command: SubscribeToAllTheThings())
             
         default:
             break

@@ -58,6 +58,7 @@
 		A14161211DC6A50F00C4F5BB /* ToolsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14161201DC6A50F00C4F5BB /* ToolsViewController.swift */; };
 		A14161231DC6A55300C4F5BB /* GroupToolCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14161221DC6A55300C4F5BB /* GroupToolCollectionViewCell.swift */; };
 		A1B1A2081DC8BD4300D80E53 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1A2071DC8BD4300D80E53 /* DateHelper.swift */; };
+		A1B1A20A1DC8C4E300D80E53 /* CreateObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1A2091DC8C4E300D80E53 /* CreateObject.swift */; };
 		A1CC0AB91DC7A14800C0575F /* DeleteObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CC0AB81DC7A14800C0575F /* DeleteObject.swift */; };
 		A1CC0ABB1DC7B7F700C0575F /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14160B81DC66F1200C4F5BB /* CloudKit.framework */; };
 /* End PBXBuildFile section */
@@ -136,6 +137,7 @@
 		A14161201DC6A50F00C4F5BB /* ToolsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolsViewController.swift; sourceTree = "<group>"; };
 		A14161221DC6A55300C4F5BB /* GroupToolCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupToolCollectionViewCell.swift; sourceTree = "<group>"; };
 		A1B1A2071DC8BD4300D80E53 /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
+		A1B1A2091DC8C4E300D80E53 /* CreateObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateObject.swift; sourceTree = "<group>"; };
 		A1CC0AB81DC7A14800C0575F /* DeleteObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteObject.swift; sourceTree = "<group>"; };
 		A1CC0ABA1DC7B7F100C0575F /* TeacherTools.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TeacherTools.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -309,6 +311,7 @@
 				A14160B11DC66DF300C4F5BB /* UpdateUser.swift */,
 				A11EE9701DC79516002C9228 /* UpdateObject.swift */,
 				A1CC0AB81DC7A14800C0575F /* DeleteObject.swift */,
+				A1B1A2091DC8C4E300D80E53 /* CreateObject.swift */,
 				A14160FC1DC6904400C4F5BB /* SubscribeToAllTheThings.swift */,
 				A14160EA1DC67E7700C4F5BB /* SubscribeToUsers.swift */,
 				A14160F41DC6888200C4F5BB /* SubscribeToGroups.swift */,
@@ -491,6 +494,7 @@
 				A141609A1DC66BBC00C4F5BB /* AppState.swift in Sources */,
 				A11EE9611DC6F19E002C9228 /* TestHelper.swift in Sources */,
 				A11EE9711DC79516002C9228 /* UpdateObject.swift in Sources */,
+				A1B1A20A1DC8C4E300D80E53 /* CreateObject.swift in Sources */,
 				A141609C1DC66BEC00C4F5BB /* Reactor.swift in Sources */,
 				A141611F1DC69AEB00C4F5BB /* Theme.swift in Sources */,
 				A14160AC1DC66DBC00C4F5BB /* GetICloudUser.swift in Sources */,

@@ -8,18 +8,23 @@
 
 import Foundation
 
-struct SubscribeToCurrentUser: Command {
+struct SubscribeToUsers: Command {
     
     func execute(state: AppState, core: Core<AppState>) {
-        guard let currentUser = state.currentUser else { return }
-        let ref = networkAccess.usersRef.child(currentUser.id)
+        let ref = networkAccess.usersRef
         networkAccess.subscribe(to: ref) { result in
-            let userResult = result.map { (json: JSONObject) -> User in
-                return try User(object: json)
+            let usersResult = result.map { (json: JSONObject) -> [User] in
+                var users = [User]()
+                for key in Array(json.keys) {
+                    var newUserObject: JSONObject = try json.value(for: key)
+                    newUserObject["id"] = key
+                    users.append(try User(object: newUserObject))
+                }
+                return users
             }
-            switch userResult {
-            case let .success(user):
-                core.fire(event: Selected<User>(user))
+            switch usersResult {
+            case let .success(users):
+                core.fire(event: Updated<[User]>(users))
             case let .failure(error):
                 core.fire(event: ErrorEvent(error: error, message: nil))
             }

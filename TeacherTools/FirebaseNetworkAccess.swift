@@ -136,7 +136,7 @@ struct FirebaseNetworkAccess {
     
     func subscribe(to ref: FIRDatabaseReference, completion: @escaping ResultCompletion) {
         ref.observe(.value, with: { snap in
-            if let snapJSON = snap.value as? JSONObject , snap.exists() {
+            if let snapJSON = snap.value as? JSONObject, snap.exists() {
                 completion(Result.success(snapJSON))
             } else {
                 completion(Result.failure(FirebaseError.incorrectlyFormedData))

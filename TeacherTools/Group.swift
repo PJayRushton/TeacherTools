@@ -25,8 +25,8 @@ struct Group: Identifiable {
         return FirebaseNetworkAccess.sharedInstance.groupsRef(userId: App.core.state.currentUser!.id).child(id)
     }
     
-    init(id: String, name: String, creationDate: Date = Date(), lastViewDate: Date = Date(), studentIds: [String]) {
-        self.id = id
+    init(id: String = "", name: String, creationDate: Date = Date(), lastViewDate: Date = Date(), studentIds: [String] = [String]()) {
+        self.id = id.isEmpty ? FirebaseNetworkAccess.sharedInstance.groupsRef(userId: App.core.state.currentUser!.id).childByAutoId().key : id
         self.name = name
         self.creationDate = creationDate
         self.lastViewDate = lastViewDate
@@ -35,15 +35,19 @@ struct Group: Identifiable {
     
 }
 
-extension Group: Unmarshaling {
+extension Group: Unmarshaling, Marshaling {
     
     init(object: MarshaledObject) throws {
         id = try object.value(for: "id")
         name = try object.value(for: "name")
         creationDate = try object.value(for: "creationDate")
         lastViewDate = try object.value(for: "lastViewDate")
-        let studentsDict: JSONObject = try object.value(for: "studentIds")
-        studentIds = Array(studentsDict.keys)
+        let studentsDict: JSONObject? = try? object.value(for: "studentIds")
+        if let studentsDict = studentsDict {
+            studentIds = Array(studentsDict.keys)
+        } else {
+            studentIds = [String]()
+        }
     }
     
     func marshaled() -> JSONObject {

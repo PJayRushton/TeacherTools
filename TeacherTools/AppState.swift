@@ -23,8 +23,8 @@ struct AppState: State {
     
     var currentICloudId: String?
     var currentUser: User?
-    var allUsers = [User]()
     var groups = [Group]()
+    var groupsAreLoaded = false
     var selectedGroup: Group?
     var allStudents = [Student]()
     var theme = defaultTheme
@@ -43,6 +43,7 @@ struct AppState: State {
             // GROUPS
         case let event as Updated<[Group]>:
             groups = event.payload
+            groupsAreLoaded = true
         case let event as Selected<Group>:
             selectedGroup = event.item
             

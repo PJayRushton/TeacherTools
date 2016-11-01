@@ -14,6 +14,13 @@ struct DisplayLoadingMessage: Event {
     var message: String?
 }
 
+struct DisplayNavBarMessage: Event {
+    var nav: UINavigationController
+    var message: String
+    var barColor: UIColor = App.core.state.theme.mainColor
+    var time: TimeInterval?
+}
+
 struct DisplayMessage: Event {
     var message: String
 }
@@ -35,7 +42,6 @@ struct DisplaySuccessMessage: Event {
 
 struct HideAlerts: Event { }
 
-
 struct ErrorHUDMiddleware: Middleware {
     
     func process(event: Event, state: AppState) {
@@ -55,6 +61,8 @@ struct ErrorHUDMiddleware: Middleware {
             silva(title: "Looking for the internet...", barColor: UIColor.red.withAlphaComponent(0.6), displayTime: 0)
         case _ as DisplayUploadMessage:
             silva(title: "Uploading...", barColor: UIColor.lightGray.withAlphaComponent(0.75), displayTime: 0)
+        case let event as DisplayNavBarMessage:
+            whisper(with: event.message, barColor: event.barColor, displayTime: event.time, nav: event.nav)
         case _ as HideAlerts:
             hide()
         default:
@@ -64,10 +72,17 @@ struct ErrorHUDMiddleware: Middleware {
     }
     
     private func silva(title: String = "loading...", barColor: UIColor = UIColor.blue.withAlphaComponent(0.75), displayTime: TimeInterval? = nil) {
-        let murmur = Murmur(title: title, backgroundColor: barColor, titleColor: .white, font: App.core.state.theme.fontType.font(withSize: 14))
+        let murmur = Murmur(title: title, backgroundColor: .red, titleColor: .white, font: App.core.state.theme.fontType.font(withSize: 14))
         let time = displayTime == nil ? title.displayTime : displayTime!
         let action = time == 0 ? WhistleAction.present : WhistleAction.show(time)
+        
         show(whistle: murmur, action: action)
+    }
+    
+    private func whisper(with title: String, barColor: UIColor, displayTime: TimeInterval? = nil, nav: UINavigationController) {
+        let message = Message(title: title, textColor: .white, backgroundColor: barColor, images: nil)
+        let action = displayTime == nil ? WhisperAction.present : WhisperAction.show
+        show(whisper: message, to: nav, action: action)
     }
     
 }

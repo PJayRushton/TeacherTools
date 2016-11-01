@@ -28,6 +28,7 @@ struct SubscribeToGroups: Command {
             case let .success(groups):
                 core.fire(event: Updated<[Group]>(groups))
             case let .failure(error):
+                core.fire(event: Updated<[Group]>([Group]()))
                 core.fire(event: ErrorEvent(error: error, message: nil))
             }
         }
