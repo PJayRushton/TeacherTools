@@ -18,7 +18,7 @@ struct SubscribeToGroups: Command {
                 let groupIds = Array(json.keys)
                 var groups = [Group]()
                 for groupId in groupIds {
-                    var groupObject: JSONObject = try json.value(for: groupId)
+                    var groupObject:  JSONObject = try json.value(for: groupId)
                     groupObject["id"] = groupId
                     groups.append(try Group(object: groupObject))
                 }

@@ -16,10 +16,6 @@ struct UserMiddleware: Middleware {
     func process(event: Event, state: AppState) {
         switch event {
         case let event as ICloudUserIdentified:
-            guard !state.allUsers.isEmpty else {
-                App.core.fire(command: SubscribeToCurrentUser())
-                return
-            }
             let identifiedUsersByCK = state.allUsers.filter { $0.cloudKitId == event.icloudId }
             let identifiedUsersByDevice = state.allUsers.filter { $0.deviceId == UIDevice.current.identifierForVendor?.uuidString }
             if identifiedUsersByCK.count == 1 && event.icloudId != nil {
