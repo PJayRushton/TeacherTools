@@ -23,33 +23,22 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Pc-qL-VKB">
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="zwP-TY-1eK" userLabel="EntryStack">
-                                                <subviews>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New class" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="w1h-Bd-WQf">
-                                                        <nil key="textColor"/>
-                                                        <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
-                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                        <connections>
-                                                            <action selector="newGroupTextFieldChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="o1C-WY-HYM"/>
-                                                            <outlet property="delegate" destination="BYZ-38-t0r" id="jxX-hg-O6F"/>
-                                                        </connections>
-                                                    </textField>
-                                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c5h-on-Hbf">
-                                                        <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
-                                                        <state key="normal" title="Cancel"/>
-                                                        <connections>
-                                                            <action selector="saveButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4Vf-3f-2GB"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New class" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="w1h-Bd-WQf">
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <connections>
+                                                    <action selector="newGroupTextFieldChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="o1C-WY-HYM"/>
+                                                    <outlet property="delegate" destination="BYZ-38-t0r" id="jxX-hg-O6F"/>
+                                                </connections>
+                                            </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailingMargin" secondItem="zwP-TY-1eK" secondAttribute="trailing" id="bs8-sT-sag"/>
-                                            <constraint firstItem="zwP-TY-1eK" firstAttribute="leading" secondItem="0Pc-qL-VKB" secondAttribute="leadingMargin" constant="8" id="hB4-Zn-rPr"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="zwP-TY-1eK" secondAttribute="bottom" id="hin-jb-60C"/>
-                                            <constraint firstItem="zwP-TY-1eK" firstAttribute="top" secondItem="0Pc-qL-VKB" secondAttribute="topMargin" id="pI2-Zf-XhH"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="w1h-Bd-WQf" secondAttribute="trailing" constant="4" id="1GL-cD-zLx"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="w1h-Bd-WQf" secondAttribute="bottom" id="8xx-1N-hHZ"/>
+                                            <constraint firstAttribute="topMargin" secondItem="w1h-Bd-WQf" secondAttribute="top" id="aFb-7z-neR"/>
+                                            <constraint firstItem="w1h-Bd-WQf" firstAttribute="leading" secondItem="0Pc-qL-VKB" secondAttribute="leadingMargin" constant="4" id="gdk-KE-xJ1"/>
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="78" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bVo-Vf-X97">
@@ -67,14 +56,14 @@
                                                     <frame key="frameInset" width="375" height="77.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="GBe-OC-Igj">
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="GBe-OC-Igj">
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J0z-CF-IQM">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Group Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J0z-CF-IQM">
                                                                     <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="24"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 students" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="78b-gy-Fx6">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="0 students" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="78b-gy-Fx6">
                                                                     <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="15"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -111,18 +100,10 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="La9-sr-zhd" secondAttribute="bottom" id="zmm-ss-HcO"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Classes" id="Z6Y-Tq-0Ck">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="lcZ-Rf-WBl">
-                            <connections>
-                                <action selector="plusButtonPressed:" destination="BYZ-38-t0r" id="899-x3-Hkw"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Classes" id="Z6Y-Tq-0Ck"/>
                     <connections>
                         <outlet property="newEntryView" destination="0Pc-qL-VKB" id="Acw-Od-hTg"/>
                         <outlet property="newGroupTextField" destination="w1h-Bd-WQf" id="Vpd-Ea-IGK"/>
-                        <outlet property="plusButton" destination="lcZ-Rf-WBl" id="ZD5-Sj-x06"/>
-                        <outlet property="saveButton" destination="c5h-on-Hbf" id="3U9-bU-TeD"/>
                         <outlet property="tableView" destination="bVo-Vf-X97" id="ZDh-lG-4An"/>
                     </connections>
                 </viewController>

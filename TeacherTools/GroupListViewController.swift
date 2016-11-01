@@ -12,10 +12,8 @@ import Whisper
 class GroupListViewController: UIViewController, AutoStoryboardInitializable {
 
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var plusButton: UIBarButtonItem!
     @IBOutlet weak var newEntryView: UIView!
     @IBOutlet weak var newGroupTextField: UITextField!
-    @IBOutlet weak var saveButton: UIButton!
     
     var core = App.core
     let maxGroupNameCharacterCount = 50
@@ -23,6 +21,9 @@ class GroupListViewController: UIViewController, AutoStoryboardInitializable {
     var groups: [Group] {
         return core.state.groups.sorted { $0.lastViewDate < $1.lastViewDate }
     }
+    fileprivate var plusBarButton = UIBarButtonItem()
+    fileprivate var saveBarButton = UIBarButtonItem()
+    fileprivate var cancelBarButton = UIBarButtonItem()
     var isAdding = false {
         didSet {
             toggleEntryView(hidden: !isAdding)
@@ -54,8 +55,7 @@ class GroupListViewController: UIViewController, AutoStoryboardInitializable {
     }
     
     @IBAction func newGroupTextFieldChanged(_ sender: UITextField) {
-        let title = sender.text!.isEmpty ? "Cancel" : "Save"
-        saveButton.setTitle(title, for: .normal)
+        navigationItem.rightBarButtonItem = sender.text!.isEmpty ? cancelBarButton : saveBarButton
     }
     
     func loadTestData() {
@@ -72,12 +72,19 @@ class GroupListViewController: UIViewController, AutoStoryboardInitializable {
 extension GroupListViewController: Subscriber {
     
     func update(with state: AppState) {
+        updateUI(with: state.theme)
         tableView.reloadData()
         
         if state.groupsAreLoaded && initialLoadingIsFinished == false {
             initialLoadingIsFinished = true
             hide(whisperFrom: navigationController!)
         }
+    }
+    
+    func updateUI(with theme: Theme) {
+        plusBarButton.tintColor = theme.tintColor
+        saveBarButton.tintColor = theme.tintColor
+        cancelBarButton.tintColor = theme.tintColor
     }
     
 }
@@ -87,12 +94,10 @@ fileprivate extension GroupListViewController {
     func setUp() {
         newEntryView.isHidden = true
         tableView.rowHeight = 80.0
-        plusButton.tintColor = core.state.theme.tintColor
-        
-        let gr = UITapGestureRecognizer()
-        gr.numberOfTapsRequired = 3
-        gr.addTarget(self, action: #selector(loadTestData))
-        navigationController?.navigationBar.addGestureRecognizer(gr)
+        plusBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(plusButtonPressed(_:)))
+        saveBarButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveButtonPressed(_:)))
+        cancelBarButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(saveButtonPressed(_:)))
+        navigationItem.rightBarButtonItem = plusBarButton
     }
     
     func toggleEntryView(hidden: Bool) {
@@ -123,7 +128,9 @@ fileprivate extension GroupListViewController {
         alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { _ in
             self.core.fire(command: DeleteObject(object: group))
         }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
+           self.tableView.isEditing = false
+        }))
         present(alert, animated: true, completion: nil)
     }
     
@@ -167,6 +174,14 @@ extension GroupListViewController: UITableViewDataSource, UITableViewDelegate {
 // MARK: - Textfield Delegate
 
 extension GroupListViewController: UITextFieldDelegate {
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        navigationItem.rightBarButtonItem = cancelBarButton
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        navigationItem.rightBarButtonItem = plusBarButton
+    }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let stringLength = textField.text!.characters.count + string.characters.count - range.length
