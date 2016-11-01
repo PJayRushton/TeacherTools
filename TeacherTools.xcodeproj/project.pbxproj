@@ -20,7 +20,6 @@
 		A14160851DC669F100C4F5BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160841DC669F100C4F5BB /* AppDelegate.swift */; };
 		A14160871DC669F100C4F5BB /* GroupListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160861DC669F100C4F5BB /* GroupListViewController.swift */; };
 		A141608A1DC669F100C4F5BB /* GroupListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14160881DC669F100C4F5BB /* GroupListViewController.storyboard */; };
-		A141608D1DC669F100C4F5BB /* TeacherTools.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A141608B1DC669F100C4F5BB /* TeacherTools.xcdatamodeld */; };
 		A141608F1DC669F100C4F5BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A141608E1DC669F100C4F5BB /* Assets.xcassets */; };
 		A14160921DC669F100C4F5BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14160901DC669F100C4F5BB /* LaunchScreen.storyboard */; };
 		A141609A1DC66BBC00C4F5BB /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160991DC66BBC00C4F5BB /* AppState.swift */; };
@@ -43,7 +42,6 @@
 		A14160DB1DC6758700C4F5BB /* UnmarshalingWithContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160D01DC6758700C4F5BB /* UnmarshalingWithContext.swift */; };
 		A14160DC1DC6758700C4F5BB /* UnmarshalUpdating.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160D11DC6758700C4F5BB /* UnmarshalUpdating.swift */; };
 		A14160DD1DC6758700C4F5BB /* ValueType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160D21DC6758700C4F5BB /* ValueType.swift */; };
-		A14160E51DC6787F00C4F5BB /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160E41DC6787F00C4F5BB /* DateHelper.swift */; };
 		A14160E61DC67AA900C4F5BB /* FirebaseNetworkAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160A91DC66D6700C4F5BB /* FirebaseNetworkAccess.swift */; };
 		A14160E81DC67E1700C4F5BB /* DeleteUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160E71DC67E1700C4F5BB /* DeleteUsers.swift */; };
 		A14160EB1DC67E7700C4F5BB /* SubscribeToUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160EA1DC67E7700C4F5BB /* SubscribeToUsers.swift */; };
@@ -59,6 +57,7 @@
 		A141611F1DC69AEB00C4F5BB /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A141611E1DC69AEB00C4F5BB /* Theme.swift */; };
 		A14161211DC6A50F00C4F5BB /* ToolsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14161201DC6A50F00C4F5BB /* ToolsViewController.swift */; };
 		A14161231DC6A55300C4F5BB /* GroupToolCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14161221DC6A55300C4F5BB /* GroupToolCollectionViewCell.swift */; };
+		A1B1A2081DC8BD4300D80E53 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1A2071DC8BD4300D80E53 /* DateHelper.swift */; };
 		A1CC0AB91DC7A14800C0575F /* DeleteObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CC0AB81DC7A14800C0575F /* DeleteObject.swift */; };
 		A1CC0ABB1DC7B7F700C0575F /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14160B81DC66F1200C4F5BB /* CloudKit.framework */; };
 /* End PBXBuildFile section */
@@ -93,7 +92,6 @@
 		A14160841DC669F100C4F5BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A14160861DC669F100C4F5BB /* GroupListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListViewController.swift; sourceTree = "<group>"; };
 		A14160891DC669F100C4F5BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/GroupListViewController.storyboard; sourceTree = "<group>"; };
-		A141608C1DC669F100C4F5BB /* TeacherTools.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TeacherTools.xcdatamodel; sourceTree = "<group>"; };
 		A141608E1DC669F100C4F5BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A14160911DC669F100C4F5BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A14160931DC669F100C4F5BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -123,7 +121,6 @@
 		A14160D01DC6758700C4F5BB /* UnmarshalingWithContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnmarshalingWithContext.swift; sourceTree = "<group>"; };
 		A14160D11DC6758700C4F5BB /* UnmarshalUpdating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnmarshalUpdating.swift; sourceTree = "<group>"; };
 		A14160D21DC6758700C4F5BB /* ValueType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueType.swift; sourceTree = "<group>"; };
-		A14160E41DC6787F00C4F5BB /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		A14160E71DC67E1700C4F5BB /* DeleteUsers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteUsers.swift; sourceTree = "<group>"; };
 		A14160EA1DC67E7700C4F5BB /* SubscribeToUsers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscribeToUsers.swift; sourceTree = "<group>"; };
 		A14160EC1DC6806200C4F5BB /* ErrorHUDMiddleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorHUDMiddleware.swift; sourceTree = "<group>"; };
@@ -138,6 +135,7 @@
 		A141611E1DC69AEB00C4F5BB /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		A14161201DC6A50F00C4F5BB /* ToolsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolsViewController.swift; sourceTree = "<group>"; };
 		A14161221DC6A55300C4F5BB /* GroupToolCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupToolCollectionViewCell.swift; sourceTree = "<group>"; };
+		A1B1A2071DC8BD4300D80E53 /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		A1CC0AB81DC7A14800C0575F /* DeleteObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteObject.swift; sourceTree = "<group>"; };
 		A1CC0ABA1DC7B7F100C0575F /* TeacherTools.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TeacherTools.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -206,7 +204,7 @@
 				A11EE95E1DC6CEB6002C9228 /* GoogleService-Info.plist */,
 				A14160F81DC68C2300C4F5BB /* Result.swift */,
 				A14160F21DC686FF00C4F5BB /* Arrays.swift */,
-				A14160E41DC6787F00C4F5BB /* DateHelper.swift */,
+				A1B1A2071DC8BD4300D80E53 /* DateHelper.swift */,
 				A14160A71DC66D4800C4F5BB /* SegueHandlerType.swift */,
 				A14160A41DC66D2F00C4F5BB /* StoryboardInitializable.swift */,
 				A11EE9601DC6F19E002C9228 /* TestHelper.swift */,
@@ -262,7 +260,6 @@
 		A14160E01DC6769200C4F5BB /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
-				A141608B1DC669F100C4F5BB /* TeacherTools.xcdatamodeld */,
 				A14160A91DC66D6700C4F5BB /* FirebaseNetworkAccess.swift */,
 			);
 			name = Infrastructure;
@@ -458,7 +455,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A14160EF1DC6833200C4F5BB /* Group.swift in Sources */,
-				A14160E51DC6787F00C4F5BB /* DateHelper.swift in Sources */,
 				A14160B41DC66E0300C4F5BB /* User.swift in Sources */,
 				A14160DC1DC6758700C4F5BB /* UnmarshalUpdating.swift in Sources */,
 				A14160D91DC6758700C4F5BB /* Operators.swift in Sources */,
@@ -470,9 +466,9 @@
 				A14160B21DC66DF300C4F5BB /* UpdateUser.swift in Sources */,
 				A14160D51DC6758700C4F5BB /* KeyType.swift in Sources */,
 				A14160E61DC67AA900C4F5BB /* FirebaseNetworkAccess.swift in Sources */,
-				A141608D1DC669F100C4F5BB /* TeacherTools.xcdatamodeld in Sources */,
 				A14160DD1DC6758700C4F5BB /* ValueType.swift in Sources */,
 				A14160F31DC686FF00C4F5BB /* Arrays.swift in Sources */,
+				A1B1A2081DC8BD4300D80E53 /* DateHelper.swift in Sources */,
 				A14160FB1DC68F9400C4F5BB /* SubscribeToStudents.swift in Sources */,
 				A14160F11DC683C400C4F5BB /* Student.swift in Sources */,
 				A11EE95D1DC6CD3C002C9228 /* NSDate+ValueType.swift in Sources */,
@@ -680,19 +676,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		A141608B1DC669F100C4F5BB /* TeacherTools.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				A141608C1DC669F100C4F5BB /* TeacherTools.xcdatamodel */,
-			);
-			currentVersion = A141608C1DC669F100C4F5BB /* TeacherTools.xcdatamodel */;
-			path = TeacherTools.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = A14160791DC669F100C4F5BB /* Project object */;
 }

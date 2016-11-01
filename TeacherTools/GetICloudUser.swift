@@ -15,7 +15,7 @@ struct GetICloudUser: Command {
         let container = CKContainer.default()
         container.fetchUserRecordID { recordID, error in
             if let error = error {
-                core.fire(event: DisplayErrorMessage(error: error, message: nil))
+                core.fire(event: ErrorEvent(error: error, message: nil))
                 core.fire(event: ICloudUserIdentified(icloudId: nil))
             } else {
                 core.fire(event: ICloudUserIdentified(icloudId: recordID?.recordName))
