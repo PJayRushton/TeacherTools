@@ -14,10 +14,11 @@ struct Theme {
     var tintColor: UIColor
     var textColor: UIColor
     var fontType: FontType
+    var lastFirst: Bool
     
 }
 
-let defaultTheme = Theme(mainColor: .white, tintColor: .blue, textColor: .darkGray, fontType: .chalkDuster)
+let defaultTheme = Theme(mainColor: .white, tintColor: .blue, textColor: .darkGray, fontType: .chalkDuster, lastFirst: false)
 
 enum FontType: String {
     case chalkDuster = "Chalkduster"

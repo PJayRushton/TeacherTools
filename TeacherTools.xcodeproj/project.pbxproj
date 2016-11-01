@@ -12,6 +12,11 @@
 		A11EE95F1DC6CEB6002C9228 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A11EE95E1DC6CEB6002C9228 /* GoogleService-Info.plist */; };
 		A11EE9611DC6F19E002C9228 /* TestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11EE9601DC6F19E002C9228 /* TestHelper.swift */; };
 		A11EE9631DC7096A002C9228 /* ToolsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A11EE9621DC7096A002C9228 /* ToolsViewController.storyboard */; };
+		A11EE9691DC7381F002C9228 /* StudentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11EE9681DC7381F002C9228 /* StudentListViewController.swift */; };
+		A11EE96B1DC7383B002C9228 /* StudentListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A11EE96A1DC7383B002C9228 /* StudentListViewController.storyboard */; };
+		A11EE96D1DC73CBC002C9228 /* StudentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11EE96C1DC73CBC002C9228 /* StudentTableViewCell.swift */; };
+		A11EE96F1DC73CD1002C9228 /* StudentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A11EE96E1DC73CD1002C9228 /* StudentTableViewCell.xib */; };
+		A11EE9711DC79516002C9228 /* UpdateObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11EE9701DC79516002C9228 /* UpdateObject.swift */; };
 		A14160851DC669F100C4F5BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160841DC669F100C4F5BB /* AppDelegate.swift */; };
 		A14160871DC669F100C4F5BB /* GroupListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160861DC669F100C4F5BB /* GroupListViewController.swift */; };
 		A141608A1DC669F100C4F5BB /* GroupListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14160881DC669F100C4F5BB /* GroupListViewController.storyboard */; };
@@ -54,6 +59,8 @@
 		A141611F1DC69AEB00C4F5BB /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A141611E1DC69AEB00C4F5BB /* Theme.swift */; };
 		A14161211DC6A50F00C4F5BB /* ToolsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14161201DC6A50F00C4F5BB /* ToolsViewController.swift */; };
 		A14161231DC6A55300C4F5BB /* GroupToolCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14161221DC6A55300C4F5BB /* GroupToolCollectionViewCell.swift */; };
+		A1CC0AB91DC7A14800C0575F /* DeleteObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CC0AB81DC7A14800C0575F /* DeleteObject.swift */; };
+		A1CC0ABB1DC7B7F700C0575F /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14160B81DC66F1200C4F5BB /* CloudKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -77,6 +84,11 @@
 		A11EE95E1DC6CEB6002C9228 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A11EE9601DC6F19E002C9228 /* TestHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestHelper.swift; sourceTree = "<group>"; };
 		A11EE9621DC7096A002C9228 /* ToolsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ToolsViewController.storyboard; sourceTree = "<group>"; };
+		A11EE9681DC7381F002C9228 /* StudentListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentListViewController.swift; sourceTree = "<group>"; };
+		A11EE96A1DC7383B002C9228 /* StudentListViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StudentListViewController.storyboard; sourceTree = "<group>"; };
+		A11EE96C1DC73CBC002C9228 /* StudentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentTableViewCell.swift; sourceTree = "<group>"; };
+		A11EE96E1DC73CD1002C9228 /* StudentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudentTableViewCell.xib; sourceTree = "<group>"; };
+		A11EE9701DC79516002C9228 /* UpdateObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateObject.swift; sourceTree = "<group>"; };
 		A14160811DC669F100C4F5BB /* TeacherTools.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeacherTools.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A14160841DC669F100C4F5BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A14160861DC669F100C4F5BB /* GroupListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListViewController.swift; sourceTree = "<group>"; };
@@ -126,6 +138,8 @@
 		A141611E1DC69AEB00C4F5BB /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		A14161201DC6A50F00C4F5BB /* ToolsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolsViewController.swift; sourceTree = "<group>"; };
 		A14161221DC6A55300C4F5BB /* GroupToolCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupToolCollectionViewCell.swift; sourceTree = "<group>"; };
+		A1CC0AB81DC7A14800C0575F /* DeleteObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteObject.swift; sourceTree = "<group>"; };
+		A1CC0ABA1DC7B7F100C0575F /* TeacherTools.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TeacherTools.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				89BC487FCE0780964367567B /* Pods_TeacherTools.framework in Frameworks */,
+				A1CC0ABB1DC7B7F700C0575F /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,6 +185,7 @@
 		A14160831DC669F100C4F5BB /* TeacherTools */ = {
 			isa = PBXGroup;
 			children = (
+				A1CC0ABA1DC7B7F100C0575F /* TeacherTools.entitlements */,
 				A14160841DC669F100C4F5BB /* AppDelegate.swift */,
 				A14160E01DC6769200C4F5BB /* Infrastructure */,
 				A14160DF1DC6768100C4F5BB /* Reactor */,
@@ -257,6 +273,7 @@
 			children = (
 				A14160881DC669F100C4F5BB /* GroupListViewController.storyboard */,
 				A11EE9621DC7096A002C9228 /* ToolsViewController.storyboard */,
+				A11EE96A1DC7383B002C9228 /* StudentListViewController.storyboard */,
 				A14160901DC669F100C4F5BB /* LaunchScreen.storyboard */,
 			);
 			name = Storyboards;
@@ -269,6 +286,9 @@
 				A14160FE1DC694BA00C4F5BB /* GroupTableViewCell.swift */,
 				A14161201DC6A50F00C4F5BB /* ToolsViewController.swift */,
 				A14161221DC6A55300C4F5BB /* GroupToolCollectionViewCell.swift */,
+				A11EE9681DC7381F002C9228 /* StudentListViewController.swift */,
+				A11EE96C1DC73CBC002C9228 /* StudentTableViewCell.swift */,
+				A11EE96E1DC73CD1002C9228 /* StudentTableViewCell.xib */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -290,6 +310,8 @@
 				A14160AB1DC66DBC00C4F5BB /* GetICloudUser.swift */,
 				A14160AF1DC66DEC00C4F5BB /* SaveNewUser.swift */,
 				A14160B11DC66DF300C4F5BB /* UpdateUser.swift */,
+				A11EE9701DC79516002C9228 /* UpdateObject.swift */,
+				A1CC0AB81DC7A14800C0575F /* DeleteObject.swift */,
 				A14160FC1DC6904400C4F5BB /* SubscribeToAllTheThings.swift */,
 				A14160EA1DC67E7700C4F5BB /* SubscribeToUsers.swift */,
 				A14160F41DC6888200C4F5BB /* SubscribeToGroups.swift */,
@@ -334,8 +356,16 @@
 				TargetAttributes = {
 					A14160801DC669F100C4F5BB = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = WPG96H2MFE;
+						DevelopmentTeam = WK6LDT652Z;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -363,6 +393,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A14160921DC669F100C4F5BB /* LaunchScreen.storyboard in Resources */,
+				A11EE96B1DC7383B002C9228 /* StudentListViewController.storyboard in Resources */,
+				A11EE96F1DC73CD1002C9228 /* StudentTableViewCell.xib in Resources */,
 				A141608F1DC669F100C4F5BB /* Assets.xcassets in Resources */,
 				A141608A1DC669F100C4F5BB /* GroupListViewController.storyboard in Resources */,
 				A11EE95F1DC6CEB6002C9228 /* GoogleService-Info.plist in Resources */,
@@ -444,6 +476,7 @@
 				A14160FB1DC68F9400C4F5BB /* SubscribeToStudents.swift in Sources */,
 				A14160F11DC683C400C4F5BB /* Student.swift in Sources */,
 				A11EE95D1DC6CD3C002C9228 /* NSDate+ValueType.swift in Sources */,
+				A11EE9691DC7381F002C9228 /* StudentListViewController.swift in Sources */,
 				A14160FD1DC6904400C4F5BB /* SubscribeToAllTheThings.swift in Sources */,
 				A14160EB1DC67E7700C4F5BB /* SubscribeToUsers.swift in Sources */,
 				A14160871DC669F100C4F5BB /* GroupListViewController.swift in Sources */,
@@ -451,14 +484,17 @@
 				A14160D81DC6758700C4F5BB /* Marshaling.swift in Sources */,
 				A14160A51DC66D2F00C4F5BB /* StoryboardInitializable.swift in Sources */,
 				A14160F91DC68C2300C4F5BB /* Result.swift in Sources */,
+				A1CC0AB91DC7A14800C0575F /* DeleteObject.swift in Sources */,
 				A14161211DC6A50F00C4F5BB /* ToolsViewController.swift in Sources */,
 				A14160D41DC6758700C4F5BB /* JSON.swift in Sources */,
 				A14160AE1DC66DC900C4F5BB /* UserMiddleware.swift in Sources */,
 				A14160851DC669F100C4F5BB /* AppDelegate.swift in Sources */,
+				A11EE96D1DC73CBC002C9228 /* StudentTableViewCell.swift in Sources */,
 				A14160ED1DC6806200C4F5BB /* ErrorHUDMiddleware.swift in Sources */,
 				A14160D71DC6758700C4F5BB /* MarshaledObject.swift in Sources */,
 				A141609A1DC66BBC00C4F5BB /* AppState.swift in Sources */,
 				A11EE9611DC6F19E002C9228 /* TestHelper.swift in Sources */,
+				A11EE9711DC79516002C9228 /* UpdateObject.swift in Sources */,
 				A141609C1DC66BEC00C4F5BB /* Reactor.swift in Sources */,
 				A141611F1DC69AEB00C4F5BB /* Theme.swift in Sources */,
 				A14160AC1DC66DBC00C4F5BB /* GetICloudUser.swift in Sources */,
@@ -587,14 +623,16 @@
 			baseConfigurationReference = 83A6EABC9A6480FA8D2F5042 /* Pods-TeacherTools.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = WPG96H2MFE;
+				CODE_SIGN_ENTITLEMENTS = TeacherTools/TeacherTools.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = WK6LDT652Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/TeacherTools",
 				);
 				INFOPLIST_FILE = TeacherTools/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.AppsByPJ.TeacherTools;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.PJayRushton.Teacher-Resources";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -605,14 +643,16 @@
 			baseConfigurationReference = 388B3E3DF2BF8837E1045F75 /* Pods-TeacherTools.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = WPG96H2MFE;
+				CODE_SIGN_ENTITLEMENTS = TeacherTools/TeacherTools.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = WK6LDT652Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/TeacherTools",
 				);
 				INFOPLIST_FILE = TeacherTools/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.AppsByPJ.TeacherTools;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.PJayRushton.Teacher-Resources";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

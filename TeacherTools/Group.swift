@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 
 struct Group: Identifiable {
     
@@ -18,6 +19,10 @@ struct Group: Identifiable {
     
     var students: [Student] {
         return App.core.state.allStudents.filter { studentIds.contains($0.id) }
+    }
+    
+    var ref: FIRDatabaseReference {
+        return FirebaseNetworkAccess.sharedInstance.groupsRef(userId: App.core.state.currentUser!.id).child(id)
     }
     
     init(id: String, name: String, creationDate: Date = Date(), lastViewDate: Date = Date(), studentIds: [String]) {

@@ -9,8 +9,9 @@
 import Foundation
 import Firebase
 
-protocol Identifiable: Equatable {
+protocol Identifiable: Equatable, Marshaling {
     var id: String { get set }
+    var ref: FIRDatabaseReference { get }
 }
 
 func ==<T: Identifiable>(lhs: T, rhs: T) -> Bool {
@@ -25,6 +26,8 @@ enum FirebaseError: Error {
 }
 
 struct FirebaseNetworkAccess {
+    
+    static let sharedInstance = FirebaseNetworkAccess()
     
     // MARK: - Properties
     

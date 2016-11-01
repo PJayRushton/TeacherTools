@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 
 struct Student: Marshaling, Unmarshaling, Identifiable {
     
@@ -15,6 +16,15 @@ struct Student: Marshaling, Unmarshaling, Identifiable {
     var lastName: String?
     var tickets = 1
     
+    var displayedName: String {
+        guard let lastName = lastName else { return firstName }
+        return App.core.state.theme.lastFirst ? "\(lastName), \(firstName)" : "\(firstName) \(lastName)"
+    }
+    
+    var ref: FIRDatabaseReference {
+        return FirebaseNetworkAccess.sharedInstance.studentsRef(userId: App.core.state.currentUser!.id).child(id)
+    }
+
     init(id: String, firstName: String, lastName: String? = nil, tickets: Int = 1) {
         self.id = id
         self.firstName = firstName

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StudentTableViewCell" rowHeight="61" id="JLl-Xo-SCK" customClass="StudentTableViewCell" customModule="TeacherTools" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="381" height="61"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JLl-Xo-SCK" id="g1z-u0-tye">
+                <frame key="frameInset" width="381" height="60"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="5mt-8N-5qu">
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="John Doe" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="nPi-nc-q6M">
+                                <frame key="frameInset" width="301" height="44"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                <connections>
+                                    <outlet property="delegate" destination="JLl-Xo-SCK" id="fn0-BD-Kwo"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4i6-ah-U2F">
+                                <frame key="frameInset" minX="309" width="48" height="44"/>
+                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="doneButtonPressed:" destination="JLl-Xo-SCK" eventType="touchUpInside" id="sWA-BX-LDf"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="5mt-8N-5qu" secondAttribute="trailing" id="7CV-3k-Hhv"/>
+                    <constraint firstItem="5mt-8N-5qu" firstAttribute="leading" secondItem="g1z-u0-tye" secondAttribute="leadingMargin" constant="8" id="CuP-aK-aRs"/>
+                    <constraint firstAttribute="topMargin" secondItem="5mt-8N-5qu" secondAttribute="top" id="ZxY-dH-29Z"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="5mt-8N-5qu" secondAttribute="bottom" id="bKf-LL-iI7"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="doneButton" destination="4i6-ah-U2F" id="jvN-mt-I8f"/>
+                <outlet property="textField" destination="nPi-nc-q6M" id="epP-kx-cCM"/>
+            </connections>
+            <point key="canvasLocation" x="43.5" y="-203.5"/>
+        </tableViewCell>
+    </objects>
+</document>

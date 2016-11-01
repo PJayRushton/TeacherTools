@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Firebase
 
-final class User: Marshaling, Unmarshaling, Identifiable {
+final class User: Marshaling, Unmarshaling {
     
     var id: String
     var cloudKitId: String?
@@ -46,6 +47,14 @@ final class User: Marshaling, Unmarshaling, Identifiable {
 
 
 // MARK: - Equatable
+
+extension User: Identifiable {
+    
+    var ref: FIRDatabaseReference {
+        return FirebaseNetworkAccess.sharedInstance.usersRef.child(id)
+    }
+    
+}
 
 extension User: Equatable { }
 
