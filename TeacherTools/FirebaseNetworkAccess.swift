@@ -9,6 +9,7 @@
 import Foundation
 import Firebase
 
+struct NoOp: Event { }
 protocol Identifiable: Equatable, Marshaling {
     var id: String { get set }
     var ref: FIRDatabaseReference { get }

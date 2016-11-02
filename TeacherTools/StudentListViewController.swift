@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StudentListViewController: UIViewController {
+class StudentListViewController: UIViewController, AutoStoryboardInitializable {
 
     @IBOutlet weak var tableView: UITableView!
     

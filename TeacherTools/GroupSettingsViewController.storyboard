@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5kz-w2-sp5">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Manage Class-->
+        <scene sceneID="QaB-An-Emc">
+            <objects>
+                <viewController storyboardIdentifier="GroupSettingsViewController" title="Manage Class" id="5kz-w2-sp5" customClass="GroupSettingsViewController" customModule="TeacherTools" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7gK-nd-ydl"/>
+                        <viewControllerLayoutGuide type="bottom" id="d1k-Kw-cVD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3Hj-va-EWZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="JVf-MF-rc7">
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Class Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Msm-gd-Iei">
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <connections>
+                                            <action selector="textFieldEditingChanged:" destination="5kz-w2-sp5" eventType="editingChanged" id="DgU-fN-yKt"/>
+                                            <outlet property="delegate" destination="5kz-w2-sp5" id="c9m-gv-zdu"/>
+                                        </connections>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rvY-mV-IlG">
+                                        <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="15"/>
+                                        <state key="normal" title="Save"/>
+                                        <connections>
+                                            <action selector="saveButtonPressed:" destination="5kz-w2-sp5" eventType="touchUpInside" id="vQS-WL-2mm"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="JVf-MF-rc7" firstAttribute="top" secondItem="7gK-nd-ydl" secondAttribute="bottom" constant="16" id="ICJ-3c-CVa"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="JVf-MF-rc7" secondAttribute="trailing" id="prn-77-QPT"/>
+                            <constraint firstItem="JVf-MF-rc7" firstAttribute="leading" secondItem="3Hj-va-EWZ" secondAttribute="leadingMargin" id="wRI-aH-uIq"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="groupNameTextField" destination="Msm-gd-Iei" id="jcj-9Z-95b"/>
+                        <outlet property="saveButton" destination="rvY-mV-IlG" id="GST-lv-jfC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0m4-LG-DAh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-148" y="-38.23088455772114"/>
+        </scene>
+    </scenes>
+</document>

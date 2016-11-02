@@ -32,13 +32,13 @@ class GroupListViewController: UIViewController, AutoStoryboardInitializable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        core.fire(event: DisplayNavBarMessage(nav: navigationController!, message: "Loading your classes...", barColor: core.state.theme.tintColor.withAlphaComponent(0.7), time: nil))
         setUp()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         core.add(subscriber: self)
-        core.fire(event: DisplayNavBarMessage(nav: navigationController!, message: "Loading your classes...", barColor: core.state.theme.tintColor.withAlphaComponent(0.7), time: nil))
     }
     
     override func viewWillDisappear(_ animated: Bool) {

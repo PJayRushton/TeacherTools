@@ -11,7 +11,6 @@
 		A11EE95D1DC6CD3C002C9228 /* NSDate+ValueType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11EE95C1DC6CD3C002C9228 /* NSDate+ValueType.swift */; };
 		A11EE95F1DC6CEB6002C9228 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A11EE95E1DC6CEB6002C9228 /* GoogleService-Info.plist */; };
 		A11EE9611DC6F19E002C9228 /* TestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11EE9601DC6F19E002C9228 /* TestHelper.swift */; };
-		A11EE9631DC7096A002C9228 /* ToolsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A11EE9621DC7096A002C9228 /* ToolsViewController.storyboard */; };
 		A11EE9691DC7381F002C9228 /* StudentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11EE9681DC7381F002C9228 /* StudentListViewController.swift */; };
 		A11EE96B1DC7383B002C9228 /* StudentListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A11EE96A1DC7383B002C9228 /* StudentListViewController.storyboard */; };
 		A11EE96D1DC73CBC002C9228 /* StudentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11EE96C1DC73CBC002C9228 /* StudentTableViewCell.swift */; };
@@ -55,12 +54,22 @@
 		A14160FD1DC6904400C4F5BB /* SubscribeToAllTheThings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160FC1DC6904400C4F5BB /* SubscribeToAllTheThings.swift */; };
 		A14160FF1DC694BA00C4F5BB /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160FE1DC694BA00C4F5BB /* GroupTableViewCell.swift */; };
 		A141611F1DC69AEB00C4F5BB /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A141611E1DC69AEB00C4F5BB /* Theme.swift */; };
-		A14161211DC6A50F00C4F5BB /* ToolsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14161201DC6A50F00C4F5BB /* ToolsViewController.swift */; };
 		A14161231DC6A55300C4F5BB /* GroupToolCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14161221DC6A55300C4F5BB /* GroupToolCollectionViewCell.swift */; };
+		A147CFA11DCA328100C9860F /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A147CFA01DCA328100C9860F /* CustomTabBarController.swift */; };
+		A147CFA51DCA331800C9860F /* CustomTabBarController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A147CFA41DCA331800C9860F /* CustomTabBarController.storyboard */; };
+		A147CFA91DCA336D00C9860F /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A147CFA61DCA336D00C9860F /* CustomTabBar.swift */; };
+		A147CFAA1DCA336D00C9860F /* CustomTabBarProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A147CFA71DCA336D00C9860F /* CustomTabBarProtocols.swift */; };
+		A147CFAB1DCA336D00C9860F /* TabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A147CFA81DCA336D00C9860F /* TabButton.swift */; };
+		A147CFAD1DCA404100C9860F /* StudentRandomizerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A147CFAC1DCA404100C9860F /* StudentRandomizerViewController.storyboard */; };
+		A147CFAF1DCA410400C9860F /* StudentRandomizerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A147CFAE1DCA410400C9860F /* StudentRandomizerViewController.swift */; };
+		A147CFB11DCA4FA000C9860F /* NameDrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A147CFB01DCA4FA000C9860F /* NameDrawViewController.swift */; };
+		A147CFB31DCA4FF400C9860F /* NameDrawViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A147CFB21DCA4FF400C9860F /* NameDrawViewController.storyboard */; };
 		A1B1A2081DC8BD4300D80E53 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1A2071DC8BD4300D80E53 /* DateHelper.swift */; };
 		A1B1A20A1DC8C4E300D80E53 /* CreateObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1A2091DC8C4E300D80E53 /* CreateObject.swift */; };
 		A1CC0AB91DC7A14800C0575F /* DeleteObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CC0AB81DC7A14800C0575F /* DeleteObject.swift */; };
 		A1CC0ABB1DC7B7F700C0575F /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14160B81DC66F1200C4F5BB /* CloudKit.framework */; };
+		A1D67EFC1DC95A3F002F73D2 /* GroupSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D67EFB1DC95A3F002F73D2 /* GroupSettingsViewController.swift */; };
+		A1D67EFE1DC95B38002F73D2 /* GroupSettingsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1D67EFD1DC95B38002F73D2 /* GroupSettingsViewController.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -136,10 +145,21 @@
 		A141611E1DC69AEB00C4F5BB /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		A14161201DC6A50F00C4F5BB /* ToolsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolsViewController.swift; sourceTree = "<group>"; };
 		A14161221DC6A55300C4F5BB /* GroupToolCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupToolCollectionViewCell.swift; sourceTree = "<group>"; };
+		A147CFA01DCA328100C9860F /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
+		A147CFA41DCA331800C9860F /* CustomTabBarController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CustomTabBarController.storyboard; sourceTree = "<group>"; };
+		A147CFA61DCA336D00C9860F /* CustomTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		A147CFA71DCA336D00C9860F /* CustomTabBarProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarProtocols.swift; sourceTree = "<group>"; };
+		A147CFA81DCA336D00C9860F /* TabButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabButton.swift; sourceTree = "<group>"; };
+		A147CFAC1DCA404100C9860F /* StudentRandomizerViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StudentRandomizerViewController.storyboard; sourceTree = "<group>"; };
+		A147CFAE1DCA410400C9860F /* StudentRandomizerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentRandomizerViewController.swift; sourceTree = "<group>"; };
+		A147CFB01DCA4FA000C9860F /* NameDrawViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameDrawViewController.swift; sourceTree = "<group>"; };
+		A147CFB21DCA4FF400C9860F /* NameDrawViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NameDrawViewController.storyboard; sourceTree = "<group>"; };
 		A1B1A2071DC8BD4300D80E53 /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		A1B1A2091DC8C4E300D80E53 /* CreateObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateObject.swift; sourceTree = "<group>"; };
 		A1CC0AB81DC7A14800C0575F /* DeleteObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteObject.swift; sourceTree = "<group>"; };
 		A1CC0ABA1DC7B7F100C0575F /* TeacherTools.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TeacherTools.entitlements; sourceTree = "<group>"; };
+		A1D67EFB1DC95A3F002F73D2 /* GroupSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupSettingsViewController.swift; sourceTree = "<group>"; };
+		A1D67EFD1DC95B38002F73D2 /* GroupSettingsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GroupSettingsViewController.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,14 +215,17 @@
 				A141608E1DC669F100C4F5BB /* Assets.xcassets */,
 				A14160931DC669F100C4F5BB /* Info.plist */,
 				A14160DE1DC6758D00C4F5BB /* Marshal */,
-				A14160A61DC66D3800C4F5BB /* Helpers */,
+				A14160A61DC66D3800C4F5BB /* Shared */,
 			);
 			path = TeacherTools;
 			sourceTree = "<group>";
 		};
-		A14160A61DC66D3800C4F5BB /* Helpers */ = {
+		A14160A61DC66D3800C4F5BB /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				A147CFA61DCA336D00C9860F /* CustomTabBar.swift */,
+				A147CFA71DCA336D00C9860F /* CustomTabBarProtocols.swift */,
+				A147CFA81DCA336D00C9860F /* TabButton.swift */,
 				A11EE95E1DC6CEB6002C9228 /* GoogleService-Info.plist */,
 				A14160F81DC68C2300C4F5BB /* Result.swift */,
 				A14160F21DC686FF00C4F5BB /* Arrays.swift */,
@@ -211,7 +234,7 @@
 				A14160A41DC66D2F00C4F5BB /* StoryboardInitializable.swift */,
 				A11EE9601DC6F19E002C9228 /* TestHelper.swift */,
 			);
-			name = Helpers;
+			name = Shared;
 			sourceTree = "<group>";
 		};
 		A14160B51DC66ED900C4F5BB /* Frameworks */ = {
@@ -271,9 +294,14 @@
 			isa = PBXGroup;
 			children = (
 				A14160881DC669F100C4F5BB /* GroupListViewController.storyboard */,
-				A11EE9621DC7096A002C9228 /* ToolsViewController.storyboard */,
+				A147CFA41DCA331800C9860F /* CustomTabBarController.storyboard */,
 				A11EE96A1DC7383B002C9228 /* StudentListViewController.storyboard */,
+				A147CFAC1DCA404100C9860F /* StudentRandomizerViewController.storyboard */,
 				A14160901DC669F100C4F5BB /* LaunchScreen.storyboard */,
+				A11EE96E1DC73CD1002C9228 /* StudentTableViewCell.xib */,
+				A147CFB21DCA4FF400C9860F /* NameDrawViewController.storyboard */,
+				A1D67EFD1DC95B38002F73D2 /* GroupSettingsViewController.storyboard */,
+				A11EE9621DC7096A002C9228 /* ToolsViewController.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -285,9 +313,12 @@
 				A14160FE1DC694BA00C4F5BB /* GroupTableViewCell.swift */,
 				A14161201DC6A50F00C4F5BB /* ToolsViewController.swift */,
 				A14161221DC6A55300C4F5BB /* GroupToolCollectionViewCell.swift */,
+				A147CFA01DCA328100C9860F /* CustomTabBarController.swift */,
 				A11EE9681DC7381F002C9228 /* StudentListViewController.swift */,
 				A11EE96C1DC73CBC002C9228 /* StudentTableViewCell.swift */,
-				A11EE96E1DC73CD1002C9228 /* StudentTableViewCell.xib */,
+				A147CFAE1DCA410400C9860F /* StudentRandomizerViewController.swift */,
+				A147CFB01DCA4FA000C9860F /* NameDrawViewController.swift */,
+				A1D67EFB1DC95A3F002F73D2 /* GroupSettingsViewController.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -394,11 +425,14 @@
 			files = (
 				A14160921DC669F100C4F5BB /* LaunchScreen.storyboard in Resources */,
 				A11EE96B1DC7383B002C9228 /* StudentListViewController.storyboard in Resources */,
+				A147CFA51DCA331800C9860F /* CustomTabBarController.storyboard in Resources */,
+				A1D67EFE1DC95B38002F73D2 /* GroupSettingsViewController.storyboard in Resources */,
+				A147CFB31DCA4FF400C9860F /* NameDrawViewController.storyboard in Resources */,
 				A11EE96F1DC73CD1002C9228 /* StudentTableViewCell.xib in Resources */,
 				A141608F1DC669F100C4F5BB /* Assets.xcassets in Resources */,
+				A147CFAD1DCA404100C9860F /* StudentRandomizerViewController.storyboard in Resources */,
 				A141608A1DC669F100C4F5BB /* GroupListViewController.storyboard in Resources */,
 				A11EE95F1DC6CEB6002C9228 /* GoogleService-Info.plist in Resources */,
-				A11EE9631DC7096A002C9228 /* ToolsViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,16 +495,20 @@
 				A14160B41DC66E0300C4F5BB /* User.swift in Sources */,
 				A14160DC1DC6758700C4F5BB /* UnmarshalUpdating.swift in Sources */,
 				A14160D91DC6758700C4F5BB /* Operators.swift in Sources */,
+				A147CFA91DCA336D00C9860F /* CustomTabBar.swift in Sources */,
 				A14160DB1DC6758700C4F5BB /* UnmarshalingWithContext.swift in Sources */,
 				A14160F51DC6888200C4F5BB /* SubscribeToGroups.swift in Sources */,
 				A14160D61DC6758700C4F5BB /* MarshalDictionary.swift in Sources */,
 				A14160FF1DC694BA00C4F5BB /* GroupTableViewCell.swift in Sources */,
 				A14160B01DC66DEC00C4F5BB /* SaveNewUser.swift in Sources */,
+				A147CFB11DCA4FA000C9860F /* NameDrawViewController.swift in Sources */,
+				A147CFAA1DCA336D00C9860F /* CustomTabBarProtocols.swift in Sources */,
 				A14160B21DC66DF300C4F5BB /* UpdateUser.swift in Sources */,
 				A14160D51DC6758700C4F5BB /* KeyType.swift in Sources */,
 				A14160E61DC67AA900C4F5BB /* FirebaseNetworkAccess.swift in Sources */,
 				A14160DD1DC6758700C4F5BB /* ValueType.swift in Sources */,
 				A14160F31DC686FF00C4F5BB /* Arrays.swift in Sources */,
+				A147CFA11DCA328100C9860F /* CustomTabBarController.swift in Sources */,
 				A1B1A2081DC8BD4300D80E53 /* DateHelper.swift in Sources */,
 				A14160FB1DC68F9400C4F5BB /* SubscribeToStudents.swift in Sources */,
 				A14160F11DC683C400C4F5BB /* Student.swift in Sources */,
@@ -484,7 +522,6 @@
 				A14160A51DC66D2F00C4F5BB /* StoryboardInitializable.swift in Sources */,
 				A14160F91DC68C2300C4F5BB /* Result.swift in Sources */,
 				A1CC0AB91DC7A14800C0575F /* DeleteObject.swift in Sources */,
-				A14161211DC6A50F00C4F5BB /* ToolsViewController.swift in Sources */,
 				A14160D41DC6758700C4F5BB /* JSON.swift in Sources */,
 				A14160AE1DC66DC900C4F5BB /* UserMiddleware.swift in Sources */,
 				A14160851DC669F100C4F5BB /* AppDelegate.swift in Sources */,
@@ -496,8 +533,11 @@
 				A11EE9711DC79516002C9228 /* UpdateObject.swift in Sources */,
 				A1B1A20A1DC8C4E300D80E53 /* CreateObject.swift in Sources */,
 				A141609C1DC66BEC00C4F5BB /* Reactor.swift in Sources */,
+				A147CFAF1DCA410400C9860F /* StudentRandomizerViewController.swift in Sources */,
 				A141611F1DC69AEB00C4F5BB /* Theme.swift in Sources */,
+				A147CFAB1DCA336D00C9860F /* TabButton.swift in Sources */,
 				A14160AC1DC66DBC00C4F5BB /* GetICloudUser.swift in Sources */,
+				A1D67EFC1DC95A3F002F73D2 /* GroupSettingsViewController.swift in Sources */,
 				A14160D31DC6758700C4F5BB /* Error.swift in Sources */,
 				A14161231DC6A55300C4F5BB /* GroupToolCollectionViewCell.swift in Sources */,
 				A14160A81DC66D4800C4F5BB /* SegueHandlerType.swift in Sources */,
