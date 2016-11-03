@@ -54,7 +54,6 @@
 		A14160FD1DC6904400C4F5BB /* SubscribeToAllTheThings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160FC1DC6904400C4F5BB /* SubscribeToAllTheThings.swift */; };
 		A14160FF1DC694BA00C4F5BB /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160FE1DC694BA00C4F5BB /* GroupTableViewCell.swift */; };
 		A141611F1DC69AEB00C4F5BB /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A141611E1DC69AEB00C4F5BB /* Theme.swift */; };
-		A14161231DC6A55300C4F5BB /* GroupToolCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14161221DC6A55300C4F5BB /* GroupToolCollectionViewCell.swift */; };
 		A147CFA11DCA328100C9860F /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A147CFA01DCA328100C9860F /* CustomTabBarController.swift */; };
 		A147CFA51DCA331800C9860F /* CustomTabBarController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A147CFA41DCA331800C9860F /* CustomTabBarController.storyboard */; };
 		A147CFA91DCA336D00C9860F /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A147CFA61DCA336D00C9860F /* CustomTabBar.swift */; };
@@ -64,6 +63,11 @@
 		A147CFAF1DCA410400C9860F /* StudentRandomizerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A147CFAE1DCA410400C9860F /* StudentRandomizerViewController.swift */; };
 		A147CFB11DCA4FA000C9860F /* NameDrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A147CFB01DCA4FA000C9860F /* NameDrawViewController.swift */; };
 		A147CFB31DCA4FF400C9860F /* NameDrawViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A147CFB21DCA4FF400C9860F /* NameDrawViewController.storyboard */; };
+		A147CFB51DCAB34400C9860F /* NavBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A147CFB41DCAB34400C9860F /* NavBarButton.swift */; };
+		A147CFB71DCAB77000C9860F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A147CFB61DCAB77000C9860F /* Main.storyboard */; };
+		A147CFBB1DCAB7C500C9860F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A147CFBA1DCAB7C500C9860F /* MainViewController.swift */; };
+		A147CFBD1DCAB80600C9860F /* LoadingImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A147CFBC1DCAB80600C9860F /* LoadingImageViewController.swift */; };
+		A147CFBF1DCAB81700C9860F /* LoadingImageViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A147CFBE1DCAB81700C9860F /* LoadingImageViewController.storyboard */; };
 		A1B1A2081DC8BD4300D80E53 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1A2071DC8BD4300D80E53 /* DateHelper.swift */; };
 		A1B1A20A1DC8C4E300D80E53 /* CreateObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1A2091DC8C4E300D80E53 /* CreateObject.swift */; };
 		A1CC0AB91DC7A14800C0575F /* DeleteObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CC0AB81DC7A14800C0575F /* DeleteObject.swift */; };
@@ -154,6 +158,11 @@
 		A147CFAE1DCA410400C9860F /* StudentRandomizerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentRandomizerViewController.swift; sourceTree = "<group>"; };
 		A147CFB01DCA4FA000C9860F /* NameDrawViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameDrawViewController.swift; sourceTree = "<group>"; };
 		A147CFB21DCA4FF400C9860F /* NameDrawViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NameDrawViewController.storyboard; sourceTree = "<group>"; };
+		A147CFB41DCAB34400C9860F /* NavBarButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavBarButton.swift; sourceTree = "<group>"; };
+		A147CFB61DCAB77000C9860F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		A147CFBA1DCAB7C500C9860F /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		A147CFBC1DCAB80600C9860F /* LoadingImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingImageViewController.swift; sourceTree = "<group>"; };
+		A147CFBE1DCAB81700C9860F /* LoadingImageViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoadingImageViewController.storyboard; sourceTree = "<group>"; };
 		A1B1A2071DC8BD4300D80E53 /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		A1B1A2091DC8C4E300D80E53 /* CreateObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateObject.swift; sourceTree = "<group>"; };
 		A1CC0AB81DC7A14800C0575F /* DeleteObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteObject.swift; sourceTree = "<group>"; };
@@ -213,6 +222,7 @@
 				A14160E21DC6770300C4F5BB /* UI */,
 				A14160E11DC676B400C4F5BB /* Storyboards */,
 				A141608E1DC669F100C4F5BB /* Assets.xcassets */,
+				A14160901DC669F100C4F5BB /* LaunchScreen.storyboard */,
 				A14160931DC669F100C4F5BB /* Info.plist */,
 				A14160DE1DC6758D00C4F5BB /* Marshal */,
 				A14160A61DC66D3800C4F5BB /* Shared */,
@@ -223,6 +233,7 @@
 		A14160A61DC66D3800C4F5BB /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				A147CFB41DCAB34400C9860F /* NavBarButton.swift */,
 				A147CFA61DCA336D00C9860F /* CustomTabBar.swift */,
 				A147CFA71DCA336D00C9860F /* CustomTabBarProtocols.swift */,
 				A147CFA81DCA336D00C9860F /* TabButton.swift */,
@@ -293,11 +304,12 @@
 		A14160E11DC676B400C4F5BB /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				A147CFB61DCAB77000C9860F /* Main.storyboard */,
+				A147CFBE1DCAB81700C9860F /* LoadingImageViewController.storyboard */,
 				A14160881DC669F100C4F5BB /* GroupListViewController.storyboard */,
 				A147CFA41DCA331800C9860F /* CustomTabBarController.storyboard */,
 				A11EE96A1DC7383B002C9228 /* StudentListViewController.storyboard */,
 				A147CFAC1DCA404100C9860F /* StudentRandomizerViewController.storyboard */,
-				A14160901DC669F100C4F5BB /* LaunchScreen.storyboard */,
 				A11EE96E1DC73CD1002C9228 /* StudentTableViewCell.xib */,
 				A147CFB21DCA4FF400C9860F /* NameDrawViewController.storyboard */,
 				A1D67EFD1DC95B38002F73D2 /* GroupSettingsViewController.storyboard */,
@@ -309,6 +321,8 @@
 		A14160E21DC6770300C4F5BB /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				A147CFBA1DCAB7C500C9860F /* MainViewController.swift */,
+				A147CFBC1DCAB80600C9860F /* LoadingImageViewController.swift */,
 				A14160861DC669F100C4F5BB /* GroupListViewController.swift */,
 				A14160FE1DC694BA00C4F5BB /* GroupTableViewCell.swift */,
 				A14161201DC6A50F00C4F5BB /* ToolsViewController.swift */,
@@ -428,8 +442,10 @@
 				A147CFA51DCA331800C9860F /* CustomTabBarController.storyboard in Resources */,
 				A1D67EFE1DC95B38002F73D2 /* GroupSettingsViewController.storyboard in Resources */,
 				A147CFB31DCA4FF400C9860F /* NameDrawViewController.storyboard in Resources */,
+				A147CFB71DCAB77000C9860F /* Main.storyboard in Resources */,
 				A11EE96F1DC73CD1002C9228 /* StudentTableViewCell.xib in Resources */,
 				A141608F1DC669F100C4F5BB /* Assets.xcassets in Resources */,
+				A147CFBF1DCAB81700C9860F /* LoadingImageViewController.storyboard in Resources */,
 				A147CFAD1DCA404100C9860F /* StudentRandomizerViewController.storyboard in Resources */,
 				A141608A1DC669F100C4F5BB /* GroupListViewController.storyboard in Resources */,
 				A11EE95F1DC6CEB6002C9228 /* GoogleService-Info.plist in Resources */,
@@ -513,10 +529,12 @@
 				A14160FB1DC68F9400C4F5BB /* SubscribeToStudents.swift in Sources */,
 				A14160F11DC683C400C4F5BB /* Student.swift in Sources */,
 				A11EE95D1DC6CD3C002C9228 /* NSDate+ValueType.swift in Sources */,
+				A147CFB51DCAB34400C9860F /* NavBarButton.swift in Sources */,
 				A11EE9691DC7381F002C9228 /* StudentListViewController.swift in Sources */,
 				A14160FD1DC6904400C4F5BB /* SubscribeToAllTheThings.swift in Sources */,
 				A14160EB1DC67E7700C4F5BB /* SubscribeToUsers.swift in Sources */,
 				A14160871DC669F100C4F5BB /* GroupListViewController.swift in Sources */,
+				A147CFBB1DCAB7C500C9860F /* MainViewController.swift in Sources */,
 				A14160E81DC67E1700C4F5BB /* DeleteUsers.swift in Sources */,
 				A14160D81DC6758700C4F5BB /* Marshaling.swift in Sources */,
 				A14160A51DC66D2F00C4F5BB /* StoryboardInitializable.swift in Sources */,
@@ -533,13 +551,13 @@
 				A11EE9711DC79516002C9228 /* UpdateObject.swift in Sources */,
 				A1B1A20A1DC8C4E300D80E53 /* CreateObject.swift in Sources */,
 				A141609C1DC66BEC00C4F5BB /* Reactor.swift in Sources */,
+				A147CFBD1DCAB80600C9860F /* LoadingImageViewController.swift in Sources */,
 				A147CFAF1DCA410400C9860F /* StudentRandomizerViewController.swift in Sources */,
 				A141611F1DC69AEB00C4F5BB /* Theme.swift in Sources */,
 				A147CFAB1DCA336D00C9860F /* TabButton.swift in Sources */,
 				A14160AC1DC66DBC00C4F5BB /* GetICloudUser.swift in Sources */,
 				A1D67EFC1DC95A3F002F73D2 /* GroupSettingsViewController.swift in Sources */,
 				A14160D31DC6758700C4F5BB /* Error.swift in Sources */,
-				A14161231DC6A55300C4F5BB /* GroupToolCollectionViewCell.swift in Sources */,
 				A14160A81DC66D4800C4F5BB /* SegueHandlerType.swift in Sources */,
 				A14160DA1DC6758700C4F5BB /* Unmarshaling.swift in Sources */,
 			);

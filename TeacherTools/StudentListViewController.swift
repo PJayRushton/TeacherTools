@@ -12,7 +12,6 @@ class StudentListViewController: UIViewController, AutoStoryboardInitializable {
 
     @IBOutlet weak var tableView: UITableView!
     
-    let studentCellId = "StudentCell"
     var core = App.core
     var group: Group?
     var students = [Student]()

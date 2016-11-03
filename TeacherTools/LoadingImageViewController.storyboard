@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="S3y-A0-gkW">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Loading Image View Controller-->
+        <scene sceneID="Ke3-7V-ckq">
+            <objects>
+                <viewController storyboardIdentifier="LoadingImageViewController" id="S3y-A0-gkW" customClass="LoadingImageViewController" customModule="TeacherTools" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QyX-b7-otd"/>
+                        <viewControllerLayoutGuide type="bottom" id="GsW-kb-IhY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="W1o-Qb-m2b">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Teacher Tools" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k0Y-Kd-Fal">
+                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="h59-aF-RzU"/>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="h59-aF-RzU" firstAttribute="top" secondItem="k0Y-Kd-Fal" secondAttribute="bottom" constant="20.5" id="FW8-Ne-uZK"/>
+                            <constraint firstItem="k0Y-Kd-Fal" firstAttribute="centerY" secondItem="W1o-Qb-m2b" secondAttribute="centerYWithinMargins" id="Hxw-HA-9dC"/>
+                            <constraint firstItem="h59-aF-RzU" firstAttribute="centerX" secondItem="k0Y-Kd-Fal" secondAttribute="centerX" id="PIb-lo-SYB"/>
+                            <constraint firstItem="k0Y-Kd-Fal" firstAttribute="centerX" secondItem="W1o-Qb-m2b" secondAttribute="centerXWithinMargins" id="xN4-bU-oTH"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zev-Tj-7mq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="92" y="387"/>
+        </scene>
+    </scenes>
+</document>

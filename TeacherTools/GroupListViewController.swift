@@ -154,8 +154,8 @@ extension GroupListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         core.fire(event: Selected<Group>(groups[indexPath.row]))
-        let toolsVC = ToolsViewController.initializeFromStoryboard()
-        navigationController?.pushViewController(toolsVC, animated: true)
+        let tabBarController = CustomTabBarController.initializeFromStoryboard()
+        navigationController?.pushViewController(tabBarController, animated: true)
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

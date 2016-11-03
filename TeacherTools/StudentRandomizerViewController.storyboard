@@ -6,10 +6,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--StudentR-->
+        <!--Student Randomizer View Controller-->
         <scene sceneID="5cg-L9-3IG">
             <objects>
-                <viewController storyboardIdentifier="GroupRandomizerViewController" id="P5o-AB-U7E" customClass="StudentR" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StudentRandomizerViewController" id="P5o-AB-U7E" customClass="StudentRandomizerViewController" customModule="TeacherTools" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eNR-cq-Apa"/>
                         <viewControllerLayoutGuide type="bottom" id="7VD-rM-5mR"/>

@@ -67,7 +67,6 @@ class TabButton: UIView {
         self.dataObject = dataObject
         super.init(frame: CGRect.zero)
         setupViews()
-        setupAccessibilityInformation()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -87,15 +86,6 @@ class TabButton: UIView {
 // MARK: - Private TabButton functions
 
 private extension TabButton {
-    
-    func setupAccessibilityInformation() {
-        isAccessibilityElement = true
-        accessibilityLabel = dataObject.accessibilityTitle.capitalized
-        accessibilityIdentifier = dataObject.accessibilityTitle.lowercased() + "TabButton"
-        accessibilityTraits = UIAccessibilityTraitButton
-        imageButton.isAccessibilityElement = false
-        button.isAccessibilityElement = false
-    }
     
     func setupViews() {
         backgroundColor = .clear

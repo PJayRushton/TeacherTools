@@ -54,7 +54,10 @@ struct UserMiddleware: Middleware {
             guard let _ = event.item, isSubscribed == false else { return }
             isSubscribed = true
             App.core.fire(command: SubscribeToAllTheThings())
-            
+        case let event as Updated<[Group]>:
+            guard state.selectedGroup == nil else { break }
+            let sortedGroups = event.payload.sorted { $0.lastViewDate < $1.lastViewDate }
+            App.core.fire(event: Selected<Group>(sortedGroups.first))
         default:
             break
         }

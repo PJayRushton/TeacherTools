@@ -15,10 +15,6 @@
 //                .......
 //                  ...
 
-import CustomTabBar
-import NetworkStack
-import Reactor
-import SwiftyBeaver
 import UIKit
 
 final class CustomTabBarController: UITabBarController {
@@ -36,7 +32,7 @@ final class CustomTabBarController: UITabBarController {
             case .groups:
                 return TabDataObject(title: NSLocalizedString("Groups", comment: ""), image: UIImage(named: "groups"))
             case .drawName:
-                return TabDataObject(title: NSLocalizedString("Draw names", comment: ""), image: UIImage(named: "challenges"))
+                return TabDataObject(title: NSLocalizedString("Draw names", comment: ""), image: UIImage(named: "hat"))
             case .settings:
                 return TabDataObject(title: NSLocalizedString("Settings", comment: ""), image: UIImage(named: "settings"))
             }
@@ -82,7 +78,7 @@ final class CustomTabBarController: UITabBarController {
 extension CustomTabBarController: CustomTabBarDelegate, AutoStoryboardInitializable {
     
     func tabBar(_ tabBar: CustomTabBar, didSelectTab tab: Int) {
-        if let selectedNav = selectedViewController as? UINavigationController , tab == selectedIndex {
+        if let selectedNav = selectedViewController as? UINavigationController, tab == selectedIndex {
             selectedNav.popToRootViewController(animated: true)
         } else {
             selectedIndex = tab
@@ -91,7 +87,7 @@ extension CustomTabBarController: CustomTabBarDelegate, AutoStoryboardInitializa
     
 }
 
-extension CustomTabBarController: Reactor.Subscriber {
+extension CustomTabBarController: Subscriber {
     
     func update(with state: AppState) {
     }
@@ -103,20 +99,19 @@ extension CustomTabBarController: Reactor.Subscriber {
 
 private extension CustomTabBarController {
     
-    func setupTabBar() {
-        let allDataObjects = Tab.allValues.map { $0.dataObject }
-        customTabBar.titleFont = UIFont.appFont(10)
-        customTabBar.dataObjects = allDataObjects
-        tabBar.isHidden = true
+    func setupViewControllers() {
+        let studentListVC = StudentListViewController.initializeFromStoryboard().embededInNavigationController
+        let randomizerVC = StudentRandomizerViewController.initializeFromStoryboard().embededInNavigationController
+        let nameDrawVC = NameDrawViewController.initializeFromStoryboard().embededInNavigationController
+        let groupSettingsVC = GroupSettingsViewController.initializeFromStoryboard().embededInNavigationController
+        viewControllers = [studentListVC, randomizerVC, nameDrawVC, groupSettingsVC]
     }
     
-    func setupViewControllers() {
-        let goalViewController = 
-        let eventViewController = EventListViewController.initializeFromStoryboard()
-        let groupsViewController = GroupListViewController.initializeFromStoryboard()
-        let challengesViewController = ChallengeListViewController.initializeFromStoryboard()
-        let settingsViewController = SettingsTableViewController.initializeFromStoryboard()
-        viewControllers = [goalViewController, eventViewController, groupsViewController, challengesViewController, settingsViewController]
+    func setupTabBar() {
+        let allDataObjects = Tab.allValues.map { $0.dataObject }
+        customTabBar.titleFont = core.state.theme.fontType.font(withSize: 10)
+        customTabBar.dataObjects = allDataObjects
+        tabBar.isHidden = true
     }
     
     func displayCustomTabBar() {

@@ -6,7 +6,7 @@
 //  Copyright © 2016 AppsByPJ. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 extension Collection where Iterator.Element: Identifiable {
     
@@ -29,4 +29,12 @@ extension Sequence where Iterator.Element == StringLiteralType {
         }
         return json
     }
+}
+
+extension UIViewController {
+    
+    var embededInNavigationController: UINavigationController {
+        return UINavigationController(rootViewController: self)
+    }
+    
 }
