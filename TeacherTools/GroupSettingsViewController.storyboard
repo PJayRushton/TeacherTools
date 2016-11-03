@@ -41,11 +41,15 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="JVf-MF-rc7" firstAttribute="top" secondItem="7gK-nd-ydl" secondAttribute="bottom" constant="16" id="ICJ-3c-CVa"/>
                             <constraint firstAttribute="trailingMargin" secondItem="JVf-MF-rc7" secondAttribute="trailing" id="prn-77-QPT"/>
                             <constraint firstItem="JVf-MF-rc7" firstAttribute="leading" secondItem="3Hj-va-EWZ" secondAttribute="leadingMargin" id="wRI-aH-uIq"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="xNA-Mo-C8E" appends="YES" id="Krb-uf-mdv"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="groupNameTextField" destination="Msm-gd-Iei" id="jcj-9Z-95b"/>
@@ -53,6 +57,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0m4-LG-DAh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="xNA-Mo-C8E">
+                    <connections>
+                        <action selector="viewTapped:" destination="5kz-w2-sp5" id="mew-nQ-Yfo"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-148" y="-38.23088455772114"/>
         </scene>

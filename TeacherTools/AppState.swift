@@ -44,6 +44,8 @@ struct AppState: State {
         case let event as Updated<[Group]>:
             groups = event.payload
             groupsAreLoaded = true
+            guard let group = selectedGroup, let index = event.payload.index(of: group) else { break }
+            selectedGroup = event.payload[index]
         case let event as Selected<Group>:
             selectedGroup = event.item
             

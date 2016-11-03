@@ -40,6 +40,7 @@ extension StudentListViewController: Subscriber {
     func update(with state: AppState) {
         if let group = state.selectedGroup {
             self.group = group
+            title = group.name
         } else {
             core.fire(event: ErrorEvent(error: nil, message: "Error retreiving students"))
         }

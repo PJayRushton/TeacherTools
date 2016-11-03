@@ -56,7 +56,7 @@ struct ErrorHUDMiddleware: Middleware {
         case let action as DisplayMessage:
             silva(title: action.message)
         case let action as DisplaySuccessMessage:
-            silva(title: action.message, barColor: state.theme.mainColor)
+            silva(title: action.message, barColor: state.theme.tintColor)
         case _ as DisplayNetworkLossMessage:
             silva(title: "Looking for the internet...", barColor: UIColor.red.withAlphaComponent(0.6), displayTime: 0)
         case _ as DisplayUploadMessage:
@@ -72,7 +72,7 @@ struct ErrorHUDMiddleware: Middleware {
     }
     
     private func silva(title: String = "loading...", barColor: UIColor = UIColor.blue.withAlphaComponent(0.75), displayTime: TimeInterval? = nil) {
-        let murmur = Murmur(title: title, backgroundColor: .red, titleColor: .white, font: App.core.state.theme.fontType.font(withSize: 14))
+        let murmur = Murmur(title: title, backgroundColor: barColor, titleColor: .white, font: App.core.state.theme.fontType.font(withSize: 14))
         let time = displayTime == nil ? title.displayTime : displayTime!
         let action = time == 0 ? WhistleAction.present : WhistleAction.show(time)
         

@@ -14,10 +14,13 @@ class GroupSettingsViewController: UIViewController, AutoStoryboardInitializable
     @IBOutlet weak var saveButton: UIButton!
     
     var core = App.core
+    var group : Group? {
+        return core.state.selectedGroup
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        saveButton.isHidden = true
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -31,9 +34,11 @@ class GroupSettingsViewController: UIViewController, AutoStoryboardInitializable
     }
     
     @IBAction func textFieldEditingChanged(_ sender: UITextField) {
-        guard let text = sender.text else { return }
-        let title = text.isEmpty ? "Cancel" : "Save"
-        saveButton.setTitle(title, for: .normal)
+        updateSaveButton()
+    }
+    
+    @IBAction func viewTapped(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
     }
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
@@ -41,14 +46,15 @@ class GroupSettingsViewController: UIViewController, AutoStoryboardInitializable
             core.fire(event: ErrorEvent(error: nil, message: "Error saving class"))
             return
         }
-        let isSave = name.isEmpty == false
-        if isSave {
+        let shouldSave = name.isEmpty == false && name != group?.name
+        if shouldSave {
             selectedGroup.name = name
             core.fire(command: UpdateObject(object: selectedGroup))
             core.fire(event: DisplaySuccessMessage(message: "Saved!"))
         } else {
-            core.fire(event: ErrorEvent(error: nil, message: "Its gotta be named SOMETHING"))
+            groupNameTextField.text = group?.name
         }
+        endEditing()
     }
     
     
@@ -58,6 +64,7 @@ extension GroupSettingsViewController: Subscriber {
     
     func update(with state: AppState) {
         groupNameTextField.text = state.selectedGroup?.name
+        updateSaveButton()
     }
     
 }
@@ -69,6 +76,31 @@ extension GroupSettingsViewController {
         UIView.animate(withDuration: 0.25) {
             self.saveButton.isHidden = hidden
         }
+    }
+    
+    func updateSaveButton() {
+        guard let text = groupNameTextField.text else { return }
+        let shouldCancel = text.isEmpty || text == group?.name
+        let title = shouldCancel ? "Cancel" : "Save"
+        saveButton.setTitle(title, for: .normal)
+    }
+    
+    func endEditing() {
+        toggleSaveButton(hidden: true)
+        updateSaveButton()
+        view.endEditing(true)
+    }
+    
+}
+
+extension GroupSettingsViewController: UITextFieldDelegate {
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        toggleSaveButton(hidden: false)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        toggleSaveButton(hidden: true)
     }
     
 }
