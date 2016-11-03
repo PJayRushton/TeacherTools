@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SJFluidSegmentedControl.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Whisper.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -17,12 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>AF44068A0CD0925D6AB62B743815118C</key>
+		<key>480B6B8B8D8B9205F253C853CE41CD49</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B2B22A4E9CAE18868F64756DF12B56CB</key>
+		<key>A242D7DCE4DEF910313FE8434FE15AAC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CC7247A43E23C0F0E016819B534C8B93</key>
 		<dict>
 			<key>primary</key>
 			<true/>
