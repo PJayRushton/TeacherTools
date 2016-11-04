@@ -13,9 +13,10 @@ class GroupTableViewCell: UITableViewCell, AutoReuseIdentifiable {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     
-    func update(with group: Group, theme: Theme) {
+    func update(with group: Group, theme: Theme, isSelected: Bool) {
         titleLabel.text = group.name
         subtitleLabel.text = String(format: "%d students", group.students.count)
+        accessoryType = isSelected ? .checkmark : .none
         update(with: theme)
     }
     

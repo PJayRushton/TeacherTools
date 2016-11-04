@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import SJFluidSegmentedControl
 
 class GroupSettingsViewController: UIViewController, AutoStoryboardInitializable {
 
     @IBOutlet weak var groupNameTextField: UITextField!
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var fluidSegmentedControl: SJFluidSegmentedControl!
     
     var core = App.core
     var group : Group? {
@@ -21,6 +23,8 @@ class GroupSettingsViewController: UIViewController, AutoStoryboardInitializable
     override func viewDidLoad() {
         super.viewDidLoad()
         saveButton.isHidden = true
+        fluidSegmentedControl.shapeStyle = .liquid
+        fluidSegmentedControl.cornerRadius = fluidSegmentedControl.bounds.height / 2
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -57,6 +61,13 @@ class GroupSettingsViewController: UIViewController, AutoStoryboardInitializable
         endEditing()
     }
     
+    @IBAction func deleteButtonPressed(_ sender: UIButton) {
+        if let group = group {
+            presentDeleteConfirmation(for: group)
+        } else {
+            core.fire(event: ErrorEvent(error: nil, message: "Unable to delete class"))
+        }
+    }
     
 }
 
@@ -65,6 +76,7 @@ extension GroupSettingsViewController: Subscriber {
     func update(with state: AppState) {
         groupNameTextField.text = state.selectedGroup?.name
         updateSaveButton()
+        fluidSegmentedControl.textFont = state.theme.fontType.font(withSize: 18)
     }
     
 }
@@ -91,6 +103,15 @@ extension GroupSettingsViewController {
         view.endEditing(true)
     }
     
+    func presentDeleteConfirmation(for group: Group) {
+        let alert = UIAlertController(title: "Are you sure?", message: "This cannot be undone", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { _ in
+            self.core.fire(command: DeleteObject(object: group))
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
 }
 
 extension GroupSettingsViewController: UITextFieldDelegate {
@@ -101,6 +122,43 @@ extension GroupSettingsViewController: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         toggleSaveButton(hidden: true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        saveButtonPressed(saveButton)
+        return true
+    }
+    
+}
+
+extension GroupSettingsViewController: SJFluidSegmentedControlDelegate, SJFluidSegmentedControlDataSource {
+    
+    enum NameDisplayType: Int {
+        case firstLast
+        case lastFirst
+        
+        var displayString: String {
+            switch self {
+            case .firstLast:
+                return "First Last"
+            case .lastFirst:
+                return "Last, First"
+            }
+        }
+        
+        static let allValues = [NameDisplayType.firstLast, .lastFirst]
+    }
+    
+    func numberOfSegmentsInSegmentedControl(_ segmentedControl: SJFluidSegmentedControl) -> Int {
+        return NameDisplayType.allValues.count
+    }
+    
+    func segmentedControl(_ segmentedControl: SJFluidSegmentedControl, titleForSegmentAtIndex index: Int) -> String? {
+        return NameDisplayType.allValues[index].displayString
+    }
+    
+    func segmentedControl(_ segmentedControl: SJFluidSegmentedControl, didChangeFromSegmentAtIndex fromIndex: Int, toSegmentAtIndex toIndex: Int) {
+        core.fire(event: NameDisplayChanged(lastFirst: toIndex == NameDisplayType.lastFirst.rawValue))
     }
     
 }

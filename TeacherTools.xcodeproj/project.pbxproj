@@ -72,6 +72,7 @@
 		A1B1A20A1DC8C4E300D80E53 /* CreateObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1A2091DC8C4E300D80E53 /* CreateObject.swift */; };
 		A1CC0AB91DC7A14800C0575F /* DeleteObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CC0AB81DC7A14800C0575F /* DeleteObject.swift */; };
 		A1CC0ABB1DC7B7F700C0575F /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14160B81DC66F1200C4F5BB /* CloudKit.framework */; };
+		A1D1B4341DCC136D00AF5452 /* AddGroupTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D1B4331DCC136D00AF5452 /* AddGroupTableCell.swift */; };
 		A1D67EFC1DC95A3F002F73D2 /* GroupSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D67EFB1DC95A3F002F73D2 /* GroupSettingsViewController.swift */; };
 		A1D67EFE1DC95B38002F73D2 /* GroupSettingsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1D67EFD1DC95B38002F73D2 /* GroupSettingsViewController.storyboard */; };
 /* End PBXBuildFile section */
@@ -167,6 +168,7 @@
 		A1B1A2091DC8C4E300D80E53 /* CreateObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateObject.swift; sourceTree = "<group>"; };
 		A1CC0AB81DC7A14800C0575F /* DeleteObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteObject.swift; sourceTree = "<group>"; };
 		A1CC0ABA1DC7B7F100C0575F /* TeacherTools.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TeacherTools.entitlements; sourceTree = "<group>"; };
+		A1D1B4331DCC136D00AF5452 /* AddGroupTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupTableCell.swift; sourceTree = "<group>"; };
 		A1D67EFB1DC95A3F002F73D2 /* GroupSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupSettingsViewController.swift; sourceTree = "<group>"; };
 		A1D67EFD1DC95B38002F73D2 /* GroupSettingsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GroupSettingsViewController.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -333,6 +335,7 @@
 				A147CFAE1DCA410400C9860F /* StudentRandomizerViewController.swift */,
 				A147CFB01DCA4FA000C9860F /* NameDrawViewController.swift */,
 				A1D67EFB1DC95A3F002F73D2 /* GroupSettingsViewController.swift */,
+				A1D1B4331DCC136D00AF5452 /* AddGroupTableCell.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -549,6 +552,7 @@
 				A141609A1DC66BBC00C4F5BB /* AppState.swift in Sources */,
 				A11EE9611DC6F19E002C9228 /* TestHelper.swift in Sources */,
 				A11EE9711DC79516002C9228 /* UpdateObject.swift in Sources */,
+				A1D1B4341DCC136D00AF5452 /* AddGroupTableCell.swift in Sources */,
 				A1B1A20A1DC8C4E300D80E53 /* CreateObject.swift in Sources */,
 				A141609C1DC66BEC00C4F5BB /* Reactor.swift in Sources */,
 				A147CFBD1DCAB80600C9860F /* LoadingImageViewController.swift in Sources */,

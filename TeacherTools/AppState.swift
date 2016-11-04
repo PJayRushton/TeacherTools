@@ -102,6 +102,10 @@ struct ICloudUserIdentified: Event {
 
 // OTHER
 
+struct NameDisplayChanged: Event {
+    var lastFirst: Bool
+}
+
 struct UploadStatusUpdated: Event {
     var success: Bool?
 }
