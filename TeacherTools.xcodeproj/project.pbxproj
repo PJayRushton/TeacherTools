@@ -68,6 +68,8 @@
 		A147CFBB1DCAB7C500C9860F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A147CFBA1DCAB7C500C9860F /* MainViewController.swift */; };
 		A147CFBD1DCAB80600C9860F /* LoadingImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A147CFBC1DCAB80600C9860F /* LoadingImageViewController.swift */; };
 		A147CFBF1DCAB81700C9860F /* LoadingImageViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A147CFBE1DCAB81700C9860F /* LoadingImageViewController.storyboard */; };
+		A161423C1DCD6E4E00C800A1 /* UpdateGroupLastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A161423B1DCD6E4E00C800A1 /* UpdateGroupLastView.swift */; };
+		A161423E1DCD71CD00C800A1 /* DeleteStudents.swift in Sources */ = {isa = PBXBuildFile; fileRef = A161423D1DCD71CD00C800A1 /* DeleteStudents.swift */; };
 		A1B1A2081DC8BD4300D80E53 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1A2071DC8BD4300D80E53 /* DateHelper.swift */; };
 		A1B1A20A1DC8C4E300D80E53 /* CreateObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1A2091DC8C4E300D80E53 /* CreateObject.swift */; };
 		A1CC0AB91DC7A14800C0575F /* DeleteObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CC0AB81DC7A14800C0575F /* DeleteObject.swift */; };
@@ -164,6 +166,8 @@
 		A147CFBA1DCAB7C500C9860F /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		A147CFBC1DCAB80600C9860F /* LoadingImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingImageViewController.swift; sourceTree = "<group>"; };
 		A147CFBE1DCAB81700C9860F /* LoadingImageViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoadingImageViewController.storyboard; sourceTree = "<group>"; };
+		A161423B1DCD6E4E00C800A1 /* UpdateGroupLastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateGroupLastView.swift; sourceTree = "<group>"; };
+		A161423D1DCD71CD00C800A1 /* DeleteStudents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteStudents.swift; sourceTree = "<group>"; };
 		A1B1A2071DC8BD4300D80E53 /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		A1B1A2091DC8C4E300D80E53 /* CreateObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateObject.swift; sourceTree = "<group>"; };
 		A1CC0AB81DC7A14800C0575F /* DeleteObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteObject.swift; sourceTree = "<group>"; };
@@ -357,6 +361,8 @@
 				A14160AB1DC66DBC00C4F5BB /* GetICloudUser.swift */,
 				A14160AF1DC66DEC00C4F5BB /* SaveNewUser.swift */,
 				A14160B11DC66DF300C4F5BB /* UpdateUser.swift */,
+				A161423D1DCD71CD00C800A1 /* DeleteStudents.swift */,
+				A161423B1DCD6E4E00C800A1 /* UpdateGroupLastView.swift */,
 				A11EE9701DC79516002C9228 /* UpdateObject.swift */,
 				A1CC0AB81DC7A14800C0575F /* DeleteObject.swift */,
 				A1B1A2091DC8C4E300D80E53 /* CreateObject.swift */,
@@ -510,6 +516,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A161423C1DCD6E4E00C800A1 /* UpdateGroupLastView.swift in Sources */,
 				A14160EF1DC6833200C4F5BB /* Group.swift in Sources */,
 				A14160B41DC66E0300C4F5BB /* User.swift in Sources */,
 				A14160DC1DC6758700C4F5BB /* UnmarshalUpdating.swift in Sources */,
@@ -545,6 +552,7 @@
 				A1CC0AB91DC7A14800C0575F /* DeleteObject.swift in Sources */,
 				A14160D41DC6758700C4F5BB /* JSON.swift in Sources */,
 				A14160AE1DC66DC900C4F5BB /* UserMiddleware.swift in Sources */,
+				A161423E1DCD71CD00C800A1 /* DeleteStudents.swift in Sources */,
 				A14160851DC669F100C4F5BB /* AppDelegate.swift in Sources */,
 				A11EE96D1DC73CBC002C9228 /* StudentTableViewCell.swift in Sources */,
 				A14160ED1DC6806200C4F5BB /* ErrorHUDMiddleware.swift in Sources */,

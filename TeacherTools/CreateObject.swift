@@ -16,8 +16,12 @@ struct CreateObject<T: Identifiable>: Command {
         networkAccess.addObject(at: object.ref, parameters: object.marshaled() as! JSONObject) { result in
             switch result {
             case .success:
-                if let _ = self.object as? Group, core.state.groups.isEmpty {
-                    core.fire(command: SubscribeToGroups())
+                if let group = self.object as? Group {
+                    if core.state.groups.isEmpty {
+                        core.fire(command: SubscribeToGroups())
+                    } else {
+                        core.fire(event: Selected<Group>(group))
+                    }
                 } else if let _ = self.object as? Student, core.state.allStudents.isEmpty {
                     core.fire(command: SubscribeToStudents())
                 }

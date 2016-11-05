@@ -63,7 +63,11 @@ class GroupSettingsViewController: UIViewController, AutoStoryboardInitializable
     
     @IBAction func deleteButtonPressed(_ sender: UIButton) {
         if let group = group {
-            presentDeleteConfirmation(for: group)
+            if core.state.groups.count == 1 {
+                presentNoDeleteAlert()
+            } else {
+                presentDeleteConfirmation(for: group)
+            }
         } else {
             core.fire(event: ErrorEvent(error: nil, message: "Unable to delete class"))
         }
@@ -101,6 +105,12 @@ extension GroupSettingsViewController {
         toggleSaveButton(hidden: true)
         updateSaveButton()
         view.endEditing(true)
+    }
+    
+    func presentNoDeleteAlert() {
+        let alert = UIAlertController(title: "You won't have any classes left!", message: "You'll have to add a new class first", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
     
     func presentDeleteConfirmation(for group: Group) {

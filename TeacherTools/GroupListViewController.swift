@@ -15,7 +15,7 @@ class GroupListViewController: UIViewController, AutoStoryboardInitializable {
     
     var core = App.core
     var groups: [Group] {
-        return core.state.groups.sorted { $0.lastViewDate < $1.lastViewDate }
+        return core.state.groups.sorted { $0.lastViewDate > $1.lastViewDate }
     }
     
     override func viewDidLoad() {
@@ -41,8 +41,24 @@ extension GroupListViewController: Subscriber {
     
     func update(with state: AppState) {
         tableView.reloadData()
+        preferredContentSize = CGSize(width: 0, height: tableView.contentSize.height)
     }
 
+}
+
+
+extension GroupListViewController {
+    
+    func addNewGroup() {
+        guard let currentUser = core.state.currentUser else {
+            core.fire(event: ErrorEvent(error: nil, message: "Error creating new group"))
+            return
+        }
+        let id = FirebaseNetworkAccess.sharedInstance.groupsRef(userId: currentUser.id).childByAutoId()
+        let newGroupGroups = core.state.groups.filter { $0.name.lowercased().contains("new group") }
+        let newGroup = Group(id: id.key, name: "New Group \(newGroupGroups.count + 1)")
+        core.fire(command: CreateObject(object: newGroup))
+    }
 }
 
 
@@ -85,9 +101,19 @@ extension GroupListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        core.fire(event: Selected<Group>(groups[indexPath.row]))
-        let tabBarController = CustomTabBarController.initializeFromStoryboard()
-        navigationController?.pushViewController(tabBarController, animated: true)
+        switch TableSection(rawValue: indexPath.section)! {
+        case .groupList:
+            core.fire(event: Selected<Group>(groups[indexPath.row]))
+            let tabBarController = CustomTabBarController.initializeFromStoryboard()
+            navigationController?.pushViewController(tabBarController, animated: true)
+            dismiss(animated: true, completion: nil)
+        case .add:
+            addNewGroup()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                self.dismiss(animated: true, completion: nil)
+            })
+        }
     }
     
 }

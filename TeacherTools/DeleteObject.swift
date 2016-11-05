@@ -16,7 +16,11 @@ struct DeleteObject<T: Identifiable>: Command {
         networkAccess.deleteObject(at: object.ref) { result in
             switch result {
             case .success:
-                break
+                guard let group = self.object as? Group else { return }
+                core.fire(command: DeleteStudents(group: group))
+                core.fire(event: Selected<Group>(nil))
+                let newGroups = state.groups.filter { $0.id != group.id }
+                core.fire(event: Updated<[Group]>(newGroups))
             case let .failure(error):
                 core.fire(event: ErrorEvent(error: error, message: nil))
             }

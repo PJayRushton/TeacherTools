@@ -11,12 +11,21 @@ import UIKit
 class AddGroupTableCell: UITableViewCell, AutoReuseIdentifiable {
 
     @IBOutlet weak var circleView: UIView!
+    @IBOutlet weak var plusLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        circleView.layer.cornerRadius = circleView.bounds.height / 2
-        circleView.backgroundColor = App.core.state.theme.tintColor
+        circleView.layer.cornerRadius = circleView.frame.width / 2
+        circleView.layer.borderWidth = 1
+        let themeTintColor = App.core.state.theme.tintColor
+        circleView.layer.borderColor = themeTintColor.cgColor
+        plusLabel.textColor = themeTintColor
     }
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        circleView.layer.cornerRadius = circleView.frame.width / 2
+    }
+    
 }
