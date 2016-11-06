@@ -145,6 +145,12 @@ struct FirebaseNetworkAccess {
         })
     }
     
+    func subscribeToReachability(completion: @escaping (Bool?) -> Void) {
+        FIRDatabase.database().reference(withPath: ".info/connected").observe(.value, with: { snapshot in
+            completion(snapshot.value as? Bool)
+        })
+    }
+    
     func unsubscribe(from ref: FIRDatabaseReference) {
         ref.removeAllObservers()
     }

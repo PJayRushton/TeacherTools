@@ -24,7 +24,7 @@ class GroupSettingsViewController: UIViewController, AutoStoryboardInitializable
         super.viewDidLoad()
         saveButton.isHidden = true
         fluidSegmentedControl.shapeStyle = .liquid
-        fluidSegmentedControl.cornerRadius = fluidSegmentedControl.bounds.height / 2
+        fluidSegmentedControl.cornerRadius = 5
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -81,6 +81,9 @@ extension GroupSettingsViewController: Subscriber {
         groupNameTextField.text = state.selectedGroup?.name
         updateSaveButton()
         fluidSegmentedControl.textFont = state.theme.fontType.font(withSize: 18)
+        fluidSegmentedControl.textColor = .white
+        fluidSegmentedControl.selectedSegmentTextColor = state.theme.tintColor
+        fluidSegmentedControl.selectorViewColor = state.theme.tintColor
     }
     
 }

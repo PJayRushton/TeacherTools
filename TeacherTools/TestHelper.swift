@@ -18,12 +18,6 @@ let student2Id = "apsoin3k"
 let student3Id = "ih3qgreav"
 let student4Id = "9ui3qgirje"
 
-struct LoadAllTheFakeThings: Command {
-    
-    func execute(state: AppState, core: Core<AppState>) {
-    }
-
-}
 
 struct LoadFakeUser: Command {
     

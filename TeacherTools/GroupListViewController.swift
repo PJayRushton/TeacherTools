@@ -57,7 +57,7 @@ extension GroupListViewController {
         let id = FirebaseNetworkAccess.sharedInstance.groupsRef(userId: currentUser.id).childByAutoId()
         let newGroupGroups = core.state.groups.filter { $0.name.lowercased().contains("new group") }
         let newGroup = Group(id: id.key, name: "New Group \(newGroupGroups.count + 1)")
-        core.fire(command: CreateObject(object: newGroup))
+        core.fire(command: CreateGroup(group: newGroup))
     }
 }
 

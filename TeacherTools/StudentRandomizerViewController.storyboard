@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="P5o-AB-U7E">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="P5o-AB-U7E">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Student Randomizer View Controller-->
+        <!--Title-->
         <scene sceneID="5cg-L9-3IG">
             <objects>
                 <viewController storyboardIdentifier="StudentRandomizerViewController" id="P5o-AB-U7E" customClass="StudentRandomizerViewController" customModule="TeacherTools" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,12 +21,110 @@
                     <view key="view" contentMode="scaleToFill" id="SCW-CC-uKx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bg0-Aj-3B9">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ufu-iw-LUJ">
+                                    <size key="itemSize" width="126" height="50"/>
+                                    <size key="headerReferenceSize" width="50" height="50"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RandomizerCollectionViewCell" id="xwX-04-uJC" customClass="RandomizerCollectionViewCell" customModule="TeacherTools" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="126" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="126" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uja-PX-Z6g">
+                                                    <rect key="frame" x="0.0" y="0.0" width="126" height="50"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Student name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="V7E-5F-ik0">
+                                                            <rect key="frame" x="8" y="8" width="110" height="34"/>
+                                                            <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="V7E-5F-ik0" firstAttribute="top" secondItem="uja-PX-Z6g" secondAttribute="topMargin" id="bNZ-Uy-mVb"/>
+                                                        <constraint firstAttribute="bottomMargin" secondItem="V7E-5F-ik0" secondAttribute="bottom" id="cPF-uz-O5L"/>
+                                                        <constraint firstItem="V7E-5F-ik0" firstAttribute="leading" secondItem="uja-PX-Z6g" secondAttribute="leadingMargin" id="mjR-gS-ixo"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="V7E-5F-ik0" secondAttribute="trailing" id="udA-NX-uSW"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="uja-PX-Z6g" firstAttribute="leading" secondItem="xwX-04-uJC" secondAttribute="leading" id="Ggx-bO-vrR"/>
+                                            <constraint firstAttribute="trailing" secondItem="uja-PX-Z6g" secondAttribute="trailing" id="UyJ-AC-8yg"/>
+                                            <constraint firstItem="uja-PX-Z6g" firstAttribute="top" secondItem="xwX-04-uJC" secondAttribute="top" id="ald-IK-IMb"/>
+                                            <constraint firstAttribute="bottom" secondItem="uja-PX-Z6g" secondAttribute="bottom" id="wAV-jq-hEf"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="borderView" destination="uja-PX-Z6g" id="G5m-2C-P3v"/>
+                                            <outlet property="textLabel" destination="V7E-5F-ik0" id="0Ip-Rd-yJn"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RandomizerHeaderView" id="sOO-uS-sbE" customClass="RandomizerHeaderView" customModule="TeacherTools" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4P9-ek-yKw">
+                                            <rect key="frame" x="8" y="8" width="359" height="34"/>
+                                            <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="4P9-ek-yKw" secondAttribute="bottom" id="1CY-7z-8pT"/>
+                                        <constraint firstItem="4P9-ek-yKw" firstAttribute="leading" secondItem="sOO-uS-sbE" secondAttribute="leadingMargin" id="Tc3-fZ-wYc"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="4P9-ek-yKw" secondAttribute="trailing" id="bf1-fP-H8y"/>
+                                        <constraint firstItem="4P9-ek-yKw" firstAttribute="top" secondItem="sOO-uS-sbE" secondAttribute="topMargin" id="q0u-eT-My4"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="textLabel" destination="4P9-ek-yKw" id="uYb-Uk-w6c"/>
+                                    </connections>
+                                </collectionReusableView>
+                                <connections>
+                                    <outlet property="delegate" destination="P5o-AB-U7E" id="dDd-In-9RZ"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bg0-Aj-3B9" firstAttribute="leading" secondItem="SCW-CC-uKx" secondAttribute="leading" id="BQH-16-Gkl"/>
+                            <constraint firstItem="7VD-rM-5mR" firstAttribute="top" secondItem="bg0-Aj-3B9" secondAttribute="bottom" id="QJc-2p-uQp"/>
+                            <constraint firstItem="bg0-Aj-3B9" firstAttribute="top" secondItem="SCW-CC-uKx" secondAttribute="top" id="k7o-W5-lkA"/>
+                            <constraint firstAttribute="trailing" secondItem="bg0-Aj-3B9" secondAttribute="trailing" id="l7i-16-HUG"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="if5-fd-HWm">
+                        <barButtonItem key="leftBarButtonItem" title="2" id="j4K-1q-XbY"/>
+                        <barButtonItem key="rightBarButtonItem" image="shuffle" id="fGN-fs-Ngd">
+                            <connections>
+                                <action selector="shuffleButtonPressed:" destination="P5o-AB-U7E" id="MhL-as-Eig"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="collectionView" destination="bg0-Aj-3B9" id="IMS-MS-ylV"/>
+                        <outlet property="shuffleBarButton" destination="fGN-fs-Ngd" id="5s0-NT-Xby"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UaE-bM-lPb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="126" y="83"/>
+            <point key="canvasLocation" x="125.59999999999999" y="82.3088455772114"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="shuffle" width="20" height="18"/>
+    </resources>
 </document>

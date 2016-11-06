@@ -13,7 +13,7 @@ struct SaveNewUser: Command {
     
     func execute(state: AppState, core: Core<AppState>) {
         let ref = networkAccess.usersRef.childByAutoId()
-        var user = newUser()
+        let user = newUser()
         user.id = ref.key
         var parameters: JSONObject = user.marshaled()
         parameters["creationDate"] = Date().iso8601String

@@ -23,9 +23,6 @@ class MainViewController: UIViewController {
     
     let tabBarViewController = CustomTabBarController.initializeFromStoryboard()
     fileprivate let loadingImageVC = LoadingImageViewController.initializeFromStoryboard()
-
-    
-    fileprivate var needsInitialLoading = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +31,14 @@ class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         core.add(subscriber: self)
+        core.fire(command: LoadFakeUser())
+        core.fire(command: LoadFakeGroups())
+        core.fire(command: LoadFakeStudents())
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        core.fire(command: SubscribeToReachability())
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -68,10 +73,6 @@ extension MainViewController {
             tabBarViewController.customTabBar.selectedIndex = 0
             addChildViewController(tabBarViewController)
             view.addSubview(tabBarViewController.view)
-        }
-        if needsInitialLoading {
-            needsInitialLoading = false
-           // core.fire(command: LoadLaunchData())
         }
     }
 

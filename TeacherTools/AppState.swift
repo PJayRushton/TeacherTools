@@ -26,6 +26,7 @@ struct AppState: State {
     var groups = [Group]()
     var groupsAreLoaded = false
     var selectedGroup: Group?
+    var currentStudents = [Student]()
     var allStudents = [Student]()
     var theme = defaultTheme
     
@@ -48,14 +49,24 @@ struct AppState: State {
             selectedGroup = event.payload[index]
         case let event as Selected<Group>:
             selectedGroup = event.item
+            if let group = event.item {
+                currentStudents = allStudents.filter { group.studentIds.contains($0.id) }.sorted { $0.displayedName < $1.displayedName }
+            } else {
+                currentStudents = [Student]()
+            }
             
             // STUDENTS
         case let event as Updated<[Student]>:
             allStudents = event.payload
+        case let event as SortStudents:
+            currentStudents.sort(by: event.sort)
+        case _ as ShuffleTeams:
+            currentStudents = currentStudents.shuffled()
             
             // APPEARANCE
         case let event as Selected<Theme>:
             theme = event.item!
+            
         default:
             break
         }
@@ -96,11 +107,18 @@ struct Updated<T>: Event {
 }
 
 // AUTH
+
 struct ICloudUserIdentified: Event {
     var icloudId: String?
 }
 
 // OTHER
+
+struct ShuffleTeams: Event { }
+
+struct SortStudents: Event {
+    var sort: (Student, Student) -> Bool
+}
 
 struct NameDisplayChanged: Event {
     var lastFirst: Bool

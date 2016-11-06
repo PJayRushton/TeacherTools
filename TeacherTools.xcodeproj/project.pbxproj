@@ -70,8 +70,15 @@
 		A147CFBF1DCAB81700C9860F /* LoadingImageViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A147CFBE1DCAB81700C9860F /* LoadingImageViewController.storyboard */; };
 		A161423C1DCD6E4E00C800A1 /* UpdateGroupLastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A161423B1DCD6E4E00C800A1 /* UpdateGroupLastView.swift */; };
 		A161423E1DCD71CD00C800A1 /* DeleteStudents.swift in Sources */ = {isa = PBXBuildFile; fileRef = A161423D1DCD71CD00C800A1 /* DeleteStudents.swift */; };
+		A16142401DCDF4F200C800A1 /* CreateGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A161423F1DCDF4F200C800A1 /* CreateGroup.swift */; };
+		A16142421DCDF50300C800A1 /* CreateStudent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16142411DCDF50300C800A1 /* CreateStudent.swift */; };
+		A16142441DCDFBD900C800A1 /* AddStudentToGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16142431DCDFBD900C800A1 /* AddStudentToGroup.swift */; };
+		A161426A1DCE4E8D00C800A1 /* SubscribeToReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16142691DCE4E8D00C800A1 /* SubscribeToReachability.swift */; };
+		A161426C1DCF43A100C800A1 /* RandomizerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A161426B1DCF43A100C800A1 /* RandomizerCollectionViewCell.swift */; };
+		A161426E1DCF7B1500C800A1 /* RandomizerDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A161426D1DCF7B1500C800A1 /* RandomizerDatasource.swift */; };
+		A1ADE47E1DCF82D6001434EF /* RandomizerHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1ADE47D1DCF82D6001434EF /* RandomizerHeaderView.swift */; };
+		A1ADE4801DCF8A16001434EF /* UpdateTeamSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1ADE47F1DCF8A16001434EF /* UpdateTeamSize.swift */; };
 		A1B1A2081DC8BD4300D80E53 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1A2071DC8BD4300D80E53 /* DateHelper.swift */; };
-		A1B1A20A1DC8C4E300D80E53 /* CreateObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1A2091DC8C4E300D80E53 /* CreateObject.swift */; };
 		A1CC0AB91DC7A14800C0575F /* DeleteObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CC0AB81DC7A14800C0575F /* DeleteObject.swift */; };
 		A1CC0ABB1DC7B7F700C0575F /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14160B81DC66F1200C4F5BB /* CloudKit.framework */; };
 		A1D1B4341DCC136D00AF5452 /* AddGroupTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D1B4331DCC136D00AF5452 /* AddGroupTableCell.swift */; };
@@ -168,8 +175,15 @@
 		A147CFBE1DCAB81700C9860F /* LoadingImageViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoadingImageViewController.storyboard; sourceTree = "<group>"; };
 		A161423B1DCD6E4E00C800A1 /* UpdateGroupLastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateGroupLastView.swift; sourceTree = "<group>"; };
 		A161423D1DCD71CD00C800A1 /* DeleteStudents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteStudents.swift; sourceTree = "<group>"; };
+		A161423F1DCDF4F200C800A1 /* CreateGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroup.swift; sourceTree = "<group>"; };
+		A16142411DCDF50300C800A1 /* CreateStudent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateStudent.swift; sourceTree = "<group>"; };
+		A16142431DCDFBD900C800A1 /* AddStudentToGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddStudentToGroup.swift; sourceTree = "<group>"; };
+		A16142691DCE4E8D00C800A1 /* SubscribeToReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscribeToReachability.swift; sourceTree = "<group>"; };
+		A161426B1DCF43A100C800A1 /* RandomizerCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomizerCollectionViewCell.swift; sourceTree = "<group>"; };
+		A161426D1DCF7B1500C800A1 /* RandomizerDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomizerDatasource.swift; sourceTree = "<group>"; };
+		A1ADE47D1DCF82D6001434EF /* RandomizerHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomizerHeaderView.swift; sourceTree = "<group>"; };
+		A1ADE47F1DCF8A16001434EF /* UpdateTeamSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateTeamSize.swift; sourceTree = "<group>"; };
 		A1B1A2071DC8BD4300D80E53 /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
-		A1B1A2091DC8C4E300D80E53 /* CreateObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateObject.swift; sourceTree = "<group>"; };
 		A1CC0AB81DC7A14800C0575F /* DeleteObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteObject.swift; sourceTree = "<group>"; };
 		A1CC0ABA1DC7B7F100C0575F /* TeacherTools.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TeacherTools.entitlements; sourceTree = "<group>"; };
 		A1D1B4331DCC136D00AF5452 /* AddGroupTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupTableCell.swift; sourceTree = "<group>"; };
@@ -337,6 +351,9 @@
 				A11EE9681DC7381F002C9228 /* StudentListViewController.swift */,
 				A11EE96C1DC73CBC002C9228 /* StudentTableViewCell.swift */,
 				A147CFAE1DCA410400C9860F /* StudentRandomizerViewController.swift */,
+				A1ADE47D1DCF82D6001434EF /* RandomizerHeaderView.swift */,
+				A161426D1DCF7B1500C800A1 /* RandomizerDatasource.swift */,
+				A161426B1DCF43A100C800A1 /* RandomizerCollectionViewCell.swift */,
 				A147CFB01DCA4FA000C9860F /* NameDrawViewController.swift */,
 				A1D67EFB1DC95A3F002F73D2 /* GroupSettingsViewController.swift */,
 				A1D1B4331DCC136D00AF5452 /* AddGroupTableCell.swift */,
@@ -364,12 +381,16 @@
 				A161423D1DCD71CD00C800A1 /* DeleteStudents.swift */,
 				A161423B1DCD6E4E00C800A1 /* UpdateGroupLastView.swift */,
 				A11EE9701DC79516002C9228 /* UpdateObject.swift */,
+				A1ADE47F1DCF8A16001434EF /* UpdateTeamSize.swift */,
+				A16142431DCDFBD900C800A1 /* AddStudentToGroup.swift */,
 				A1CC0AB81DC7A14800C0575F /* DeleteObject.swift */,
-				A1B1A2091DC8C4E300D80E53 /* CreateObject.swift */,
+				A161423F1DCDF4F200C800A1 /* CreateGroup.swift */,
+				A16142411DCDF50300C800A1 /* CreateStudent.swift */,
 				A14160FC1DC6904400C4F5BB /* SubscribeToAllTheThings.swift */,
 				A14160EA1DC67E7700C4F5BB /* SubscribeToUsers.swift */,
 				A14160F41DC6888200C4F5BB /* SubscribeToGroups.swift */,
 				A14160FA1DC68F9400C4F5BB /* SubscribeToStudents.swift */,
+				A16142691DCE4E8D00C800A1 /* SubscribeToReachability.swift */,
 			);
 			name = Commands;
 			sourceTree = "<group>";
@@ -516,10 +537,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A161426E1DCF7B1500C800A1 /* RandomizerDatasource.swift in Sources */,
 				A161423C1DCD6E4E00C800A1 /* UpdateGroupLastView.swift in Sources */,
 				A14160EF1DC6833200C4F5BB /* Group.swift in Sources */,
 				A14160B41DC66E0300C4F5BB /* User.swift in Sources */,
 				A14160DC1DC6758700C4F5BB /* UnmarshalUpdating.swift in Sources */,
+				A16142441DCDFBD900C800A1 /* AddStudentToGroup.swift in Sources */,
 				A14160D91DC6758700C4F5BB /* Operators.swift in Sources */,
 				A147CFA91DCA336D00C9860F /* CustomTabBar.swift in Sources */,
 				A14160DB1DC6758700C4F5BB /* UnmarshalingWithContext.swift in Sources */,
@@ -530,10 +553,12 @@
 				A147CFB11DCA4FA000C9860F /* NameDrawViewController.swift in Sources */,
 				A147CFAA1DCA336D00C9860F /* CustomTabBarProtocols.swift in Sources */,
 				A14160B21DC66DF300C4F5BB /* UpdateUser.swift in Sources */,
+				A161426C1DCF43A100C800A1 /* RandomizerCollectionViewCell.swift in Sources */,
 				A14160D51DC6758700C4F5BB /* KeyType.swift in Sources */,
 				A14160E61DC67AA900C4F5BB /* FirebaseNetworkAccess.swift in Sources */,
 				A14160DD1DC6758700C4F5BB /* ValueType.swift in Sources */,
 				A14160F31DC686FF00C4F5BB /* Arrays.swift in Sources */,
+				A161426A1DCE4E8D00C800A1 /* SubscribeToReachability.swift in Sources */,
 				A147CFA11DCA328100C9860F /* CustomTabBarController.swift in Sources */,
 				A1B1A2081DC8BD4300D80E53 /* DateHelper.swift in Sources */,
 				A14160FB1DC68F9400C4F5BB /* SubscribeToStudents.swift in Sources */,
@@ -544,6 +569,7 @@
 				A14160FD1DC6904400C4F5BB /* SubscribeToAllTheThings.swift in Sources */,
 				A14160EB1DC67E7700C4F5BB /* SubscribeToUsers.swift in Sources */,
 				A14160871DC669F100C4F5BB /* GroupListViewController.swift in Sources */,
+				A1ADE4801DCF8A16001434EF /* UpdateTeamSize.swift in Sources */,
 				A147CFBB1DCAB7C500C9860F /* MainViewController.swift in Sources */,
 				A14160E81DC67E1700C4F5BB /* DeleteUsers.swift in Sources */,
 				A14160D81DC6758700C4F5BB /* Marshaling.swift in Sources */,
@@ -553,15 +579,17 @@
 				A14160D41DC6758700C4F5BB /* JSON.swift in Sources */,
 				A14160AE1DC66DC900C4F5BB /* UserMiddleware.swift in Sources */,
 				A161423E1DCD71CD00C800A1 /* DeleteStudents.swift in Sources */,
+				A16142401DCDF4F200C800A1 /* CreateGroup.swift in Sources */,
+				A1ADE47E1DCF82D6001434EF /* RandomizerHeaderView.swift in Sources */,
 				A14160851DC669F100C4F5BB /* AppDelegate.swift in Sources */,
 				A11EE96D1DC73CBC002C9228 /* StudentTableViewCell.swift in Sources */,
 				A14160ED1DC6806200C4F5BB /* ErrorHUDMiddleware.swift in Sources */,
 				A14160D71DC6758700C4F5BB /* MarshaledObject.swift in Sources */,
 				A141609A1DC66BBC00C4F5BB /* AppState.swift in Sources */,
+				A16142421DCDF50300C800A1 /* CreateStudent.swift in Sources */,
 				A11EE9611DC6F19E002C9228 /* TestHelper.swift in Sources */,
 				A11EE9711DC79516002C9228 /* UpdateObject.swift in Sources */,
 				A1D1B4341DCC136D00AF5452 /* AddGroupTableCell.swift in Sources */,
-				A1B1A20A1DC8C4E300D80E53 /* CreateObject.swift in Sources */,
 				A141609C1DC66BEC00C4F5BB /* Reactor.swift in Sources */,
 				A147CFBD1DCAB80600C9860F /* LoadingImageViewController.swift in Sources */,
 				A147CFAF1DCA410400C9860F /* StudentRandomizerViewController.swift in Sources */,

@@ -22,13 +22,11 @@ struct UserMiddleware: Middleware {
     func process(event: Event, state: AppState) {
         switch event {
         case let event as Updated<[User]>:
-            print("USERS UPDATED (\(event.payload.count))")
             EntityDatabase.shared.users = event.payload
             if state.currentUser == nil {
                 App.core.fire(command: GetICloudUser())
             }
         case let event as ICloudUserIdentified:
-            print("iCLOUD ID IDENTIFIED: \(event.icloudId)")
             guard EntityDatabase.shared.users.isEmpty == false else {
                 App.core.fire(command: SubscribeToUsers())
                 return

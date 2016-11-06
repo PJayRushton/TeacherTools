@@ -13,7 +13,8 @@ struct DeleteStudents: Command {
     var group: Group
     
     func execute(state: AppState, core: Core<AppState>) {
-        for student in group.students {
+        let studentsToDelete = state.allStudents.filter { group.studentIds.contains($0.id) }
+        for student in studentsToDelete {
             networkAccess.deleteObject(at: student.ref, completion: nil)
         }
     }

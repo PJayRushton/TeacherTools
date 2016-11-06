@@ -12,7 +12,6 @@ class StudentListViewController: UIViewController, AutoStoryboardInitializable {
 
     @IBOutlet weak var navBarButton: NavBarButton!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var addBarButton: UIBarButtonItem!
     @IBOutlet weak var newEntryView: UIView!
     @IBOutlet weak var newStudentTextField: UITextField!
 
@@ -23,6 +22,7 @@ class StudentListViewController: UIViewController, AutoStoryboardInitializable {
     fileprivate var plusBarButton = UIBarButtonItem()
     fileprivate var saveBarButton = UIBarButtonItem()
     fileprivate var cancelBarButton = UIBarButtonItem()
+    
     var isAdding = false {
         didSet {
             toggleEntryView(hidden: !isAdding)
@@ -32,6 +32,7 @@ class StudentListViewController: UIViewController, AutoStoryboardInitializable {
     override func viewDidLoad() {
         super.viewDidLoad()
         newEntryView.isHidden = true
+        setUp()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,14 +43,11 @@ class StudentListViewController: UIViewController, AutoStoryboardInitializable {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         core.remove(subscriber: self)
-    }
-    
-    @IBAction func plusButtonPressed(_ sender: UIBarButtonItem) {
-        isAdding = true
+        NotificationCenter.default.removeObserver(self)
     }
     
     @IBAction func newStudentTextFieldChanged(_ sender: UITextField) {
-        navigationItem.rightBarButtonItem = sender.text!.isEmpty ? cancelBarButton : saveBarButton
+        updateRightBarButton()
     }
     
 }
@@ -63,8 +61,13 @@ extension StudentListViewController: Subscriber {
         if let group = state.selectedGroup {
             self.group = group
             navBarButton.mainTitle = group.name
-            navBarButton.subTitle = "\(group.students.count) students"
-        } 
+            navBarButton.subTitle = "\(group.studentIds.count) students"
+            students = state.currentStudents
+            newStudentTextField.text = ""
+            
+        }
+        updateUI(with: state.theme)
+        tableView.reloadData()
     }
     
 }
@@ -72,12 +75,33 @@ extension StudentListViewController: Subscriber {
 extension StudentListViewController {
     
     func setUp() {
-        newEntryView.isHidden = true
-        tableView.rowHeight = 80.0
-        plusBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(plusButtonPressed(_:)))
+        plusBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(startEditing))
         saveBarButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveNewStudent))
         cancelBarButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(saveNewStudent))
-        navigationItem.rightBarButtonItem = plusBarButton
+        navigationItem.setRightBarButton(plusBarButton, animated: true)
+        newEntryView.isHidden = true
+        
+        let nib = UINib(nibName: String(describing: StudentTableViewCell.self), bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: StudentTableViewCell.reuseIdentifier)
+        tableView.rowHeight = 50.0
+        resetAllCells()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardDidShow), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardDidHide), name: NSNotification.Name.UIKeyboardDidHide, object: nil)
+    }
+    
+    func handleKeyboardDidShow(notification: NSNotification) {
+        var keyboardHeight: CGFloat = 216
+        
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            keyboardHeight = keyboardSize.height
+        }
+        let insets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight, right: 0)
+        tableView.contentInset = insets
+    }
+    
+    func handleKeyboardDidHide() {
+        tableView.contentInset = UIEdgeInsets.zero
     }
     
     func toggleEntryView(hidden: Bool) {
@@ -92,24 +116,41 @@ extension StudentListViewController {
             }
         }) { _ in
             self.newStudentTextField.text = ""
+            self.updateRightBarButton()
         }
     }
     
     func saveNewStudent() {
-        if let newGroupName = newStudentTextField.text, newGroupName.isEmpty == false {
-            let newGroup = Group(name: newGroupName)
-            core.fire(command: CreateObject(object: newGroup))
+        if let newStudentName = newStudentTextField.text, newStudentName.isEmpty == false {
+            guard let currentUser = core.state.currentUser else { return }
+            let id = FirebaseNetworkAccess.sharedInstance.studentsRef(userId: currentUser.id).childByAutoId()
+            let newStudent = Student(id: id.key, firstName: newStudentName)
+            core.fire(command: CreateStudent(student: newStudent))
+        } else {
+            isAdding = false
         }
-        isAdding = false
     }
     
     func updateUI(with theme: Theme) {
         plusBarButton.tintColor = theme.tintColor
         saveBarButton.tintColor = theme.tintColor
         cancelBarButton.tintColor = theme.tintColor
+        updateRightBarButton()
+    }
+    
+    func startEditing() {
+        isAdding = true
+    }
+    
+    func resetAllCells() {
+        guard let visibleStudentCells = tableView.visibleCells as? [StudentTableViewCell] else { return }
+        for cell in visibleStudentCells {
+            cell.isEditing = false
+        }
     }
     
 }
+
 
 extension StudentListViewController: UITableViewDataSource, UITableViewDelegate {
 
@@ -123,6 +164,41 @@ extension StudentListViewController: UITableViewDataSource, UITableViewDelegate 
         cell.delegate = self
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        resetAllCells()
+        guard let cell = tableView.cellForRow(at: indexPath) as? StudentTableViewCell else { return }
+        cell.isEditing = !cell.isEditing
+    }
+    
+}
+
+extension StudentListViewController: UITextFieldDelegate {
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        updateRightBarButton()
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        updateRightBarButton()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        saveNewStudent()
+        return true
+    }
+    
+    func updateRightBarButton() {
+        if isAdding {
+            if let name = newStudentTextField.text, name.isEmpty == false {
+                navigationItem.setRightBarButton(saveBarButton, animated: false)
+            } else {
+                navigationItem.setRightBarButton(cancelBarButton, animated: false)
+            }
+        } else {
+            navigationItem.setRightBarButton(plusBarButton, animated: false)
+        }
     }
     
 }

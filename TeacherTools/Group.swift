@@ -15,17 +15,14 @@ struct Group: Identifiable {
     var name: String
     var creationDate: Date
     var lastViewDate: Date
+    var teamSize = 2
     var studentIds: [String]
-    
-    var students: [Student] {
-        return App.core.state.allStudents.filter { studentIds.contains($0.id) }
-    }
     
     var ref: FIRDatabaseReference {
         return FirebaseNetworkAccess.sharedInstance.groupsRef(userId: App.core.state.currentUser!.id).child(id)
     }
     
-    init(id: String = "", name: String, creationDate: Date = Date(), lastViewDate: Date = Date(), studentIds: [String] = [String]()) {
+    init(id: String = "", name: String, creationDate: Date = Date(), lastViewDate: Date = Date(), groupSize: Int = 2, studentIds: [String] = [String]()) {
         self.id = id.isEmpty ? FirebaseNetworkAccess.sharedInstance.groupsRef(userId: App.core.state.currentUser!.id).childByAutoId().key : id
         self.name = name
         self.creationDate = creationDate
@@ -42,6 +39,9 @@ extension Group: Unmarshaling, Marshaling {
         name = try object.value(for: "name")
         creationDate = try object.value(for: "creationDate")
         lastViewDate = try object.value(for: "lastViewDate")
+        let size: Int? = try? object.value(for: "teamSize")
+        teamSize = size ?? 2
+
         let studentsDict: JSONObject? = try? object.value(for: "studentIds")
         if let studentsDict = studentsDict {
             studentIds = Array(studentsDict.keys)
@@ -55,7 +55,8 @@ extension Group: Unmarshaling, Marshaling {
         json["name"] = name
         json["creationDate"] = creationDate.iso8601String
         json["lastViewDate"] = lastViewDate.iso8601String
-        json["studentIds"] = students.marshaled()
+        json["studentIds"] = studentIds.marshaled()
+        json["teamSize"] = teamSize
         
         return json
     }

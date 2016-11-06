@@ -18,7 +18,8 @@ struct SubscribeToStudents: Command {
                 let studentIds = Array(json.keys)
                 var students = [Student]()
                 for studentId in studentIds {
-                    let newStudentObject: JSONObject = try json.value(for: studentId)
+                    var newStudentObject: JSONObject = try json.value(for: studentId)
+                    newStudentObject["id"] = studentId
                     students.append(try Student(object: newStudentObject))
                 }
                 return students
