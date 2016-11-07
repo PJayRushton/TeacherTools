@@ -19,6 +19,20 @@ extension Collection where Iterator.Element: Identifiable {
     }
     
 }
+extension Array {
+    
+    func step(from: Index, to:Index, interval: Int = 1) -> Array<Element> {
+        let strde = stride(from: from, to: to, by: interval)
+        var arr = Array<Element>()
+        for i in strde {
+            arr.append(self[i])
+        }
+        return arr
+    }
+}
+
+let array = [1,2,3,4,5,6]
+let steps = array.step(from: array.startIndex, to:array.endIndex, interval: 2)
 
 extension MutableCollection where Indices.Iterator.Element == Index {
     

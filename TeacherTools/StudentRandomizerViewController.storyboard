@@ -44,11 +44,11 @@
                                                 <rect key="frame" x="0.0" y="28" width="150" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aBS-5R-skR" id="tHg-U9-D2W">
-                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="43"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3NZ-PL-VdF">
-                                                            <rect key="frame" x="15" y="0.0" width="120" height="43"/>
+                                                            <rect key="frame" x="15" y="0.0" width="120" height="43.5"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="30"/>
                                                             <nil key="textColor"/>
@@ -99,15 +99,15 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bg0-Aj-3B9">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ufu-iw-LUJ">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="4" minimumInteritemSpacing="4" id="ufu-iw-LUJ">
                                     <size key="itemSize" width="126" height="50"/>
                                     <size key="headerReferenceSize" width="50" height="50"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RandomizerCollectionViewCell" id="xwX-04-uJC" customClass="RandomizerCollectionViewCell" customModule="TeacherTools" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="126" height="50"/>
+                                        <rect key="frame" x="16" y="50" width="126" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="126" height="50"/>
@@ -145,26 +145,9 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RandomizerHeaderView" id="sOO-uS-sbE" customClass="RandomizerHeaderView" customModule="TeacherTools" customModuleProvider="target">
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="aUp-aN-oGs" customClass="RandomizerHeaderView" customModule="TeacherTools" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4P9-ek-yKw">
-                                            <rect key="frame" x="8" y="8" width="359" height="34"/>
-                                            <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="4P9-ek-yKw" secondAttribute="bottom" id="1CY-7z-8pT"/>
-                                        <constraint firstItem="4P9-ek-yKw" firstAttribute="leading" secondItem="sOO-uS-sbE" secondAttribute="leadingMargin" id="Tc3-fZ-wYc"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="4P9-ek-yKw" secondAttribute="trailing" id="bf1-fP-H8y"/>
-                                        <constraint firstItem="4P9-ek-yKw" firstAttribute="top" secondItem="sOO-uS-sbE" secondAttribute="topMargin" id="q0u-eT-My4"/>
-                                    </constraints>
-                                    <connections>
-                                        <outlet property="textLabel" destination="4P9-ek-yKw" id="uYb-Uk-w6c"/>
-                                    </connections>
+                                    <autoresizingMask key="autoresizingMask"/>
                                 </collectionReusableView>
                                 <connections>
                                     <outlet property="delegate" destination="P5o-AB-U7E" id="dDd-In-9RZ"/>

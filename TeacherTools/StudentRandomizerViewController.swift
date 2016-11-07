@@ -17,6 +17,7 @@ class StudentRandomizerViewController: UIViewController, AutoStoryboardInitializ
     var core = App.core
     var layout = UICollectionViewFlowLayout()
     let dataSource = RandomizerDataSource()
+    let margin: CGFloat = 16.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,10 +44,10 @@ class StudentRandomizerViewController: UIViewController, AutoStoryboardInitializ
 extension StudentRandomizerViewController: Subscriber {
     
     func update(with state: AppState) {
-        collectionView.reloadData()
         title = state.selectedGroup?.name
         guard let selectedGroup = state.selectedGroup else { return }
         sizeBarButton.title = "\(selectedGroup.teamSize)"
+        updateCollectionView(group: selectedGroup)
     }
     
 }
@@ -55,16 +56,21 @@ extension StudentRandomizerViewController: Subscriber {
 extension StudentRandomizerViewController {
     
     func setUp() {
-        var teamSize: CGFloat = 2.0
-        if let selectedGroup = core.state.selectedGroup {
-            teamSize = CGFloat(selectedGroup.teamSize)
-            collectionView.dataSource = dataSource
-            collectionView.register(RandomizerHeaderView.self, forSupplementaryViewOfKind: "header", withReuseIdentifier: RandomizerHeaderView.reuseIdentifier)
-            let margin: CGFloat = 16.0
-            let screenWidthMinusMargin: CGFloat = view.bounds.size.width - (margin * teamSize) / teamSize
-            layout.itemSize = CGSize(width: screenWidthMinusMargin, height: screenWidthMinusMargin)
-            collectionView.collectionViewLayout = layout
-        }
+        collectionView.dataSource = dataSource
+        collectionView.contentInset = UIEdgeInsets(top: margin, left: margin, bottom: 0, right: margin)
+        collectionView.collectionViewLayout = layout
+    }
+    
+    func updateCollectionView(group: Group) {
+        let teamSize = CGFloat(group.teamSize)
+        let rows = min(teamSize, 4)
+        print("rows: \(rows)")
+        let screenWidthMinusMargin: CGFloat = collectionView.bounds.size.width - (margin * rows)
+        print("screenWidth: \(view.bounds.width)")
+        print("CV Width: \(collectionView.bounds.width)")
+        layout.itemSize = CGSize(width: screenWidthMinusMargin / rows, height: 44)
+        print("Cell width: \(screenWidthMinusMargin / rows)")
+        collectionView.reloadData()
     }
     
 }

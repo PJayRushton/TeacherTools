@@ -22,12 +22,13 @@ struct Group: Identifiable {
         return FirebaseNetworkAccess.sharedInstance.groupsRef(userId: App.core.state.currentUser!.id).child(id)
     }
     
-    init(id: String = "", name: String, creationDate: Date = Date(), lastViewDate: Date = Date(), groupSize: Int = 2, studentIds: [String] = [String]()) {
+    init(id: String = "", name: String, creationDate: Date = Date(), lastViewDate: Date = Date(), groupSize: Int = 2, studentIds: [String] = [String](), teamSize: Int = 2) {
         self.id = id.isEmpty ? FirebaseNetworkAccess.sharedInstance.groupsRef(userId: App.core.state.currentUser!.id).childByAutoId().key : id
         self.name = name
         self.creationDate = creationDate
         self.lastViewDate = lastViewDate
         self.studentIds = studentIds
+        self.teamSize = teamSize
     }
     
 }

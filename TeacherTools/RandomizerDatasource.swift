@@ -44,15 +44,8 @@ class RandomizerDataSource: NSObject, UICollectionViewDataSource {
     
     func students(inSection section: Int) -> [Student] {
         let lowBound = section * teamSize(forSection: section)
-        let range = CountableRange(uncheckedBounds: (lowBound, lowBound + teamSize(forSection: section) - 1))
-        return students.filter { range.contains(students.index(of: $0)!) }
-//        var students = [Student]()
-//        for (index, student) in students.enumerated() {
-//            if range.contains(index) {
-//                students.append(student)
-//            }
-//        }
-//        return students
+        let highBound = lowBound + teamSize(forSection: section)
+        return students.step(from: lowBound, to: highBound)
     }
     
     func student(at indexPath: IndexPath) -> Student {
@@ -64,15 +57,17 @@ class RandomizerDataSource: NSObject, UICollectionViewDataSource {
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return students.count / teamSize
+        print("**Number of sections: \(numberOfTeams)")
+        return numberOfTeams
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print("---\(students(inSection: section).count) in section \(section)")
         return students(inSection: section).count
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: headerKey, withReuseIdentifier: RandomizerHeaderView.reuseIdentifier, for: indexPath) as! RandomizerHeaderView
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: RandomizerHeaderView.reuseIdentifier, for: indexPath) as! RandomizerHeaderView
         header.update(with: title(forSection: indexPath.section), theme: core.state.theme)
         
         return header

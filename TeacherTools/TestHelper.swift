@@ -51,7 +51,7 @@ struct LoadFakeUser: Command {
 struct LoadFakeGroups: Command {
 
     let group1 = Group(id: group1Id, name: "SCIENCE!", studentIds: evenStudents.map { $0.id })
-    let group2 = Group(id: group2Id, name: "Labs", studentIds: allStudents.map { $0.id })
+    let group2 = Group(id: group2Id, name: "Labs", studentIds: allStudents.map { $0.id }, teamSize: 3)  
 
     func execute(state: AppState, core: Core<AppState>) {
         core.fire(event: Updated<[Group]>([group1, group2]))
