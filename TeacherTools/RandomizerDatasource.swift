@@ -27,13 +27,36 @@ class RandomizerDataSource: NSObject, UICollectionViewDataSource {
         super.init()
         core.add(subscriber: self)
     }
+
+    var numberOfTeams: Int {
+        return students.count / teamSize
+    }
+    
+    func teamSize(forSection section: Int) -> Int {
+        let remainder = students.count % teamSize
+        if remainder != 0 && section == numberOfTeams {
+            return teamSize + remainder
+        }
+        
+        return teamSize
+    }
+
     
     func students(inSection section: Int) -> [Student] {
-        return [Student]()
+        let lowBound = section * teamSize(forSection: section)
+        let range = CountableRange(uncheckedBounds: (lowBound, lowBound + teamSize(forSection: section) - 1))
+        return students.filter { range.contains(students.index(of: $0)!) }
+//        var students = [Student]()
+//        for (index, student) in students.enumerated() {
+//            if range.contains(index) {
+//                students.append(student)
+//            }
+//        }
+//        return students
     }
     
     func student(at indexPath: IndexPath) -> Student {
-        return Student(id: "ABC", firstName: "!@#")
+        return students(inSection: indexPath.section)[indexPath.row]
     }
     
     func title(forSection section: Int) -> String {
