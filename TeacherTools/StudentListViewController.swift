@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SJFluidSegmentedControl
+import BetterSegmentedControl
 
 class StudentListViewController: UIViewController, AutoStoryboardInitializable {
     
@@ -15,7 +15,7 @@ class StudentListViewController: UIViewController, AutoStoryboardInitializable {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var newEntryView: UIView!
     @IBOutlet weak var newStudentTextField: UITextField!
-    @IBOutlet weak var segmentedControl: SJFluidSegmentedControl!
+    @IBOutlet weak var segmentedControl: BetterSegmentedControl!
 
     var core = App.core
     var group: Group?
@@ -32,6 +32,7 @@ class StudentListViewController: UIViewController, AutoStoryboardInitializable {
     var currentSortType: SortType = App.core.state.theme.lastFirst ? .last : .first {
         didSet {
             students = currentSortType.sort(students)
+            isAdding = false
         }
     }
     var isAdding = false {
@@ -61,6 +62,11 @@ class StudentListViewController: UIViewController, AutoStoryboardInitializable {
         updateRightBarButton()
     }
     
+    @IBAction func segmentedControlValueChanged(_ sender: BetterSegmentedControl) {
+        guard let selectedSortType = SortType(rawValue: Int(sender.index)) else { return }
+        currentSortType = selectedSortType
+    }
+    
 }
 
 
@@ -80,6 +86,9 @@ extension StudentListViewController: Subscriber {
     }
     
 }
+
+
+// MARK: - FilePrivate
 
 extension StudentListViewController {
     
@@ -159,6 +168,7 @@ extension StudentListViewController {
         saveBarButton.tintColor = theme.tintColor
         cancelBarButton.tintColor = theme.tintColor
         updateRightBarButton()
+        updateSegmentedControl(theme: theme)
     }
     
     func startEditing() {
@@ -174,6 +184,8 @@ extension StudentListViewController {
     
 }
 
+
+// MARK: - TableView
 
 extension StudentListViewController: UITableViewDataSource, UITableViewDelegate {
 
@@ -207,6 +219,9 @@ extension StudentListViewController: UITableViewDataSource, UITableViewDelegate 
     }
 }
 
+
+// MARK: - TextField Delegate
+
 extension StudentListViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -236,7 +251,10 @@ extension StudentListViewController: UITextFieldDelegate {
     
 }
 
-extension StudentListViewController: SJFluidSegmentedControlDataSource, SJFluidSegmentedControlDelegate {
+
+// MARK: - SegmentedControl
+
+extension StudentListViewController {
  
     enum SortType: Int {
         case first
@@ -273,18 +291,14 @@ extension StudentListViewController: SJFluidSegmentedControlDataSource, SJFluidS
         static let allValues = [SortType.first, .last, .random]
     }
     
-    func numberOfSegmentsInSegmentedControl(_ segmentedControl: SJFluidSegmentedControl) -> Int {
-        return SortType.allValues.count
-    }
-    
-    func segmentedControl(_ segmentedControl: SJFluidSegmentedControl, titleForSegmentAtIndex index: Int) -> String? {
-        return SortType(rawValue: index)!.buttonTitle
-    }
-    
-    func segmentedControl(_ segmentedControl: SJFluidSegmentedControl, didChangeFromSegmentAtIndex fromIndex: Int, toSegmentAtIndex toIndex: Int) {
-        let newType = SortType(rawValue: toIndex)!
-        currentSortType = newType
-        guard newType != .random else { return }
+    func updateSegmentedControl(theme: Theme) {
+        segmentedControl.titles = SortType.allValues.map { $0.buttonTitle }
+        segmentedControl.backgroundColor = theme.mainColor
+        segmentedControl.titleColor = theme.textColor
+        segmentedControl.titleFont = theme.fontType.font(withSize: 16)
+        segmentedControl.selectedTitleFont = theme.fontType.font(withSize: 18)
+        segmentedControl.indicatorViewBackgroundColor = theme.tintColor
+        segmentedControl.cornerRadius = 5
     }
     
 }

@@ -7,13 +7,14 @@
 //
 
 import UIKit
-import SJFluidSegmentedControl
+import BetterSegmentedControl
 
 class GroupSettingsViewController: UIViewController, AutoStoryboardInitializable {
 
     @IBOutlet weak var groupNameTextField: UITextField!
     @IBOutlet weak var saveButton: UIButton!
-    @IBOutlet weak var fluidSegmentedControl: SJFluidSegmentedControl!
+    @IBOutlet weak var displayNamesLabel: UILabel!
+    @IBOutlet weak var segmentedControl: BetterSegmentedControl!
     
     var core = App.core
     var group : Group? {
@@ -23,8 +24,6 @@ class GroupSettingsViewController: UIViewController, AutoStoryboardInitializable
     override func viewDidLoad() {
         super.viewDidLoad()
         saveButton.isHidden = true
-        fluidSegmentedControl.shapeStyle = .liquid
-        fluidSegmentedControl.cornerRadius = 5
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -72,6 +71,10 @@ class GroupSettingsViewController: UIViewController, AutoStoryboardInitializable
             core.fire(event: ErrorEvent(error: nil, message: "Unable to delete class"))
         }
     }
+
+    @IBAction func segmentedControlValueChanged(_ sender: BetterSegmentedControl) {
+        core.fire(event: NameDisplayChanged(lastFirst: Int(sender.index) == NameDisplayType.lastFirst.rawValue))
+    }
     
 }
 
@@ -80,11 +83,7 @@ extension GroupSettingsViewController: Subscriber {
     func update(with state: AppState) {
         groupNameTextField.text = state.selectedGroup?.name
         updateSaveButton()
-        fluidSegmentedControl.textFont = state.theme.fontType.font(withSize: 18)
-        fluidSegmentedControl.textColor = .white
-        fluidSegmentedControl.selectedSegmentTextColor = state.theme.tintColor
-        fluidSegmentedControl.selectorViewColor = state.theme.tintColor
-        fluidSegmentedControl.currentSegment = state.theme.lastFirst ? NameDisplayType.lastFirst.rawValue : NameDisplayType.firstLast.rawValue
+        updateUI(with: state.theme)
     }
     
 }
@@ -126,6 +125,12 @@ extension GroupSettingsViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    func updateUI(with theme: Theme) {
+        groupNameTextField.font = theme.fontType.font(withSize: 17)
+        saveButton.titleLabel?.font = theme.fontType.font(withSize: 15)
+        saveButton.titleLabel?.textColor = theme.tintColor
+        updateSegmentedControl(theme: theme)
+    }
 }
 
 extension GroupSettingsViewController: UITextFieldDelegate {
@@ -145,7 +150,10 @@ extension GroupSettingsViewController: UITextFieldDelegate {
     
 }
 
-extension GroupSettingsViewController: SJFluidSegmentedControlDelegate, SJFluidSegmentedControlDataSource {
+
+// MARK: - SegmentedControl
+
+extension GroupSettingsViewController {
     
     enum NameDisplayType: Int {
         case firstLast
@@ -163,16 +171,14 @@ extension GroupSettingsViewController: SJFluidSegmentedControlDelegate, SJFluidS
         static let allValues = [NameDisplayType.firstLast, .lastFirst]
     }
     
-    func numberOfSegmentsInSegmentedControl(_ segmentedControl: SJFluidSegmentedControl) -> Int {
-        return NameDisplayType.allValues.count
-    }
-    
-    func segmentedControl(_ segmentedControl: SJFluidSegmentedControl, titleForSegmentAtIndex index: Int) -> String? {
-        return NameDisplayType.allValues[index].displayString
-    }
-    
-    func segmentedControl(_ segmentedControl: SJFluidSegmentedControl, didChangeFromSegmentAtIndex fromIndex: Int, toSegmentAtIndex toIndex: Int) {
-        core.fire(event: NameDisplayChanged(lastFirst: toIndex == NameDisplayType.lastFirst.rawValue))
+    func updateSegmentedControl(theme: Theme) {
+        segmentedControl.titles = NameDisplayType.allValues.map { $0.displayString }
+        segmentedControl.backgroundColor = theme.mainColor
+        segmentedControl.titleColor = theme.textColor
+        segmentedControl.titleFont = theme.fontType.font(withSize: 16)
+        segmentedControl.selectedTitleFont = theme.fontType.font(withSize: 18)
+        segmentedControl.indicatorViewBackgroundColor = theme.tintColor
+        segmentedControl.cornerRadius = 5
     }
     
 }

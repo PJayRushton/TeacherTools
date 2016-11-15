@@ -42,8 +42,8 @@ extension TeamSizeViewController: Subscriber {
         guard let selectedGroup = state.selectedGroup else { return }
         currentSize = selectedGroup.teamSize
         maxSize = selectedGroup.studentIds.count / 2
-        preferredContentSize = CGSize(width: 200, height: tableView.contentSize.height)
         tableView.reloadData()
+        preferredContentSize = CGSize(width: 200, height: tableView.contentSize.height + 44)
     }
 
 }

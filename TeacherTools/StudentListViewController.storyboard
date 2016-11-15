@@ -18,7 +18,7 @@
             </objects>
             <point key="canvasLocation" x="743" y="56"/>
         </scene>
-        <!--Data Source-->
+        <!--Students-->
         <scene sceneID="Tkx-5h-O8C">
             <objects>
                 <viewController storyboardIdentifier="StudentListViewController" title="Students" id="EzV-k8-Tpm" customClass="StudentListViewController" customModule="TeacherTools" customModuleProvider="target" sceneMemberID="viewController">
@@ -64,28 +64,14 @@
                                         <rect key="frame" x="0.0" y="46" width="375" height="513"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <view key="tableHeaderView" contentMode="scaleToFill" id="Kz8-Tg-hke" userLabel="Header">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a8b-RM-7dH" customClass="SJFluidSegmentedControl" customModule="SJFluidSegmentedControl">
-                                                    <rect key="frame" x="8" y="8" width="359" height="28"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a8b-RM-7dH" customClass="BetterSegmentedControl" customModule="BetterSegmentedControl">
+                                                    <rect key="frame" x="8" y="8" width="359" height="34"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="textColor">
-                                                            <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="selectedSegmentTextColor">
-                                                            <color key="value" red="0.94901961089999998" green="0.94901961089999998" blue="0.94901961089999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="selectorViewColor">
-                                                            <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="applyCornerRadiusToSelectorView" value="NO"/>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="shadowsEnabled" value="NO"/>
-                                                    </userDefinedRuntimeAttributes>
                                                     <connections>
-                                                        <outlet property="dataSource" destination="EzV-k8-Tpm" id="QPq-91-pj0"/>
-                                                        <outlet property="delegate" destination="EzV-k8-Tpm" id="fpP-Ui-ZhN"/>
+                                                        <action selector="segmentedControlValueChanged:" destination="EzV-k8-Tpm" eventType="valueChanged" id="pHY-zG-8Mp"/>
                                                     </connections>
                                                 </view>
                                             </subviews>
@@ -97,13 +83,13 @@
                                             </constraints>
                                         </view>
                                         <view key="tableFooterView" contentMode="scaleToFill" id="mQQ-p6-14x">
-                                            <rect key="frame" x="0.0" y="116" width="375" height="3"/>
+                                            <rect key="frame" x="0.0" y="122" width="375" height="3"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="cnF-bk-Otv">
-                                                <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                                <rect key="frame" x="0.0" y="78" width="375" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cnF-bk-Otv" id="y20-Lx-9o8">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>

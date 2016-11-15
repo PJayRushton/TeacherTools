@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Data Source-->
+        <!--Manage Class-->
         <scene sceneID="QaB-An-Emc">
             <objects>
                 <viewController storyboardIdentifier="GroupSettingsViewController" title="Manage Class" id="5kz-w2-sp5" customClass="GroupSettingsViewController" customModule="TeacherTools" customModuleProvider="target" sceneMemberID="viewController">
@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="Hwe-yj-6GU">
-                                <rect key="frame" x="16" y="36" width="343" height="99"/>
+                                <rect key="frame" x="16" y="36" width="343" height="144.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="JVf-MF-rc7">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="31"/>
@@ -48,21 +48,20 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="47V-fT-jil" customClass="SJFluidSegmentedControl" customModule="SJFluidSegmentedControl">
-                                        <rect key="frame" x="0.0" y="55" width="343" height="44"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Display student names:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SAc-RD-tCr">
+                                        <rect key="frame" x="0.0" y="55" width="343" height="21.5"/>
+                                        <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="47V-fT-jil" customClass="BetterSegmentedControl" customModule="BetterSegmentedControl">
+                                        <rect key="frame" x="0.0" y="100.5" width="343" height="44"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="DWT-Lf-5uy"/>
                                         </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="22"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="applyCornerRadiusToSelectorView" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <outlet property="dataSource" destination="5kz-w2-sp5" id="4jh-fc-bH5"/>
-                                            <outlet property="delegate" destination="5kz-w2-sp5" id="OBe-8T-bFt"/>
+                                            <action selector="segmentedControlValueChanged:" destination="5kz-w2-sp5" eventType="valueChanged" id="2p2-bP-q1q"/>
                                         </connections>
                                     </view>
                                 </subviews>
@@ -98,9 +97,10 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <connections>
-                        <outlet property="fluidSegmentedControl" destination="47V-fT-jil" id="czk-B7-lAT"/>
+                        <outlet property="displayNamesLabel" destination="SAc-RD-tCr" id="IoT-wf-ouD"/>
                         <outlet property="groupNameTextField" destination="Msm-gd-Iei" id="jcj-9Z-95b"/>
                         <outlet property="saveButton" destination="rvY-mV-IlG" id="GST-lv-jfC"/>
+                        <outlet property="segmentedControl" destination="47V-fT-jil" id="w05-Lw-goz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0m4-LG-DAh" userLabel="First Responder" sceneMemberID="firstResponder"/>

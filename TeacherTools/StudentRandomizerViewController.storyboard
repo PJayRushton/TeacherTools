@@ -19,36 +19,31 @@
                         <viewControllerLayoutGuide type="bottom" id="Rvi-7k-YX1"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="KKi-zu-rgP">
-                        <rect key="frame" x="0.0" y="0.0" width="150" height="400"/>
+                        <rect key="frame" x="0.0" y="0.0" width="150" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="cqN-yu-haG">
-                                <rect key="frame" x="0.0" y="36" width="150" height="364"/>
+                                <rect key="frame" x="0.0" y="36" width="150" height="264"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Groups of:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a9M-tA-pZ8">
-                                        <rect key="frame" x="0.0" y="0.0" width="150" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="23"/>
                                         <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8Lk-Ec-d57">
-                                        <rect key="frame" x="0.0" y="0.0" width="150" height="364"/>
+                                        <rect key="frame" x="0.0" y="23" width="150" height="241"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <view key="tableFooterView" contentMode="scaleToFill" id="NQf-Uq-9o1">
-                                            <rect key="frame" x="0.0" y="72" width="150" height="0.0"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </view>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="NumberCell" textLabel="3NZ-PL-VdF" style="IBUITableViewCellStyleDefault" id="aBS-5R-skR">
                                                 <rect key="frame" x="0.0" y="28" width="150" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aBS-5R-skR" id="tHg-U9-D2W">
-                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="43.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3NZ-PL-VdF">
-                                                            <rect key="frame" x="15" y="0.0" width="120" height="43.5"/>
+                                                            <rect key="frame" x="15" y="0.0" width="120" height="43"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="30"/>
                                                             <nil key="textColor"/>
@@ -75,7 +70,7 @@
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="150" height="400"/>
+                    <size key="freeformSize" width="150" height="300"/>
                     <connections>
                         <outlet property="tableView" destination="8Lk-Ec-d57" id="2BE-La-aLa"/>
                     </connections>
