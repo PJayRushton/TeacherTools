@@ -18,19 +18,19 @@ let student2Id = "apsoin3k"
 let student3Id = "ih3qgreav"
 let student4Id = "9ui3qgirje"
 
-var fakeStudent1 = Student(id: "EIHf83nf", firstName: "MacKenzie", lastName: "Williams")
-var fakeStudent2 = Student(id: "apsoin3k", firstName: "Amanda", lastName: "Castillo")
-var fakeStudent3 = Student(id: "ih3qgreav", firstName: "Holly", lastName: "Rushton")
-var fakeStudent4 = Student(id: "9ui3qgirje", firstName: "David", lastName: "Mathews")
-var fakeStudent5 = Student(id: "9ui3qg8h67", firstName: "Korina", lastName: "Iyan")
-var fakeStudent6 = Student(id: "3q454heddr", firstName: "Josh", lastName: "Palacios")
-var fakeStudent7 = Student(id: "bg4asdfrw2", firstName: "Helaman", lastName: "Santo")
-var fakeStudent8 = Student(id: "p98iuqhrg4", firstName: "DonCarlos", lastName: "Guiterrez")
-var fakeStudent9 = Student(id: "p89ppu43gs", firstName: "Michael", lastName: "Gonzalez")
-var fakeStudent10 = Student(id: "09hugrhjof", firstName: "Janina", lastName: "Moran")
-var fakeStudent11 = Student(id: "iowtrjtree", firstName: "Albert", lastName: "De la Vega")
-var fakeStudent12 = Student(id: "poijq342as", firstName: "Elijah", lastName: "Rushton")
-var fakeStudent13 = Student(id: "0oijgqrawe", firstName: "Chloe", lastName: "Castillo")
+var fakeStudent1 = Student(id: "EIHf83nf", name: "MacKenzie")
+var fakeStudent2 = Student(id: "apsoin3k", name: "Amanda")
+var fakeStudent3 = Student(id: "ih3qgreav", name: "Holly")
+var fakeStudent4 = Student(id: "9ui3qgirje", name: "David")
+var fakeStudent5 = Student(id: "9ui3qg8h67", name: "Korina")
+var fakeStudent6 = Student(id: "3q454heddr", name: "Josh")
+var fakeStudent7 = Student(id: "bg4asdfrw2", name: "Helaman")
+var fakeStudent8 = Student(id: "p98iuqhrg4", name: "DonCarlos")
+var fakeStudent9 = Student(id: "p89ppu43gs", name: "Michael")
+var fakeStudent10 = Student(id: "09hugrhjof", name: "Janina")
+var fakeStudent11 = Student(id: "iowtrjtree", name: "Albert")
+var fakeStudent12 = Student(id: "poijq342as", name: "Elijah")
+var fakeStudent13 = Student(id: "0oijgqrawe", name: "Chloe")
 
 var allStudents: [Student] {
     return [fakeStudent1, fakeStudent2, fakeStudent3, fakeStudent4, fakeStudent5, fakeStudent6, fakeStudent7, fakeStudent8, fakeStudent9, fakeStudent10, fakeStudent11, fakeStudent12, fakeStudent13]

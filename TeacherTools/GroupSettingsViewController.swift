@@ -84,6 +84,7 @@ extension GroupSettingsViewController: Subscriber {
         fluidSegmentedControl.textColor = .white
         fluidSegmentedControl.selectedSegmentTextColor = state.theme.tintColor
         fluidSegmentedControl.selectorViewColor = state.theme.tintColor
+        fluidSegmentedControl.currentSegment = state.theme.lastFirst ? NameDisplayType.lastFirst.rawValue : NameDisplayType.firstLast.rawValue
     }
     
 }

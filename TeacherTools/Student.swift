@@ -25,10 +25,10 @@ struct Student: Marshaling, Unmarshaling, Identifiable {
         return FirebaseNetworkAccess.sharedInstance.studentsRef(userId: App.core.state.currentUser!.id).child(id)
     }
 
-    init(id: String, firstName: String, lastName: String? = nil, tickets: Int = 1) {
+    init(id: String, name: String, tickets: Int = 1) {
         self.id = id
-        self.firstName = firstName
-        self.lastName = lastName
+        self.firstName = name.parsed().first
+        self.lastName = name.parsed().last
         self.tickets = tickets
     }
     

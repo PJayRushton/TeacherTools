@@ -18,7 +18,7 @@
             </objects>
             <point key="canvasLocation" x="743" y="56"/>
         </scene>
-        <!--Students-->
+        <!--Data Source-->
         <scene sceneID="Tkx-5h-O8C">
             <objects>
                 <viewController storyboardIdentifier="StudentListViewController" title="Students" id="EzV-k8-Tpm" customClass="StudentListViewController" customModule="TeacherTools" customModuleProvider="target" sceneMemberID="viewController">
@@ -63,11 +63,54 @@
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HEl-lB-rc1">
                                         <rect key="frame" x="0.0" y="46" width="375" height="513"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <view key="tableFooterView" contentMode="scaleToFill" id="ddh-WG-lIM">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="18"/>
+                                        <view key="tableHeaderView" contentMode="scaleToFill" id="Kz8-Tg-hke" userLabel="Header">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a8b-RM-7dH" customClass="SJFluidSegmentedControl" customModule="SJFluidSegmentedControl">
+                                                    <rect key="frame" x="8" y="8" width="359" height="28"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                            <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="selectedSegmentTextColor">
+                                                            <color key="value" red="0.94901961089999998" green="0.94901961089999998" blue="0.94901961089999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="selectorViewColor">
+                                                            <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="applyCornerRadiusToSelectorView" value="NO"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="shadowsEnabled" value="NO"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="EzV-k8-Tpm" id="QPq-91-pj0"/>
+                                                        <outlet property="delegate" destination="EzV-k8-Tpm" id="fpP-Ui-ZhN"/>
+                                                    </connections>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="a8b-RM-7dH" secondAttribute="bottom" id="MH7-y0-DzJ"/>
+                                                <constraint firstItem="a8b-RM-7dH" firstAttribute="leading" secondItem="Kz8-Tg-hke" secondAttribute="leading" constant="8" id="gln-6K-njX"/>
+                                                <constraint firstItem="a8b-RM-7dH" firstAttribute="top" secondItem="Kz8-Tg-hke" secondAttribute="topMargin" id="tDb-TS-OSf"/>
+                                                <constraint firstAttribute="trailing" secondItem="a8b-RM-7dH" secondAttribute="trailing" constant="8" id="zcf-nt-d4l"/>
+                                            </constraints>
+                                        </view>
+                                        <view key="tableFooterView" contentMode="scaleToFill" id="mQQ-p6-14x">
+                                            <rect key="frame" x="0.0" y="116" width="375" height="3"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="cnF-bk-Otv">
+                                                <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cnF-bk-Otv" id="y20-Lx-9o8">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </prototypes>
                                         <connections>
                                             <outlet property="dataSource" destination="EzV-k8-Tpm" id="AD8-7S-5Yy"/>
                                             <outlet property="delegate" destination="EzV-k8-Tpm" id="zz6-IE-fnf"/>
@@ -104,6 +147,7 @@
                         <outlet property="navBarButton" destination="46K-XO-Qvr" id="SZz-gb-iXW"/>
                         <outlet property="newEntryView" destination="VLj-hh-dcm" id="BjL-Eo-BPT"/>
                         <outlet property="newStudentTextField" destination="lhQ-Dn-23x" id="993-NO-dWf"/>
+                        <outlet property="segmentedControl" destination="a8b-RM-7dH" id="LKb-K1-WCY"/>
                         <outlet property="tableView" destination="HEl-lB-rc1" id="LTJ-Do-Pho"/>
                     </connections>
                 </viewController>

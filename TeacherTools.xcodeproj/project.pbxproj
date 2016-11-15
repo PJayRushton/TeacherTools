@@ -81,6 +81,7 @@
 		A1B1A2081DC8BD4300D80E53 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1A2071DC8BD4300D80E53 /* DateHelper.swift */; };
 		A1BCE8521DCFD97300DF7652 /* TeamSizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BCE8511DCFD97300DF7652 /* TeamSizeViewController.swift */; };
 		A1C919D51DDAC96F00A7B477 /* DeleteStudent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C919D41DDAC96F00A7B477 /* DeleteStudent.swift */; };
+		A1C919D71DDACE0000A7B477 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C919D61DDACE0000A7B477 /* StringExtensions.swift */; };
 		A1CC0AB91DC7A14800C0575F /* DeleteObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CC0AB81DC7A14800C0575F /* DeleteObject.swift */; };
 		A1CC0ABB1DC7B7F700C0575F /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14160B81DC66F1200C4F5BB /* CloudKit.framework */; };
 		A1D1B4341DCC136D00AF5452 /* AddGroupTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D1B4331DCC136D00AF5452 /* AddGroupTableCell.swift */; };
@@ -186,6 +187,7 @@
 		A1B1A2071DC8BD4300D80E53 /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		A1BCE8511DCFD97300DF7652 /* TeamSizeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamSizeViewController.swift; sourceTree = "<group>"; };
 		A1C919D41DDAC96F00A7B477 /* DeleteStudent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteStudent.swift; sourceTree = "<group>"; };
+		A1C919D61DDACE0000A7B477 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		A1CC0AB81DC7A14800C0575F /* DeleteObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteObject.swift; sourceTree = "<group>"; };
 		A1CC0ABA1DC7B7F100C0575F /* TeacherTools.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TeacherTools.entitlements; sourceTree = "<group>"; };
 		A1D1B4331DCC136D00AF5452 /* AddGroupTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupTableCell.swift; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 				A14160F81DC68C2300C4F5BB /* Result.swift */,
 				A14160F21DC686FF00C4F5BB /* Arrays.swift */,
 				A1B1A2071DC8BD4300D80E53 /* DateHelper.swift */,
+				A1C919D61DDACE0000A7B477 /* StringExtensions.swift */,
 				A14160A71DC66D4800C4F5BB /* SegueHandlerType.swift */,
 				A14160A41DC66D2F00C4F5BB /* StoryboardInitializable.swift */,
 				A11EE9601DC6F19E002C9228 /* TestHelper.swift */,
@@ -545,6 +548,7 @@
 				A14160B41DC66E0300C4F5BB /* User.swift in Sources */,
 				A14160DC1DC6758700C4F5BB /* UnmarshalUpdating.swift in Sources */,
 				A16142441DCDFBD900C800A1 /* AddStudentToGroup.swift in Sources */,
+				A1C919D71DDACE0000A7B477 /* StringExtensions.swift in Sources */,
 				A14160D91DC6758700C4F5BB /* Operators.swift in Sources */,
 				A147CFA91DCA336D00C9860F /* CustomTabBar.swift in Sources */,
 				A14160DB1DC6758700C4F5BB /* UnmarshalingWithContext.swift in Sources */,

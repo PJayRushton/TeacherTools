@@ -71,7 +71,8 @@ struct AppState: State {
             // APPEARANCE
         case let event as Selected<Theme>:
             theme = event.item!
-            
+        case let event as NameDisplayChanged:
+            theme.lastFirst = event.lastFirst
         default:
             break
         }

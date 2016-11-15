@@ -7,13 +7,15 @@
 //
 
 import UIKit
+import SJFluidSegmentedControl
 
 class StudentListViewController: UIViewController, AutoStoryboardInitializable {
-
+    
     @IBOutlet weak var navBarButton: NavBarButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var newEntryView: UIView!
     @IBOutlet weak var newStudentTextField: UITextField!
+    @IBOutlet weak var segmentedControl: SJFluidSegmentedControl!
 
     var core = App.core
     var group: Group?
@@ -27,6 +29,11 @@ class StudentListViewController: UIViewController, AutoStoryboardInitializable {
     fileprivate var saveBarButton = UIBarButtonItem()
     fileprivate var cancelBarButton = UIBarButtonItem()
     
+    var currentSortType: SortType = App.core.state.theme.lastFirst ? .last : .first {
+        didSet {
+            students = currentSortType.sort(students)
+        }
+    }
     var isAdding = false {
         didSet {
             toggleEntryView(hidden: !isAdding)
@@ -67,7 +74,7 @@ extension StudentListViewController: Subscriber {
             navBarButton.mainTitle = group.name
         }
         navBarButton.subTitle = "\(state.currentStudents.count) students"
-        students = state.currentStudents
+        students = currentSortType.sort(state.currentStudents)
         newStudentTextField.text = ""
         updateUI(with: state.theme)
     }
@@ -75,6 +82,18 @@ extension StudentListViewController: Subscriber {
 }
 
 extension StudentListViewController {
+    
+    var nameIsValid: Bool {
+        guard let studentName = newStudentTextField.text, studentName.isEmpty == false else { return false }
+        let hasComma = studentName.contains(",")
+        let hasSpace = studentName.contains(" ")
+        if !hasComma && !hasSpace {
+            return true
+        } else if hasSpace {
+            return studentName.components(separatedBy: " ").count == 2
+        }
+        return true
+    }
     
     func setUp() {
         plusBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(startEditing))
@@ -123,10 +142,12 @@ extension StudentListViewController {
     }
     
     func saveNewStudent() {
+        if newStudentTextField.text!.isEmpty { isAdding = false; return }
+        guard nameIsValid else { core.fire(event: ErrorEvent(error: nil, message: "Unaccepted name format")); return }
         if let newStudentName = newStudentTextField.text, newStudentName.isEmpty == false {
             guard let currentUser = core.state.currentUser else { return }
             let id = FirebaseNetworkAccess.sharedInstance.studentsRef(userId: currentUser.id).childByAutoId()
-            let newStudent = Student(id: id.key, firstName: newStudentName)
+            let newStudent = Student(id: id.key, name: newStudentName)
             core.fire(command: CreateStudent(student: newStudent))
         } else {
             isAdding = false
@@ -211,6 +232,59 @@ extension StudentListViewController: UITextFieldDelegate {
         } else {
             navigationItem.setRightBarButton(plusBarButton, animated: false)
         }
+    }
+    
+}
+
+extension StudentListViewController: SJFluidSegmentedControlDataSource, SJFluidSegmentedControlDelegate {
+ 
+    enum SortType: Int {
+        case first
+        case last
+        case random
+        
+        var buttonTitle: String {
+            switch self {
+            case .first:
+                return "First"
+            case .last:
+                return "Last"
+            case .random:
+                return "Random"
+            }
+        }
+        
+        var sort: (([Student]) -> [Student]) {
+            switch self {
+            case .first:
+                return { students in
+                    return students.sorted(by: { $0.firstName < $1.firstName })
+                }
+            case .last:
+                return { students in
+                    return students.sorted(by: { ($0.lastName ?? $0.firstName) < ($1.lastName ?? $1.firstName) })
+                }
+            case .random:
+                return { students in
+                    return students.shuffled()
+                }
+            }
+        }
+        static let allValues = [SortType.first, .last, .random]
+    }
+    
+    func numberOfSegmentsInSegmentedControl(_ segmentedControl: SJFluidSegmentedControl) -> Int {
+        return SortType.allValues.count
+    }
+    
+    func segmentedControl(_ segmentedControl: SJFluidSegmentedControl, titleForSegmentAtIndex index: Int) -> String? {
+        return SortType(rawValue: index)!.buttonTitle
+    }
+    
+    func segmentedControl(_ segmentedControl: SJFluidSegmentedControl, didChangeFromSegmentAtIndex fromIndex: Int, toSegmentAtIndex toIndex: Int) {
+        let newType = SortType(rawValue: toIndex)!
+        currentSortType = newType
+        guard newType != .random else { return }
     }
     
 }

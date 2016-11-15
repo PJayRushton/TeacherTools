@@ -227,7 +227,7 @@ public class SJFluidSegmentedControl: UIView, UIGestureRecognizerDelegate {
     }
     
     /// The index of the currently selected segment. It ranges from 0 to segmentsCount-1.
-    fileprivate(set) public var currentSegment: Int = 0
+    public var currentSegment: Int = 0
     
     /// The number of segments in the segmented control. Default is `1`.
     fileprivate(set) public var segmentsCount: Int = 1
