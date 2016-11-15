@@ -69,7 +69,7 @@
 		A147CFBD1DCAB80600C9860F /* LoadingImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A147CFBC1DCAB80600C9860F /* LoadingImageViewController.swift */; };
 		A147CFBF1DCAB81700C9860F /* LoadingImageViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A147CFBE1DCAB81700C9860F /* LoadingImageViewController.storyboard */; };
 		A161423C1DCD6E4E00C800A1 /* UpdateGroupLastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A161423B1DCD6E4E00C800A1 /* UpdateGroupLastView.swift */; };
-		A161423E1DCD71CD00C800A1 /* DeleteStudents.swift in Sources */ = {isa = PBXBuildFile; fileRef = A161423D1DCD71CD00C800A1 /* DeleteStudents.swift */; };
+		A161423E1DCD71CD00C800A1 /* DeleteAllStudents.swift in Sources */ = {isa = PBXBuildFile; fileRef = A161423D1DCD71CD00C800A1 /* DeleteAllStudents.swift */; };
 		A16142401DCDF4F200C800A1 /* CreateGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A161423F1DCDF4F200C800A1 /* CreateGroup.swift */; };
 		A16142421DCDF50300C800A1 /* CreateStudent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16142411DCDF50300C800A1 /* CreateStudent.swift */; };
 		A16142441DCDFBD900C800A1 /* AddStudentToGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16142431DCDFBD900C800A1 /* AddStudentToGroup.swift */; };
@@ -80,6 +80,7 @@
 		A1ADE4801DCF8A16001434EF /* UpdateTeamSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1ADE47F1DCF8A16001434EF /* UpdateTeamSize.swift */; };
 		A1B1A2081DC8BD4300D80E53 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1A2071DC8BD4300D80E53 /* DateHelper.swift */; };
 		A1BCE8521DCFD97300DF7652 /* TeamSizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BCE8511DCFD97300DF7652 /* TeamSizeViewController.swift */; };
+		A1C919D51DDAC96F00A7B477 /* DeleteStudent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C919D41DDAC96F00A7B477 /* DeleteStudent.swift */; };
 		A1CC0AB91DC7A14800C0575F /* DeleteObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CC0AB81DC7A14800C0575F /* DeleteObject.swift */; };
 		A1CC0ABB1DC7B7F700C0575F /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14160B81DC66F1200C4F5BB /* CloudKit.framework */; };
 		A1D1B4341DCC136D00AF5452 /* AddGroupTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D1B4331DCC136D00AF5452 /* AddGroupTableCell.swift */; };
@@ -173,7 +174,7 @@
 		A147CFBC1DCAB80600C9860F /* LoadingImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingImageViewController.swift; sourceTree = "<group>"; };
 		A147CFBE1DCAB81700C9860F /* LoadingImageViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoadingImageViewController.storyboard; sourceTree = "<group>"; };
 		A161423B1DCD6E4E00C800A1 /* UpdateGroupLastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateGroupLastView.swift; sourceTree = "<group>"; };
-		A161423D1DCD71CD00C800A1 /* DeleteStudents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteStudents.swift; sourceTree = "<group>"; };
+		A161423D1DCD71CD00C800A1 /* DeleteAllStudents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteAllStudents.swift; sourceTree = "<group>"; };
 		A161423F1DCDF4F200C800A1 /* CreateGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroup.swift; sourceTree = "<group>"; };
 		A16142411DCDF50300C800A1 /* CreateStudent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateStudent.swift; sourceTree = "<group>"; };
 		A16142431DCDFBD900C800A1 /* AddStudentToGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddStudentToGroup.swift; sourceTree = "<group>"; };
@@ -184,6 +185,7 @@
 		A1ADE47F1DCF8A16001434EF /* UpdateTeamSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateTeamSize.swift; sourceTree = "<group>"; };
 		A1B1A2071DC8BD4300D80E53 /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		A1BCE8511DCFD97300DF7652 /* TeamSizeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamSizeViewController.swift; sourceTree = "<group>"; };
+		A1C919D41DDAC96F00A7B477 /* DeleteStudent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteStudent.swift; sourceTree = "<group>"; };
 		A1CC0AB81DC7A14800C0575F /* DeleteObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteObject.swift; sourceTree = "<group>"; };
 		A1CC0ABA1DC7B7F100C0575F /* TeacherTools.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TeacherTools.entitlements; sourceTree = "<group>"; };
 		A1D1B4331DCC136D00AF5452 /* AddGroupTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupTableCell.swift; sourceTree = "<group>"; };
@@ -377,7 +379,8 @@
 				A14160AB1DC66DBC00C4F5BB /* GetICloudUser.swift */,
 				A14160AF1DC66DEC00C4F5BB /* SaveNewUser.swift */,
 				A14160B11DC66DF300C4F5BB /* UpdateUser.swift */,
-				A161423D1DCD71CD00C800A1 /* DeleteStudents.swift */,
+				A161423D1DCD71CD00C800A1 /* DeleteAllStudents.swift */,
+				A1C919D41DDAC96F00A7B477 /* DeleteStudent.swift */,
 				A161423B1DCD6E4E00C800A1 /* UpdateGroupLastView.swift */,
 				A11EE9701DC79516002C9228 /* UpdateObject.swift */,
 				A1ADE47F1DCF8A16001434EF /* UpdateTeamSize.swift */,
@@ -558,6 +561,7 @@
 				A14160DD1DC6758700C4F5BB /* ValueType.swift in Sources */,
 				A14160F31DC686FF00C4F5BB /* Arrays.swift in Sources */,
 				A161426A1DCE4E8D00C800A1 /* SubscribeToReachability.swift in Sources */,
+				A1C919D51DDAC96F00A7B477 /* DeleteStudent.swift in Sources */,
 				A147CFA11DCA328100C9860F /* CustomTabBarController.swift in Sources */,
 				A1B1A2081DC8BD4300D80E53 /* DateHelper.swift in Sources */,
 				A1BCE8521DCFD97300DF7652 /* TeamSizeViewController.swift in Sources */,
@@ -578,7 +582,7 @@
 				A1CC0AB91DC7A14800C0575F /* DeleteObject.swift in Sources */,
 				A14160D41DC6758700C4F5BB /* JSON.swift in Sources */,
 				A14160AE1DC66DC900C4F5BB /* UserMiddleware.swift in Sources */,
-				A161423E1DCD71CD00C800A1 /* DeleteStudents.swift in Sources */,
+				A161423E1DCD71CD00C800A1 /* DeleteAllStudents.swift in Sources */,
 				A16142401DCDF4F200C800A1 /* CreateGroup.swift in Sources */,
 				A1ADE47E1DCF82D6001434EF /* RandomizerHeaderView.swift in Sources */,
 				A14160851DC669F100C4F5BB /* AppDelegate.swift in Sources */,

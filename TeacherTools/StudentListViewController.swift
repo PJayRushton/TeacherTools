@@ -17,7 +17,11 @@ class StudentListViewController: UIViewController, AutoStoryboardInitializable {
 
     var core = App.core
     var group: Group?
-    var students = [Student]()
+    var students = [Student]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     fileprivate var plusBarButton = UIBarButtonItem()
     fileprivate var saveBarButton = UIBarButtonItem()
@@ -61,13 +65,11 @@ extension StudentListViewController: Subscriber {
         if let group = state.selectedGroup {
             self.group = group
             navBarButton.mainTitle = group.name
-            navBarButton.subTitle = "\(group.studentIds.count) students"
-            students = state.currentStudents
-            newStudentTextField.text = ""
-            
         }
+        navBarButton.subTitle = "\(state.currentStudents.count) students"
+        students = state.currentStudents
+        newStudentTextField.text = ""
         updateUI(with: state.theme)
-        tableView.reloadData()
     }
     
 }
@@ -172,6 +174,16 @@ extension StudentListViewController: UITableViewDataSource, UITableViewDelegate 
         cell.isEditing = !cell.isEditing
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let studentToX = students[indexPath.row]
+            core.fire(command: DeleteStudent(student: studentToX))
+        }
+    }
 }
 
 extension StudentListViewController: UITextFieldDelegate {

@@ -24,7 +24,8 @@ struct AddStudent: Command {
         networkAccess.updateObject(at: updatedGroup.ref, parameters: updatedGroup.marshaled()) { result in
             switch result {
             case .success:
-                core.fire(event: DisplaySuccessMessage(message: "\(self.student.firstName) added!"))
+                break
+//                core.fire(event: DisplaySuccessMessage(message: "\(self.student.firstName) added!"))
             case let .failure(error):
                 core.fire(event: ErrorEvent(error: error, message: nil))
             }

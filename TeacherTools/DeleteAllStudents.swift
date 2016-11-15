@@ -1,5 +1,5 @@
 //
-//  DeleteStudents.swift
+//  DeleteAllStudents.swift
 //  TeacherTools
 //
 //  Created by Parker Rushton on 11/5/16.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct DeleteStudents: Command {
+struct DeleteAllStudents: Command {
     
     var group: Group
     

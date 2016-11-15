@@ -43,14 +43,17 @@ struct AppState: State {
             
             // GROUPS
         case let event as Updated<[Group]>:
-            groups = event.payload
+            let allGroups = event.payload
+            groups = allGroups
             groupsAreLoaded = true
-            guard let group = selectedGroup, let index = event.payload.index(of: group) else { break }
-            selectedGroup = event.payload[index]
+            guard let group = selectedGroup, let index = allGroups.index(of: group) else { break }
+            let updatedSelectedGroup = allGroups[index]
+            selectedGroup = updatedSelectedGroup
+            currentStudents = currentStudents(of: updatedSelectedGroup)
         case let event as Selected<Group>:
             selectedGroup = event.item
             if let group = event.item {
-                currentStudents = allStudents.filter { group.studentIds.contains($0.id) }.sorted { $0.displayedName < $1.displayedName }
+                currentStudents = currentStudents(of: group)
             } else {
                 currentStudents = [Student]()
             }
@@ -58,9 +61,8 @@ struct AppState: State {
             // STUDENTS
         case let event as Updated<[Student]>:
             allStudents = event.payload
-            if let group = selectedGroup {
-                currentStudents = allStudents.filter { group.studentIds.contains($0.id) }.sorted { $0.displayedName < $1.displayedName }
-            }
+            guard let group = selectedGroup else { break }
+            currentStudents = currentStudents(of: group)
         case let event as SortStudents:
             currentStudents.sort(by: event.sort)
         case _ as ShuffleTeams:
@@ -73,6 +75,10 @@ struct AppState: State {
         default:
             break
         }
+    }
+    
+    func currentStudents(of group: Group) -> [Student] {
+        return allStudents.filter { group.studentIds.contains($0.id) }.sorted { $0.displayedName < $1.displayedName }
     }
     
     
