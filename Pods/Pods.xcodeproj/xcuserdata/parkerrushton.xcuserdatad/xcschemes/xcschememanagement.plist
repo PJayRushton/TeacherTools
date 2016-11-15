@@ -4,12 +4,12 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-TeacherTools.xcscheme</key>
+		<key>BetterSegmentedControl.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>SJFluidSegmentedControl.xcscheme</key>
+		<key>Pods-TeacherTools.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -22,17 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>480B6B8B8D8B9205F253C853CE41CD49</key>
+		<key>3C068A58B0DECF71FC3B64A1C1B68BBC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A242D7DCE4DEF910313FE8434FE15AAC</key>
+		<key>551779F1F010B9A1373A28672B3A127A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CC7247A43E23C0F0E016819B534C8B93</key>
+		<key>913A66AF6B89A9E94FD82A2CE10B0265</key>
 		<dict>
 			<key>primary</key>
 			<true/>

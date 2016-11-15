@@ -1,5 +1,4 @@
-# Uncomment this line to define a global platform for your project
-# platform :ios, '9.0'
+platform :ios, '10.0'
 
 target 'TeacherTools' do
   use_frameworks!
@@ -9,6 +8,6 @@ target 'TeacherTools' do
   pod 'Firebase/Storage'
   pod 'Firebase/Auth'
   pod 'Whisper'
-	pod 'SJFluidSegmentedControl', '~> 1.0'
+  pod 'BetterSegmentedControl'
 
 end
