@@ -58,6 +58,9 @@ struct AppState: State {
             // STUDENTS
         case let event as Updated<[Student]>:
             allStudents = event.payload
+            if let group = selectedGroup {
+                currentStudents = allStudents.filter { group.studentIds.contains($0.id) }.sorted { $0.displayedName < $1.displayedName }
+            }
         case let event as SortStudents:
             currentStudents.sort(by: event.sort)
         case _ as ShuffleTeams:

@@ -15,9 +15,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var core = App.core
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    override init() {
+        super.init()
         FIRApp.configure()
-//        core.fire(command: GetICloudUser())
+    }
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        core.fire(command: GetICloudUser())
         setupAppearance()
         
         return true

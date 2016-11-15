@@ -35,7 +35,8 @@ struct UserMiddleware: Middleware {
             let identifiedUsersByDevice = EntityDatabase.shared.users.filter { $0.deviceId == UIDevice.current.identifierForVendor?.uuidString }
             if identifiedUsersByCK.count == 1 && event.icloudId != nil {
                 App.core.fire(event: Selected<User>(identifiedUsersByCK.first!))
-                print("USER IDENTIFIED BY iCLOUD ID \(identifiedUsersByCK.first!.cloudKitId)")
+                print("USER IDENTIFIED BY iCLOUD ID \(identifiedUsersByCK.first!.cloudKitId), \nfirebaseID: \(identifiedUsersByCK.first!.id)")
+                
             } else if identifiedUsersByDevice.count == 1 {
                 print("USER IDENTIFIED BY DEVICE ID \(identifiedUsersByCK.first!.deviceId)")
                 App.core.fire(event: Selected<User>(identifiedUsersByDevice.first!))
@@ -51,7 +52,8 @@ struct UserMiddleware: Middleware {
         case let event as Selected<User>:
             guard let _ = event.item, isSubscribed == false else { return }
             isSubscribed = true
-            App.core.fire(command: SubscribeToAllTheThings())
+            App.core.fire(command: SubscribeToGroups())
+            App.core.fire(command: SubscribeToStudents())
         case let event as Updated<[Group]>:
             guard state.selectedGroup == nil else { break }
             let sortedGroups = event.payload.sorted { $0.lastViewDate > $1.lastViewDate }

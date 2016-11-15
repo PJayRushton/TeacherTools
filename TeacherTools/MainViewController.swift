@@ -31,9 +31,9 @@ class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         core.add(subscriber: self)
-        core.fire(command: LoadFakeUser())
-        core.fire(command: LoadFakeGroups())
-        core.fire(command: LoadFakeStudents())
+//        core.fire(command: LoadFakeUser())
+//        core.fire(command: LoadFakeGroups())
+//        core.fire(command: LoadFakeStudents())
     }
     
     override func viewDidAppear(_ animated: Bool) {
