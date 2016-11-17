@@ -9,10 +9,11 @@
 import UIKit
 
 class NameDrawViewController: UIViewController, AutoStoryboardInitializable {
-
+    
     @IBOutlet weak var topLabel: UILabel!
     @IBOutlet weak var countLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var drawNameGesture: UITapGestureRecognizer!
     
     fileprivate let cellReuseIdentifier = "NameDrawCell"
     fileprivate var allStudents = [Student]()
@@ -37,7 +38,7 @@ class NameDrawViewController: UIViewController, AutoStoryboardInitializable {
     @IBAction func topViewTapped(_ sender: UITapGestureRecognizer) {
         drawName()
     }
-
+    
 }
 
 extension NameDrawViewController {
@@ -48,20 +49,23 @@ extension NameDrawViewController {
     }
     
     func handleNewStudent(_ student: Student?, previousStudent: Student?) {
-        topLabel.text = currentStudent?.displayedName ?? "Tap here to \n draw a name!"
-        if let previousStudent = previousStudent {
-            selectedStudents.append(previousStudent)
-            let indexPath = IndexPath(row: 0, section: 0)
-            tableView.beginUpdates()
-            tableView.insertRows(at: [indexPath], with: .top)
-            tableView.endUpdates()
-        } else if allStudents.isEmpty {
-            allStudents = core.state.currentStudents.shuffled()
-            selectedStudents.removeAll()
-            tableView.reloadData()
-            drawName()
+        if let currentStudent = currentStudent {
+            animateTopLabel() {
+                self.updateUI(withNewStudent: student, previousStudent: previousStudent)
+                updateCountLabel()
+            }
+        } else {
+            topLabel.text = "Press me to draw a new name"
+            updateCountLabel()
         }
-        updateCountLabel()
+    }
+        
+    func animateTopLabel(completion: () -> Void) {
+        
+    }
+    
+    func updateUI(withNewStudent new: Student?, previousStudent: Student?) {
+        
     }
     
     fileprivate func updateCountLabel() {

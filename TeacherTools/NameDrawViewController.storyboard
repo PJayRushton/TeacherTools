@@ -69,11 +69,11 @@
                                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dkC-Qx-2p7" id="121-xe-gtZ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="T47-Yz-Gt8">
-                                                            <rect key="frame" x="15" y="0.0" width="345" height="43"/>
+                                                            <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="15"/>
                                                             <nil key="textColor"/>
@@ -103,6 +103,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="countLabel" destination="KV3-bK-ldn" id="yac-Rn-G5g"/>
+                        <outlet property="drawNameGesture" destination="3tz-To-YK4" id="O0c-AX-E7v"/>
                         <outlet property="tableView" destination="k6b-1y-3Ee" id="fZo-E8-wRr"/>
                         <outlet property="topLabel" destination="PDH-gD-bEM" id="fu1-Dq-vTT"/>
                     </connections>
