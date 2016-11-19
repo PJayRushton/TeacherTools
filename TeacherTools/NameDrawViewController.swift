@@ -16,8 +16,10 @@ class NameDrawViewController: UIViewController, AutoStoryboardInitializable {
     @IBOutlet var drawNameGesture: UITapGestureRecognizer!
     
     fileprivate let cellReuseIdentifier = "NameDrawCell"
+    fileprivate let emptyStudentsString = "Tap here to \ndraw a name!"
     fileprivate var allStudents = [Student]()
     fileprivate var selectedStudents = [Student]()
+    fileprivate var animator: UIViewPropertyAnimator!
     fileprivate var currentStudent: Student? {
         didSet {
             handleNewStudent(currentStudent, previousStudent: oldValue)
@@ -32,6 +34,7 @@ class NameDrawViewController: UIViewController, AutoStoryboardInitializable {
         allStudents = core.state.currentStudents.shuffled()
         currentStudent = nil
         tableView.rowHeight = 38
+        animator = UIViewPropertyAnimator(duration: 1.5, curve: .easeInOut)
         updateCountLabel()
     }
     
@@ -49,22 +52,44 @@ extension NameDrawViewController {
     }
     
     func handleNewStudent(_ student: Student?, previousStudent: Student?) {
-        if let currentStudent = currentStudent {
+        if let newStudent = student {
             animateTopLabel() {
-                self.updateUI(withNewStudent: student, previousStudent: previousStudent)
-                updateCountLabel()
+                self.topLabel.text = newStudent.displayedName
             }
+            addPrevious(student: previousStudent)
         } else {
-            topLabel.text = "Press me to draw a new name"
+            topLabel.text = emptyStudentsString
             updateCountLabel()
         }
     }
-        
-    func animateTopLabel(completion: () -> Void) {
-        
+    
+    func animateTopLabel(completion: @escaping () -> Void) {
+        topLabel.text = "???"
+        animator.addAnimations {
+            self.topLabel.rotate()
+            self.topLabel.transform = CGAffineTransform(scaleX: 5, y: 5)
+            self.topLabel.transform = CGAffineTransform(scaleX: 1, y: 1)
+        }
+        animator.startAnimation()
+        animator.addCompletion { position in
+            completion()
+        }
     }
     
-    func updateUI(withNewStudent new: Student?, previousStudent: Student?) {
+    fileprivate func addPrevious(student: Student?) {
+        if let previousStudent = student {
+            selectedStudents.append(previousStudent)
+            let indexPath = IndexPath(row: 0, section: 0)
+            tableView.beginUpdates()
+            tableView.insertRows(at: [indexPath], with: .top)
+            tableView.endUpdates()
+        } else if allStudents.isEmpty {
+            allStudents = core.state.currentStudents.shuffled()
+            selectedStudents.removeAll()
+            tableView.reloadData()
+            drawName()
+        }
+        updateCountLabel()
         
     }
     
