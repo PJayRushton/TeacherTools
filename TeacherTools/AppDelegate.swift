@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().titleTextAttributes = navTitleAttributes
         UINavigationBar.appearance().backgroundColor = .white
         UINavigationBar.appearance(whenContainedInInstancesOf: [UINavigationController.self]).tintColor = .darkGray
-        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UINavigationController.self]).setTitleTextAttributes([NSFontAttributeName: App.core.state.theme.fontType.font(withSize: 20)], for: .normal)
+        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UINavigationController.self]).setTitleTextAttributes([NSFontAttributeName: App.core.state.theme.fontType.font(withSize: 17)], for: .normal)
         UINavigationBar.appearance().isTranslucent = true
     }
     

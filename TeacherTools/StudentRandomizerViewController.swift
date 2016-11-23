@@ -63,13 +63,10 @@ extension StudentRandomizerViewController {
     
     func updateCollectionView(group: Group) {
         let teamSize = CGFloat(group.teamSize)
-        let rows = min(teamSize, 4)
-        print("rows: \(rows)")
-        let screenWidthMinusMargin: CGFloat = collectionView.bounds.size.width - (margin * rows)
-        print("screenWidth: \(view.bounds.width)")
-        print("CV Width: \(collectionView.bounds.width)")
-        layout.itemSize = CGSize(width: screenWidthMinusMargin / rows, height: 44)
-        print("Cell width: \(screenWidthMinusMargin / rows)")
+        let columns = min(teamSize, 4)
+        let totalMarginSpace: CGFloat = margin * (columns + 1)
+        let screenWidthMinusMargin: CGFloat = view.frame.size.width - totalMarginSpace
+        layout.itemSize = CGSize(width: screenWidthMinusMargin / columns, height: 44)
         layout.sectionHeadersPinToVisibleBounds = true
         layout.headerReferenceSize = CGSize(width: collectionView.bounds.width, height: 36)
         collectionView.reloadData()
@@ -81,6 +78,7 @@ extension StudentRandomizerViewController {
 // MARK: - Collectionview
 
 extension StudentRandomizerViewController: UICollectionViewDelegate {
+    
     
 }
 
