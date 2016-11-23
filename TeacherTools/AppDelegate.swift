@@ -28,8 +28,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func setupAppearance() {
-        let textAttributeDict = [NSFontAttributeName: core.state.theme.fontType.font(withSize: 15)]
-        UINavigationBar.appearance().titleTextAttributes = textAttributeDict
+        let navTitleAttributes = [NSFontAttributeName: App.core.state.theme.fontType.font(withSize: 22), NSForegroundColorAttributeName: UIColor.darkGray]
+        UINavigationBar.appearance().titleTextAttributes = navTitleAttributes
+        UINavigationBar.appearance().backgroundColor = .white
+        UINavigationBar.appearance(whenContainedInInstancesOf: [UINavigationController.self]).tintColor = .darkGray
+        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UINavigationController.self]).setTitleTextAttributes([NSFontAttributeName: App.core.state.theme.fontType.font(withSize: 20)], for: .normal)
+        UINavigationBar.appearance().isTranslucent = true
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
