@@ -13,7 +13,6 @@ class RandomizerDataSource: NSObject, UICollectionViewDataSource {
     var core = App.core
     var students = [Student]()
     var teamSize = 2
-    let headerKey = "header"
     
     var sectionSize: Int {
         return students.count / teamSize
@@ -40,7 +39,6 @@ class RandomizerDataSource: NSObject, UICollectionViewDataSource {
         
         return teamSize
     }
-
     
     func students(inSection section: Int) -> [Student] {
         let lowBound = section * teamSize(forSection: section)

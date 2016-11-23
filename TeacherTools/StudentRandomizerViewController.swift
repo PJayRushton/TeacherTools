@@ -70,6 +70,8 @@ extension StudentRandomizerViewController {
         print("CV Width: \(collectionView.bounds.width)")
         layout.itemSize = CGSize(width: screenWidthMinusMargin / rows, height: 44)
         print("Cell width: \(screenWidthMinusMargin / rows)")
+        layout.sectionHeadersPinToVisibleBounds = true
+        layout.headerReferenceSize = CGSize(width: collectionView.bounds.width, height: 36)
         collectionView.reloadData()
     }
     

@@ -14,7 +14,8 @@ class RandomizerHeaderView: UICollectionReusableView, AutoReuseIdentifiable {
     
     func update(with title: String, theme: Theme) {
         textLabel.text = title
-        textLabel.textColor = theme.textColor
+        textLabel.backgroundColor = theme.tintColor
+        textLabel.textColor = .white
     }
     
 }
