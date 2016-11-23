@@ -117,7 +117,12 @@ extension GroupSettingsViewController {
     }
     
     func presentDeleteConfirmation(for group: Group) {
-        let alert = UIAlertController(title: "Are you sure?", message: "This cannot be undone", preferredStyle: .actionSheet)
+        var message = "This cannot be undone"
+        if group.studentIds.count > 0 {
+            let studentKey = group.studentIds.count == 1 ? "student" : "students"
+            message = "\nThis class's \(group.studentIds.count) \(studentKey) will also be deleted."
+        }
+        let alert = UIAlertController(title: "Are you sure?", message: message, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { _ in
             self.core.fire(command: DeleteObject(object: group))
         }))

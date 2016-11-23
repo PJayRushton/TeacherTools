@@ -17,6 +17,7 @@ struct DeleteObject<T: Identifiable>: Command {
             switch result {
             case .success:
                 guard let group = self.object as? Group else { return }
+                core.fire(event: DisplaySuccessMessage(message: "Class deleted!"))
                 core.fire(command: DeleteAllStudents(group: group))
                 core.fire(event: Selected<Group>(nil))
                 let newGroups = state.groups.filter { $0.id != group.id }
