@@ -14,10 +14,10 @@ class StudentRandomizerViewController: UIViewController, AutoStoryboardInitializ
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var sizeBarButton: UIBarButtonItem!
 
-    var core = App.core
-    var layout = UICollectionViewFlowLayout()
-    let dataSource = RandomizerDataSource()
-    let margin: CGFloat = 16.0
+    fileprivate let dataSource = RandomizerDataSource()
+    fileprivate let margin: CGFloat = 16.0
+    fileprivate var core = App.core
+    fileprivate var layout = UICollectionViewFlowLayout()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +41,9 @@ class StudentRandomizerViewController: UIViewController, AutoStoryboardInitializ
     
 }
 
+
+// MARK: - Subscriber
+
 extension StudentRandomizerViewController: Subscriber {
     
     func update(with state: AppState) {
@@ -53,11 +56,13 @@ extension StudentRandomizerViewController: Subscriber {
 }
 
 
+// MARK: - Fileprivate
+
 extension StudentRandomizerViewController {
     
     func setUp() {
         collectionView.dataSource = dataSource
-        collectionView.contentInset = UIEdgeInsets(top: margin, left: margin, bottom: 0, right: margin)
+        collectionView.contentInset = UIEdgeInsets.zero
         collectionView.collectionViewLayout = layout
     }
     
@@ -77,10 +82,14 @@ extension StudentRandomizerViewController {
 
 // MARK: - Collectionview
 
-extension StudentRandomizerViewController: UICollectionViewDelegate {
+extension StudentRandomizerViewController: UICollectionViewDelegateFlowLayout {
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: margin, bottom: 0, right: margin)
+    }
     
 }
+
 
 // MARK: - Popover
 
@@ -100,6 +109,7 @@ extension StudentRandomizerViewController: SegueHandling {
 
 }
 
+// MARK: - PopoverDelegate
 
 extension StudentRandomizerViewController: UIPopoverPresentationControllerDelegate {
 
