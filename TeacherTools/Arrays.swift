@@ -29,6 +29,13 @@ extension Array {
         }
         return arr
     }
+    
+    func randomElement() -> Element? {
+        guard self.count > 0 else { return nil }
+        let randomIndex = Int.random(0..<self.count)
+        return self[randomIndex]
+    }
+    
 }
 
 let array = [1,2,3,4,5,6]

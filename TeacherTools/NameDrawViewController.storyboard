@@ -69,11 +69,11 @@
                                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dkC-Qx-2p7" id="121-xe-gtZ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="T47-Yz-Gt8">
-                                                            <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
+                                                            <rect key="frame" x="15" y="0.0" width="345" height="43"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="15"/>
                                                             <nil key="textColor"/>
@@ -94,12 +94,19 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="uF5-MG-sfg" secondAttribute="trailing" id="QNh-5t-KXv"/>
+                            <constraint firstItem="Z8j-sB-myq" firstAttribute="top" secondItem="uF5-MG-sfg" secondAttribute="bottom" id="Uki-kv-n8T"/>
                             <constraint firstItem="uF5-MG-sfg" firstAttribute="top" secondItem="WWa-WI-IrZ" secondAttribute="bottom" id="dWi-zY-SiN"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="uF5-MG-sfg" secondAttribute="bottom" id="oJG-2u-h5C"/>
                             <constraint firstItem="uF5-MG-sfg" firstAttribute="leading" secondItem="4n9-at-bLQ" secondAttribute="leading" id="qiL-Sy-yyL"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Draw names" id="I7c-VD-JWF"/>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
+                    <navigationItem key="navigationItem" title="Draw names" id="I7c-VD-JWF">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="Ae8-P4-70U">
+                            <connections>
+                                <action selector="resetButtonPressed:" destination="WKU-9W-Ea9" id="2gJ-sC-WUg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="countLabel" destination="KV3-bK-ldn" id="yac-Rn-G5g"/>

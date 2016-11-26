@@ -23,6 +23,7 @@ class NameDrawViewController: UIViewController, AutoStoryboardInitializable {
     fileprivate var currentStudent: Student? {
         didSet {
             handleNewStudent(currentStudent, previousStudent: oldValue)
+            updateCountLabel()
         }
     }
     
@@ -36,6 +37,10 @@ class NameDrawViewController: UIViewController, AutoStoryboardInitializable {
         tableView.rowHeight = 38
         animator = UIViewPropertyAnimator(duration: 1.5, curve: .easeInOut)
         updateCountLabel()
+    }
+    
+    @IBAction func resetButtonPressed(_ sender: UIBarButtonItem) {
+        resetNames()
     }
     
     @IBAction func topViewTapped(_ sender: UITapGestureRecognizer) {
@@ -53,27 +58,31 @@ extension NameDrawViewController {
     
     func handleNewStudent(_ student: Student?, previousStudent: Student?) {
         if let newStudent = student {
-            animateTopLabel() {
+            changeTopLabel(animated: true) {
                 self.topLabel.text = newStudent.displayedName
             }
-            addPrevious(student: previousStudent)
         } else {
-            topLabel.text = emptyStudentsString
-            updateCountLabel()
+            let isStart = currentStudent == nil && selectedStudents.isEmpty
+            topLabel.text = isStart ? emptyStudentsString : allDrawnString()
         }
+        addPrevious(student: previousStudent)
     }
     
-    func animateTopLabel(completion: @escaping () -> Void) {
-        drawNameGesture.isEnabled = false
-        topLabel.text = "???"
-        animator.addAnimations {
-            self.topLabel.rotate()
-            self.topLabel.transform = CGAffineTransform(scaleX: 5, y: 5)
-            self.topLabel.transform = CGAffineTransform(scaleX: 1, y: 1)
-        }
-        animator.startAnimation()
-        animator.addCompletion { position in
-            self.drawNameGesture.isEnabled = true
+    func changeTopLabel(animated: Bool = true, completion: @escaping () -> Void) {
+        if animated {
+            drawNameGesture.isEnabled = false
+            topLabel.text = "???"
+            animator.addAnimations {
+                self.topLabel.rotate()
+                self.topLabel.transform = CGAffineTransform(scaleX: 5, y: 5)
+                self.topLabel.transform = CGAffineTransform(scaleX: 1, y: 1)
+            }
+            animator.startAnimation()
+            animator.addCompletion { position in
+                self.drawNameGesture.isEnabled = true
+                completion()
+            }
+        } else {
             completion()
         }
     }
@@ -86,18 +95,29 @@ extension NameDrawViewController {
             tableView.insertRows(at: [indexPath], with: .top)
             tableView.endUpdates()
         } else if allStudents.isEmpty {
-            allStudents = core.state.currentStudents.shuffled()
-            selectedStudents.removeAll()
-            tableView.reloadData()
-            drawName()
+            resetNames()
         }
-        updateCountLabel()
-        
     }
     
     fileprivate func updateCountLabel() {
         let drawnNamesCount = currentStudent == nil ? selectedStudents.count : selectedStudents.count + 1
         countLabel.text = "\(drawnNamesCount)/\(core.state.currentStudents.count)"
+    }
+    
+    fileprivate func resetNames() {
+        if currentStudent != nil {
+            currentStudent = nil
+        }
+        allStudents = core.state.currentStudents.shuffled()
+        selectedStudents.removeAll()
+        tableView.reloadData()
+        updateCountLabel()
+        topLabel.text = emptyStudentsString
+    }
+    
+    fileprivate func allDrawnString() -> String {
+        let strings = ["That's all she wrote", "You've drawn them all!", "You're all winners!", "Gold stars all around!", "Way to go!", "Everyone's a winner!", "Well that was fun!", "Let's do this again sometime"]
+        return strings.randomElement()!
     }
     
 }
