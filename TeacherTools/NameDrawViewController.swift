@@ -64,6 +64,7 @@ extension NameDrawViewController {
     }
     
     func animateTopLabel(completion: @escaping () -> Void) {
+        drawNameGesture.isEnabled = false
         topLabel.text = "???"
         animator.addAnimations {
             self.topLabel.rotate()
@@ -72,6 +73,7 @@ extension NameDrawViewController {
         }
         animator.startAnimation()
         animator.addCompletion { position in
+            self.drawNameGesture.isEnabled = true
             completion()
         }
     }
