@@ -9,15 +9,15 @@
 import UIKit
 
 class RandomizerDataSource: NSObject, UICollectionViewDataSource {
-
+    
     var core = App.core
     var students = [Student]()
     var teamSize = 2
     
-    var sectionSize: Int {
-        return students.count / teamSize
+    var remainder: Int {
+        return students.count % teamSize
     }
-    
+
     deinit {
         core.remove(subscriber: self)
     }
@@ -28,20 +28,39 @@ class RandomizerDataSource: NSObject, UICollectionViewDataSource {
     }
 
     var numberOfTeams: Int {
-        return students.count / teamSize
+        let standardNumberOfTeams = students.count / teamSize
+        if remainder == 2 && teamSize == 3 {
+            return standardNumberOfTeams + 1
+        }
+        return remainder > 2 ? standardNumberOfTeams + 1 : standardNumberOfTeams
     }
     
     func teamSize(forSection section: Int) -> Int {
-        let remainder = students.count % teamSize
-        if remainder != 0 && section == numberOfTeams {
-            return teamSize + remainder
-        }
+        let isLastSection = section == numberOfTeams - 1
+        let isPenultimateSection = section == numberOfTeams - 2
         
-        return teamSize
+        switch remainder {
+        case 0:
+            return teamSize
+        case 1:
+            return isLastSection ? teamSize + 1 : teamSize
+        case 2:
+            if teamSize == 3 {
+                if isLastSection {
+                    return  remainder
+                } else if isPenultimateSection {
+                    return teamSize
+                }
+            }
+            return isLastSection || isPenultimateSection ? teamSize + 1 : teamSize
+        default:
+            return isLastSection ? remainder : teamSize
+        }
     }
     
     func students(inSection section: Int) -> [Student] {
-        let lowBound = section * teamSize(forSection: section)
+        let lowBoundSection = section == 0 ? 0 : section - 1
+        let lowBound = section * teamSize(forSection: lowBoundSection)
         let highBound = lowBound + teamSize(forSection: section)
         return students.step(from: lowBound, to: highBound)
     }
@@ -51,16 +70,18 @@ class RandomizerDataSource: NSObject, UICollectionViewDataSource {
     }
     
     func title(forSection section: Int) -> String {
-        return "Team \(section + 1)"
+        var headerString = "Team \(section + 1)"
+        if teamSize(forSection: section) != teamSize {
+            headerString +=  " (\(teamSize(forSection: section)))"
+        }
+        return headerString
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        print("**Number of sections: \(numberOfTeams)")
         return numberOfTeams
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("---\(students(inSection: section).count) in section \(section)")
         return students(inSection: section).count
     }
     
@@ -92,4 +113,3 @@ extension RandomizerDataSource: Subscriber {
     }
     
 }
-
