@@ -84,6 +84,17 @@ extension Sequence where Iterator.Element == StringLiteralType {
     }
 }
 
+protocol ReactorSubscribing {
+    
+}
+
+extension ReactorSubscribing where Self: UIViewController {
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        
+//    }
+    
+}
 extension UIViewController {
     
     var embededInNavigationController: UINavigationController {

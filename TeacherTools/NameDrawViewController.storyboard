@@ -101,6 +101,11 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" title="Draw names" id="I7c-VD-JWF">
+                        <barButtonItem key="leftBarButtonItem" image="tickets" id="vkN-Ww-Y45">
+                            <connections>
+                                <action selector="ticketsButtonPressed:" destination="WKU-9W-Ea9" id="xxK-14-coV"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="Ae8-P4-70U">
                             <connections>
                                 <action selector="resetButtonPressed:" destination="WKU-9W-Ea9" id="2gJ-sC-WUg"/>
@@ -112,6 +117,7 @@
                         <outlet property="countLabel" destination="KV3-bK-ldn" id="yac-Rn-G5g"/>
                         <outlet property="drawNameGesture" destination="3tz-To-YK4" id="O0c-AX-E7v"/>
                         <outlet property="tableView" destination="k6b-1y-3Ee" id="fZo-E8-wRr"/>
+                        <outlet property="ticketsButton" destination="vkN-Ww-Y45" id="A5f-qe-au2"/>
                         <outlet property="topLabel" destination="PDH-gD-bEM" id="fu1-Dq-vTT"/>
                     </connections>
                 </viewController>
@@ -125,4 +131,7 @@
             <point key="canvasLocation" x="173.59999999999999" y="228.93553223388307"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="tickets" width="22" height="21"/>
+    </resources>
 </document>

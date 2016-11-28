@@ -10,6 +10,7 @@ import UIKit
 
 class NameDrawViewController: UIViewController, AutoStoryboardInitializable {
     
+    @IBOutlet weak var ticketsButton: UIBarButtonItem!
     @IBOutlet weak var topLabel: UILabel!
     @IBOutlet weak var countLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -45,6 +46,11 @@ class NameDrawViewController: UIViewController, AutoStoryboardInitializable {
     
     @IBAction func topViewTapped(_ sender: UITapGestureRecognizer) {
         drawName()
+    }
+    
+    @IBAction func ticketsButtonPressed(_ sender: UIBarButtonItem) {
+        let studentTicketsVC = StudentTicketsViewController.initializeFromStoryboard()
+        present(studentTicketsVC, animated: true, completion: nil)
     }
     
 }

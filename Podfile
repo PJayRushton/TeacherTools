@@ -8,6 +8,7 @@ target 'TeacherTools' do
   pod 'Firebase/Storage'
   pod 'Firebase/Auth'
   pod 'Whisper'
+  pod 'GMStepper'
   pod 'BetterSegmentedControl'
-
+  
 end

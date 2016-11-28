@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Tickets-->
+        <scene sceneID="sxe-xt-9lp">
+            <objects>
+                <viewController storyboardIdentifier="StudentTicketsViewController" automaticallyAdjustsScrollViewInsets="NO" id="mqg-NK-qv1" customClass="StudentTicketsViewController" customModule="TeacherTools" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="n9I-zD-v5d"/>
+                        <viewControllerLayoutGuide type="bottom" id="FzG-QK-dKA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ne4-Wq-foh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="57" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rzj-3n-BXu">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StudentTicketTableCell" rowHeight="57" id="KUa-La-rfW" customClass="StudentTicketTableCell" customModule="TeacherTools" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="57"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KUa-La-rfW" id="WX8-px-417">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="daD-d2-ksW">
+                                                    <rect key="frame" x="16" y="8" width="351" height="40.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="NameLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Bb-rF-Y9h">
+                                                            <rect key="frame" x="0.0" y="0.0" width="102" height="40.5"/>
+                                                            <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <view contentMode="scaleToFill" horizontalHuggingPriority="999" translatesAutoresizingMaskIntoConstraints="NO" id="KdG-8v-7Yu">
+                                                            <rect key="frame" x="102" y="0.0" width="146" height="40.5"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        </view>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="siW-3q-2Xx" userLabel="Image stack">
+                                                            <rect key="frame" x="248" y="0.0" width="15.5" height="40.5"/>
+                                                            <subviews>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tickets" translatesAutoresizingMaskIntoConstraints="NO" id="C1J-an-mCE">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="40.5"/>
+                                                                </imageView>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ZA-G5-OzP">
+                                                                    <rect key="frame" x="8" y="0.0" width="7.5" height="40.5"/>
+                                                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OgC-gd-ALg" customClass="GMStepper" customModule="GMStepper">
+                                                            <rect key="frame" x="263.5" y="0.0" width="87.5" height="40.5"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
+                                                                    <real key="value" value="1000"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="stepValue">
+                                                                    <real key="value" value="1"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                            <connections>
+                                                                <action selector="stepperValueChanged:" destination="KUa-La-rfW" eventType="valueChanged" id="GPE-xT-iwh"/>
+                                                            </connections>
+                                                        </view>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="OgC-gd-ALg" firstAttribute="width" secondItem="daD-d2-ksW" secondAttribute="width" multiplier="0.25" id="8d9-H1-gX3"/>
+                                                    </constraints>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="daD-d2-ksW" firstAttribute="top" secondItem="WX8-px-417" secondAttribute="topMargin" id="Jst-3J-NFs"/>
+                                                <constraint firstAttribute="trailing" secondItem="daD-d2-ksW" secondAttribute="trailing" constant="8" id="PRv-lF-xIM"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="daD-d2-ksW" secondAttribute="bottom" id="ca7-Gq-uz6"/>
+                                                <constraint firstItem="daD-d2-ksW" firstAttribute="leading" secondItem="WX8-px-417" secondAttribute="leading" constant="16" id="znw-Jc-iiL"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="4Bb-rF-Y9h" id="Rj7-5r-mfH"/>
+                                            <outlet property="readyOnlyStack" destination="siW-3q-2Xx" id="Dqz-Rz-pad"/>
+                                            <outlet property="stepper" destination="OgC-gd-ALg" id="xPO-Jf-u7v"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="mqg-NK-qv1" id="LTN-pw-ARt"/>
+                                    <outlet property="delegate" destination="mqg-NK-qv1" id="vv0-MS-QqE"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rzj-3n-BXu" firstAttribute="leading" secondItem="Ne4-Wq-foh" secondAttribute="leading" id="5Bc-C0-Yzj"/>
+                            <constraint firstItem="FzG-QK-dKA" firstAttribute="top" secondItem="rzj-3n-BXu" secondAttribute="bottom" id="Ltc-ob-kea"/>
+                            <constraint firstItem="rzj-3n-BXu" firstAttribute="top" secondItem="n9I-zD-v5d" secondAttribute="bottom" id="gBH-DE-sxz"/>
+                            <constraint firstAttribute="trailing" secondItem="rzj-3n-BXu" secondAttribute="trailing" id="s89-nO-QZU"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Tickets" id="yW4-N0-wMN">
+                        <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="t0p-cn-bg3">
+                            <connections>
+                                <action selector="resetButtonPressed:" destination="mqg-NK-qv1" id="li1-XE-XWx"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="cpY-ih-Nf5">
+                            <connections>
+                                <action selector="xButtonPressed:" destination="mqg-NK-qv1" id="jZz-bp-F8Z"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="tableView" destination="rzj-3n-BXu" id="yCg-4Q-99I"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qSk-8k-1W9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1104.8" y="88.605697151424295"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="tickets" width="22" height="21"/>
+    </resources>
+</document>
