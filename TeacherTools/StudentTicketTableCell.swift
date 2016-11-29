@@ -17,7 +17,7 @@ class StudentTicketTableCell: UITableViewCell, AutoReuseIdentifiable {
     @IBOutlet weak var stepper: GMStepper!
     
     var stepperCompletion: ((Int) -> Void)?
-    
+    var student: Student?
     var isShowingStepper = false {
         didSet {
             UIView.animate(withDuration: 0.25) {
@@ -34,19 +34,28 @@ class StudentTicketTableCell: UITableViewCell, AutoReuseIdentifiable {
         stepper.isHidden = true
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        readyOnlyStack.isHidden = isShowingStepper
+        stepper.isHidden = !isShowingStepper
+    }
+    
     func update(with student: Student, theme: Theme) {
+        self.student = student
         nameLabel.text = student.displayedName
         stepper.value = Double(student.tickets)
         countLabel.text = "\(student.tickets)"
         
         nameLabel.font = theme.fontType.font(withSize: 17)
-        stepper.labelFont = theme.fontType.font(withSize: 13)
-        stepper.buttonsFont = theme.fontType.font(withSize: 13)
+        stepper.labelFont = theme.fontType.font(withSize: 20)
+        stepper.buttonsFont = theme.fontType.font(withSize: 22)
         stepper.labelTextColor = .white
         stepper.labelBackgroundColor = theme.tintColor
     }
     
     @IBAction func stepperValueChanged(_ sender: GMStepper) {
+        guard let student = student, Int(sender.value) != student.tickets else { return }
         stepperCompletion?(Int(sender.value))
     }
     

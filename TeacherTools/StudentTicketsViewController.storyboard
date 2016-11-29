@@ -26,8 +26,28 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="57" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rzj-3n-BXu">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <view key="tableFooterView" contentMode="scaleToFill" id="SbD-wO-ERw">
-                                    <rect key="frame" x="0.0" y="85" width="375" height="40"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="gUJ-Xa-olp" userLabel="Header view">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="54"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Prs-uc-16o" customClass="BetterSegmentedControl" customModule="BetterSegmentedControl">
+                                            <rect key="frame" x="8" y="8" width="359" height="38"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <action selector="segmentedControlValueChanged:" destination="mqg-NK-qv1" eventType="valueChanged" id="0b0-E1-8go"/>
+                                            </connections>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="Prs-uc-16o" firstAttribute="leading" secondItem="gUJ-Xa-olp" secondAttribute="leadingMargin" id="8sp-tq-Gls"/>
+                                        <constraint firstItem="Prs-uc-16o" firstAttribute="top" secondItem="gUJ-Xa-olp" secondAttribute="topMargin" id="W7R-0Z-TDn"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Prs-uc-16o" secondAttribute="trailing" id="ljw-KP-nYK"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Prs-uc-16o" secondAttribute="bottom" id="yjx-9J-ern"/>
+                                    </constraints>
+                                </view>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="SbD-wO-ERw" userLabel="Footer view">
+                                    <rect key="frame" x="0.0" y="139" width="375" height="40"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BFq-BN-e4u">
@@ -40,6 +60,9 @@
                                             <state key="normal" title="Reset tickets">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="resetButtonPressed:" destination="mqg-NK-qv1" eventType="touchUpInside" id="oA3-ig-SdZ"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -52,14 +75,14 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StudentTicketTableCell" rowHeight="57" id="KUa-La-rfW" customClass="StudentTicketTableCell" customModule="TeacherTools" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="57"/>
+                                        <rect key="frame" x="0.0" y="82" width="375" height="57"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KUa-La-rfW" id="WX8-px-417">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="daD-d2-ksW">
-                                                    <rect key="frame" x="16" y="8" width="351" height="40.5"/>
+                                                    <rect key="frame" x="16" y="8" width="343" height="40.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="NameLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Bb-rF-Y9h">
                                                             <rect key="frame" x="0.0" y="0.0" width="102" height="40.5"/>
@@ -68,17 +91,17 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" horizontalHuggingPriority="999" translatesAutoresizingMaskIntoConstraints="NO" id="KdG-8v-7Yu">
-                                                            <rect key="frame" x="102" y="0.0" width="146" height="40.5"/>
+                                                            <rect key="frame" x="102" y="0.0" width="130" height="40.5"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         </view>
                                                         <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="siW-3q-2Xx" userLabel="Image stack">
-                                                            <rect key="frame" x="248" y="0.0" width="15.5" height="40.5"/>
+                                                            <rect key="frame" x="232" y="0.0" width="8" height="40.5"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tickets" translatesAutoresizingMaskIntoConstraints="NO" id="C1J-an-mCE">
                                                                     <rect key="frame" x="0.0" y="0.0" width="0.0" height="40.5"/>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ZA-G5-OzP">
-                                                                    <rect key="frame" x="8" y="0.0" width="7.5" height="40.5"/>
+                                                                    <rect key="frame" x="8" y="0.0" width="0.0" height="40.5"/>
                                                                     <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -86,7 +109,7 @@
                                                             </subviews>
                                                         </stackView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OgC-gd-ALg" customClass="GMStepper" customModule="GMStepper">
-                                                            <rect key="frame" x="263.5" y="0.0" width="87.5" height="40.5"/>
+                                                            <rect key="frame" x="240" y="0.0" width="103" height="40.5"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
@@ -102,13 +125,13 @@
                                                         </view>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="OgC-gd-ALg" firstAttribute="width" secondItem="daD-d2-ksW" secondAttribute="width" multiplier="0.25" id="8d9-H1-gX3"/>
+                                                        <constraint firstItem="OgC-gd-ALg" firstAttribute="width" secondItem="daD-d2-ksW" secondAttribute="width" multiplier="0.3" id="8d9-H1-gX3"/>
                                                     </constraints>
                                                 </stackView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="daD-d2-ksW" firstAttribute="top" secondItem="WX8-px-417" secondAttribute="topMargin" id="Jst-3J-NFs"/>
-                                                <constraint firstAttribute="trailing" secondItem="daD-d2-ksW" secondAttribute="trailing" constant="8" id="PRv-lF-xIM"/>
+                                                <constraint firstAttribute="trailing" secondItem="daD-d2-ksW" secondAttribute="trailing" constant="16" id="PRv-lF-xIM"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="daD-d2-ksW" secondAttribute="bottom" id="ca7-Gq-uz6"/>
                                                 <constraint firstItem="daD-d2-ksW" firstAttribute="leading" secondItem="WX8-px-417" secondAttribute="leading" constant="16" id="znw-Jc-iiL"/>
                                             </constraints>
@@ -141,14 +164,15 @@
                                 <action selector="editButtonPressed:" destination="mqg-NK-qv1" id="db0-2b-5gf"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="cpY-ih-Nf5">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="cpY-ih-Nf5">
                             <connections>
-                                <action selector="xButtonPressed:" destination="mqg-NK-qv1" id="jZz-bp-F8Z"/>
+                                <action selector="doneButtonPressed:" destination="mqg-NK-qv1" id="cGF-TR-dsV"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="segmentedControl" destination="Prs-uc-16o" id="3gO-kZ-z6F"/>
                         <outlet property="tableView" destination="rzj-3n-BXu" id="yCg-4Q-99I"/>
                     </connections>
                 </viewController>
