@@ -14,6 +14,7 @@ class StudentTicketsViewController: UIViewController, AutoStoryboardInitializabl
 
     var core = App.core
     var students = [Student]()
+    var isShowingSteppers = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,10 +34,10 @@ class StudentTicketsViewController: UIViewController, AutoStoryboardInitializabl
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func resetButtonPressed(_ sender: Any) {
-        showResetConfirmationAlert()
+    @IBAction func editButtonPressed(_ sender: UIBarButtonItem) {
+        isShowingSteppers = !isShowingSteppers
+        tableView.reloadData()
     }
-    
     
 }
 
@@ -90,7 +91,7 @@ extension StudentTicketsViewController: UITableViewDataSource, UITableViewDelega
             studentAtRow.tickets = stepValue
             self.core.fire(command: UpdateObject(object: studentAtRow))
         }
-        cell.isEditing = tableView.isEditing
+        cell.isShowingStepper = isShowingSteppers
         
         return cell
     }

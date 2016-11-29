@@ -49,7 +49,7 @@ class NameDrawViewController: UIViewController, AutoStoryboardInitializable {
     }
     
     @IBAction func ticketsButtonPressed(_ sender: UIBarButtonItem) {
-        let studentTicketsVC = StudentTicketsViewController.initializeFromStoryboard()
+        let studentTicketsVC = StudentTicketsViewController.initializeFromStoryboard().embededInNavigationController
         present(studentTicketsVC, animated: true, completion: nil)
     }
     

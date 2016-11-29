@@ -26,6 +26,30 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="57" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rzj-3n-BXu">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="SbD-wO-ERw">
+                                    <rect key="frame" x="0.0" y="85" width="375" height="40"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BFq-BN-e4u">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                                            <color key="backgroundColor" red="0.92549020049999997" green="0.1215686277" blue="0.078431375319999996" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="40" id="bUQ-hN-Edb"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="16"/>
+                                            <state key="normal" title="Reset tickets">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="BFq-BN-e4u" firstAttribute="top" secondItem="SbD-wO-ERw" secondAttribute="top" id="mR2-Wf-to4"/>
+                                        <constraint firstAttribute="trailing" secondItem="BFq-BN-e4u" secondAttribute="trailing" id="pYg-Gy-5MT"/>
+                                        <constraint firstItem="BFq-BN-e4u" firstAttribute="leading" secondItem="SbD-wO-ERw" secondAttribute="leading" id="qQf-Ax-f6N"/>
+                                        <constraint firstAttribute="bottom" secondItem="BFq-BN-e4u" secondAttribute="bottom" id="x1A-xK-SuV"/>
+                                    </constraints>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StudentTicketTableCell" rowHeight="57" id="KUa-La-rfW" customClass="StudentTicketTableCell" customModule="TeacherTools" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="57"/>
@@ -90,6 +114,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="countLabel" destination="0ZA-G5-OzP" id="qFV-b0-32B"/>
                                             <outlet property="nameLabel" destination="4Bb-rF-Y9h" id="Rj7-5r-mfH"/>
                                             <outlet property="readyOnlyStack" destination="siW-3q-2Xx" id="Dqz-Rz-pad"/>
                                             <outlet property="stepper" destination="OgC-gd-ALg" id="xPO-Jf-u7v"/>
@@ -111,9 +136,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Tickets" id="yW4-N0-wMN">
-                        <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="t0p-cn-bg3">
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="t0p-cn-bg3">
                             <connections>
-                                <action selector="resetButtonPressed:" destination="mqg-NK-qv1" id="li1-XE-XWx"/>
+                                <action selector="editButtonPressed:" destination="mqg-NK-qv1" id="db0-2b-5gf"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="stop" id="cpY-ih-Nf5">
