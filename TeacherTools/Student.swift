@@ -15,6 +15,15 @@ struct Student: Marshaling, Unmarshaling, Identifiable {
     var firstName: String
     var lastName: String?
     var tickets = 1
+    var name: FullName {
+        get {
+            return (firstName, lastName)
+        }
+        set {
+            firstName = name.first
+            lastName = name.last
+        }
+    }
     
     var displayedName: String {
         guard let lastName = lastName else { return firstName }

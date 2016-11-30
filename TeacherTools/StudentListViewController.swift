@@ -28,6 +28,8 @@ class StudentListViewController: UIViewController, AutoStoryboardInitializable {
     fileprivate var plusBarButton = UIBarButtonItem()
     fileprivate var saveBarButton = UIBarButtonItem()
     fileprivate var cancelBarButton = UIBarButtonItem()
+    fileprivate var doneBarButton = UIBarButtonItem()
+    fileprivate var editBarButton = UIBarButtonItem()
     
     var currentSortType: SortType = App.core.state.theme.lastFirst ? .last : .first {
         didSet {
@@ -67,6 +69,12 @@ class StudentListViewController: UIViewController, AutoStoryboardInitializable {
         currentSortType = selectedSortType
     }
     
+    func editButtonPressed(_ sender: UIBarButtonItem) {
+        tableView.isEditing = !tableView.isEditing
+        tableView.reloadData()
+        navigationItem.leftBarButtonItem = tableView.isEditing ? doneBarButton : editBarButton
+    }
+    
 }
 
 
@@ -92,22 +100,13 @@ extension StudentListViewController: Subscriber {
 
 extension StudentListViewController {
     
-    var nameIsValid: Bool {
-        guard let studentName = newStudentTextField.text, studentName.isEmpty == false else { return false }
-        let hasComma = studentName.contains(",")
-        let hasSpace = studentName.contains(" ")
-        if !hasComma && !hasSpace {
-            return true
-        } else if hasSpace {
-            return studentName.components(separatedBy: " ").count == 2
-        }
-        return true
-    }
-    
     func setUp() {
         plusBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(startEditing))
         saveBarButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveNewStudent))
         cancelBarButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(saveNewStudent))
+        editBarButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editButtonPressed(_:)))
+        doneBarButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(editButtonPressed(_:)))
+        navigationItem.setLeftBarButton(editBarButton, animated: true)
         navigationItem.setRightBarButton(plusBarButton, animated: true)
         newEntryView.isHidden = true
         
@@ -152,8 +151,11 @@ extension StudentListViewController {
     
     func saveNewStudent() {
         if newStudentTextField.text!.isEmpty { isAdding = false; return }
-        guard nameIsValid else { core.fire(event: ErrorEvent(error: nil, message: "Unaccepted name format")); return }
         if let newStudentName = newStudentTextField.text, newStudentName.isEmpty == false {
+            guard newStudentName.isValidName else {
+                core.fire(event: ErrorEvent(error: nil, message: "Unaccepted name format"))
+                return
+            }
             guard let currentUser = core.state.currentUser else { return }
             let id = FirebaseNetworkAccess.sharedInstance.studentsRef(userId: currentUser.id).childByAutoId()
             let newStudent = Student(id: id.key, name: newStudentName)
@@ -195,16 +197,18 @@ extension StudentListViewController: UITableViewDataSource, UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: StudentTableViewCell.reuseIdentifier) as! StudentTableViewCell
-        cell.update(with: students[indexPath.row], theme: core.state.theme)
+        cell.update(with: students[indexPath.row], theme: core.state.theme, isEditing: tableView.isEditing)
         cell.delegate = self
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        resetAllCells()
-        guard let cell = tableView.cellForRow(at: indexPath) as? StudentTableViewCell else { return }
-        cell.isEditing = !cell.isEditing
+        if tableView.isEditing == false {
+            editButtonPressed(editBarButton)
+            guard let cell = tableView.cellForRow(at: indexPath) as? StudentTableViewCell else { return }
+            cell.textField.becomeFirstResponder()
+        }
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -306,9 +310,12 @@ extension StudentListViewController {
 
 extension StudentListViewController: StudentCellDelegate {
     
-    func saveStudentName(fromCell cell: StudentTableViewCell) {
+    func saveStudentName(_ name: FullName, forCell cell: StudentTableViewCell) {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
-        core.fire(command: UpdateObject(object: students[indexPath.row]))
+        var updatedStudent = students[indexPath.row]
+        updatedStudent.firstName = name.first
+        updatedStudent.lastName = name.last
+        core.fire(command: UpdateObject(object: updatedStudent))
     }
     
 }

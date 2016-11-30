@@ -9,49 +9,45 @@
 import UIKit
 
 protocol StudentCellDelegate {
-    func saveStudentName(fromCell cell: StudentTableViewCell)
+    func saveStudentName(_ name: FullName, forCell cell: StudentTableViewCell)
 }
 
 class StudentTableViewCell: UITableViewCell, AutoReuseIdentifiable {
     
     @IBOutlet weak var textField: UITextField!
-    @IBOutlet weak var doneButton: UIButton!
+    @IBOutlet weak var saveButton: UIButton!
     
     var delegate: StudentCellDelegate?
     var student: Student?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        doneButton.isHidden = true
+        saveButton.isHidden = true
         textField.layer.cornerRadius = 5.0
     }
     
-    override var isEditing: Bool {
-        didSet {
-            isSelected = isEditing
-            textField.borderStyle = isEditing ? .line : .none
-            if isEditing {
-                textField.becomeFirstResponder()
-            } else {
-                textField.resignFirstResponder()
-            }
-            toggleDoneButton(show: isEditing)
-        }
-    }
-    
-    func update(with student: Student, theme: Theme) {
+    func update(with student: Student, theme: Theme, isEditing: Bool) {
         self.student = student
         textField.text = student.displayedName
+        textField.isUserInteractionEnabled = isEditing
     }
     
-    func update(with theme: Theme) {
-        doneButton.tintColor = theme.tintColor
+    fileprivate func update(with theme: Theme) {
+        saveButton.tintColor = theme.tintColor
         textField.textColor = theme.textColor
         textField.font = theme.fontType.font(withSize: textField.font!.pointSize)
     }
 
-    @IBAction func doneButtonPressed(_ sender: UIButton) {
+    @IBAction func saveButtonPressed(_ sender: UIButton) {
         saveNewName()
+    }
+    
+    @IBAction func textFieldEditingChanged(_ sender: UITextField) {
+        if let text = sender.text, text.isValidName {
+            toggleSaveButton(show: true)
+        } else {
+            toggleSaveButton(show: false)
+        }
     }
     
 }
@@ -60,11 +56,10 @@ class StudentTableViewCell: UITableViewCell, AutoReuseIdentifiable {
 extension StudentTableViewCell {
     
     func saveNewName() {
-        if let name = textField.text, name.isEmpty == false && name != student?.displayedName {
-            delegate?.saveStudentName(fromCell: self)
+        if let text = textField.text, text.isValidName {
+            delegate?.saveStudentName(text.parsed(), forCell: self)
         }
-        isEditing = false
-        toggleDoneButton(show: false)
+        toggleSaveButton(show: false)
     }
     
 }
@@ -72,15 +67,15 @@ extension StudentTableViewCell {
 
 extension StudentTableViewCell: UITextFieldDelegate {
     
-    func toggleDoneButton(show: Bool) {
-        self.doneButton.isHidden = !show
-//        UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: { 
-//            self.doneButton.isHidden = !show
-//        }, completion: nil)
+    func toggleSaveButton(show: Bool) {
+//        self.saveButton.isHidden = !show
+        UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
+            self.saveButton.isHidden = !show
+        }, completion: nil)
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        delegate?.saveStudentName(fromCell: self)
+        saveNewName()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

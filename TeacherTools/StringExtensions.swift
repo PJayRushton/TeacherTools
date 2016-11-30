@@ -8,9 +8,11 @@
 
 import Foundation
 
+typealias FullName = (first: String, last: String?)
+
 extension String {
     
-    func parsed() -> (first: String, last: String?) {
+    func parsed() -> FullName {
         if self.contains(",") {
             let noSpaces = self.replacingOccurrences(of: " ", with: "")
             let parts = noSpaces.components(separatedBy: ",")
@@ -23,6 +25,18 @@ extension String {
         } else {
             return (first: self, last: nil)
         }
+    }
+    
+    var isValidName: Bool {
+        guard self.isEmpty == false else { return false }
+        let hasComma = self.contains(",")
+        let hasSpace = self.contains(" ")
+        if !hasComma && !hasSpace {
+            return true
+        } else if hasSpace {
+            return self.components(separatedBy: " ").count == 2
+        }
+        return true
     }
     
 }

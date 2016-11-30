@@ -21,6 +21,7 @@ class NameDrawViewController: UIViewController, AutoStoryboardInitializable {
     fileprivate var allStudents = [Student]()
     fileprivate var selectedStudents = [Student]()
     fileprivate var animator: UIViewPropertyAnimator!
+    fileprivate var animateNameDraw = true
     fileprivate var currentStudent: Student? {
         didSet {
             handleNewStudent(currentStudent, previousStudent: oldValue)
@@ -33,11 +34,20 @@ class NameDrawViewController: UIViewController, AutoStoryboardInitializable {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        allStudents = core.state.currentStudents.shuffled()
-        currentStudent = nil
         tableView.rowHeight = 38
         animator = UIViewPropertyAnimator(duration: 1.5, curve: .easeInOut)
-        updateCountLabel()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        core.add(subscriber: self)
+        resetNames()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        core.remove(subscriber: self)
     }
     
     @IBAction func resetButtonPressed(_ sender: UIBarButtonItem) {
@@ -55,7 +65,38 @@ class NameDrawViewController: UIViewController, AutoStoryboardInitializable {
     
 }
 
+
+// MARK: - Subscriber
+
+extension NameDrawViewController: Subscriber {
+    
+    func update(with state: AppState) {
+        ticketsButton.tintColor = state.isUsingTickets ? .red : .lightGray
+    }
+    
+}
+
+
 extension NameDrawViewController {
+    
+    func studentListWithTickets(students: [Student]) -> [Student] {
+        var updatedStudents = students
+        for student in updatedStudents {
+            guard let index = updatedStudents.index(of: student) else { continue }
+            if student.tickets == 0 {
+                updatedStudents.remove(at: index)
+            } else if student.tickets > 1 {
+                var additionalStudents = student.tickets - 1
+                while additionalStudents > 0 {
+                    let studentCopy = student
+                    updatedStudents.append(studentCopy)
+                    additionalStudents -= 1
+                }
+            }
+        }
+        
+        return updatedStudents
+    }
     
     func drawName() {
         guard allStudents.count > 0 else { currentStudent = nil; return }
@@ -64,7 +105,7 @@ extension NameDrawViewController {
     
     func handleNewStudent(_ student: Student?, previousStudent: Student?) {
         if let newStudent = student {
-            changeTopLabel(animated: true) {
+            changeTopLabel(animated: animateNameDraw) {
                 self.topLabel.text = newStudent.displayedName
             }
         } else {
@@ -107,14 +148,15 @@ extension NameDrawViewController {
     
     fileprivate func updateCountLabel() {
         let drawnNamesCount = currentStudent == nil ? selectedStudents.count : selectedStudents.count + 1
-        countLabel.text = "\(drawnNamesCount)/\(core.state.currentStudents.count)"
+        let totalStudentCount = studentListWithTickets(students: core.state.currentStudents).count
+        countLabel.text = "\(drawnNamesCount)/\(totalStudentCount)"
     }
     
     fileprivate func resetNames() {
         if currentStudent != nil {
             currentStudent = nil
         }
-        allStudents = core.state.currentStudents.shuffled()
+        allStudents = studentListWithTickets(students: core.state.currentStudents).shuffled()
         selectedStudents.removeAll()
         tableView.reloadData()
         updateCountLabel()
@@ -126,7 +168,33 @@ extension NameDrawViewController {
         return strings.randomElement()!
     }
     
+    fileprivate func presentAnimationAlert() {
+        let alert = UIAlertController(title: "Turn name draw animation:", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Off", style: .default, handler: { _ in
+            self.animateNameDraw = false
+        }))
+        alert.addAction(UIAlertAction(title: "On", style: .default, handler: { _ in
+           self.animateNameDraw = true
+        }))
+        present(alert, animated: true, completion: nil)
+    }
+    
 }
+
+extension NameDrawViewController {
+    
+    override var canBecomeFirstResponder: Bool {
+        return true
+    }
+    
+    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+        if motion == UIEventSubtype.motionShake {
+            presentAnimationAlert()
+        }
+    }
+    
+}
+
 
 extension NameDrawViewController: UITableViewDataSource, UITableViewDelegate {
     

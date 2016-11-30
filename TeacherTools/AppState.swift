@@ -30,6 +30,16 @@ struct AppState: State {
     var allStudents = [Student]()
     var theme = defaultTheme
     
+    var isUsingTickets: Bool {
+        for student in currentStudents {
+            if student.tickets == 0 || student.tickets > 1 {
+                return true
+            }
+        }
+        
+        return false
+    }
+    
     mutating func react(to event: Event) {
         switch event {
             // AUTH

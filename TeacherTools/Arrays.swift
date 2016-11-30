@@ -19,6 +19,7 @@ extension Collection where Iterator.Element: Identifiable {
     }
     
 }
+
 extension Array {
     
     func step(from: Index, to:Index, interval: Int = 1) -> Array<Element> {

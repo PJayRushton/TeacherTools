@@ -92,7 +92,7 @@
                                                 <rect key="frame" x="0.0" y="78" width="375" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cnF-bk-Otv" id="y20-Lx-9o8">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </tableViewCellContentView>
                                             </tableViewCell>
@@ -118,7 +118,7 @@
                     <navigationItem key="navigationItem" id="g9U-TY-4pv">
                         <nil key="title"/>
                         <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="46K-XO-Qvr" customClass="NavBarButton" customModule="TeacherTools" customModuleProvider="target">
-                            <rect key="frame" x="113" y="7" width="150" height="30"/>
+                            <rect key="frame" x="112.5" y="7" width="150" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <connections>
                                 <segue destination="NMX-Sg-q2Y" kind="popoverPresentation" identifier="showGroupSwitcher" popoverAnchorView="46K-XO-Qvr" id="6ef-as-WkY">

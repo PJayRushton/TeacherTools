@@ -101,7 +101,7 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" title="Draw names" id="I7c-VD-JWF">
-                        <barButtonItem key="leftBarButtonItem" image="tickets" id="vkN-Ww-Y45">
+                        <barButtonItem key="leftBarButtonItem" image="singleTicket" id="vkN-Ww-Y45">
                             <connections>
                                 <action selector="ticketsButtonPressed:" destination="WKU-9W-Ea9" id="xxK-14-coV"/>
                             </connections>
@@ -132,6 +132,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="tickets" width="22" height="21"/>
+        <image name="singleTicket" width="26" height="26"/>
     </resources>
 </document>
