@@ -63,26 +63,26 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="daD-d2-ksW">
-                                                            <rect key="frame" x="16" y="8" width="343" height="40.5"/>
+                                                            <rect key="frame" x="16" y="8" width="343" height="41"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="NameLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Bb-rF-Y9h">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="102" height="40.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="102" height="41"/>
                                                                     <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <view contentMode="scaleToFill" horizontalHuggingPriority="999" translatesAutoresizingMaskIntoConstraints="NO" id="KdG-8v-7Yu">
-                                                                    <rect key="frame" x="102" y="0.0" width="130" height="40.5"/>
+                                                                    <rect key="frame" x="102" y="0.0" width="130" height="41"/>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 </view>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="siW-3q-2Xx" userLabel="Image stack">
-                                                                    <rect key="frame" x="232" y="0.0" width="8" height="40.5"/>
+                                                                    <rect key="frame" x="232" y="0.0" width="8" height="41"/>
                                                                     <subviews>
                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ticket" translatesAutoresizingMaskIntoConstraints="NO" id="C1J-an-mCE">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="40.5"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="41"/>
                                                                         </imageView>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ZA-G5-OzP">
-                                                                            <rect key="frame" x="8" y="0.0" width="0.0" height="40.5"/>
+                                                                            <rect key="frame" x="8" y="0.0" width="0.0" height="41"/>
                                                                             <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
@@ -90,7 +90,7 @@
                                                                     </subviews>
                                                                 </stackView>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OgC-gd-ALg" customClass="GMStepper" customModule="GMStepper">
-                                                                    <rect key="frame" x="240" y="0.0" width="103" height="40.5"/>
+                                                                    <rect key="frame" x="240" y="0.0" width="103" height="41"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">

@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Appirater-Appirater.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Appirater.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>BetterSegmentedControl.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,12 +42,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5E1FE04BDA61B16AC5EE3CF722349916</key>
+		<key>4E7E6A762C9AE3FEAEB69ABDB3888843</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>72EE9DA841729CB76467D9D6CFB6D944</key>
+		<key>7B70870D8B461DF43521B992C810D78B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>871A7BA32C7B5C87DF08B9ECB4DFDC3C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8F422D81B738E5AC67359A13AC854445</key>
 		<dict>
 			<key>primary</key>
 			<true/>

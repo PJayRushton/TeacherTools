@@ -10,5 +10,6 @@ target 'TeacherTools' do
   pod 'Whisper'
   pod 'GMStepper'
   pod 'BetterSegmentedControl'
+  pod 'Appirater'
   
 end

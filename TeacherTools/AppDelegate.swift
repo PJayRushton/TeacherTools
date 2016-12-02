@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import Appirater
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         core.fire(command: GetICloudUser())
         setupAppearance()
+        setUpAppirater()
         
         return true
     }
@@ -34,6 +36,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance(whenContainedInInstancesOf: [UINavigationController.self]).tintColor = .darkGray
         UIBarButtonItem.appearance(whenContainedInInstancesOf: [UINavigationController.self]).setTitleTextAttributes([NSFontAttributeName: App.core.state.theme.fontType.font(withSize: 17)], for: .normal)
         UINavigationBar.appearance().isTranslucent = true
+    }
+    
+    func setUpAppirater() {
+        Appirater.setAppId("977797579")
+        Appirater.appLaunched(false)
+        Appirater.setUsesUntilPrompt(3)
+        Appirater.setDebug(true) // TODO: Remove this for prod
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
@@ -48,6 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        Appirater.appEnteredForeground(false)
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {

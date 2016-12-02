@@ -1,4 +1,5 @@
 PODS:
+  - Appirater (2.1.2)
   - BetterSegmentedControl (0.5)
   - Firebase/Auth (3.7.1):
     - Firebase/Core
@@ -41,6 +42,7 @@ PODS:
   - Whisper (4.0.0)
 
 DEPENDENCIES:
+  - Appirater
   - BetterSegmentedControl
   - Firebase/Auth
   - Firebase/Core
@@ -50,6 +52,7 @@ DEPENDENCIES:
   - Whisper
 
 SPEC CHECKSUMS:
+  Appirater: f1c9e53e8b612193e6256144f6a0fd2e31f4340d
   BetterSegmentedControl: db74c56602e418e9eca8f6340e0ed0a7215f5f7c
   Firebase: be473484f0d515e72ffd04acf22f981773c23e58
   FirebaseAnalytics: 0533a00b681e08fd0b2cd0444b7ddf0ef9fd7a1a
@@ -65,6 +68,6 @@ SPEC CHECKSUMS:
   GoogleUtilities: 8bbc733218aad26306f9d4a253823986110e3358
   Whisper: 08be92623311f8e53201e62e17f6d7b9599a4714
 
-PODFILE CHECKSUM: 65dc5236457961825e46463b72084250d97a18e7
+PODFILE CHECKSUM: d5e58bd3b3dda1e14032287c33a2d16f8e39d5fb
 
 COCOAPODS: 1.0.1
