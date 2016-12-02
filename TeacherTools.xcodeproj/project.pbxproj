@@ -80,6 +80,8 @@
 		A19DB8DA1DF1D6C400D4C386 /* ProViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19DB8D91DF1D6C300D4C386 /* ProViewController.swift */; };
 		A19DB8DC1DF1D6EA00D4C386 /* ProViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A19DB8DB1DF1D6EA00D4C386 /* ProViewController.storyboard */; };
 		A19DB8DE1DF1E09A00D4C386 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A19DB8DD1DF1E09A00D4C386 /* StoreKit.framework */; };
+		A19DB8E01DF1E1DA00D4C386 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19DB8DF1DF1E1DA00D4C386 /* IAPHelper.swift */; };
+		A19DB8E21DF1E8EB00D4C386 /* TTProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19DB8E11DF1E8EB00D4C386 /* TTProducts.swift */; };
 		A1ADE47E1DCF82D6001434EF /* RandomizerHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1ADE47D1DCF82D6001434EF /* RandomizerHeaderView.swift */; };
 		A1ADE4801DCF8A16001434EF /* UpdateTeamSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1ADE47F1DCF8A16001434EF /* UpdateTeamSize.swift */; };
 		A1B1A2081DC8BD4300D80E53 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1A2071DC8BD4300D80E53 /* DateHelper.swift */; };
@@ -193,6 +195,8 @@
 		A19DB8D91DF1D6C300D4C386 /* ProViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProViewController.swift; sourceTree = "<group>"; };
 		A19DB8DB1DF1D6EA00D4C386 /* ProViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProViewController.storyboard; sourceTree = "<group>"; };
 		A19DB8DD1DF1E09A00D4C386 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		A19DB8DF1DF1E1DA00D4C386 /* IAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
+		A19DB8E11DF1E8EB00D4C386 /* TTProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTProducts.swift; sourceTree = "<group>"; };
 		A1ADE47D1DCF82D6001434EF /* RandomizerHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomizerHeaderView.swift; sourceTree = "<group>"; };
 		A1ADE47F1DCF8A16001434EF /* UpdateTeamSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateTeamSize.swift; sourceTree = "<group>"; };
 		A1B1A2071DC8BD4300D80E53 /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
@@ -272,18 +276,20 @@
 		A14160A61DC66D3800C4F5BB /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				A147CFB41DCAB34400C9860F /* NavBarButton.swift */,
+				A14160F21DC686FF00C4F5BB /* Arrays.swift */,
 				A147CFA61DCA336D00C9860F /* CustomTabBar.swift */,
 				A147CFA71DCA336D00C9860F /* CustomTabBarProtocols.swift */,
-				A147CFA81DCA336D00C9860F /* TabButton.swift */,
-				A11EE95E1DC6CEB6002C9228 /* GoogleService-Info.plist */,
-				A14160F81DC68C2300C4F5BB /* Result.swift */,
-				A14160F21DC686FF00C4F5BB /* Arrays.swift */,
 				A1B1A2071DC8BD4300D80E53 /* DateHelper.swift */,
-				A1C919D61DDACE0000A7B477 /* StringExtensions.swift */,
+				A11EE95E1DC6CEB6002C9228 /* GoogleService-Info.plist */,
+				A19DB8DF1DF1E1DA00D4C386 /* IAPHelper.swift */,
+				A147CFB41DCAB34400C9860F /* NavBarButton.swift */,
+				A14160F81DC68C2300C4F5BB /* Result.swift */,
 				A14160A71DC66D4800C4F5BB /* SegueHandlerType.swift */,
 				A14160A41DC66D2F00C4F5BB /* StoryboardInitializable.swift */,
+				A1C919D61DDACE0000A7B477 /* StringExtensions.swift */,
+				A147CFA81DCA336D00C9860F /* TabButton.swift */,
 				A11EE9601DC6F19E002C9228 /* TestHelper.swift */,
+				A19DB8E11DF1E8EB00D4C386 /* TTProducts.swift */,
 				A19DB8CE1DF095AB00D4C386 /* UIColorExtension.swift */,
 			);
 			name = Shared;
@@ -624,6 +630,7 @@
 				A11EE96D1DC73CBC002C9228 /* StudentTableViewCell.swift in Sources */,
 				A14160ED1DC6806200C4F5BB /* ErrorHUDMiddleware.swift in Sources */,
 				A14160D71DC6758700C4F5BB /* MarshaledObject.swift in Sources */,
+				A19DB8E21DF1E8EB00D4C386 /* TTProducts.swift in Sources */,
 				A141609A1DC66BBC00C4F5BB /* AppState.swift in Sources */,
 				A16142421DCDF50300C800A1 /* CreateStudent.swift in Sources */,
 				A11EE9611DC6F19E002C9228 /* TestHelper.swift in Sources */,
@@ -631,6 +638,7 @@
 				A1D1B4341DCC136D00AF5452 /* AddGroupTableCell.swift in Sources */,
 				A141609C1DC66BEC00C4F5BB /* Reactor.swift in Sources */,
 				A147CFBD1DCAB80600C9860F /* LoadingImageViewController.swift in Sources */,
+				A19DB8E01DF1E1DA00D4C386 /* IAPHelper.swift in Sources */,
 				A147CFAF1DCA410400C9860F /* StudentRandomizerViewController.swift in Sources */,
 				A141611F1DC69AEB00C4F5BB /* Theme.swift in Sources */,
 				A147CFAB1DCA336D00C9860F /* TabButton.swift in Sources */,
