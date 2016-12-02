@@ -218,6 +218,9 @@ extension StudentListViewController: UITableViewDataSource, UITableViewDelegate 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let studentToX = students[indexPath.row]
+            if let cell = tableView.cellForRow(at: indexPath) as? StudentTableViewCell {
+                cell.textField.resignFirstResponder()
+            }
             core.fire(command: DeleteStudent(student: studentToX))
         }
     }

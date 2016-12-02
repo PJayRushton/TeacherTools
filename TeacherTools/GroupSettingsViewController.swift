@@ -20,6 +20,7 @@ class GroupSettingsViewController: UIViewController, AutoStoryboardInitializable
     var group : Group? {
         return core.state.selectedGroup
     }
+    fileprivate let appStoreURL = URL(string: "itms-apps://itunes.apple.com/app/id977797579")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,6 +75,14 @@ class GroupSettingsViewController: UIViewController, AutoStoryboardInitializable
 
     @IBAction func segmentedControlValueChanged(_ sender: BetterSegmentedControl) {
         core.fire(event: NameDisplayChanged(lastFirst: Int(sender.index) == NameDisplayType.lastFirst.rawValue))
+    }
+    
+    @IBAction func rateButtonPressed(_ sender: UIButton) {
+        launchAppStore()
+    }
+    
+    @IBAction func shareButtonPressed(_ sender: UIButton) {
+        launchShareSheet()
     }
     
 }
@@ -136,6 +145,27 @@ extension GroupSettingsViewController {
         saveButton.titleLabel?.textColor = theme.tintColor
         updateSegmentedControl(theme: theme)
     }
+    
+    func launchAppStore() {
+        guard let appStoreURL = appStoreURL, UIApplication.shared.canOpenURL(appStoreURL) else {
+            core.fire(event: ErrorEvent(error: nil, message: "Error launching app store"))
+            return
+        }
+        UIApplication.shared.open(appStoreURL, options: [:], completionHandler: nil)
+    }
+    
+    func launchShareSheet() {
+        let textToShare = "Check out this great app for teachers called Teacher Tools. You can find it in the app store!"
+        var objectsToShare: [Any] = [textToShare]
+        
+        if let appStoreURL = URL(string: "https://itunes.apple.com/us/app/teacher-tools-tool-for-teachers/id977797579?mt=8") {
+            objectsToShare.append(appStoreURL)
+        }
+        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+        activityVC.excludedActivityTypes = [UIActivityType.airDrop, .addToReadingList, .assignToContact, .openInIBooks, .postToTencentWeibo, .postToVimeo, .print, .saveToCameraRoll, .postToWeibo, .postToFlickr]
+        present(activityVC, animated: true, completion: nil)
+    }
+    
 }
 
 extension GroupSettingsViewController: UITextFieldDelegate {
