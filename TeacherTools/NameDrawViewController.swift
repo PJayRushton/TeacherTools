@@ -71,7 +71,7 @@ class NameDrawViewController: UIViewController, AutoStoryboardInitializable {
 extension NameDrawViewController: Subscriber {
     
     func update(with state: AppState) {
-        ticketsButton.tintColor = state.isUsingTickets ? .red : .lightGray
+        ticketsButton.tintColor = state.isUsingTickets ? .ticketRed : .darkGray
     }
     
 }

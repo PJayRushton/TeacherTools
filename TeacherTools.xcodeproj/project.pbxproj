@@ -76,6 +76,7 @@
 		A161426A1DCE4E8D00C800A1 /* SubscribeToReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16142691DCE4E8D00C800A1 /* SubscribeToReachability.swift */; };
 		A161426C1DCF43A100C800A1 /* RandomizerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A161426B1DCF43A100C800A1 /* RandomizerCollectionViewCell.swift */; };
 		A161426E1DCF7B1500C800A1 /* RandomizerDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A161426D1DCF7B1500C800A1 /* RandomizerDatasource.swift */; };
+		A19DB8CF1DF095AB00D4C386 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19DB8CE1DF095AB00D4C386 /* UIColorExtension.swift */; };
 		A1ADE47E1DCF82D6001434EF /* RandomizerHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1ADE47D1DCF82D6001434EF /* RandomizerHeaderView.swift */; };
 		A1ADE4801DCF8A16001434EF /* UpdateTeamSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1ADE47F1DCF8A16001434EF /* UpdateTeamSize.swift */; };
 		A1B1A2081DC8BD4300D80E53 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1A2071DC8BD4300D80E53 /* DateHelper.swift */; };
@@ -185,6 +186,7 @@
 		A16142691DCE4E8D00C800A1 /* SubscribeToReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscribeToReachability.swift; sourceTree = "<group>"; };
 		A161426B1DCF43A100C800A1 /* RandomizerCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomizerCollectionViewCell.swift; sourceTree = "<group>"; };
 		A161426D1DCF7B1500C800A1 /* RandomizerDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomizerDatasource.swift; sourceTree = "<group>"; };
+		A19DB8CE1DF095AB00D4C386 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		A1ADE47D1DCF82D6001434EF /* RandomizerHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomizerHeaderView.swift; sourceTree = "<group>"; };
 		A1ADE47F1DCF8A16001434EF /* UpdateTeamSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateTeamSize.swift; sourceTree = "<group>"; };
 		A1B1A2071DC8BD4300D80E53 /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 				A14160A71DC66D4800C4F5BB /* SegueHandlerType.swift */,
 				A14160A41DC66D2F00C4F5BB /* StoryboardInitializable.swift */,
 				A11EE9601DC6F19E002C9228 /* TestHelper.swift */,
+				A19DB8CE1DF095AB00D4C386 /* UIColorExtension.swift */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
@@ -602,6 +605,7 @@
 				A16142401DCDF4F200C800A1 /* CreateGroup.swift in Sources */,
 				A1ADE47E1DCF82D6001434EF /* RandomizerHeaderView.swift in Sources */,
 				A14160851DC669F100C4F5BB /* AppDelegate.swift in Sources */,
+				A19DB8CF1DF095AB00D4C386 /* UIColorExtension.swift in Sources */,
 				A11EE96D1DC73CBC002C9228 /* StudentTableViewCell.swift in Sources */,
 				A14160ED1DC6806200C4F5BB /* ErrorHUDMiddleware.swift in Sources */,
 				A14160D71DC6758700C4F5BB /* MarshaledObject.swift in Sources */,
