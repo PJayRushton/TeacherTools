@@ -53,6 +53,7 @@ extension Group: Unmarshaling, Marshaling {
     
     func marshaled() -> JSONObject {
         var json = JSONObject()
+        json["id"] = id
         json["name"] = name
         json["creationDate"] = creationDate.iso8601String
         json["lastViewDate"] = lastViewDate.iso8601String

@@ -14,13 +14,7 @@ struct SubscribeToUsers: Command {
         let ref = networkAccess.usersRef
         networkAccess.subscribe(to: ref) { result in
             let usersResult = result.map { (json: JSONObject) -> [User] in
-                var users = [User]()
-                for key in Array(json.keys) {
-                    var newUserObject: JSONObject = try json.value(for: key)
-                    newUserObject["id"] = key
-                    users.append(try User(object: newUserObject))
-                }
-                return users
+                return json.parsedObjects()
             }
             switch usersResult {
             case let .success(users):

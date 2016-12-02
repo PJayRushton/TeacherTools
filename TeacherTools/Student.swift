@@ -50,6 +50,7 @@ struct Student: Marshaling, Unmarshaling, Identifiable {
     
     func marshaled() -> JSONObject {
         var json = JSONObject()
+        json["id"] = id
         json["firstName"] = firstName
         json["lastName"] = lastName
         json["tickets"] = tickets

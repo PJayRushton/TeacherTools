@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Appirater.setAppId("977797579")
         Appirater.appLaunched(false)
         Appirater.setUsesUntilPrompt(3)
-        Appirater.setDebug(true) // TODO: Remove this for prod
+//        Appirater.setDebug(true) // TODO: Remove this for prod
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

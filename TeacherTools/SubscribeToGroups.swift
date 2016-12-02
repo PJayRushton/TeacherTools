@@ -15,14 +15,7 @@ struct SubscribeToGroups: Command {
         let ref = networkAccess.groupsRef(userId: currentUser.id)
         networkAccess.subscribe(to: ref) { result in
             let groupsResult = result.map { (json: JSONObject) -> [Group] in
-                let groupIds = Array(json.keys)
-                var groups = [Group]()
-                for groupId in groupIds {
-                    var groupObject:  JSONObject = try json.value(for: groupId)
-                    groupObject["id"] = groupId
-                    groups.append(try Group(object: groupObject))
-                }
-                return groups
+                return json.parsedObjects()
             }
             switch groupsResult {
             case let .success(groups):

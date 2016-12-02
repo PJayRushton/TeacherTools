@@ -15,14 +15,7 @@ struct SubscribeToStudents: Command {
         let ref = networkAccess.studentsRef(userId: currentUser.id)
         networkAccess.subscribe(to: ref) { result in
             let studentsResult = result.map { (json: JSONObject) -> [Student] in
-                let studentIds = Array(json.keys)
-                var students = [Student]()
-                for studentId in studentIds {
-                    var newStudentObject: JSONObject = try json.value(for: studentId)
-                    newStudentObject["id"] = studentId
-                    students.append(try Student(object: newStudentObject))
-                }
-                return students
+                return json.parsedObjects()
             }
             
             switch studentsResult {

@@ -16,13 +16,15 @@ final class User: Marshaling, Unmarshaling {
     var deviceId:  String
     var creationDate: Date
     var firstName: String?
+    var purchases = [TTPurchase]()
     
-    init(id: String = "", cloudKitId: String? = nil, deviceId: String = "", creationDate: Date = Date(), firstName: String? = nil) {
+    init(id: String = "", cloudKitId: String? = nil, deviceId: String = "", creationDate: Date = Date(), firstName: String? = nil, purchases: [TTPurchase] = []) {
         self.id = id
         self.cloudKitId = cloudKitId
         self.deviceId = deviceId
         self.creationDate = creationDate
         self.firstName = firstName
+        self.purchases = purchases
     }
     
     init(object: MarshaledObject) throws {
@@ -31,14 +33,18 @@ final class User: Marshaling, Unmarshaling {
         deviceId = try object.value(for: "deviceId")
         creationDate = try object.value(for: "creationDate")
         firstName = try object.value(for: "firstName")
+        let purchasesJSON: JSONObject? = try object.value(for: "purchases")
+        purchases = purchasesJSON.parsedObjects()
     }
     
     func marshaled() -> JSONObject {
         var json = JSONObject()
+        json["id"] = id
         json["iCloudId"] = cloudKitId
         json["deviceId"] = deviceId
         json["creationDate"] = creationDate.iso8601String
         json["firstName"] = firstName
+        json["purchases"] = purchases.marshaled()
         
         return json
     }
