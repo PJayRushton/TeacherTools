@@ -13,6 +13,7 @@ class StudentTicketTableCell: UITableViewCell, AutoReuseIdentifiable {
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var readyOnlyStack: UIStackView!
+    @IBOutlet weak var ticketImageView: UIImageView!
     @IBOutlet weak var countLabel: UILabel!
     @IBOutlet weak var stepper: GMStepper!
     
@@ -20,10 +21,11 @@ class StudentTicketTableCell: UITableViewCell, AutoReuseIdentifiable {
     var student: Student?
     var isShowingStepper = false {
         didSet {
-            UIView.animate(withDuration: 0.25) {
+            UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
                 self.readyOnlyStack.isHidden = self.isShowingStepper
                 self.stepper.isHidden = !self.isShowingStepper
-            }
+                self.stepper.alpha = self.isShowingStepper ? 1 : 0
+            }, completion: nil)
         }
     }
     

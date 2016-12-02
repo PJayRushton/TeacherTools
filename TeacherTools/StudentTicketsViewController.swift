@@ -11,11 +11,17 @@ import BetterSegmentedControl
 
 class StudentTicketsViewController: UIViewController, AutoStoryboardInitializable {
     
+    @IBOutlet weak var editButton: UIBarButtonItem!
     @IBOutlet weak var segmentedControl: BetterSegmentedControl!
     @IBOutlet weak var tableView: UITableView!
 
     var core = App.core
-    var isShowingSteppers = false
+    var isShowingSteppers = false {
+        didSet {
+            editButton.tintColor = isShowingSteppers ? core.state.theme.tintColor : .darkGray
+            editButton.setTitleTextAttributes([NSFontAttributeName: core.state.theme.fontType.font(withSize: 17)], for: .normal)
+        }
+    }
     var students = [Student]() {
         didSet {
             tableView.reloadData()
@@ -115,6 +121,13 @@ extension StudentTicketsViewController: UITableViewDataSource, UITableViewDelega
         cell.isShowingStepper = isShowingSteppers
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if isShowingSteppers == false, let editButton = navigationItem.leftBarButtonItem {
+            editButtonPressed(editButton)
+        }
     }
     
 }
