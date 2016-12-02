@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="GW0-o2-16X">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Pro Upgrade-->
+        <scene sceneID="PdP-Zc-x05">
+            <objects>
+                <viewController storyboardIdentifier="ProViewController" id="GW0-o2-16X" customClass="ProViewController" customModule="TeacherTools" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qQ7-Cw-RtS"/>
+                        <viewControllerLayoutGuide type="bottom" id="pha-wd-vBK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EuT-sI-OKO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Pro Upgrade" id="Dhe-TG-5eA">
+                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="kNZ-SE-Ulm">
+                            <connections>
+                                <action selector="dismissButtonPressed:" destination="GW0-o2-16X" id="97d-Iu-giS"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zfD-NR-0NR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="84" y="25"/>
+        </scene>
+    </scenes>
+</document>

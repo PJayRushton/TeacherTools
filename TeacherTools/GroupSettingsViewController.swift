@@ -11,10 +11,14 @@ import BetterSegmentedControl
 
 class GroupSettingsViewController: UIViewController, AutoStoryboardInitializable {
 
+    // MARK: - IBOutlets
+
     @IBOutlet weak var groupNameTextField: UITextField!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var displayNamesLabel: UILabel!
     @IBOutlet weak var segmentedControl: BetterSegmentedControl!
+
+    // MARK: - Properties
     
     var core = App.core
     var group : Group? {
@@ -22,6 +26,9 @@ class GroupSettingsViewController: UIViewController, AutoStoryboardInitializable
     }
     fileprivate let appStoreURL = URL(string: "itms-apps://itunes.apple.com/app/id977797579")
     
+    
+    // MARK: - ViewController Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         saveButton.isHidden = true
@@ -37,6 +44,9 @@ class GroupSettingsViewController: UIViewController, AutoStoryboardInitializable
         core.remove(subscriber: self)
     }
     
+
+    // MARK: - IBActions
+
     @IBAction func textFieldEditingChanged(_ sender: UITextField) {
         updateSaveButton()
     }
@@ -46,19 +56,7 @@ class GroupSettingsViewController: UIViewController, AutoStoryboardInitializable
     }
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
-        guard var selectedGroup = core.state.selectedGroup, let name = groupNameTextField.text else {
-            core.fire(event: ErrorEvent(error: nil, message: "Error saving class"))
-            return
-        }
-        let shouldSave = name.isEmpty == false && name != group?.name
-        if shouldSave {
-            selectedGroup.name = name
-            core.fire(command: UpdateObject(object: selectedGroup))
-            core.fire(event: DisplaySuccessMessage(message: "Saved!"))
-        } else {
-            groupNameTextField.text = group?.name
-        }
-        endEditing()
+        saveClassName()
     }
     
     @IBAction func deleteButtonPressed(_ sender: UIButton) {
@@ -85,6 +83,11 @@ class GroupSettingsViewController: UIViewController, AutoStoryboardInitializable
         launchShareSheet()
     }
     
+    @IBAction func proButtonPressed(_ sender: UIButton) {
+        let proVC = ProViewController.initializeFromStoryboard().embededInNavigationController
+        present(proVC, animated: true, completion: nil)
+    }
+    
 }
 
 extension GroupSettingsViewController: Subscriber {
@@ -97,6 +100,8 @@ extension GroupSettingsViewController: Subscriber {
     
 }
 
+
+// MARK: - Fileprivate
 
 extension GroupSettingsViewController {
     
@@ -111,6 +116,22 @@ extension GroupSettingsViewController {
         let shouldCancel = text.isEmpty || text == group?.name
         let title = shouldCancel ? "Cancel" : "Save"
         saveButton.setTitle(title, for: .normal)
+    }
+    
+    func saveClassName() {
+        guard var selectedGroup = core.state.selectedGroup, let name = groupNameTextField.text else {
+            core.fire(event: ErrorEvent(error: nil, message: "Error saving class"))
+            return
+        }
+        let shouldSave = name.isEmpty == false && name != group?.name
+        if shouldSave {
+            selectedGroup.name = name
+            core.fire(command: UpdateObject(object: selectedGroup))
+            core.fire(event: DisplaySuccessMessage(message: "Saved!"))
+        } else {
+            groupNameTextField.text = group?.name
+        }
+        endEditing()
     }
     
     func endEditing() {
@@ -167,6 +188,9 @@ extension GroupSettingsViewController {
     }
     
 }
+
+
+// MARK: - TextFieldDelegate
 
 extension GroupSettingsViewController: UITextFieldDelegate {
     
