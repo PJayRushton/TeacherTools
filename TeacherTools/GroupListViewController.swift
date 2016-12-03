@@ -17,6 +17,7 @@ class GroupListViewController: UIViewController, AutoStoryboardInitializable {
     var groups: [Group] {
         return core.state.groups.sorted { $0.lastViewDate > $1.lastViewDate }
     }
+    var proCompletion: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +60,7 @@ extension GroupListViewController {
         let newGroup = Group(id: id.key, name: "New Group \(newGroupGroups.count + 1)")
         core.fire(command: CreateGroup(group: newGroup))
     }
+    
 }
 
 
@@ -108,11 +110,16 @@ extension GroupListViewController: UITableViewDataSource, UITableViewDelegate {
             navigationController?.pushViewController(tabBarController, animated: true)
             dismiss(animated: true, completion: nil)
         case .add:
-            addNewGroup()
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                self.dismiss(animated: true, completion: nil)
-            })
+            if let user = core.state.currentUser, user.isPro || core.state.groups.count == 0 {
+                addNewGroup()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                    self.dismiss(animated: true, completion: nil)
+                })
+            } else {
+                self.dismiss(animated: true) {
+                    self.proCompletion?()
+                }
+            }
         }
     }
     

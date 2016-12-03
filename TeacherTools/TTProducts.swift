@@ -20,17 +20,11 @@ func resourceNameForProductIdentifier(_ productIdentifier: String) -> String? {
     return productIdentifier.components(separatedBy: ".").last
 }
 
-struct TTPurchase: Unmarshaling, Marshaling {
+struct TTPurchase: Marshaling {
     
     var id: String
     var productId: ProductIdentifier
     var purchaseDate: Date
-    
-    init(object: MarshaledObject) throws {
-        id = try object.value(for: "id")
-        productId = try object.value(for: "productId")
-        purchaseDate = try object.value(for: "date")
-    }
     
     func marshaled() -> JSONObject {
         var object = JSONObject()
@@ -43,7 +37,26 @@ struct TTPurchase: Unmarshaling, Marshaling {
     
 }
 
-extension TTPurchase: Identifiable {
+extension TTPurchase: Unmarshaling {
+    
+    init(object: MarshaledObject) throws {
+        id = try object.value(for: "id")
+        productId = try object.value(for: "productId")
+        purchaseDate = try object.value(for: "date")
+    }
+    
+}
+
+func ==(lhs: TTPurchase, rhs: TTPurchase) -> Bool {
+    return lhs.productId == rhs.productId
+}
+
+
+extension TTPurchase: Identifiable, Hashable, Equatable {
+    
+    var hashValue: Int {
+        return productId.hashValue
+    }
     
     var ref: FIRDatabaseReference {
         let userId = App.core.state.currentUser?.id

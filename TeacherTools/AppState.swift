@@ -8,7 +8,7 @@
 
 import Foundation
 import CoreLocation
-
+import StoreKit
 
 // MARK: - APP
 
@@ -29,6 +29,7 @@ struct AppState: State {
     var currentStudents = [Student]()
     var allStudents = [Student]()
     var theme = defaultTheme
+    var iaps = [SKProduct]()
     
     var isUsingTickets: Bool {
         for student in currentStudents {
@@ -77,6 +78,9 @@ struct AppState: State {
             currentStudents.sort(by: event.sort)
         case _ as ShuffleTeams:
             currentStudents = currentStudents.shuffled()
+            
+        case let event as Updated<[SKProduct]>:
+            iaps = event.payload
             
             // APPEARANCE
         case let event as Selected<Theme>:

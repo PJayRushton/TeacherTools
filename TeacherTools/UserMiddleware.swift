@@ -17,6 +17,8 @@ class EntityDatabase {
     var users = [User]()
 }
  
+struct ShowPro: Event { }
+ 
 struct UserMiddleware: Middleware {
     
     func process(event: Event, state: AppState) {
@@ -54,6 +56,7 @@ struct UserMiddleware: Middleware {
             isSubscribed = true
             App.core.fire(command: SubscribeToGroups())
             App.core.fire(command: SubscribeToStudents())
+            App.core.fire(command: GetIAPs())
         case let event as Updated<[Group]>:
             guard state.selectedGroup == nil else { break }
             let sortedGroups = event.payload.sorted { $0.lastViewDate > $1.lastViewDate }

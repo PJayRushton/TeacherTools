@@ -13,17 +13,18 @@ public typealias ProductsRequestCompletionHandler = (_ success: Bool, _ products
 
 open class IAPHelper: NSObject  {
     
-    static let IAPHelperPurchaseNotification = "IAPHelperPurchaseNotification"
     fileprivate let productIdentifiers: Set<ProductIdentifier>
     fileprivate var purchasedProductIdentifiers = Set<ProductIdentifier>()
     fileprivate var productsRequest: SKProductsRequest?
     fileprivate var productsRequestCompletionHandler: ProductsRequestCompletionHandler?
     
+    var core = App.core
+    
     public init(productIds: Set<ProductIdentifier>) {
         productIdentifiers = productIds
         for productIdentifier in productIds {
-            let purchased = UserDefaults.standard.bool(forKey: productIdentifier)
-            if purchased {
+            
+            if let user = core.state.currentUser, user.purchases.map( { $0.productId }).contains(productIdentifier) {
                 purchasedProductIdentifiers.insert(productIdentifier)
                 print("Previously purchased: \(productIdentifier)")
             } else {
@@ -66,7 +67,9 @@ extension IAPHelper {
     public func restorePurchases() {
         SKPaymentQueue.default().restoreCompletedTransactions()
     }
+    
 }
+
 
 // MARK: - SKProductsRequestDelegate
 
@@ -95,6 +98,7 @@ extension IAPHelper: SKProductsRequestDelegate {
         productsRequestCompletionHandler = nil
     }
 }
+
 
 // MARK: - SKPaymentTransactionObserver
 
@@ -147,10 +151,8 @@ extension IAPHelper: SKPaymentTransactionObserver {
     
     private func deliverPurchaseNotificationFor(identifier: String?) {
         guard let identifier = identifier else { return }
-        
         purchasedProductIdentifiers.insert(identifier)
-        UserDefaults.standard.set(true, forKey: identifier)
-        UserDefaults.standard.synchronize()
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: IAPHelper.IAPHelperPurchaseNotification), object: identifier)
+        core.fire(command: MarkUserPro())
     }
+    
 }

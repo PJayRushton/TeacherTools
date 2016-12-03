@@ -16,9 +16,13 @@ final class User: Marshaling, Unmarshaling {
     var deviceId:  String
     var creationDate: Date
     var firstName: String?
-    var purchases = [TTPurchase]()
+    var purchases = Set<TTPurchase>()
     
-    init(id: String = "", cloudKitId: String? = nil, deviceId: String = "", creationDate: Date = Date(), firstName: String? = nil, purchases: [TTPurchase] = []) {
+    var isPro: Bool {
+        return purchases.map { $0.productId }.contains(TTProducts.proUpgrade)
+    }
+    
+    init(id: String = "", cloudKitId: String? = nil, deviceId: String = "", creationDate: Date = Date(), firstName: String? = nil, purchases: Set<TTPurchase> = []) {
         self.id = id
         self.cloudKitId = cloudKitId
         self.deviceId = deviceId
@@ -34,7 +38,7 @@ final class User: Marshaling, Unmarshaling {
         creationDate = try object.value(for: "creationDate")
         firstName = try object.value(for: "firstName")
         let purchasesJSON: JSONObject? = try object.value(for: "purchases")
-        purchases = purchasesJSON.parsedObjects()
+        purchases = Set<TTPurchase>(purchasesJSON.parsedObjects())
     }
     
     func marshaled() -> JSONObject {
