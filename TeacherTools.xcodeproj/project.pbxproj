@@ -86,6 +86,9 @@
 		A19DB8E61DF2246000D4C386 /* GetIAPs.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19DB8E51DF2246000D4C386 /* GetIAPs.swift */; };
 		A19DB8E81DF229E900D4C386 /* MarkUserPro.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19DB8E71DF229E900D4C386 /* MarkUserPro.swift */; };
 		A1A1681A1DF242CE00C0B759 /* UIApplication+TopMostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A168191DF242CE00C0B759 /* UIApplication+TopMostViewController.swift */; };
+		A1A1681C1DF31B4900C0B759 /* ThemeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A1681B1DF31B4900C0B759 /* ThemeCollectionViewCell.swift */; };
+		A1A1681E1DF3214500C0B759 /* ThemeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1A1681D1DF3214500C0B759 /* ThemeCollectionViewCell.xib */; };
+		A1A168211DF5B1B300C0B759 /* drumroll.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A1A168201DF5B1B300C0B759 /* drumroll.mp3 */; };
 		A1ADE47E1DCF82D6001434EF /* RandomizerHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1ADE47D1DCF82D6001434EF /* RandomizerHeaderView.swift */; };
 		A1ADE4801DCF8A16001434EF /* UpdateTeamSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1ADE47F1DCF8A16001434EF /* UpdateTeamSize.swift */; };
 		A1B1A2081DC8BD4300D80E53 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1A2071DC8BD4300D80E53 /* DateHelper.swift */; };
@@ -205,6 +208,9 @@
 		A19DB8E51DF2246000D4C386 /* GetIAPs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetIAPs.swift; sourceTree = "<group>"; };
 		A19DB8E71DF229E900D4C386 /* MarkUserPro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkUserPro.swift; sourceTree = "<group>"; };
 		A1A168191DF242CE00C0B759 /* UIApplication+TopMostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+TopMostViewController.swift"; sourceTree = "<group>"; };
+		A1A1681B1DF31B4900C0B759 /* ThemeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeCollectionViewCell.swift; sourceTree = "<group>"; };
+		A1A1681D1DF3214500C0B759 /* ThemeCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThemeCollectionViewCell.xib; sourceTree = "<group>"; };
+		A1A168201DF5B1B300C0B759 /* drumroll.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = drumroll.mp3; sourceTree = "<group>"; };
 		A1ADE47D1DCF82D6001434EF /* RandomizerHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomizerHeaderView.swift; sourceTree = "<group>"; };
 		A1ADE47F1DCF8A16001434EF /* UpdateTeamSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateTeamSize.swift; sourceTree = "<group>"; };
 		A1B1A2071DC8BD4300D80E53 /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
@@ -265,18 +271,14 @@
 		A14160831DC669F100C4F5BB /* TeacherTools */ = {
 			isa = PBXGroup;
 			children = (
-				A1CC0ABA1DC7B7F100C0575F /* TeacherTools.entitlements */,
-				A14160841DC669F100C4F5BB /* AppDelegate.swift */,
 				A14160E01DC6769200C4F5BB /* Infrastructure */,
 				A14160DF1DC6768100C4F5BB /* Reactor */,
 				A14160E31DC6770A00C4F5BB /* Model */,
 				A14160E21DC6770300C4F5BB /* UI */,
 				A14160E11DC676B400C4F5BB /* Storyboards */,
-				A141608E1DC669F100C4F5BB /* Assets.xcassets */,
-				A14160901DC669F100C4F5BB /* LaunchScreen.storyboard */,
-				A14160931DC669F100C4F5BB /* Info.plist */,
 				A14160DE1DC6758D00C4F5BB /* Marshal */,
 				A14160A61DC66D3800C4F5BB /* Shared */,
+				A1A1681F1DF5B17B00C0B759 /* Supporting files */,
 			);
 			path = TeacherTools;
 			sourceTree = "<group>";
@@ -353,6 +355,7 @@
 		A14160E01DC6769200C4F5BB /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				A14160841DC669F100C4F5BB /* AppDelegate.swift */,
 				A14160A91DC66D6700C4F5BB /* FirebaseNetworkAccess.swift */,
 			);
 			name = Infrastructure;
@@ -372,6 +375,7 @@
 				A147CFAC1DCA404100C9860F /* StudentRandomizerViewController.storyboard */,
 				A11EE96E1DC73CD1002C9228 /* StudentTableViewCell.xib */,
 				A1B6DDE91DEBAB2500A1DA18 /* StudentTicketsViewController.storyboard */,
+				A1A1681D1DF3214500C0B759 /* ThemeCollectionViewCell.xib */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -398,6 +402,7 @@
 				A1B6DDE71DEBAA5E00A1DA18 /* StudentTicketsViewController.swift */,
 				A1B6DDEB1DEBADEE00A1DA18 /* StudentTicketTableCell.swift */,
 				A1BCE8511DCFD97300DF7652 /* TeamSizeViewController.swift */,
+				A1A1681B1DF31B4900C0B759 /* ThemeCollectionViewCell.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -440,6 +445,18 @@
 			name = Commands;
 			sourceTree = "<group>";
 		};
+		A1A1681F1DF5B17B00C0B759 /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				A141608E1DC669F100C4F5BB /* Assets.xcassets */,
+				A14160931DC669F100C4F5BB /* Info.plist */,
+				A14160901DC669F100C4F5BB /* LaunchScreen.storyboard */,
+				A1CC0ABA1DC7B7F100C0575F /* TeacherTools.entitlements */,
+				A1A168201DF5B1B300C0B759 /* drumroll.mp3 */,
+			);
+			name = "Supporting files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -471,7 +488,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = AppsByPJ;
 				TargetAttributes = {
 					A14160801DC669F100C4F5BB = {
@@ -517,6 +534,7 @@
 			files = (
 				A14160921DC669F100C4F5BB /* LaunchScreen.storyboard in Resources */,
 				A1B6DDEA1DEBAB2500A1DA18 /* StudentTicketsViewController.storyboard in Resources */,
+				A1A1681E1DF3214500C0B759 /* ThemeCollectionViewCell.xib in Resources */,
 				A11EE96B1DC7383B002C9228 /* StudentListViewController.storyboard in Resources */,
 				A147CFA51DCA331800C9860F /* CustomTabBarController.storyboard in Resources */,
 				A1D67EFE1DC95B38002F73D2 /* GroupSettingsViewController.storyboard in Resources */,
@@ -525,6 +543,7 @@
 				A147CFB71DCAB77000C9860F /* Main.storyboard in Resources */,
 				A11EE96F1DC73CD1002C9228 /* StudentTableViewCell.xib in Resources */,
 				A141608F1DC669F100C4F5BB /* Assets.xcassets in Resources */,
+				A1A168211DF5B1B300C0B759 /* drumroll.mp3 in Resources */,
 				A147CFBF1DCAB81700C9860F /* LoadingImageViewController.storyboard in Resources */,
 				A147CFAD1DCA404100C9860F /* StudentRandomizerViewController.storyboard in Resources */,
 				A141608A1DC669F100C4F5BB /* GroupListViewController.storyboard in Resources */,
@@ -613,6 +632,7 @@
 				A1B6DDEC1DEBADEE00A1DA18 /* StudentTicketTableCell.swift in Sources */,
 				A19DB8E81DF229E900D4C386 /* MarkUserPro.swift in Sources */,
 				A14160F31DC686FF00C4F5BB /* Arrays.swift in Sources */,
+				A1A1681C1DF31B4900C0B759 /* ThemeCollectionViewCell.swift in Sources */,
 				A161426A1DCE4E8D00C800A1 /* SubscribeToReachability.swift in Sources */,
 				A1C919D51DDAC96F00A7B477 /* DeleteStudent.swift in Sources */,
 				A147CFA11DCA328100C9860F /* CustomTabBarController.swift in Sources */,
@@ -706,6 +726,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -755,6 +776,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -783,6 +805,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 83A6EABC9A6480FA8D2F5042 /* Pods-TeacherTools.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = TeacherTools/TeacherTools.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -803,6 +826,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 388B3E3DF2BF8837E1045F75 /* Pods-TeacherTools.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = TeacherTools/TeacherTools.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

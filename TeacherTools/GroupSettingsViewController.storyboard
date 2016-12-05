@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -26,10 +27,10 @@
                                 <rect key="frame" x="16" y="36" width="343" height="571"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="JVf-MF-rc7">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="31"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="0.0"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Class Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Msm-gd-Iei">
-                                                <rect key="frame" x="0.0" y="0.0" width="295" height="31"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="295" height="0.0"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -39,7 +40,7 @@
                                                 </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rvY-mV-IlG">
-                                                <rect key="frame" x="307" y="0.0" width="36" height="31"/>
+                                                <rect key="frame" x="307" y="0.0" width="36" height="0.0"/>
                                                 <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="15"/>
                                                 <state key="normal" title="Save"/>
                                                 <connections>
@@ -49,13 +50,13 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Display student names:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SAc-RD-tCr">
-                                        <rect key="frame" x="0.0" y="55" width="343" height="21.5"/>
+                                        <rect key="frame" x="0.0" y="24" width="343" height="0.0"/>
                                         <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="47V-fT-jil" customClass="BetterSegmentedControl" customModule="BetterSegmentedControl">
-                                        <rect key="frame" x="0.0" y="100.5" width="343" height="44"/>
+                                        <rect key="frame" x="0.0" y="48" width="343" height="44"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="DWT-Lf-5uy"/>
@@ -64,17 +65,28 @@
                                             <action selector="segmentedControlValueChanged:" destination="5kz-w2-sp5" eventType="valueChanged" id="2p2-bP-q1q"/>
                                         </connections>
                                     </view>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ok0-dH-d2A">
+                                        <rect key="frame" x="0.0" y="116" width="343" height="133.5"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="78x-FL-tOH">
+                                            <size key="itemSize" width="133" height="134"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells/>
+                                    </collectionView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Love Teacher Tools?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6D-Hr-l08">
-                                        <rect key="frame" x="0.0" y="168.5" width="343" height="21.5"/>
+                                        <rect key="frame" x="0.0" y="273.5" width="343" height="0.0"/>
                                         <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="GM6-X1-m66">
-                                        <rect key="frame" x="0.0" y="214" width="343" height="34"/>
+                                        <rect key="frame" x="0.0" y="297.5" width="343" height="0.0"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MM6-Rj-Lpl">
-                                                <rect key="frame" x="0.0" y="0.0" width="171.5" height="34"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="171.5" height="0.0"/>
                                                 <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
                                                 <state key="normal" title="Rate"/>
                                                 <connections>
@@ -82,7 +94,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jWV-aP-AyW">
-                                                <rect key="frame" x="171.5" y="0.0" width="171.5" height="34"/>
+                                                <rect key="frame" x="171.5" y="0.0" width="171.5" height="0.0"/>
                                                 <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
                                                 <state key="normal" title="Share"/>
                                                 <connections>
@@ -92,10 +104,10 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="sWU-qS-8A8">
-                                        <rect key="frame" x="0.0" y="272" width="343" height="299"/>
+                                        <rect key="frame" x="0.0" y="321.5" width="343" height="249.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h9w-xh-bpC">
-                                                <rect key="frame" x="98.5" y="132.5" width="145" height="34"/>
+                                                <rect key="frame" x="98.5" y="108" width="145" height="34"/>
                                                 <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
                                                 <state key="normal" title="Update to PRO!"/>
                                                 <connections>
@@ -130,6 +142,7 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="d1k-Kw-cVD" firstAttribute="top" secondItem="Vsp-dt-5Nc" secondAttribute="bottom" id="94R-fu-zZp"/>
+                            <constraint firstItem="ok0-dH-d2A" firstAttribute="height" secondItem="3Hj-va-EWZ" secondAttribute="height" multiplier="0.2" id="Xj0-QU-yc0"/>
                             <constraint firstItem="Vsp-dt-5Nc" firstAttribute="top" secondItem="Hwe-yj-6GU" secondAttribute="bottom" constant="16" id="Z2S-BR-Anw"/>
                             <constraint firstItem="Vsp-dt-5Nc" firstAttribute="leading" secondItem="3Hj-va-EWZ" secondAttribute="leading" id="cvo-9W-YW7"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Hwe-yj-6GU" secondAttribute="trailing" id="grC-VB-HsH"/>
