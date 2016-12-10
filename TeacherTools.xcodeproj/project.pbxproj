@@ -16,6 +16,9 @@
 		A11EE96D1DC73CBC002C9228 /* StudentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11EE96C1DC73CBC002C9228 /* StudentTableViewCell.swift */; };
 		A11EE96F1DC73CD1002C9228 /* StudentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A11EE96E1DC73CD1002C9228 /* StudentTableViewCell.xib */; };
 		A11EE9711DC79516002C9228 /* UpdateObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11EE9701DC79516002C9228 /* UpdateObject.swift */; };
+		A13683751DFC68AF00015F06 /* ThemesCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13683741DFC68AF00015F06 /* ThemesCollectionViewDataSource.swift */; };
+		A13683771DFC889500015F06 /* UpdateTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13683761DFC889500015F06 /* UpdateTheme.swift */; };
+		A13683791DFC8DC700015F06 /* SubscribeToThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13683781DFC8DC700015F06 /* SubscribeToThemes.swift */; };
 		A14160851DC669F100C4F5BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160841DC669F100C4F5BB /* AppDelegate.swift */; };
 		A14160871DC669F100C4F5BB /* GroupListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160861DC669F100C4F5BB /* GroupListViewController.swift */; };
 		A141608A1DC669F100C4F5BB /* GroupListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14160881DC669F100C4F5BB /* GroupListViewController.storyboard */; };
@@ -76,6 +79,7 @@
 		A161426A1DCE4E8D00C800A1 /* SubscribeToReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16142691DCE4E8D00C800A1 /* SubscribeToReachability.swift */; };
 		A161426C1DCF43A100C800A1 /* RandomizerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A161426B1DCF43A100C800A1 /* RandomizerCollectionViewCell.swift */; };
 		A161426E1DCF7B1500C800A1 /* RandomizerDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A161426D1DCF7B1500C800A1 /* RandomizerDatasource.swift */; };
+		A1890C291DF9327C00BAA5A4 /* AppearanceMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1890C281DF9327C00BAA5A4 /* AppearanceMiddleware.swift */; };
 		A19DB8CF1DF095AB00D4C386 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19DB8CE1DF095AB00D4C386 /* UIColorExtension.swift */; };
 		A19DB8DA1DF1D6C400D4C386 /* ProViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19DB8D91DF1D6C300D4C386 /* ProViewController.swift */; };
 		A19DB8DC1DF1D6EA00D4C386 /* ProViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A19DB8DB1DF1D6EA00D4C386 /* ProViewController.storyboard */; };
@@ -130,6 +134,9 @@
 		A11EE96C1DC73CBC002C9228 /* StudentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentTableViewCell.swift; sourceTree = "<group>"; };
 		A11EE96E1DC73CD1002C9228 /* StudentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudentTableViewCell.xib; sourceTree = "<group>"; };
 		A11EE9701DC79516002C9228 /* UpdateObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateObject.swift; sourceTree = "<group>"; };
+		A13683741DFC68AF00015F06 /* ThemesCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemesCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		A13683761DFC889500015F06 /* UpdateTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateTheme.swift; sourceTree = "<group>"; };
+		A13683781DFC8DC700015F06 /* SubscribeToThemes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscribeToThemes.swift; sourceTree = "<group>"; };
 		A14160811DC669F100C4F5BB /* TeacherTools.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeacherTools.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A14160841DC669F100C4F5BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A14160861DC669F100C4F5BB /* GroupListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListViewController.swift; sourceTree = "<group>"; };
@@ -198,6 +205,7 @@
 		A16142691DCE4E8D00C800A1 /* SubscribeToReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscribeToReachability.swift; sourceTree = "<group>"; };
 		A161426B1DCF43A100C800A1 /* RandomizerCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomizerCollectionViewCell.swift; sourceTree = "<group>"; };
 		A161426D1DCF7B1500C800A1 /* RandomizerDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomizerDatasource.swift; sourceTree = "<group>"; };
+		A1890C281DF9327C00BAA5A4 /* AppearanceMiddleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppearanceMiddleware.swift; sourceTree = "<group>"; };
 		A19DB8CE1DF095AB00D4C386 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		A19DB8D91DF1D6C300D4C386 /* ProViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProViewController.swift; sourceTree = "<group>"; };
 		A19DB8DB1DF1D6EA00D4C386 /* ProViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProViewController.storyboard; sourceTree = "<group>"; };
@@ -347,6 +355,7 @@
 				A141611E1DC69AEB00C4F5BB /* Theme.swift */,
 				A14160AD1DC66DC900C4F5BB /* UserMiddleware.swift */,
 				A14160EC1DC6806200C4F5BB /* ErrorHUDMiddleware.swift */,
+				A1890C281DF9327C00BAA5A4 /* AppearanceMiddleware.swift */,
 				A14160E91DC67E3E00C4F5BB /* Commands */,
 			);
 			name = Reactor;
@@ -403,6 +412,7 @@
 				A1B6DDEB1DEBADEE00A1DA18 /* StudentTicketTableCell.swift */,
 				A1BCE8511DCFD97300DF7652 /* TeamSizeViewController.swift */,
 				A1A1681B1DF31B4900C0B759 /* ThemeCollectionViewCell.swift */,
+				A13683741DFC68AF00015F06 /* ThemesCollectionViewDataSource.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -437,10 +447,12 @@
 				A16142691DCE4E8D00C800A1 /* SubscribeToReachability.swift */,
 				A14160FA1DC68F9400C4F5BB /* SubscribeToStudents.swift */,
 				A14160EA1DC67E7700C4F5BB /* SubscribeToUsers.swift */,
+				A13683781DFC8DC700015F06 /* SubscribeToThemes.swift */,
 				A161423B1DCD6E4E00C800A1 /* UpdateGroupLastView.swift */,
 				A11EE9701DC79516002C9228 /* UpdateObject.swift */,
 				A1ADE47F1DCF8A16001434EF /* UpdateTeamSize.swift */,
 				A14160B11DC66DF300C4F5BB /* UpdateUser.swift */,
+				A13683761DFC889500015F06 /* UpdateTheme.swift */,
 			);
 			name = Commands;
 			sourceTree = "<group>";
@@ -624,10 +636,12 @@
 				A14160B01DC66DEC00C4F5BB /* SaveNewUser.swift in Sources */,
 				A147CFB11DCA4FA000C9860F /* NameDrawViewController.swift in Sources */,
 				A147CFAA1DCA336D00C9860F /* CustomTabBarProtocols.swift in Sources */,
+				A13683771DFC889500015F06 /* UpdateTheme.swift in Sources */,
 				A14160B21DC66DF300C4F5BB /* UpdateUser.swift in Sources */,
 				A161426C1DCF43A100C800A1 /* RandomizerCollectionViewCell.swift in Sources */,
 				A14160D51DC6758700C4F5BB /* KeyType.swift in Sources */,
 				A14160E61DC67AA900C4F5BB /* FirebaseNetworkAccess.swift in Sources */,
+				A13683751DFC68AF00015F06 /* ThemesCollectionViewDataSource.swift in Sources */,
 				A14160DD1DC6758700C4F5BB /* ValueType.swift in Sources */,
 				A1B6DDEC1DEBADEE00A1DA18 /* StudentTicketTableCell.swift in Sources */,
 				A19DB8E81DF229E900D4C386 /* MarkUserPro.swift in Sources */,
@@ -650,6 +664,7 @@
 				A147CFBB1DCAB7C500C9860F /* MainViewController.swift in Sources */,
 				A14160E81DC67E1700C4F5BB /* DeleteUsers.swift in Sources */,
 				A14160D81DC6758700C4F5BB /* Marshaling.swift in Sources */,
+				A13683791DFC8DC700015F06 /* SubscribeToThemes.swift in Sources */,
 				A14160A51DC66D2F00C4F5BB /* StoryboardInitializable.swift in Sources */,
 				A19DB8DA1DF1D6C400D4C386 /* ProViewController.swift in Sources */,
 				A14160F91DC68C2300C4F5BB /* Result.swift in Sources */,
@@ -673,6 +688,7 @@
 				A11EE9711DC79516002C9228 /* UpdateObject.swift in Sources */,
 				A1D1B4341DCC136D00AF5452 /* AddGroupTableCell.swift in Sources */,
 				A141609C1DC66BEC00C4F5BB /* Reactor.swift in Sources */,
+				A1890C291DF9327C00BAA5A4 /* AppearanceMiddleware.swift in Sources */,
 				A147CFBD1DCAB80600C9860F /* LoadingImageViewController.swift in Sources */,
 				A19DB8E01DF1E1DA00D4C386 /* IAPHelper.swift in Sources */,
 				A147CFAF1DCA410400C9860F /* StudentRandomizerViewController.swift in Sources */,

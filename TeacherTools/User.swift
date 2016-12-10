@@ -16,18 +16,20 @@ final class User: Marshaling, Unmarshaling {
     var deviceId:  String
     var creationDate: Date
     var firstName: String?
+    var theme: Theme
     var purchases = Set<TTPurchase>()
     
     var isPro: Bool {
         return purchases.map { $0.productId }.contains(TTProducts.proUpgrade)
     }
     
-    init(id: String = "", cloudKitId: String? = nil, deviceId: String = "", creationDate: Date = Date(), firstName: String? = nil, purchases: Set<TTPurchase> = []) {
+    init(id: String = "", cloudKitId: String? = nil, deviceId: String = "", creationDate: Date = Date(), firstName: String? = nil, theme: Theme = whiteTheme, purchases: Set<TTPurchase> = []) {
         self.id = id
         self.cloudKitId = cloudKitId
         self.deviceId = deviceId
         self.creationDate = creationDate
         self.firstName = firstName
+        self.theme = theme
         self.purchases = purchases
     }
     
@@ -37,6 +39,7 @@ final class User: Marshaling, Unmarshaling {
         deviceId = try object.value(for: "deviceId")
         creationDate = try object.value(for: "creationDate")
         firstName = try object.value(for: "firstName")
+        theme = try object.value(for: "theme")
         let purchasesJSON: JSONObject? = try object.value(for: "purchases")
         purchases = Set<TTPurchase>(purchasesJSON.parsedObjects())
     }
@@ -49,6 +52,7 @@ final class User: Marshaling, Unmarshaling {
         json["creationDate"] = creationDate.iso8601String
         json["firstName"] = firstName
         json["purchases"] = purchases.marshaled()
+        json["theme"] = theme.marshaled()
         
         return json
     }

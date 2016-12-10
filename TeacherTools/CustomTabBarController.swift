@@ -109,7 +109,7 @@ private extension CustomTabBarController {
     
     func setupTabBar() {
         let allDataObjects = Tab.allValues.map { $0.dataObject }
-        customTabBar.titleFont = core.state.theme.fontType.font(withSize: 10)
+        customTabBar.titleFont = core.state.theme.font(withSize: 10)
         customTabBar.dataObjects = allDataObjects
         tabBar.isHidden = true
     }

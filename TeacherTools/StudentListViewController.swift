@@ -300,10 +300,10 @@ extension StudentListViewController {
     
     func updateSegmentedControl(theme: Theme) {
         segmentedControl.titles = SortType.allValues.map { $0.buttonTitle }
-        segmentedControl.backgroundColor = theme.mainColor
+        segmentedControl.backgroundColor = .white // TODO: 
         segmentedControl.titleColor = theme.textColor
-        segmentedControl.titleFont = theme.fontType.font(withSize: 16)
-        segmentedControl.selectedTitleFont = theme.fontType.font(withSize: 18)
+        segmentedControl.titleFont = theme.font(withSize: 16)
+        segmentedControl.selectedTitleFont = theme.font(withSize: 18)
         segmentedControl.indicatorViewBackgroundColor = theme.tintColor
         segmentedControl.cornerRadius = 5
     }

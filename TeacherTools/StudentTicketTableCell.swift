@@ -50,9 +50,9 @@ class StudentTicketTableCell: UITableViewCell, AutoReuseIdentifiable {
         countLabel.text = "\(student.tickets)"
         
         ticketImageView.tintColor = .ticketRed
-        nameLabel.font = theme.fontType.font(withSize: 17)
-        stepper.labelFont = theme.fontType.font(withSize: 20)
-        stepper.buttonsFont = theme.fontType.font(withSize: 22)
+        nameLabel.font = theme.font(withSize: 17)
+        stepper.labelFont = theme.font(withSize: 20)
+        stepper.buttonsFont = theme.font(withSize: 22)
         stepper.labelTextColor = .white
         stepper.labelBackgroundColor = theme.tintColor
     }

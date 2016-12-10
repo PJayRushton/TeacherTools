@@ -22,7 +22,7 @@ class GroupToolCollectionViewCell: UICollectionViewCell, AutoReuseIdentifiable {
     func update(with theme: Theme) {
         imageView.tintColor = theme.tintColor
         let fontSize = textLabel.font.pointSize
-        textLabel.font = theme.fontType.font(withSize: fontSize)
+        textLabel.font = theme.font(withSize: fontSize)
     }
     
 }

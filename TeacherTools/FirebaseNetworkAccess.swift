@@ -51,6 +51,9 @@ struct FirebaseNetworkAccess {
         return rootRef.child("students").child(userId)
     }
 
+    var allThemesRef: FIRDatabaseReference {
+        return rootRef.child("allThemes")
+    }
     
     func setValue(at ref: FIRDatabaseReference, parameters: JSONObject, completion: ResultCompletion?) {
         ref.setValue(parameters) { error, ref in

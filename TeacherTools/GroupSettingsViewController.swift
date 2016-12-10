@@ -17,6 +17,7 @@ class GroupSettingsViewController: UIViewController, AutoStoryboardInitializable
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var displayNamesLabel: UILabel!
     @IBOutlet weak var segmentedControl: BetterSegmentedControl!
+    @IBOutlet weak var collectionView: UICollectionView!
 
     // MARK: - Properties
     
@@ -72,7 +73,9 @@ class GroupSettingsViewController: UIViewController, AutoStoryboardInitializable
     }
 
     @IBAction func segmentedControlValueChanged(_ sender: BetterSegmentedControl) {
-        core.fire(event: NameDisplayChanged(lastFirst: Int(sender.index) == NameDisplayType.lastFirst.rawValue))
+        var updatedTheme = core.state.theme
+        updatedTheme.lastFirst = Int(sender.index) == NameDisplayType.lastFirst.rawValue
+        core.fire(command: UpdateTheme(theme: updatedTheme))
     }
     
     @IBAction func rateButtonPressed(_ sender: UIButton) {
@@ -161,8 +164,8 @@ extension GroupSettingsViewController {
     }
     
     func updateUI(with theme: Theme) {
-        groupNameTextField.font = theme.fontType.font(withSize: 17)
-        saveButton.titleLabel?.font = theme.fontType.font(withSize: 15)
+        groupNameTextField.font = theme.font(withSize: 17)
+        saveButton.titleLabel?.font = theme.font(withSize: 15)
         saveButton.titleLabel?.textColor = theme.tintColor
         updateSegmentedControl(theme: theme)
     }
@@ -232,10 +235,10 @@ extension GroupSettingsViewController {
     
     func updateSegmentedControl(theme: Theme) {
         segmentedControl.titles = NameDisplayType.allValues.map { $0.displayString }
-        segmentedControl.backgroundColor = theme.mainColor
+        segmentedControl.backgroundColor = .white // FIXME:
         segmentedControl.titleColor = theme.textColor
-        segmentedControl.titleFont = theme.fontType.font(withSize: 16)
-        segmentedControl.selectedTitleFont = theme.fontType.font(withSize: 18)
+        segmentedControl.titleFont = theme.font(withSize: 16)
+        segmentedControl.selectedTitleFont = theme.font(withSize: 18)
         segmentedControl.indicatorViewBackgroundColor = theme.tintColor
         segmentedControl.cornerRadius = 5
     }

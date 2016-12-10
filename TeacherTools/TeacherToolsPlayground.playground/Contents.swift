@@ -1,22 +1,13 @@
-//
-//  UIColorExtension.swift
-//  TeacherTools
-//
-//  Created by Parker Rushton on 12/1/16.
-//  Copyright © 2016 AppsByPJ. All rights reserved.
-//
+//: Playground - noun: a place where people can play
 
 import UIKit
 
 extension UIColor {
     
     class var ticketRed: UIColor { return #colorLiteral(red: 0.9876169562, green: 0.4118406773, blue: 0.4343959093, alpha: 1) }
-    class var coolBlue: UIColor {
-        return try! UIColor(hex: "4DA6BD")
-    }
     
-    class var chalk: UIColor {
-        return try! UIColor(hex: "FFFFDC")
+    enum ColorError: Error {
+        case bad
     }
     
     convenience init(hex hexString: String) throws {
@@ -32,7 +23,7 @@ extension UIColor {
         case 8: // ARGB (32-bit)
             (a, r, g, b) = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)
         default:
-            throw MarshalError.nullValue(key: hexString)
+            throw ColorError.bad
         }
         self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
     }
@@ -50,15 +41,5 @@ extension UIColor {
     
 }
 
-extension MarshaledObject {
-    
-    public func value(for key: KeyType) throws -> UIColor {
-        do {
-            let stringValue: String = try self.value(for: key)
-            return try UIColor(hex: stringValue)
-        } catch MarshalError.nullValue {
-            throw MarshalError.nullValue(key: key)
-        }
-    }
-    
-}
+let color1 = try! UIColor(hex: "#707969")
+let hex = color1.hexValue

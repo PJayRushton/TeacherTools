@@ -23,19 +23,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         core.fire(command: GetICloudUser())
-        setupAppearance()
         setUpAppirater()
-        
+        let networkAccess = FirebaseNetworkAccess.sharedInstance
+        for theme in [whiteTheme, darkTheme, blackTheme, greenTheme] {
+            let ref = networkAccess.allThemesRef.childByAutoId()
+            networkAccess.updateObject(at: ref, parameters: theme.marshaled(), completion: nil)
+        }
         return true
-    }
-
-    func setupAppearance() {
-        let navTitleAttributes = [NSFontAttributeName: App.core.state.theme.fontType.font(withSize: 22), NSForegroundColorAttributeName: UIColor.darkGray]
-        UINavigationBar.appearance().titleTextAttributes = navTitleAttributes
-        UINavigationBar.appearance().backgroundColor = .white
-        UINavigationBar.appearance(whenContainedInInstancesOf: [UINavigationController.self]).tintColor = .darkGray
-        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UINavigationController.self]).setTitleTextAttributes([NSFontAttributeName: App.core.state.theme.fontType.font(withSize: 17)], for: .normal)
-        UINavigationBar.appearance().isTranslucent = true
     }
     
     func setUpAppirater() {

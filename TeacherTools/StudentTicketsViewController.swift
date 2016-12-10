@@ -19,7 +19,7 @@ class StudentTicketsViewController: UIViewController, AutoStoryboardInitializabl
     var isShowingSteppers = false {
         didSet {
             editButton.tintColor = isShowingSteppers ? core.state.theme.tintColor : .darkGray
-            editButton.setTitleTextAttributes([NSFontAttributeName: core.state.theme.fontType.font(withSize: 17)], for: .normal)
+            editButton.setTitleTextAttributes([NSFontAttributeName: core.state.theme.font(withSize: 17)], for: .normal)
         }
     }
     var students = [Student]() {
@@ -171,10 +171,10 @@ enum SortType: Int {
 
 func updateSegmentedControl(theme: Theme) {
     segmentedControl.titles = SortType.allValues.map { $0.buttonTitle }
-    segmentedControl.backgroundColor = theme.mainColor
+    segmentedControl.backgroundColor = .blue // TODO: 
     segmentedControl.titleColor = theme.textColor
-    segmentedControl.titleFont = theme.fontType.font(withSize: 16)
-    segmentedControl.selectedTitleFont = theme.fontType.font(withSize: 18)
+    segmentedControl.titleFont = theme.font(withSize: 16)
+    segmentedControl.selectedTitleFont = theme.font(withSize: 18)
     segmentedControl.indicatorViewBackgroundColor = theme.tintColor
     segmentedControl.cornerRadius = 5
 }

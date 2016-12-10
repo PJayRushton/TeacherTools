@@ -39,6 +39,7 @@ class MainViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         core.fire(command: SubscribeToReachability())
+        core.fire(command: SubscribeToThemes())
     }
     
     override func viewWillDisappear(_ animated: Bool) {

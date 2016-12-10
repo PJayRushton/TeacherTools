@@ -84,10 +84,10 @@ private extension NavBarButton {
         titleStackView.spacing = -2.0
         
         titleStackView.addArrangedSubview(mainTitleLabel)
-        mainTitleLabel.font = App.core.state.theme.fontType.font(withSize: 20)
+        mainTitleLabel.font = App.core.state.theme.font(withSize: 20)
         
         titleStackView.addArrangedSubview(subtitleLabel)
-        subtitleLabel.font = App.core.state.theme.fontType.font(withSize: 14)
+        subtitleLabel.font = App.core.state.theme.font(withSize: 14)
         
         mainStackView.addArrangedSubview(icon)
         icon.image = #imageLiteral(resourceName: "DisclosureArrow")

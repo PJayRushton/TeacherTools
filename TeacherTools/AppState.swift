@@ -13,7 +13,7 @@ import StoreKit
 // MARK: - APP
 
 enum App {
-    static let core = Core(state: AppState(), middlewares: [UserMiddleware(), ErrorHUDMiddleware()])
+    static let core = Core(state: AppState(), middlewares: [UserMiddleware(), ErrorHUDMiddleware(), AppearanceMiddleware()])
 }
 
 
@@ -28,7 +28,8 @@ struct AppState: State {
     var selectedGroup: Group?
     var currentStudents = [Student]()
     var allStudents = [Student]()
-    var theme = defaultTheme
+    var theme = whiteTheme
+    var allThemes = [Theme]()
     var iaps = [SKProduct]()
     
     var isUsingTickets: Bool {
@@ -84,9 +85,7 @@ struct AppState: State {
             
             // APPEARANCE
         case let event as Selected<Theme>:
-            theme = event.item!
-        case let event as NameDisplayChanged:
-            theme.lastFirst = event.lastFirst
+            theme = event.item ?? whiteTheme
         default:
             break
         }
@@ -142,10 +141,6 @@ struct ShuffleTeams: Event { }
 
 struct SortStudents: Event {
     var sort: (Student, Student) -> Bool
-}
-
-struct NameDisplayChanged: Event {
-    var lastFirst: Bool
 }
 
 struct UploadStatusUpdated: Event {

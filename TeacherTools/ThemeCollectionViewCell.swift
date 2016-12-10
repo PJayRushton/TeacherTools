@@ -19,14 +19,14 @@ class ThemeCollectionViewCell: UICollectionViewCell, AutoReuseIdentifiable {
     @IBOutlet weak var lockImageView: UIImageView!
     
     func update(with theme: Theme, isLocked: Bool = true) {
-        mainView.backgroundColor = theme.mainColor
+        mainView.backgroundColor = .white // TODO: 
         firstNameLabel.backgroundColor = theme.tintColor
-        firstNameLabel.font = theme.fontType.font(withSize: 13)
+        firstNameLabel.font = theme.font(withSize: 13)
         for label in otherLabels {
             label.textColor = theme.textColor
-            label.font = theme.fontType.font(withSize: 11)
+            label.font = theme.font(withSize: 11)
         }
-        topLabel.font = theme.fontType.font(withSize: 15)
+        topLabel.font = theme.font(withSize: 15)
         grayView.backgroundColor = isLocked ? UIColor.lightGray.withAlphaComponent(0.3) : UIColor.clear
         lockImageView.isHidden = !isLocked
     }

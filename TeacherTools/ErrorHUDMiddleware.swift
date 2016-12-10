@@ -17,7 +17,7 @@ struct DisplayLoadingMessage: Event {
 struct DisplayNavBarMessage: Event {
     var nav: UINavigationController
     var message: String
-    var barColor: UIColor = App.core.state.theme.mainColor
+    var barColor: UIColor = .blue // FIXME: 
     var time: TimeInterval?
 }
 
@@ -72,7 +72,7 @@ struct ErrorHUDMiddleware: Middleware {
     }
     
     private func silva(title: String = "loading...", barColor: UIColor = UIColor.blue.withAlphaComponent(0.75), displayTime: TimeInterval? = nil) {
-        let murmur = Murmur(title: title, backgroundColor: barColor, titleColor: .white, font: App.core.state.theme.fontType.font(withSize: 14))
+        let murmur = Murmur(title: title, backgroundColor: barColor, titleColor: .white, font: App.core.state.theme.font(withSize: 14))
         let time = displayTime == nil ? title.displayTime : displayTime!
         let action = time == 0 ? WhistleAction.present : WhistleAction.show(time)
         

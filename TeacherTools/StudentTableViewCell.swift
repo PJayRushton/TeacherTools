@@ -35,7 +35,7 @@ class StudentTableViewCell: UITableViewCell, AutoReuseIdentifiable {
     fileprivate func update(with theme: Theme) {
         saveButton.tintColor = theme.tintColor
         textField.textColor = theme.textColor
-        textField.font = theme.fontType.font(withSize: textField.font!.pointSize)
+        textField.font = theme.font(withSize: textField.font!.pointSize)
     }
 
     @IBAction func saveButtonPressed(_ sender: UIButton) {
