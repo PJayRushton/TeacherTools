@@ -59,7 +59,8 @@ struct Theme: Marshaling {
         return !currentUser.isPro
     }
 
-    init(mainImage: BackgroundImage, borderImage: Banner, tintColor: UIColor, textColor: UIColor, fontType: FontType, lastFirst: Bool = false, isDefault: Bool = false) {
+    init(id: String = "", mainImage: BackgroundImage, borderImage: Banner, tintColor: UIColor, textColor: UIColor, fontType: FontType, lastFirst: Bool = false, isDefault: Bool = false) {
+        self.id = id
         self.mainImage = mainImage
         self.borderImage = borderImage
         self.tintColor = tintColor
@@ -75,6 +76,7 @@ struct Theme: Marshaling {
     
     func marshaled() -> JSONObject {
         var json = JSONObject()
+        json["id"] = id
         json["mainImage"] = mainImage.rawValue
         json["borderImage"] = borderImage.rawValue
         json["tintColor"] = tintColor.hexValue

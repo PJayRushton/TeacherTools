@@ -19,11 +19,16 @@ struct Group: Identifiable {
     var studentIds: [String]
     
     var ref: FIRDatabaseReference {
-        return FirebaseNetworkAccess.sharedInstance.groupsRef(userId: App.core.state.currentUser!.id).child(id)
+        let currentUser = App.core.state.currentUser!
+        if id.isEmpty {
+            return FirebaseNetworkAccess.sharedInstance.groupsRef(userId: currentUser.id).childByAutoId()
+        } else {
+            return FirebaseNetworkAccess.sharedInstance.groupsRef(userId: currentUser.id).child(id)
+        }
     }
     
     init(id: String = "", name: String, creationDate: Date = Date(), lastViewDate: Date = Date(), groupSize: Int = 2, studentIds: [String] = [String](), teamSize: Int = 2) {
-        self.id = id.isEmpty ? FirebaseNetworkAccess.sharedInstance.groupsRef(userId: App.core.state.currentUser!.id).childByAutoId().key : id
+        self.id = id
         self.name = name
         self.creationDate = creationDate
         self.lastViewDate = lastViewDate
