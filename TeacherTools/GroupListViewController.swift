@@ -55,9 +55,9 @@ extension GroupListViewController {
             core.fire(event: ErrorEvent(error: nil, message: "Error creating new group"))
             return
         }
-        let id = FirebaseNetworkAccess.sharedInstance.groupsRef(userId: currentUser.id).childByAutoId()
+        let ref = FirebaseNetworkAccess.sharedInstance.groupsRef(userId: currentUser.id).childByAutoId()
         let newGroupGroups = core.state.groups.filter { $0.name.lowercased().contains("new group") }
-        let newGroup = Group(id: id.key, name: "New Group \(newGroupGroups.count + 1)")
+        let newGroup = Group(id: ref.key, name: "New Group \(newGroupGroups.count + 1)")
         core.fire(command: CreateGroup(group: newGroup))
     }
     
@@ -98,6 +98,7 @@ extension GroupListViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
         case .add:
             let cell = tableView.dequeueReusableCell(withIdentifier: AddGroupTableCell.reuseIdentifier) as! AddGroupTableCell
+            cell.update(with: core.state.theme)
             return cell
         }
     }

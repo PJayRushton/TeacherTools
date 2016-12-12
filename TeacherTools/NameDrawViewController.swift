@@ -72,6 +72,7 @@ extension NameDrawViewController: Subscriber {
     
     func update(with state: AppState) {
         ticketsButton.tintColor = state.isUsingTickets ? .ticketRed : .darkGray
+        topLabel.font = state.theme.font(withSize: topLabel.font.pointSize)
     }
     
 }
@@ -206,6 +207,7 @@ extension NameDrawViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath)
         let studentAtRow = selectedStudents.reversed()[indexPath.row]
         cell.textLabel?.text = studentAtRow.displayedName
+        cell.textLabel?.font = core.state.theme.font(withSize: 15)
         
         return cell
     }

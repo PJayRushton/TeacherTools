@@ -36,7 +36,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="78"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="W0f-Fc-4z9" id="Tyk-xf-wwT">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="77.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="77"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="GBe-OC-Igj">
@@ -73,29 +73,20 @@
                                         <rect key="frame" x="0.0" y="106" width="375" height="57"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vI4-jG-Ti3" id="RGL-Ue-570">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="56.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="7ML-gf-nZ1">
                                                     <rect key="frame" x="16" y="12" width="343" height="32.5"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tgt-Sd-uLd">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cGW-8D-RBl">
                                                             <rect key="frame" x="0.0" y="0.0" width="32.5" height="32.5"/>
-                                                            <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cGW-8D-RBl">
-                                                                    <rect key="frame" x="5.5" y="-5" width="21.5" height="43"/>
-                                                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="34"/>
-                                                                    <color key="textColor" red="0.52549022436141968" green="0.67843139171600342" blue="0.92156863212585449" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
-                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" secondItem="Tgt-Sd-uLd" secondAttribute="height" id="hMh-je-dpy"/>
-                                                                <constraint firstItem="cGW-8D-RBl" firstAttribute="centerY" secondItem="Tgt-Sd-uLd" secondAttribute="centerY" id="jDh-0M-xaf"/>
-                                                                <constraint firstItem="cGW-8D-RBl" firstAttribute="centerX" secondItem="Tgt-Sd-uLd" secondAttribute="centerX" id="tDG-mJ-W3a"/>
+                                                                <constraint firstAttribute="width" secondItem="cGW-8D-RBl" secondAttribute="height" id="DPv-mV-vlc"/>
                                                             </constraints>
-                                                        </view>
+                                                            <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="34"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Add new class" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7LC-Fs-voS">
                                                             <rect key="frame" x="44.5" y="0.0" width="298.5" height="32.5"/>
                                                             <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="18"/>
@@ -113,7 +104,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="circleView" destination="Tgt-Sd-uLd" id="yer-9B-TNB"/>
+                                            <outlet property="addClassLabel" destination="7LC-Fs-voS" id="dLf-um-iP6"/>
                                             <outlet property="plusLabel" destination="cGW-8D-RBl" id="mOT-up-QtU"/>
                                         </connections>
                                     </tableViewCell>

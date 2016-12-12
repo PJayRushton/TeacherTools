@@ -18,7 +18,8 @@ struct CreateStudent: Command {
             case .success:
                 if state.allStudents.isEmpty {
                     core.fire(command: SubscribeToStudents())
-                } else if let selectedGroup = state.selectedGroup {
+                }
+                if let selectedGroup = state.selectedGroup {
                     core.fire(command: AddStudent(self.student, to: selectedGroup))
                 }
             case let .failure(error):

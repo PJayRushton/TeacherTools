@@ -51,6 +51,9 @@ struct Theme: Marshaling {
     var lastFirst: Bool
     var isDefault: Bool
     
+    var plusButtonSize: CGFloat {
+        return 32.0
+    }
     var isLocked: Bool {
         if isDefault {
             return false

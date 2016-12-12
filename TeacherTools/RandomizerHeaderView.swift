@@ -17,6 +17,7 @@ class RandomizerHeaderView: UICollectionReusableView, AutoReuseIdentifiable {
         textLabel.text = title
         textLabel.backgroundColor = theme.tintColor
         textLabel.textColor = .white
+        textLabel.font = theme.font(withSize: textLabel.font.pointSize)
     }
     
     @IBAction func buttonPressed(_ sender: Any) {

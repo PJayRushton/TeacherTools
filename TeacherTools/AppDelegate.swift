@@ -10,12 +10,15 @@ import UIKit
 import Firebase
 import Appirater
 
+let launchCountKey = "launchCount"
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var core = App.core
-
+    var shouldPromptAppRate = false
+    
     override init() {
         super.init()
         FIRApp.configure()
@@ -24,19 +27,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         core.fire(command: GetICloudUser())
         setUpAppirater()
-        let networkAccess = FirebaseNetworkAccess.sharedInstance
-        for theme in [whiteTheme, darkTheme, blackTheme, greenTheme] {
-            let ref = networkAccess.allThemesRef.childByAutoId()
-            networkAccess.updateObject(at: ref, parameters: theme.marshaled(), completion: nil)
-        }
+
         return true
     }
     
     func setUpAppirater() {
         Appirater.setAppId("977797579")
         Appirater.appLaunched(false)
-        Appirater.setUsesUntilPrompt(3)
-//        Appirater.setDebug(true) // TODO: Remove this for prod
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

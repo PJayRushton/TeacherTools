@@ -30,10 +30,12 @@ class StudentTableViewCell: UITableViewCell, AutoReuseIdentifiable {
         self.student = student
         textField.text = student.displayedName
         textField.isUserInteractionEnabled = isEditing
+        update(with: theme)
     }
     
     fileprivate func update(with theme: Theme) {
         saveButton.tintColor = theme.tintColor
+        saveButton.titleLabel?.font = theme.font(withSize: 17)
         textField.textColor = theme.textColor
         textField.font = theme.font(withSize: textField.font!.pointSize)
     }

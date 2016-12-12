@@ -101,7 +101,8 @@ extension StudentListViewController: Subscriber {
 extension StudentListViewController {
     
     func setUp() {
-        plusBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(startEditing))
+        plusBarButton = UIBarButtonItem(title: "+", style: .plain, target: self, action: #selector(startEditing))
+        plusBarButton.setTitleTextAttributes([NSFontAttributeName: core.state.theme.font(withSize: core.state.theme.plusButtonSize)], for: .normal)
         saveBarButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveNewStudent))
         cancelBarButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(saveNewStudent))
         editBarButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editButtonPressed(_:)))
@@ -318,7 +319,7 @@ extension StudentListViewController: StudentCellDelegate {
         var updatedStudent = students[indexPath.row]
         updatedStudent.firstName = name.first
         updatedStudent.lastName = name.last
-        core.fire(command: UpdateObject(object: updatedStudent))
+        core.fire(command: CreateStudent(student: updatedStudent))
     }
     
 }

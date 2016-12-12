@@ -18,9 +18,8 @@ struct CreateGroup: Command {
             case .success:
                 if core.state.groups.isEmpty {
                     core.fire(command: SubscribeToGroups())
-                } else {
-                    core.fire(event: Selected<Group>(self.group))
                 }
+                core.fire(event: Selected<Group>(self.group))
             case let .failure(error):
                 core.fire(event: ErrorEvent(error: error, message: nil))
             }
