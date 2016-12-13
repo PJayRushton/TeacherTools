@@ -34,6 +34,7 @@ class StudentTicketTableCell: UITableViewCell, AutoReuseIdentifiable {
         
         readyOnlyStack.isHidden = false
         stepper.isHidden = true
+        stepper.labelSlideLength = 10
     }
     
     override func prepareForReuse() {
@@ -48,13 +49,21 @@ class StudentTicketTableCell: UITableViewCell, AutoReuseIdentifiable {
         nameLabel.text = student.displayedName
         stepper.value = Double(student.tickets)
         countLabel.text = "\(student.tickets)"
-        
-        ticketImageView.tintColor = .ticketRed
+        updateUI(with: theme)
+    }
+    
+    fileprivate func updateUI(with theme: Theme) {
         nameLabel.font = theme.font(withSize: 17)
-        stepper.labelFont = theme.font(withSize: 20)
+        ticketImageView.tintColor = .ticketRed
+        countLabel.font = theme.font(withSize: countLabel.font.pointSize)
         stepper.buttonsFont = theme.font(withSize: 22)
-        stepper.labelTextColor = .white
-        stepper.labelBackgroundColor = theme.tintColor
+        stepper.buttonsBackgroundColor = theme.tintColor
+        stepper.buttonsTextColor = .white
+        stepper.labelFont = theme.font(withSize: 20)
+        stepper.labelTextColor = theme.tintColor
+        stepper.labelBackgroundColor = .white
+        stepper.borderColor = theme.tintColor
+        stepper.borderWidth = 2
     }
     
     @IBAction func stepperValueChanged(_ sender: GMStepper) {

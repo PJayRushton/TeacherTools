@@ -27,6 +27,8 @@ struct UserMiddleware: Middleware {
             EntityDatabase.shared.users = event.payload
             if state.currentUser == nil {
                 App.core.fire(command: GetICloudUser())
+            } else if let currentUser = state.currentUser, let index = event.payload.index(of: currentUser) {
+                App.core.fire(event: Selected<User>(event.payload[index]))
             }
         case let event as ICloudUserIdentified:
             guard EntityDatabase.shared.users.isEmpty == false else {

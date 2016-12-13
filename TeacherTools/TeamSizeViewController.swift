@@ -9,8 +9,10 @@
 import UIKit
 
 class TeamSizeViewController: UIViewController {
-
+    
+    @IBOutlet weak var topLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+
 
     var core = App.core
     var maxSize = 4
@@ -44,6 +46,7 @@ extension TeamSizeViewController: Subscriber {
         maxSize = selectedGroup.studentIds.count / 2
         tableView.reloadData()
         preferredContentSize = CGSize(width: 200, height: tableView.contentSize.height + 44)
+        topLabel.font = state.theme.font(withSize: topLabel.font.pointSize)
     }
 
 }
@@ -61,6 +64,7 @@ extension TeamSizeViewController: UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.text = "\(sizeForRow)"
         let sizeIsCurrentlySelected = core.state.selectedGroup!.teamSize == sizeForRow
         cell.isSelected = sizeIsCurrentlySelected
+        cell.textLabel?.font = core.state.theme.font(withSize: cell.textLabel?.font.pointSize ?? 30)
         
         return cell
     }

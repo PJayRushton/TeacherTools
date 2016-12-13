@@ -168,10 +168,16 @@ extension StudentListViewController {
     
     func updateUI(with theme: Theme) {
         plusBarButton.tintColor = theme.tintColor
+        plusBarButton.setTitleTextAttributes([NSFontAttributeName: theme.font(withSize: theme.plusButtonSize)], for: .normal)
         saveBarButton.tintColor = theme.tintColor
+        saveBarButton.setTitleTextAttributes([NSFontAttributeName: theme.font(withSize: 20)], for: .normal)
         cancelBarButton.tintColor = theme.tintColor
+        cancelBarButton.setTitleTextAttributes([NSFontAttributeName: theme.font(withSize: 20)], for: .normal)
+        editBarButton.tintColor = theme.tintColor
+        navBarButton.tintColor = theme.tintColor
         updateRightBarButton()
         updateSegmentedControl(theme: theme)
+        newStudentTextField.font = theme.font(withSize: newStudentTextField.font?.pointSize ?? 20)
     }
     
     func startEditing() {
@@ -343,6 +349,15 @@ extension StudentListViewController: SegueHandling {
                 let proViewController = ProViewController.initializeFromStoryboard().embededInNavigationController
                 self.present(proViewController, animated: true, completion: nil)
             }
+            animateArrow(up: true)
+        }
+    }
+    
+    fileprivate func animateArrow(up: Bool = true) {
+        
+        UIView.animate(withDuration: 0.25) {
+            let transform = up ? CGAffineTransform(rotationAngle: -CGFloat.pi) : CGAffineTransform(rotationAngle: CGFloat.pi * 2)
+            self.navBarButton.icon.transform = transform
         }
     }
     
@@ -352,6 +367,11 @@ extension StudentListViewController: UIPopoverPresentationControllerDelegate {
     
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return .none
+    }
+    
+    func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
+        animateArrow(up: false)
+        return true
     }
     
 }

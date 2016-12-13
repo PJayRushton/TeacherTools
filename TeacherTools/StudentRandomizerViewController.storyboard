@@ -39,11 +39,11 @@
                                                 <rect key="frame" x="0.0" y="28" width="150" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aBS-5R-skR" id="tHg-U9-D2W">
-                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="43"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3NZ-PL-VdF">
-                                                            <rect key="frame" x="15" y="0.0" width="120" height="43"/>
+                                                            <rect key="frame" x="15" y="0.0" width="120" height="43.5"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="30"/>
                                                             <nil key="textColor"/>
@@ -73,6 +73,7 @@
                     <size key="freeformSize" width="150" height="300"/>
                     <connections>
                         <outlet property="tableView" destination="8Lk-Ec-d57" id="2BE-La-aLa"/>
+                        <outlet property="topLabel" destination="a9M-tA-pZ8" id="cWf-iB-p7f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IsB-UU-g36" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -144,8 +145,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Team 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jq3-F9-hCu">
-                                            <rect key="frame" x="159" y="4" width="57" height="18"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jq3-F9-hCu">
+                                            <rect key="frame" x="0.0" y="8" width="375" height="28"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="28" id="Ru4-7g-vMO"/>
                                             </constraints>

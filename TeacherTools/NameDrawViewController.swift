@@ -72,7 +72,9 @@ extension NameDrawViewController: Subscriber {
     
     func update(with state: AppState) {
         ticketsButton.tintColor = state.isUsingTickets ? .ticketRed : .darkGray
+        
         topLabel.font = state.theme.font(withSize: topLabel.font.pointSize)
+        countLabel.font = state.theme.font(withSize: countLabel.font.pointSize)
     }
     
 }

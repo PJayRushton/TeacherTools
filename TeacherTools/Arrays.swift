@@ -127,7 +127,8 @@ extension UIViewController {
     
 }
 
-extension UIView{
+extension UIView {
+    
     func rotate() {
         let rotation : CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
         rotation.toValue = NSNumber(value: M_PI * 2)
@@ -136,4 +137,5 @@ extension UIView{
         rotation.repeatCount = 2
         layer.add(rotation, forKey: "rotationAnimation")
     }
+    
 }

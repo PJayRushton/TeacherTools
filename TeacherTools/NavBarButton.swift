@@ -30,7 +30,7 @@ import UIKit
     fileprivate let titleStackView = UIStackView()
     fileprivate let mainTitleLabel = UILabel()
     fileprivate let subtitleLabel = UILabel()
-    fileprivate let icon = UIImageView()
+    let icon = UIImageView()
     fileprivate let spacer = UIView()
     
     

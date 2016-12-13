@@ -18,6 +18,12 @@ class GroupSettingsViewController: UIViewController, AutoStoryboardInitializable
     @IBOutlet weak var displayNamesLabel: UILabel!
     @IBOutlet weak var segmentedControl: BetterSegmentedControl!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var loveLabel: UILabel!
+    @IBOutlet weak var rateButton: UIButton!
+    @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var proButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
+    
 
     // MARK: - Properties
     
@@ -165,9 +171,15 @@ extension GroupSettingsViewController {
     
     func updateUI(with theme: Theme) {
         groupNameTextField.font = theme.font(withSize: 17)
-        saveButton.titleLabel?.font = theme.font(withSize: 15)
-        saveButton.titleLabel?.textColor = theme.tintColor
         updateSegmentedControl(theme: theme)
+        displayNamesLabel.font = theme.font(withSize: displayNamesLabel.font.pointSize)
+        loveLabel.font = theme.font(withSize: loveLabel.font.pointSize)
+        
+        saveButton.titleLabel?.font = theme.font(withSize: 15)
+        for button in [saveButton, rateButton, shareButton, proButton] {
+            button!.titleLabel?.font = theme.font(withSize: rateButton.titleLabel?.font.pointSize ?? 18)
+            button!.setTitleColor(theme.tintColor, for: .normal)
+        }
     }
     
     func launchAppStore() {

@@ -15,6 +15,10 @@ extension UIColor {
         return try! UIColor(hex: "4DA6BD")
     }
     
+    class var appleBlue: UIColor {
+        return try! UIColor(hex: "007AFF")
+    }
+    
     class var chalk: UIColor {
         return try! UIColor(hex: "FFFFDC")
     }

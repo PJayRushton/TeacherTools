@@ -90,6 +90,9 @@ extension CustomTabBarController: CustomTabBarDelegate, AutoStoryboardInitializa
 extension CustomTabBarController: Subscriber {
     
     func update(with state: AppState) {
+        customTabBar.tintColor = state.theme.tintColor
+        customTabBar.textColor = state.theme.textColor
+        customTabBar.selectedTextColor = state.theme.tintColor
     }
     
 }

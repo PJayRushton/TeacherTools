@@ -12,6 +12,7 @@ import BetterSegmentedControl
 class StudentTicketsViewController: UIViewController, AutoStoryboardInitializable {
     
     @IBOutlet weak var editButton: UIBarButtonItem!
+    @IBOutlet weak var dismissButton: UIBarButtonItem!
     @IBOutlet weak var segmentedControl: BetterSegmentedControl!
     @IBOutlet weak var tableView: UITableView!
 
@@ -47,7 +48,7 @@ class StudentTicketsViewController: UIViewController, AutoStoryboardInitializabl
         core.remove(subscriber: self)
     }
     
-    @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
+    @IBAction func dismissButtonPressed(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
     
@@ -75,7 +76,10 @@ extension StudentTicketsViewController: Subscriber {
     func update(with state: AppState) {
         students = currentSortType.sort(state.currentStudents)
         tableView.reloadData()
-        updateSegmentedControl(theme: state.theme)
+        
+        editButton.tintColor = state.theme.tintColor
+        dismissButton.tintColor = state.theme.tintColor
+        updateSegmentedControl(with: state.theme)
     }
     
 }
@@ -169,9 +173,9 @@ enum SortType: Int {
     static let allValues = [SortType.first, .last, .tickets]
 }
 
-func updateSegmentedControl(theme: Theme) {
+func updateSegmentedControl(with theme: Theme) {
     segmentedControl.titles = SortType.allValues.map { $0.buttonTitle }
-    segmentedControl.backgroundColor = .blue // TODO: 
+    segmentedControl.backgroundColor = .clear
     segmentedControl.titleColor = theme.textColor
     segmentedControl.titleFont = theme.font(withSize: 16)
     segmentedControl.selectedTitleFont = theme.font(withSize: 18)

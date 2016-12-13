@@ -52,6 +52,7 @@ struct AppState: State {
         case let event as Selected<User>:
             currentUser = event.item
             currentICloudId = event.item == nil ? nil : event.item?.cloudKitId
+            theme = event.item?.theme ?? whiteTheme
             
             // GROUPS
         case let event as Updated<[Group]>:

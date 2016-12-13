@@ -160,10 +160,15 @@
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <connections>
                         <outlet property="collectionView" destination="ok0-dH-d2A" id="T4y-uD-bxN"/>
+                        <outlet property="deleteButton" destination="Vsp-dt-5Nc" id="wl2-Aa-ovj"/>
                         <outlet property="displayNamesLabel" destination="SAc-RD-tCr" id="IoT-wf-ouD"/>
                         <outlet property="groupNameTextField" destination="Msm-gd-Iei" id="jcj-9Z-95b"/>
+                        <outlet property="loveLabel" destination="n6D-Hr-l08" id="pPX-l6-P5h"/>
+                        <outlet property="proButton" destination="h9w-xh-bpC" id="Xdp-3y-ui8"/>
+                        <outlet property="rateButton" destination="MM6-Rj-Lpl" id="5JR-fb-Jny"/>
                         <outlet property="saveButton" destination="rvY-mV-IlG" id="GST-lv-jfC"/>
                         <outlet property="segmentedControl" destination="47V-fT-jil" id="w05-Lw-goz"/>
+                        <outlet property="shareButton" destination="jWV-aP-AyW" id="6wv-4a-41K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0m4-LG-DAh" userLabel="First Responder" sceneMemberID="firstResponder"/>

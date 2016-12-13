@@ -124,7 +124,7 @@ extension Theme: Unmarshaling {
     
 }
 
-let whiteTheme = Theme(mainImage: .white, borderImage: .wood, tintColor: .blue, textColor: .darkGray, fontType: .chalkBoard, isDefault: true)
+let whiteTheme = Theme(mainImage: .white, borderImage: .wood, tintColor: .appleBlue, textColor: .darkGray, fontType: .chalkBoard, isDefault: true)
 let darkTheme = Theme(mainImage: .black, borderImage: .darkWood, tintColor: .coolBlue, textColor: .white, fontType: .futura)
 let greenTheme = Theme(mainImage: .greenChalkboard, borderImage: .wood, tintColor: .white, textColor: .white, fontType: .chalkDuster)
 let blackTheme = Theme(mainImage: .blackChalkboard, borderImage: .lightWood, tintColor: .white, textColor: .white, fontType: .bradley)

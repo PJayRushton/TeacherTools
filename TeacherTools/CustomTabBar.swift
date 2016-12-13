@@ -113,7 +113,7 @@ public protocol CustomTabBarDelegate {
     
     
     // MARK: - Private properties
-    
+    var core = App.core
     fileprivate var lightBackgroundBlur: UIVisualEffectView!
     fileprivate var darkBackgroundBlur: UIVisualEffectView!
     fileprivate let stackView = UIStackView()
@@ -138,7 +138,7 @@ public protocol CustomTabBarDelegate {
         super.init(coder: aDecoder)
         setupViews()
     }
-    
+
     open override func layoutSubviews() {
         super.layoutSubviews()
         updateTabs(animated: animatesIn)
