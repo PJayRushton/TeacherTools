@@ -9,17 +9,30 @@
 import UIKit
 
 class ThemeCollectionViewCell: UICollectionViewCell, AutoReuseIdentifiable {
-    
+
     @IBOutlet weak var mainView: UIView!
-    @IBOutlet weak var topView: UIView!
+    @IBOutlet weak var mainImageView: UIImageView!
+    @IBOutlet weak var topImageView: UIImageView!
     @IBOutlet weak var topLabel: UILabel!
     @IBOutlet weak var firstNameLabel: UILabel!
     @IBOutlet var otherLabels: [UILabel]!
     @IBOutlet weak var grayView: UIView!
     @IBOutlet weak var lockImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var checkImageView: UIImageView!
     
-    func update(with theme: Theme, isLocked: Bool = true) {
-        mainView.backgroundColor = .white // TODO: 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        mainView.layer.cornerRadius = 5
+        mainView.layer.borderColor = UIColor.darkGray.cgColor
+        mainView.layer.borderWidth = 1
+    }
+    
+    func update(with theme: Theme, isLocked: Bool = true, isSelected: Bool) {
+        nameLabel.text = theme.name
+        checkImageView.isHidden = !isSelected
+        mainImageView.image = theme.mainImage.image
+        topImageView.image = theme.borderImage.image
         firstNameLabel.backgroundColor = theme.tintColor
         firstNameLabel.font = theme.font(withSize: 13)
         for label in otherLabels {

@@ -19,8 +19,7 @@ enum BackgroundImage: String {
 }
 
 enum Banner: String {
-    case wood, lightWood, darkWood
-    //    case metal
+    case wood, lightWood, darkWood, metal
     
     var image: UIImage {
         return UIImage(named: rawValue)!
@@ -43,6 +42,7 @@ enum FontType: String {
 struct Theme: Marshaling {
     
     var id: String
+    var name: String
     var mainImage: BackgroundImage
     var borderImage: Banner
     var tintColor: UIColor
@@ -62,8 +62,9 @@ struct Theme: Marshaling {
         return !currentUser.isPro
     }
 
-    init(id: String = "", mainImage: BackgroundImage, borderImage: Banner, tintColor: UIColor, textColor: UIColor, fontType: FontType, lastFirst: Bool = false, isDefault: Bool = false) {
+    init(id: String = "", name: String = "", mainImage: BackgroundImage, borderImage: Banner, tintColor: UIColor, textColor: UIColor, fontType: FontType, lastFirst: Bool = false, isDefault: Bool = false) {
         self.id = id
+        self.name = name
         self.mainImage = mainImage
         self.borderImage = borderImage
         self.tintColor = tintColor
@@ -80,6 +81,7 @@ struct Theme: Marshaling {
     func marshaled() -> JSONObject {
         var json = JSONObject()
         json["id"] = id
+        json["name"] = name
         json["mainImage"] = mainImage.rawValue
         json["borderImage"] = borderImage.rawValue
         json["tintColor"] = tintColor.hexValue
@@ -113,6 +115,7 @@ extension Theme: Unmarshaling {
     
     init(object: MarshaledObject) throws {
         id = try object.value(for: "id")
+        name = try object.value(for: "name")
         mainImage = try object.value(for: "mainImage")
         borderImage = try object.value(for: "borderImage")
         tintColor = try object.value(for: "tintColor")
@@ -124,7 +127,10 @@ extension Theme: Unmarshaling {
     
 }
 
-let whiteTheme = Theme(mainImage: .white, borderImage: .wood, tintColor: .appleBlue, textColor: .darkGray, fontType: .chalkBoard, isDefault: true)
+var defaultTheme: Theme {
+    return whiteTheme
+}
+fileprivate let whiteTheme = Theme(mainImage: .white, borderImage: .metal, tintColor: .appleBlue, textColor: .darkGray, fontType: .chalkBoard, isDefault: true)
 let darkTheme = Theme(mainImage: .black, borderImage: .darkWood, tintColor: .coolBlue, textColor: .white, fontType: .futura)
 let greenTheme = Theme(mainImage: .greenChalkboard, borderImage: .wood, tintColor: .white, textColor: .white, fontType: .chalkDuster)
 let blackTheme = Theme(mainImage: .blackChalkboard, borderImage: .lightWood, tintColor: .white, textColor: .white, fontType: .bradley)

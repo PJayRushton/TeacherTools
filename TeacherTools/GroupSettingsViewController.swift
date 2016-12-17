@@ -31,6 +31,12 @@ class GroupSettingsViewController: UIViewController, AutoStoryboardInitializable
     var group : Group? {
         return core.state.selectedGroup
     }
+    var allThemes: [Theme] {
+        return core.state.allThemes.sorted(by: { first, second -> Bool in
+            return first.isDefault
+        })
+    }
+    fileprivate let flowLayout = UICollectionViewFlowLayout()
     fileprivate let appStoreURL = URL(string: "itms-apps://itunes.apple.com/app/id977797579")
     
     
@@ -39,6 +45,7 @@ class GroupSettingsViewController: UIViewController, AutoStoryboardInitializable
     override func viewDidLoad() {
         super.viewDidLoad()
         saveButton.isHidden = true
+        setUp()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -113,6 +120,14 @@ extension GroupSettingsViewController: Subscriber {
 // MARK: - Fileprivate
 
 extension GroupSettingsViewController {
+    
+    func setUp() {
+        let nib = UINib(nibName: String(describing: ThemeCollectionViewCell.self), bundle: nil)
+        collectionView.register(nib, forCellWithReuseIdentifier: ThemeCollectionViewCell.reuseIdentifier)
+        let height = collectionView.bounds.height
+        flowLayout.itemSize = CGSize(width: height * 0.75, height: height)
+        collectionView.collectionViewLayout = flowLayout
+    }
     
     func toggleSaveButton(hidden: Bool) {
         UIView.animate(withDuration: 0.25) {
@@ -224,6 +239,26 @@ extension GroupSettingsViewController: UITextFieldDelegate {
     
 }
 
+
+// MARK: - UICollectionView DataSource + Delegate 
+
+extension GroupSettingsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return allThemes.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ThemeCollectionViewCell.reuseIdentifier, for: indexPath) as? ThemeCollectionViewCell, let currentUser = core.state.currentUser else { return UICollectionViewCell() }
+        let theme = allThemes[indexPath.item]
+        let isAvailable = theme == defaultTheme || currentUser.isPro
+//        cell.update(with: theme, isLocked: !isAvailable, isSelected: theme == currentUser.theme)
+        cell.update(with: theme, isLocked: false, isSelected: theme.id == currentUser.themeID)
+        
+        return cell
+    }
+    
+}
 
 // MARK: - SegmentedControl
 

@@ -16,7 +16,6 @@
 		A11EE96D1DC73CBC002C9228 /* StudentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11EE96C1DC73CBC002C9228 /* StudentTableViewCell.swift */; };
 		A11EE96F1DC73CD1002C9228 /* StudentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A11EE96E1DC73CD1002C9228 /* StudentTableViewCell.xib */; };
 		A11EE9711DC79516002C9228 /* UpdateObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11EE9701DC79516002C9228 /* UpdateObject.swift */; };
-		A13683751DFC68AF00015F06 /* ThemesCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13683741DFC68AF00015F06 /* ThemesCollectionViewDataSource.swift */; };
 		A13683771DFC889500015F06 /* UpdateTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13683761DFC889500015F06 /* UpdateTheme.swift */; };
 		A13683791DFC8DC700015F06 /* SubscribeToThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13683781DFC8DC700015F06 /* SubscribeToThemes.swift */; };
 		A14160851DC669F100C4F5BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160841DC669F100C4F5BB /* AppDelegate.swift */; };
@@ -134,7 +133,6 @@
 		A11EE96C1DC73CBC002C9228 /* StudentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentTableViewCell.swift; sourceTree = "<group>"; };
 		A11EE96E1DC73CD1002C9228 /* StudentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudentTableViewCell.xib; sourceTree = "<group>"; };
 		A11EE9701DC79516002C9228 /* UpdateObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateObject.swift; sourceTree = "<group>"; };
-		A13683741DFC68AF00015F06 /* ThemesCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemesCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		A13683761DFC889500015F06 /* UpdateTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateTheme.swift; sourceTree = "<group>"; };
 		A13683781DFC8DC700015F06 /* SubscribeToThemes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscribeToThemes.swift; sourceTree = "<group>"; };
 		A14160811DC669F100C4F5BB /* TeacherTools.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeacherTools.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -412,7 +410,6 @@
 				A1B6DDEB1DEBADEE00A1DA18 /* StudentTicketTableCell.swift */,
 				A1BCE8511DCFD97300DF7652 /* TeamSizeViewController.swift */,
 				A1A1681B1DF31B4900C0B759 /* ThemeCollectionViewCell.swift */,
-				A13683741DFC68AF00015F06 /* ThemesCollectionViewDataSource.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -641,7 +638,6 @@
 				A161426C1DCF43A100C800A1 /* RandomizerCollectionViewCell.swift in Sources */,
 				A14160D51DC6758700C4F5BB /* KeyType.swift in Sources */,
 				A14160E61DC67AA900C4F5BB /* FirebaseNetworkAccess.swift in Sources */,
-				A13683751DFC68AF00015F06 /* ThemesCollectionViewDataSource.swift in Sources */,
 				A14160DD1DC6758700C4F5BB /* ValueType.swift in Sources */,
 				A1B6DDEC1DEBADEE00A1DA18 /* StudentTicketTableCell.swift in Sources */,
 				A19DB8E81DF229E900D4C386 /* MarkUserPro.swift in Sources */,

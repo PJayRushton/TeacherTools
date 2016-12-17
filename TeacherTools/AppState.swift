@@ -28,7 +28,7 @@ struct AppState: State {
     var selectedGroup: Group?
     var currentStudents = [Student]()
     var allStudents = [Student]()
-    var theme = whiteTheme
+    var theme = defaultTheme
     var allThemes = [Theme]()
     var iaps = [SKProduct]()
     
@@ -52,7 +52,7 @@ struct AppState: State {
         case let event as Selected<User>:
             currentUser = event.item
             currentICloudId = event.item == nil ? nil : event.item?.cloudKitId
-            theme = event.item?.theme ?? whiteTheme
+            theme = event.item?.theme ?? defaultTheme
             
             // GROUPS
         case let event as Updated<[Group]>:
@@ -85,8 +85,10 @@ struct AppState: State {
             iaps = event.payload
             
             // APPEARANCE
+        case let event as Updated<[Theme]>:
+            allThemes = event.payload
         case let event as Selected<Theme>:
-            theme = event.item ?? whiteTheme
+            theme = event.item ?? defaultTheme
         default:
             break
         }
