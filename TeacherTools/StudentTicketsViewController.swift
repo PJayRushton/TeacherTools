@@ -28,7 +28,7 @@ class StudentTicketsViewController: UIViewController, AutoStoryboardInitializabl
             tableView.reloadData()
         }
     }
-    var currentSortType: SortType = App.core.state.theme.lastFirst ? .last : .first {
+    var currentSortType: SortType = App.core.state.currentUser!.lastFirst ? .last : .first {
         didSet {
             students = currentSortType.sort(students)
         }

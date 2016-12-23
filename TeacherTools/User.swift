@@ -17,6 +17,7 @@ final class User: Marshaling, Unmarshaling {
     var creationDate: Date
     var firstName: String?
     var themeID: String
+    var lastFirst: Bool
     var purchases = Set<TTPurchase>()
     
     var theme: Theme? {
@@ -26,13 +27,14 @@ final class User: Marshaling, Unmarshaling {
         return purchases.map { $0.productId }.contains(TTProducts.proUpgrade)
     }
     
-    init(id: String = "", cloudKitId: String? = nil, deviceId: String = "", creationDate: Date = Date(), firstName: String? = nil, themeID: String = "-KYnZO6lWYBECsy4U3fN", purchases: Set<TTPurchase> = []) {
+    init(id: String = "", cloudKitId: String? = nil, deviceId: String = "", creationDate: Date = Date(), firstName: String? = nil, themeID: String = "-KYnZO6lWYBECsy4U3fN", lastFirst: Bool = false, purchases: Set<TTPurchase> = []) {
         self.id = id
         self.cloudKitId = cloudKitId
         self.deviceId = deviceId
         self.creationDate = creationDate
         self.firstName = firstName
         self.themeID = themeID
+        self.lastFirst = lastFirst
         self.purchases = purchases
     }
     
@@ -43,6 +45,7 @@ final class User: Marshaling, Unmarshaling {
         creationDate = try object.value(for: "creationDate")
         firstName = try object.value(for: "firstName")
         themeID = try object.value(for: "theme")
+        lastFirst = try object.value(for: "lastFirst")
         let purchasesJSON: JSONObject? = try object.value(for: "purchases")
         purchases = Set<TTPurchase>(purchasesJSON.parsedObjects())
     }
@@ -55,6 +58,7 @@ final class User: Marshaling, Unmarshaling {
         json["creationDate"] = creationDate.iso8601String
         json["firstName"] = firstName
         json["purchases"] = purchases.marshaled()
+        json["lastFirst"] = lastFirst
         json["theme"] = themeID
         
         return json

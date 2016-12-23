@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="GW0-o2-16X">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="GW0-o2-16X">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,18 +22,29 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TG9-6j-0ol">
-                                <rect key="frame" x="78" y="316" width="218" height="34"/>
+                                <rect key="frame" x="113" y="316" width="148" height="34"/>
                                 <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
-                                <state key="normal" title="Upgrade to Pro ($1.99)"/>
+                                <state key="normal" title="Upgrade to Pro"/>
                                 <connections>
                                     <action selector="upgradeButtonPressed:" destination="GW0-o2-16X" eventType="touchUpInside" id="chx-70-f18"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G3X-PC-TLz">
+                                <rect key="frame" x="79" y="421" width="216" height="30"/>
+                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="14"/>
+                                <state key="normal" title="Restore previous purchases"/>
+                                <connections>
+                                    <action selector="restoreButtonPressed:" destination="GW0-o2-16X" eventType="touchUpInside" id="0HD-4y-jsX"/>
+                                    <action selector="upgradeButtonPressed:" destination="GW0-o2-16X" eventType="touchUpInside" id="jU8-gm-N90"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="TG9-6j-0ol" firstAttribute="centerX" secondItem="EuT-sI-OKO" secondAttribute="centerX" id="BYi-cv-kkB"/>
+                            <constraint firstItem="G3X-PC-TLz" firstAttribute="top" secondItem="TG9-6j-0ol" secondAttribute="bottom" constant="71" id="CIE-a5-4lC"/>
                             <constraint firstItem="TG9-6j-0ol" firstAttribute="centerY" secondItem="EuT-sI-OKO" secondAttribute="centerY" id="WRU-z8-1We"/>
+                            <constraint firstItem="G3X-PC-TLz" firstAttribute="centerX" secondItem="TG9-6j-0ol" secondAttribute="centerX" id="wts-j2-B9d"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Pro Upgrade" id="Dhe-TG-5eA">

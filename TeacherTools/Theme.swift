@@ -12,6 +12,9 @@ import Firebase
 enum BackgroundImage: String {
     case white, black, greenChalkboard, blackChalkboard
     
+    var imageView: UIImageView {
+        return UIImageView(image: image)
+    }
     var image: UIImage {
         return UIImage(named: rawValue)!
     }
@@ -48,7 +51,6 @@ struct Theme: Marshaling {
     var tintColor: UIColor
     var textColor: UIColor
     fileprivate var fontType: FontType
-    var lastFirst: Bool
     var isDefault: Bool
     
     var plusButtonSize: CGFloat {
@@ -62,7 +64,7 @@ struct Theme: Marshaling {
         return !currentUser.isPro
     }
 
-    init(id: String = "", name: String = "", mainImage: BackgroundImage, borderImage: Banner, tintColor: UIColor, textColor: UIColor, fontType: FontType, lastFirst: Bool = false, isDefault: Bool = false) {
+    init(id: String = "", name: String = "", mainImage: BackgroundImage, borderImage: Banner, tintColor: UIColor, textColor: UIColor, fontType: FontType, isDefault: Bool = false) {
         self.id = id
         self.name = name
         self.mainImage = mainImage
@@ -70,7 +72,6 @@ struct Theme: Marshaling {
         self.tintColor = tintColor
         self.textColor = textColor
         self.fontType = fontType
-        self.lastFirst = lastFirst
         self.isDefault = isDefault
     }
     
@@ -87,7 +88,6 @@ struct Theme: Marshaling {
         json["tintColor"] = tintColor.hexValue
         json["textColor"] = textColor.hexValue
         json["fontType"] = fontType.rawValue
-        json["lastFirst"] = lastFirst
         json["isDefault"] = isDefault
         
         return json
@@ -121,7 +121,6 @@ extension Theme: Unmarshaling {
         tintColor = try object.value(for: "tintColor")
         textColor = try object.value(for: "textColor")
         fontType = try object.value(for: "fontType")
-        lastFirst = try object.value(for: "lastFirst")
         isDefault = try object.value(for: "isDefault")
     }
     

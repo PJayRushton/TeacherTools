@@ -18,21 +18,24 @@ class ThemeCollectionViewCell: UICollectionViewCell, AutoReuseIdentifiable {
     @IBOutlet var otherLabels: [UILabel]!
     @IBOutlet weak var grayView: UIView!
     @IBOutlet weak var lockImageView: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var checkImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         mainView.layer.cornerRadius = 5
-        mainView.layer.borderColor = UIColor.darkGray.cgColor
-        mainView.layer.borderWidth = 1
     }
     
+    override var isSelected: Bool {
+        didSet {
+
+        }
+    }
+
     func update(with theme: Theme, isLocked: Bool = true, isSelected: Bool) {
-        nameLabel.text = theme.name
-        checkImageView.isHidden = !isSelected
+        mainView.layer.borderColor = isSelected ? UIColor.appleBlue.cgColor : UIColor.darkGray.cgColor
+        mainView.layer.borderWidth = isSelected ? 4 : 1
         mainImageView.image = theme.mainImage.image
         topImageView.image = theme.borderImage.image
+        topLabel.text = theme.name
         firstNameLabel.backgroundColor = theme.tintColor
         firstNameLabel.font = theme.font(withSize: 13)
         for label in otherLabels {
@@ -40,7 +43,7 @@ class ThemeCollectionViewCell: UICollectionViewCell, AutoReuseIdentifiable {
             label.font = theme.font(withSize: 11)
         }
         topLabel.font = theme.font(withSize: 15)
-        grayView.backgroundColor = isLocked ? UIColor.lightGray.withAlphaComponent(0.3) : UIColor.clear
+        grayView.backgroundColor = isLocked ? UIColor.darkGray.withAlphaComponent(0.6) : UIColor.clear
         lockImageView.isHidden = !isLocked
     }
     

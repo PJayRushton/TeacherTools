@@ -11,7 +11,7 @@ import UIKit
 class ProViewController: UIViewController, AutoStoryboardInitializable {
     
     @IBOutlet weak var upgradeButton: UIButton!
-
+    fileprivate var sharedStore = TTProducts.store
     var core = App.core
     
     override func viewDidLoad() {
@@ -38,6 +38,11 @@ class ProViewController: UIViewController, AutoStoryboardInitializable {
 
     @IBAction func upgradeButtonPressed(_ sender: UIButton) {
         core.fire(command: GoPro())
+    }
+    
+    @IBAction func restoreButtonPressed(_ sender: UIButton) {
+        sharedStore.restorePurchases()
+        core.fire(command: MarkUserPro())
     }
     
 }

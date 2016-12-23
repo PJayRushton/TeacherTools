@@ -23,6 +23,7 @@ class GroupSettingsViewController: UIViewController, AutoStoryboardInitializable
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var proButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet var viewTappedRecognizer: UITapGestureRecognizer!
     
 
     // MARK: - Properties
@@ -31,11 +32,7 @@ class GroupSettingsViewController: UIViewController, AutoStoryboardInitializable
     var group : Group? {
         return core.state.selectedGroup
     }
-    var allThemes: [Theme] {
-        return core.state.allThemes.sorted(by: { first, second -> Bool in
-            return first.isDefault
-        })
-    }
+    fileprivate let dataSource = ThemesCollectionViewDataSource()
     fileprivate let flowLayout = UICollectionViewFlowLayout()
     fileprivate let appStoreURL = URL(string: "itms-apps://itunes.apple.com/app/id977797579")
     
@@ -86,9 +83,10 @@ class GroupSettingsViewController: UIViewController, AutoStoryboardInitializable
     }
 
     @IBAction func segmentedControlValueChanged(_ sender: BetterSegmentedControl) {
-        var updatedTheme = core.state.theme
-        updatedTheme.lastFirst = Int(sender.index) == NameDisplayType.lastFirst.rawValue
-        core.fire(command: UpdateTheme(theme: updatedTheme))
+        guard var updatedUser = core.state.currentUser else { return }
+        let isLastFirst = Int(sender.index) == NameDisplayType.lastFirst.rawValue
+        updatedUser.lastFirst = isLastFirst
+        core.fire(command: UpdateUser(user: updatedUser))
     }
     
     @IBAction func rateButtonPressed(_ sender: UIButton) {
@@ -100,8 +98,7 @@ class GroupSettingsViewController: UIViewController, AutoStoryboardInitializable
     }
     
     @IBAction func proButtonPressed(_ sender: UIButton) {
-        let proVC = ProViewController.initializeFromStoryboard().embededInNavigationController
-        present(proVC, animated: true, completion: nil)
+        showProVC()
     }
     
 }
@@ -111,7 +108,12 @@ extension GroupSettingsViewController: Subscriber {
     func update(with state: AppState) {
         groupNameTextField.text = state.selectedGroup?.name
         updateSaveButton()
+        dataSource.themes = state.allThemes.sorted(by: { first, second -> Bool in
+            return first.isDefault
+        })
         updateUI(with: state.theme)
+        let currentIndex = UInt(state.currentUser?.lastFirst.hashValue ?? 0)
+        try? segmentedControl.set(index: currentIndex, animated: false)
     }
     
 }
@@ -125,8 +127,10 @@ extension GroupSettingsViewController {
         let nib = UINib(nibName: String(describing: ThemeCollectionViewCell.self), bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: ThemeCollectionViewCell.reuseIdentifier)
         let height = collectionView.bounds.height
-        flowLayout.itemSize = CGSize(width: height * 0.75, height: height)
+        flowLayout.itemSize = CGSize(width: height * 0.75, height: height - 16)
+        flowLayout.scrollDirection = .horizontal
         collectionView.collectionViewLayout = flowLayout
+        collectionView.dataSource = dataSource
     }
     
     func toggleSaveButton(hidden: Bool) {
@@ -174,7 +178,7 @@ extension GroupSettingsViewController {
         var message = "This cannot be undone"
         if group.studentIds.count > 0 {
             let studentKey = group.studentIds.count == 1 ? "student" : "students"
-            message = "\nThis class's \(group.studentIds.count) \(studentKey) will also be deleted."
+            message = "This class's \(group.studentIds.count) \(studentKey) will also be deleted."
         }
         let alert = UIAlertController(title: "Are you sure?", message: message, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { _ in
@@ -197,6 +201,11 @@ extension GroupSettingsViewController {
         }
     }
     
+    func showProVC() {
+        let proVC = ProViewController.initializeFromStoryboard().embededInNavigationController
+        present(proVC, animated: true, completion: nil)
+    }
+
     func launchAppStore() {
         guard let appStoreURL = appStoreURL, UIApplication.shared.canOpenURL(appStoreURL) else {
             core.fire(event: ErrorEvent(error: nil, message: "Error launching app store"))
@@ -240,25 +249,23 @@ extension GroupSettingsViewController: UITextFieldDelegate {
 }
 
 
-// MARK: - UICollectionView DataSource + Delegate 
+// MARK: - UICollectionView  Delegate
 
-extension GroupSettingsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension GroupSettingsViewController: UICollectionViewDelegate {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return allThemes.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ThemeCollectionViewCell.reuseIdentifier, for: indexPath) as? ThemeCollectionViewCell, let currentUser = core.state.currentUser else { return UICollectionViewCell() }
-        let theme = allThemes[indexPath.item]
-        let isAvailable = theme == defaultTheme || currentUser.isPro
-//        cell.update(with: theme, isLocked: !isAvailable, isSelected: theme == currentUser.theme)
-        cell.update(with: theme, isLocked: false, isSelected: theme.id == currentUser.themeID)
-        
-        return cell
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedTheme = dataSource.themes[indexPath.item]
+        if selectedTheme.isLocked {
+            showProVC()
+        } else if selectedTheme.id != core.state.currentUser?.themeID, let currentUser = core.state.currentUser {
+            currentUser.themeID = selectedTheme.id
+            core.fire(command: UpdateUser(user: currentUser))
+            collectionView.reloadData()
+        }
     }
     
 }
+
 
 // MARK: - SegmentedControl
 
@@ -288,6 +295,14 @@ extension GroupSettingsViewController {
         segmentedControl.selectedTitleFont = theme.font(withSize: 18)
         segmentedControl.indicatorViewBackgroundColor = theme.tintColor
         segmentedControl.cornerRadius = 5
+    }
+    
+}
+
+extension GroupSettingsViewController: UIGestureRecognizerDelegate {
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        return groupNameTextField.isFirstResponder
     }
     
 }

@@ -34,7 +34,7 @@ struct AppState: State {
     
     var isUsingTickets: Bool {
         for student in currentStudents {
-            if student.tickets == 0 || student.tickets > 1 {
+            if student.tickets != 1 {
                 return true
             }
         }
@@ -52,7 +52,7 @@ struct AppState: State {
         case let event as Selected<User>:
             currentUser = event.item
             currentICloudId = event.item == nil ? nil : event.item?.cloudKitId
-            theme = event.item?.theme ?? defaultTheme
+            theme = allThemes.filter { $0.id == event.item?.themeID }.first ?? defaultTheme
             
             // GROUPS
         case let event as Updated<[Group]>:
@@ -87,6 +87,8 @@ struct AppState: State {
             // APPEARANCE
         case let event as Updated<[Theme]>:
             allThemes = event.payload
+            guard let user = currentUser else { return }
+            theme = event.payload.filter { $0.id == user.themeID }.first ?? defaultTheme
         case let event as Selected<Theme>:
             theme = event.item ?? defaultTheme
         default:

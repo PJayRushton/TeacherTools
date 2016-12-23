@@ -26,8 +26,8 @@ struct Student: Marshaling, Unmarshaling, Identifiable {
     }
     
     var displayedName: String {
-        guard let lastName = lastName else { return firstName }
-        return App.core.state.theme.lastFirst ? "\(lastName), \(firstName)" : "\(firstName) \(lastName)"
+        guard let lastName = lastName, let currentUser = App.core.state.currentUser else { return firstName }
+        return currentUser.lastFirst ? "\(lastName), \(firstName)" : "\(firstName) \(lastName)"
     }
     
     var ref: FIRDatabaseReference {

@@ -76,8 +76,7 @@
                                         </collectionViewFlowLayout>
                                         <cells/>
                                         <connections>
-                                            <outlet property="dataSource" destination="5kz-w2-sp5" id="d4P-yh-w39"/>
-                                            <outlet property="delegate" destination="5kz-w2-sp5" id="ONc-hb-ElC"/>
+                                            <outlet property="delegate" destination="5kz-w2-sp5" id="n2C-jp-EMD"/>
                                         </connections>
                                     </collectionView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Love Teacher Tools?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6D-Hr-l08">
@@ -170,12 +169,14 @@
                         <outlet property="saveButton" destination="rvY-mV-IlG" id="GST-lv-jfC"/>
                         <outlet property="segmentedControl" destination="47V-fT-jil" id="w05-Lw-goz"/>
                         <outlet property="shareButton" destination="jWV-aP-AyW" id="6wv-4a-41K"/>
+                        <outlet property="viewTappedRecognizer" destination="xNA-Mo-C8E" id="hFq-Yp-xfJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0m4-LG-DAh" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="xNA-Mo-C8E">
                     <connections>
                         <action selector="viewTapped:" destination="5kz-w2-sp5" id="mew-nQ-Yfo"/>
+                        <outlet property="delegate" destination="5kz-w2-sp5" id="GCc-Qb-369"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

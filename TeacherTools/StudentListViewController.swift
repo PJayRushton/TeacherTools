@@ -31,7 +31,7 @@ class StudentListViewController: UIViewController, AutoStoryboardInitializable {
     fileprivate var doneBarButton = UIBarButtonItem()
     fileprivate var editBarButton = UIBarButtonItem()
     
-    var currentSortType: SortType = App.core.state.theme.lastFirst ? .last : .first {
+    var currentSortType: SortType = App.core.state.currentUser!.lastFirst ? .last : .first {
         didSet {
             students = currentSortType.sort(students)
             isAdding = false
@@ -167,6 +167,8 @@ extension StudentListViewController {
     }
     
     func updateUI(with theme: Theme) {
+        navigationController?.navigationBar.setBackgroundImage(theme.borderImage.image, for: .default)
+        tableView.backgroundView = theme.mainImage.imageView
         plusBarButton.tintColor = theme.tintColor
         plusBarButton.setTitleTextAttributes([NSFontAttributeName: theme.font(withSize: theme.plusButtonSize)], for: .normal)
         saveBarButton.tintColor = theme.tintColor
@@ -307,7 +309,7 @@ extension StudentListViewController {
     
     func updateSegmentedControl(theme: Theme) {
         segmentedControl.titles = SortType.allValues.map { $0.buttonTitle }
-        segmentedControl.backgroundColor = .white // TODO: 
+        segmentedControl.backgroundColor = .clear
         segmentedControl.titleColor = theme.textColor
         segmentedControl.titleFont = theme.font(withSize: 16)
         segmentedControl.selectedTitleFont = theme.font(withSize: 18)

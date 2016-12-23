@@ -87,8 +87,6 @@ extension IAPHelper: SKProductsRequestDelegate {
     }
     
     public func request(_ request: SKRequest, didFailWithError error: Error) {
-        print("Failed to load list of products.")
-        print("Error: \(error.localizedDescription)")
         productsRequestCompletionHandler?(false, nil)
         clearRequestAndHandler()
     }
@@ -109,37 +107,28 @@ extension IAPHelper: SKPaymentTransactionObserver {
             switch (transaction.transactionState) {
             case .purchased:
                 complete(transaction: transaction)
-                break
-            case .failed:
-                fail(transaction: transaction)
-                break
             case .restored:
                 restore(transaction: transaction)
-                break
-            case .deferred:
-                break
-            case .purchasing:
+            case .failed:
+                fail(transaction: transaction)
+            case .deferred, .purchasing:
                 break
             }
         }
     }
     
     private func complete(transaction: SKPaymentTransaction) {
-        print("complete...")
         deliverPurchaseNotificationFor(identifier: transaction.payment.productIdentifier)
         SKPaymentQueue.default().finishTransaction(transaction)
     }
     
     private func restore(transaction: SKPaymentTransaction) {
         guard let productIdentifier = transaction.original?.payment.productIdentifier else { return }
-        
-        print("restore... \(productIdentifier)")
         deliverPurchaseNotificationFor(identifier: productIdentifier)
         SKPaymentQueue.default().finishTransaction(transaction)
     }
     
     private func fail(transaction: SKPaymentTransaction) {
-        print("fail...")
         if let transactionError = transaction.error as? NSError {
             if transactionError.code != SKError.paymentCancelled.rawValue {
                 print("Transaction Error: \(transaction.error?.localizedDescription)")
