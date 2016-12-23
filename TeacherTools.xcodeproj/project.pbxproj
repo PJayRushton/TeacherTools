@@ -99,6 +99,7 @@
 		A1B6DDEA1DEBAB2500A1DA18 /* StudentTicketsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1B6DDE91DEBAB2500A1DA18 /* StudentTicketsViewController.storyboard */; };
 		A1B6DDEC1DEBADEE00A1DA18 /* StudentTicketTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B6DDEB1DEBADEE00A1DA18 /* StudentTicketTableCell.swift */; };
 		A1BCE8521DCFD97300DF7652 /* TeamSizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BCE8511DCFD97300DF7652 /* TeamSizeViewController.swift */; };
+		A1C0EEFE1E0BA29300D0A596 /* AudioHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C0EEFD1E0BA29300D0A596 /* AudioHelper.swift */; };
 		A1C919D51DDAC96F00A7B477 /* DeleteStudent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C919D41DDAC96F00A7B477 /* DeleteStudent.swift */; };
 		A1C919D71DDACE0000A7B477 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C919D61DDACE0000A7B477 /* StringExtensions.swift */; };
 		A1CC0AB91DC7A14800C0575F /* DeleteObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CC0AB81DC7A14800C0575F /* DeleteObject.swift */; };
@@ -224,6 +225,7 @@
 		A1B6DDE91DEBAB2500A1DA18 /* StudentTicketsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StudentTicketsViewController.storyboard; sourceTree = "<group>"; };
 		A1B6DDEB1DEBADEE00A1DA18 /* StudentTicketTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentTicketTableCell.swift; sourceTree = "<group>"; };
 		A1BCE8511DCFD97300DF7652 /* TeamSizeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamSizeViewController.swift; sourceTree = "<group>"; };
+		A1C0EEFD1E0BA29300D0A596 /* AudioHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioHelper.swift; sourceTree = "<group>"; };
 		A1C919D41DDAC96F00A7B477 /* DeleteStudent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteStudent.swift; sourceTree = "<group>"; };
 		A1C919D61DDACE0000A7B477 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		A1CC0AB81DC7A14800C0575F /* DeleteObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteObject.swift; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 			isa = PBXGroup;
 			children = (
 				A14160F21DC686FF00C4F5BB /* Arrays.swift */,
+				A1C0EEFD1E0BA29300D0A596 /* AudioHelper.swift */,
 				A147CFA61DCA336D00C9860F /* CustomTabBar.swift */,
 				A147CFA71DCA336D00C9860F /* CustomTabBarProtocols.swift */,
 				A1B1A2071DC8BD4300D80E53 /* DateHelper.swift */,
@@ -663,6 +666,7 @@
 				A13683791DFC8DC700015F06 /* SubscribeToThemes.swift in Sources */,
 				A14160A51DC66D2F00C4F5BB /* StoryboardInitializable.swift in Sources */,
 				A19DB8DA1DF1D6C400D4C386 /* ProViewController.swift in Sources */,
+				A1C0EEFE1E0BA29300D0A596 /* AudioHelper.swift in Sources */,
 				A14160F91DC68C2300C4F5BB /* Result.swift in Sources */,
 				A1CC0AB91DC7A14800C0575F /* DeleteObject.swift in Sources */,
 				A14160D41DC6758700C4F5BB /* JSON.swift in Sources */,

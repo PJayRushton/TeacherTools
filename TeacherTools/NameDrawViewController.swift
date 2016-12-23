@@ -18,6 +18,7 @@ class NameDrawViewController: UIViewController, AutoStoryboardInitializable {
     
     fileprivate let cellReuseIdentifier = "NameDrawCell"
     fileprivate let emptyStudentsString = "Tap here to \ndraw a name!"
+    fileprivate let audioHelper = AudioHelper(resource: AudioHelper.AudioResource.drumroll)
     fileprivate var allStudents = [Student]()
     fileprivate var selectedStudents = [Student]()
     fileprivate var animator: UIViewPropertyAnimator!
@@ -128,10 +129,15 @@ extension NameDrawViewController {
                 self.topLabel.transform = CGAffineTransform(scaleX: 1, y: 1)
             }
             animator.startAnimation()
+            
+            if let drumrollPlayer = audioHelper {
+                drumrollPlayer.play()
+            }
             animator.addCompletion { position in
                 self.drawNameGesture.isEnabled = true
                 completion()
             }
+            
         } else {
             completion()
         }
