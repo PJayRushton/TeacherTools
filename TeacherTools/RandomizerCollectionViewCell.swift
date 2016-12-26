@@ -23,7 +23,7 @@ class RandomizerCollectionViewCell: UICollectionViewCell, AutoReuseIdentifiable 
     func update(with student: Student, theme: Theme) {
         textLabel.text = student.displayedName
         borderView.layer.borderColor = theme.tintColor.cgColor
-        
+        textLabel.textColor = theme.textColor
         textLabel.font = theme.font(withSize: textLabel.font.pointSize)
     }
     

@@ -10,6 +10,7 @@ import UIKit
 
 class TeamSizeViewController: UIViewController {
     
+    @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var topLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
 
@@ -46,7 +47,13 @@ extension TeamSizeViewController: Subscriber {
         maxSize = selectedGroup.studentIds.count / 2
         tableView.reloadData()
         preferredContentSize = CGSize(width: 200, height: tableView.contentSize.height + 44)
-        topLabel.font = state.theme.font(withSize: topLabel.font.pointSize)
+        updateUI(with: state.theme)
+    }
+    
+    func updateUI(with theme: Theme) {
+        backgroundImageView.image = theme.mainImage.image
+        topLabel.font = theme.font(withSize: topLabel.font.pointSize)
+        topLabel.textColor = theme.textColor
     }
 
 }
@@ -65,6 +72,7 @@ extension TeamSizeViewController: UITableViewDelegate, UITableViewDataSource {
         let sizeIsCurrentlySelected = core.state.selectedGroup!.teamSize == sizeForRow
         cell.isSelected = sizeIsCurrentlySelected
         cell.textLabel?.font = core.state.theme.font(withSize: cell.textLabel?.font.pointSize ?? 30)
+        cell.textLabel?.textColor = core.state.theme.textColor
         
         return cell
     }
@@ -74,6 +82,10 @@ extension TeamSizeViewController: UITableViewDelegate, UITableViewDataSource {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
             self.dismiss(animated: true, completion: nil)
         })
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.backgroundColor = .clear
     }
 
 }

@@ -10,6 +10,7 @@ import UIKit
 
 class StudentRandomizerViewController: UIViewController, AutoStoryboardInitializable {
     
+    @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var shuffleBarButton: UIBarButtonItem!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var sizeBarButton: UIBarButtonItem!
@@ -51,6 +52,7 @@ extension StudentRandomizerViewController: Subscriber {
         guard let selectedGroup = state.selectedGroup else { return }
         sizeBarButton.title = "\(selectedGroup.teamSize)"
         updateCollectionView(group: selectedGroup)
+        updateUI(with: state.theme)
     }
     
 }
@@ -73,10 +75,16 @@ extension StudentRandomizerViewController {
         let screenWidthMinusMargin: CGFloat = view.frame.size.width - totalMarginSpace
         layout.itemSize = CGSize(width: screenWidthMinusMargin / columns, height: 44)
         layout.sectionHeadersPinToVisibleBounds = true
-        layout.headerReferenceSize = CGSize(width: collectionView.bounds.width, height: 36)
+        layout.headerReferenceSize = CGSize(width: collectionView.bounds.width, height: 50)
         collectionView.reloadData()
     }
     
+    func updateUI(with theme: Theme) {
+        backgroundImageView.image = theme.mainImage.image
+        let borderImage = theme.borderImage.image.stretchableImage(withLeftCapWidth: 0, topCapHeight: 0)
+        navigationController?.navigationBar.setBackgroundImage(borderImage, for: .default)
+    }
+
 }
 
 
