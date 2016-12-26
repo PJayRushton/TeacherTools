@@ -56,6 +56,11 @@ import UIKit
         }
     }
     
+    func update(with theme: Theme) {
+        mainTitleLabel.font = theme.font(withSize: 20)
+        subtitleLabel.font = theme.font(withSize: 14)
+    }
+    
 }
 
 

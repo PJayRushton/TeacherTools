@@ -11,6 +11,7 @@ import BetterSegmentedControl
 
 class StudentListViewController: UIViewController, AutoStoryboardInitializable {
     
+    @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var navBarButton: NavBarButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var newEntryView: UIView!
@@ -137,6 +138,7 @@ extension StudentListViewController {
     func toggleEntryView(hidden: Bool) {
         UIView.animate(withDuration: 0.5, animations: {
             self.newEntryView.isHidden = hidden
+            self.newEntryView.alpha = hidden ? 0 : 1
             DispatchQueue.main.async {
                 if hidden {
                     self.newStudentTextField.resignFirstResponder()
@@ -167,19 +169,21 @@ extension StudentListViewController {
     }
     
     func updateUI(with theme: Theme) {
-        navigationController?.navigationBar.setBackgroundImage(theme.borderImage.image, for: .default)
-        tableView.backgroundView = theme.mainImage.imageView
-        plusBarButton.tintColor = theme.tintColor
+        backgroundImageView.image = theme.mainImage.image
+        let borderImage = theme.borderImage.image.stretchableImage(withLeftCapWidth: 0, topCapHeight: 0)
+        navigationController?.navigationBar.setBackgroundImage(borderImage, for: .default)
+        
+        for barButton in [plusBarButton, saveBarButton, cancelBarButton, editBarButton] {
+            barButton.tintColor = theme.tintColor
+            barButton.setTitleTextAttributes([NSFontAttributeName: theme.font(withSize: 20)], for: .normal)
+        }
         plusBarButton.setTitleTextAttributes([NSFontAttributeName: theme.font(withSize: theme.plusButtonSize)], for: .normal)
-        saveBarButton.tintColor = theme.tintColor
-        saveBarButton.setTitleTextAttributes([NSFontAttributeName: theme.font(withSize: 20)], for: .normal)
-        cancelBarButton.tintColor = theme.tintColor
-        cancelBarButton.setTitleTextAttributes([NSFontAttributeName: theme.font(withSize: 20)], for: .normal)
-        editBarButton.tintColor = theme.tintColor
         navBarButton.tintColor = theme.tintColor
+        navBarButton.update(with: theme)
         updateRightBarButton()
         updateSegmentedControl(theme: theme)
         newStudentTextField.font = theme.font(withSize: newStudentTextField.font?.pointSize ?? 20)
+        newStudentTextField.textColor = theme.textColor
     }
     
     func startEditing() {

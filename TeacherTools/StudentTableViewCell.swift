@@ -24,6 +24,7 @@ class StudentTableViewCell: UITableViewCell, AutoReuseIdentifiable {
         super.awakeFromNib()
         saveButton.isHidden = true
         textField.layer.cornerRadius = 5.0
+        backgroundColor = .clear
     }
     
     func update(with student: Student, theme: Theme, isEditing: Bool) {

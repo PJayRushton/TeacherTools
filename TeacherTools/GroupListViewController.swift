@@ -43,6 +43,7 @@ extension GroupListViewController: Subscriber {
     func update(with state: AppState) {
         tableView.reloadData()
         preferredContentSize = CGSize(width: 0, height: tableView.contentSize.height)
+        tableView.backgroundView = state.theme.mainImage.imageView
     }
 
 }
