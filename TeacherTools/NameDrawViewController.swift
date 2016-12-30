@@ -10,6 +10,7 @@ import UIKit
 
 class NameDrawViewController: UIViewController, AutoStoryboardInitializable {
     
+    @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var ticketsButton: UIBarButtonItem!
     @IBOutlet weak var topLabel: UILabel!
     @IBOutlet weak var countLabel: UILabel!
@@ -72,10 +73,19 @@ class NameDrawViewController: UIViewController, AutoStoryboardInitializable {
 extension NameDrawViewController: Subscriber {
     
     func update(with state: AppState) {
-        ticketsButton.tintColor = state.isUsingTickets ? .ticketRed : .darkGray
+        ticketsButton.tintColor = state.isUsingTickets ? .ticketRed : state.theme.textColor.withAlphaComponent(0.5)
+        updateUI(with: state.theme)
+    }
+    
+    func updateUI(with theme: Theme) {
+        let borderImage = theme.borderImage.image.stretchableImage(withLeftCapWidth: 0, topCapHeight: 0)
+        navigationController?.navigationBar.setBackgroundImage(borderImage, for: .default)
+        backgroundImageView.image = theme.mainImage.image
         
-        topLabel.font = state.theme.font(withSize: topLabel.font.pointSize)
-        countLabel.font = state.theme.font(withSize: countLabel.font.pointSize)
+        topLabel.textColor = theme.textColor
+        countLabel.textColor = theme.textColor
+        topLabel.font = theme.font(withSize: topLabel.font.pointSize)
+        countLabel.font = theme.font(withSize: countLabel.font.pointSize)
     }
     
 }
@@ -216,6 +226,7 @@ extension NameDrawViewController: UITableViewDataSource, UITableViewDelegate {
         let studentAtRow = selectedStudents.reversed()[indexPath.row]
         cell.textLabel?.text = studentAtRow.displayedName
         cell.textLabel?.font = core.state.theme.font(withSize: 15)
+        cell.backgroundColor = .clear
         
         return cell
     }

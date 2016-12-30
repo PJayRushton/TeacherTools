@@ -11,6 +11,7 @@ import BetterSegmentedControl
 
 class StudentTicketsViewController: UIViewController, AutoStoryboardInitializable {
     
+    @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var editButton: UIBarButtonItem!
     @IBOutlet weak var dismissButton: UIBarButtonItem!
     @IBOutlet weak var segmentedControl: BetterSegmentedControl!
@@ -76,10 +77,7 @@ extension StudentTicketsViewController: Subscriber {
     func update(with state: AppState) {
         students = currentSortType.sort(state.currentStudents)
         tableView.reloadData()
-        
-        editButton.tintColor = state.theme.tintColor
-        dismissButton.tintColor = state.theme.tintColor
-        updateSegmentedControl(with: state.theme)
+        updateUI(with: state.theme)
     }
     
 }
@@ -103,6 +101,15 @@ extension StudentTicketsViewController {
             updatedStudent.tickets = newTicketValue
             core.fire(command: UpdateObject(object: updatedStudent))
         }
+    }
+    
+    func updateUI(with theme: Theme) {
+        backgroundImageView.image = theme.mainImage.image
+        let borderImage = theme.borderImage.image.stretchableImage(withLeftCapWidth: 0, topCapHeight: 0)
+        navigationController?.navigationBar.setBackgroundImage(borderImage, for: .default)
+        editButton.tintColor = theme.tintColor
+        dismissButton.tintColor = theme.tintColor
+        updateSegmentedControl(with: theme)
     }
     
 }

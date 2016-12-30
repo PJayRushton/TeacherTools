@@ -2,49 +2,42 @@
 //  GroupSettingsViewController.swift
 //  TeacherTools
 //
-//  Created by Parker Rushton on 11/1/16.
+//  Created by Parker Rushton on 12/27/16.
 //  Copyright © 2016 AppsByPJ. All rights reserved.
 //
 
 import UIKit
-import BetterSegmentedControl
 
-class GroupSettingsViewController: UIViewController, AutoStoryboardInitializable {
-
-    // MARK: - IBOutlets
-
-    @IBOutlet weak var groupNameTextField: UITextField!
-    @IBOutlet weak var saveButton: UIButton!
-    @IBOutlet weak var displayNamesLabel: UILabel!
-    @IBOutlet weak var segmentedControl: BetterSegmentedControl!
-    @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var loveLabel: UILabel!
-    @IBOutlet weak var rateButton: UIButton!
-    @IBOutlet weak var shareButton: UIButton!
-    @IBOutlet weak var proButton: UIButton!
-    @IBOutlet weak var deleteButton: UIButton!
-    @IBOutlet var viewTappedRecognizer: UITapGestureRecognizer!
+class GroupSettingsViewController: UITableViewController, AutoStoryboardInitializable {
     
+    @IBOutlet weak var groupNameLabel: UILabel!
+    @IBOutlet weak var groupNameTextField: UITextField!
+    @IBOutlet weak var lastNameLabel: UILabel!
+    @IBOutlet weak var lastNameSwitch: UISwitch!
+    @IBOutlet weak var deleteLabel: UILabel!
 
-    // MARK: - Properties
+    @IBOutlet weak var themeLabel: UILabel!
+    @IBOutlet weak var themeNameLabel: UILabel!
+    @IBOutlet weak var rateLabel: UILabel!
+    @IBOutlet weak var shareLabel: UILabel!
+    @IBOutlet weak var shareImageView: UIImageView!
+    @IBOutlet weak var upgradeLabel: UILabel!
     
     var core = App.core
-    var group : Group? {
+    var group: Group? {
         return core.state.selectedGroup
     }
-    fileprivate let dataSource = ThemesCollectionViewDataSource()
-    fileprivate let flowLayout = UICollectionViewFlowLayout()
+    fileprivate var saveBarButton = UIBarButtonItem()
+    fileprivate var doneBarButton = UIBarButtonItem()
+    fileprivate var flexy = UIBarButtonItem()
+    fileprivate var toolbarTapRecognizer = UITapGestureRecognizer()
     fileprivate let appStoreURL = URL(string: "itms-apps://itunes.apple.com/app/id977797579")
-    
-    
-    // MARK: - ViewController Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        saveButton.isHidden = true
         setUp()
     }
-
+        
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         core.add(subscriber: self)
@@ -55,157 +48,79 @@ class GroupSettingsViewController: UIViewController, AutoStoryboardInitializable
         core.remove(subscriber: self)
     }
     
-
-    // MARK: - IBActions
-
-    @IBAction func textFieldEditingChanged(_ sender: UITextField) {
-        updateSaveButton()
+    @IBAction func groupNameTextFieldChanged(_ sender: UITextField) {
+        updateToolbar()
     }
     
-    @IBAction func viewTapped(_ sender: UITapGestureRecognizer) {
-        view.endEditing(true)
+    @IBAction func lastNameSwitchChanged(_ sender: UISwitch) {
+        updateLastFirstPreference()
     }
     
-    @IBAction func saveButtonPressed(_ sender: UIButton) {
-        saveClassName()
+    var isNewGroupName: Bool {
+        guard groupNameTextField.isFirstResponder else { return false }
+        guard let text = groupNameTextField.text else { return false }
+        return text != group?.name
     }
     
-    @IBAction func deleteButtonPressed(_ sender: UIButton) {
-        if let group = group {
-            if core.state.groups.count == 1 {
-                presentNoDeleteAlert()
-            } else {
-                presentDeleteConfirmation(for: group)
-            }
-        } else {
-            core.fire(event: ErrorEvent(error: nil, message: "Unable to delete class"))
-        }
-    }
-
-    @IBAction func segmentedControlValueChanged(_ sender: BetterSegmentedControl) {
-        guard var updatedUser = core.state.currentUser else { return }
-        let isLastFirst = Int(sender.index) == NameDisplayType.lastFirst.rawValue
-        updatedUser.lastFirst = isLastFirst
-        core.fire(command: UpdateUser(user: updatedUser))
-    }
-    
-    @IBAction func rateButtonPressed(_ sender: UIButton) {
-        launchAppStore()
-    }
-    
-    @IBAction func shareButtonPressed(_ sender: UIButton) {
-        launchShareSheet()
-    }
-    
-    @IBAction func proButtonPressed(_ sender: UIButton) {
-        showProVC()
-    }
+    var toolbar: UIToolbar = {
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        toolbar.tintColor = .white
+        toolbar.barTintColor = App.core.state.theme.tintColor
+        
+        return toolbar
+    }()
     
 }
+
+// MARK: - Subscriber
 
 extension GroupSettingsViewController: Subscriber {
     
     func update(with state: AppState) {
-        groupNameTextField.text = state.selectedGroup?.name
-        updateSaveButton()
-        dataSource.themes = state.allThemes.sorted(by: { first, second -> Bool in
-            return first.isDefault
-        })
+        groupNameTextField.text = group?.name
+        lastNameSwitch.isOn = state.currentUser?.lastFirst ?? false
+        themeNameLabel.text = state.theme.name
+        let proText = state.currentUser!.isPro ? "Thanks for upgrading to pro!" : "Upgrade to PRO!"
+        upgradeLabel.text = proText
         updateUI(with: state.theme)
-        let currentIndex = UInt(state.currentUser?.lastFirst.hashValue ?? 0)
-        try? segmentedControl.set(index: currentIndex, animated: false)
+    }
+    
+    func updateUI(with theme: Theme) {
+        tableView.backgroundView = theme.mainImage.imageView
+        let borderImage = theme.borderImage.image.stretchableImage(withLeftCapWidth: 0, topCapHeight: 0)
+        navigationController?.navigationBar.setBackgroundImage(borderImage, for: .default)
+        lastNameSwitch.onTintColor = theme.tintColor
+        groupNameTextField.textColor = theme.textColor
+        groupNameTextField.font = theme.font(withSize: 19)
+        shareImageView.tintColor = .white
+        
+        for label in [groupNameLabel, lastNameLabel, deleteLabel, themeLabel, themeNameLabel, rateLabel, shareLabel, upgradeLabel] {
+            label?.font = theme.font(withSize: 17)
+            label?.textColor = theme.textColor
+        }
+        upgradeLabel.textColor = core.state.currentUser!.isPro ? theme.textColor : .appleBlue
+        deleteLabel.textColor = .red
     }
     
 }
 
 
-// MARK: - Fileprivate
+// MARK: Fileprivate
 
 extension GroupSettingsViewController {
     
     func setUp() {
-        let nib = UINib(nibName: String(describing: ThemeCollectionViewCell.self), bundle: nil)
-        collectionView.register(nib, forCellWithReuseIdentifier: ThemeCollectionViewCell.reuseIdentifier)
-        let height = collectionView.bounds.height
-        flowLayout.itemSize = CGSize(width: height * 0.75, height: height - 16)
-        flowLayout.scrollDirection = .horizontal
-        collectionView.collectionViewLayout = flowLayout
-        collectionView.dataSource = dataSource
+        groupNameTextField.inputAccessoryView = toolbar
+        setupToolbar()
+        setUpVersionFooter()
     }
     
-    func toggleSaveButton(hidden: Bool) {
-        UIView.animate(withDuration: 0.25) {
-            self.saveButton.isHidden = hidden
-        }
+    func showThemeSelectionVC() {
+        let themeVC = ThemeSelectionViewController.initializeFromStoryboard()
+        navigationController?.pushViewController(themeVC, animated: true)
     }
     
-    func updateSaveButton() {
-        guard let text = groupNameTextField.text else { return }
-        let shouldCancel = text.isEmpty || text == group?.name
-        let title = shouldCancel ? "Cancel" : "Save"
-        saveButton.setTitle(title, for: .normal)
-    }
-    
-    func saveClassName() {
-        guard var selectedGroup = core.state.selectedGroup, let name = groupNameTextField.text else {
-            core.fire(event: ErrorEvent(error: nil, message: "Error saving class"))
-            return
-        }
-        let shouldSave = name.isEmpty == false && name != group?.name
-        if shouldSave {
-            selectedGroup.name = name
-            core.fire(command: UpdateObject(object: selectedGroup))
-            core.fire(event: DisplaySuccessMessage(message: "Saved!"))
-        } else {
-            groupNameTextField.text = group?.name
-        }
-        endEditing()
-    }
-    
-    func endEditing() {
-        toggleSaveButton(hidden: true)
-        updateSaveButton()
-        view.endEditing(true)
-    }
-    
-    func presentNoDeleteAlert() {
-        let alert = UIAlertController(title: "You won't have any classes left!", message: "You'll have to add a new class first", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-        present(alert, animated: true, completion: nil)
-    }
-    
-    func presentDeleteConfirmation(for group: Group) {
-        var message = "This cannot be undone"
-        if group.studentIds.count > 0 {
-            let studentKey = group.studentIds.count == 1 ? "student" : "students"
-            message = "This class's \(group.studentIds.count) \(studentKey) will also be deleted."
-        }
-        let alert = UIAlertController(title: "Are you sure?", message: message, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { _ in
-            self.core.fire(command: DeleteObject(object: group))
-        }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        present(alert, animated: true, completion: nil)
-    }
-    
-    func updateUI(with theme: Theme) {
-        groupNameTextField.font = theme.font(withSize: 17)
-        updateSegmentedControl(theme: theme)
-        displayNamesLabel.font = theme.font(withSize: displayNamesLabel.font.pointSize)
-        loveLabel.font = theme.font(withSize: loveLabel.font.pointSize)
-        
-        saveButton.titleLabel?.font = theme.font(withSize: 15)
-        for button in [saveButton, rateButton, shareButton, proButton] {
-            button!.titleLabel?.font = theme.font(withSize: rateButton.titleLabel?.font.pointSize ?? 18)
-            button!.setTitleColor(theme.tintColor, for: .normal)
-        }
-    }
-    
-    func showProVC() {
-        let proVC = ProViewController.initializeFromStoryboard().embededInNavigationController
-        present(proVC, animated: true, completion: nil)
-    }
-
     func launchAppStore() {
         guard let appStoreURL = appStoreURL, UIApplication.shared.canOpenURL(appStoreURL) else {
             core.fire(event: ErrorEvent(error: nil, message: "Error launching app store"))
@@ -213,7 +128,7 @@ extension GroupSettingsViewController {
         }
         UIApplication.shared.open(appStoreURL, options: [:], completionHandler: nil)
     }
-    
+
     func launchShareSheet() {
         let textToShare = "Check out this great app for teachers called Teacher Tools. You can find it in the app store!"
         var objectsToShare: [Any] = [textToShare]
@@ -226,83 +141,223 @@ extension GroupSettingsViewController {
         present(activityVC, animated: true, completion: nil)
     }
     
+    func showProVC() {
+        let proVC = ProViewController.initializeFromStoryboard().embededInNavigationController
+        present(proVC, animated: true, completion: nil)
+    }
+    
+    func showAlreadyProAlert() {
+        let alert = UIAlertController(title: "Thanks for purchasing the PRO version", message: "If you haven't already, consider sharing this app with someone who would enjoy it, or rating it on the app store!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Rate", style: .default, handler: { _ in
+            self.launchAppStore()
+        }))
+        alert.addAction(UIAlertAction(title: "Share", style: .default, handler: { _ in
+            self.launchShareSheet()
+        }))
+        alert.addAction(UIAlertAction(title: "Later", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func presentNoDeleteAlert() {
+        let alert = UIAlertController(title: "You won't have any classes left!", message: "You'll have to add a new class first", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+
+    func presentDeleteConfirmation() {
+        var message = "This cannot be undone"
+        guard let group = group else { return }
+        if group.studentIds.count > 0 {
+            let studentKey = group.studentIds.count == 1 ? "student" : "students"
+            message = "This class's \(group.studentIds.count) \(studentKey) will also be deleted."
+        }
+        let alert = UIAlertController(title: "Are you sure?", message: message, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { _ in
+            self.core.fire(command: DeleteObject(object: group))
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+
+    func saveClassName() {
+        guard var group = group, let name = groupNameTextField.text else {
+            core.fire(event: ErrorEvent(error: nil, message: "Error saving class"))
+            return
+        }
+        let shouldSave = name.isEmpty == false && name != group.name
+        if shouldSave {
+            group.name = name
+            core.fire(command: UpdateObject(object: group))
+            core.fire(event: DisplaySuccessMessage(message: "Saved!"))
+        } else {
+            groupNameTextField.text = group.name
+        }
+        groupNameTextField.resignFirstResponder()
+    }
+
+    func toolbarTapped() {
+        if isNewGroupName {
+            saveClassName()
+        } else {
+            doneButtonPressed()
+        }
+    }
+    
+    func doneButtonPressed() {
+        view.endEditing(true)
+    }
+    
+    func setupToolbar() {
+        flexy = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: #selector(toolbarTapped))
+        saveBarButton = UIBarButtonItem(title: NSLocalizedString("Save", comment: ""), style: .plain, target: self, action: #selector(saveClassName))
+        doneBarButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneButtonPressed))
+        saveBarButton.setTitleTextAttributes([NSFontAttributeName: core.state.theme.font(withSize: 20)], for: .normal)
+        toolbarTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(toolbarTapped))
+        toolbar.addGestureRecognizer(toolbarTapRecognizer)
+        toolbar.setItems([flexy, saveBarButton, flexy], animated: false)
+        updateToolbar()
+    }
+    
+    func updateToolbar() {
+        let items = isNewGroupName ? [flexy, saveBarButton, flexy] : [flexy, doneBarButton]
+        toolbar.setItems(items, animated: false)
+    }
+    
+    func updateLastFirstPreference() {
+        guard let user = core.state.currentUser else {
+            core.fire(event: NoOp())
+            return
+        }
+        user.lastFirst = lastNameSwitch.isOn
+        core.fire(command: UpdateUser(user: user))
+    }
+    
+    fileprivate func setUpVersionFooter() {
+        let label = UILabel()
+        label.frame = CGRect(x: 0, y: -2, width: view.frame.size.width * 0.95, height: 20)
+        label.font = core.state.theme.font(withSize: 12)
+        label.textAlignment = .right
+        label.textColor = core.state.theme.textColor
+        label.text = versionDescription
+        let footerView = UIView()
+        footerView.addSubview(label)
+        tableView.tableFooterView = footerView
+    }
+
+    fileprivate var versionDescription: String {
+        let versionDescription = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
+        
+        var version = "3.1"
+        if let versionString = versionDescription {
+            version = versionString
+        }
+        
+        return "version: \(version)"
+    }
+    
 }
 
-
-// MARK: - TextFieldDelegate
+// MARK: - UITextFieldDelegate
 
 extension GroupSettingsViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        toggleSaveButton(hidden: false)
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        toggleSaveButton(hidden: true)
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        saveButtonPressed(saveButton)
-        return true
+        updateToolbar()
     }
     
 }
 
 
-// MARK: - UICollectionView  Delegate
-
-extension GroupSettingsViewController: UICollectionViewDelegate {
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedTheme = dataSource.themes[indexPath.item]
-        if selectedTheme.isLocked {
-            showProVC()
-        } else if selectedTheme.id != core.state.currentUser?.themeID, let currentUser = core.state.currentUser {
-            currentUser.themeID = selectedTheme.id
-            core.fire(command: UpdateUser(user: currentUser))
-            collectionView.reloadData()
-        }
-    }
-    
-}
-
-
-// MARK: - SegmentedControl
+// MARK: - UITableViewDelegate
 
 extension GroupSettingsViewController {
-    
-    enum NameDisplayType: Int {
-        case firstLast
-        case lastFirst
+
+    enum TableSection: Int {
+        case group
+        case app
         
-        var displayString: String {
+        var rows: [TableRow] {
             switch self {
-            case .firstLast:
-                return "First Last"
-            case .lastFirst:
-                return "Last, First"
+            case .group:
+                return [.className, .lastFirst, .delete]
+            case .app:
+                return [.theme, .rate, .share, .pro]
             }
         }
+    }
+    
+    enum TableRow {
+        case className
+        case lastFirst
+        case delete
+        case theme
+        case rate
+        case share
+        case pro
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = core.state.theme.font(withSize: 17)
+        label.textColor = core.state.theme.textColor
+        label.textAlignment = .center
+        headerView.addSubview(label)
+        headerView.addConstraint(headerView.centerYAnchor.constraint(equalTo: label.centerYAnchor))
+        headerView.addConstraint(headerView.layoutMarginsGuide.leadingAnchor.constraint(equalTo: label.leadingAnchor))
+        headerView.addConstraint(headerView.layoutMarginsGuide.trailingAnchor.constraint(equalTo: label.trailingAnchor))
         
-        static let allValues = [NameDisplayType.firstLast, .lastFirst]
+        let bottomLineView = UIView()
+        bottomLineView.backgroundColor = tableView.separatorColor
+        bottomLineView.translatesAutoresizingMaskIntoConstraints = false
+        headerView.addSubview(bottomLineView)
+        headerView.addConstraint(bottomLineView.heightAnchor.constraint(equalToConstant: 1))
+        headerView.addConstraint(bottomLineView.leadingAnchor.constraint(equalTo: headerView.leadingAnchor))
+        headerView.addConstraint(bottomLineView.trailingAnchor.constraint(equalTo: headerView.trailingAnchor))
+        headerView.addConstraint(bottomLineView.bottomAnchor.constraint(equalTo: headerView.bottomAnchor))
+        
+        switch TableSection(rawValue: section)! {
+        case .group:
+            label.text = "Group Settings"
+        case .app:
+            label.text = "App Settings"
+        }
+        return headerView
     }
     
-    func updateSegmentedControl(theme: Theme) {
-        segmentedControl.titles = NameDisplayType.allValues.map { $0.displayString }
-        segmentedControl.backgroundColor = .white // FIXME:
-        segmentedControl.titleColor = theme.textColor
-        segmentedControl.titleFont = theme.font(withSize: 16)
-        segmentedControl.selectedTitleFont = theme.font(withSize: 18)
-        segmentedControl.indicatorViewBackgroundColor = theme.tintColor
-        segmentedControl.cornerRadius = 5
-    }
-    
-}
-
-extension GroupSettingsViewController: UIGestureRecognizerDelegate {
-    
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        return groupNameTextField.isFirstResponder
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let section = TableSection(rawValue: indexPath.section)!
+        let row = section.rows[indexPath.row]
+        switch row {
+        case .className:
+            groupNameTextField.becomeFirstResponder()
+        case .lastFirst:
+            lastNameSwitch.isOn = !lastNameSwitch.isOn
+            lastNameSwitchChanged(lastNameSwitch)
+        case .delete:
+            if core.state.groups.count == 1 {
+                presentNoDeleteAlert()
+            } else {
+                presentDeleteConfirmation()
+            }
+        case .theme:
+            showThemeSelectionVC()
+        case .rate:
+            launchAppStore()
+        case .share:
+            launchShareSheet()
+        case .pro:
+            guard let currentUser = core.state.currentUser, currentUser.isPro else {
+                showProVC()
+                return
+            }
+            showAlreadyProAlert()
+        }
     }
     
 }

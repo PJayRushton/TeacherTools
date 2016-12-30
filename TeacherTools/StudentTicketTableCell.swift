@@ -53,8 +53,10 @@ class StudentTicketTableCell: UITableViewCell, AutoReuseIdentifiable {
     }
     
     fileprivate func updateUI(with theme: Theme) {
-        nameLabel.font = theme.font(withSize: 17)
-        ticketImageView.tintColor = .ticketRed
+        nameLabel.textColor = theme.textColor
+        nameLabel.font = theme.font(withSize: 20)
+        ticketImageView.tintColor = stepper.value == 1 ? UIColor.ticketRed.withAlphaComponent(0.6) : .ticketRed
+        countLabel.textColor = theme.textColor
         countLabel.font = theme.font(withSize: countLabel.font.pointSize)
         stepper.buttonsFont = theme.font(withSize: 22)
         stepper.buttonsBackgroundColor = theme.tintColor

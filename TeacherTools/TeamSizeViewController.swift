@@ -69,10 +69,9 @@ extension TeamSizeViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
         let sizeForRow = indexPath.row + 2
         cell.textLabel?.text = "\(sizeForRow)"
-        let sizeIsCurrentlySelected = core.state.selectedGroup!.teamSize == sizeForRow
-        cell.isSelected = sizeIsCurrentlySelected
         cell.textLabel?.font = core.state.theme.font(withSize: cell.textLabel?.font.pointSize ?? 30)
-        cell.textLabel?.textColor = core.state.theme.textColor
+        let sizeIsCurrentlySelected = core.state.selectedGroup!.teamSize == sizeForRow
+        cell.textLabel?.textColor = sizeIsCurrentlySelected ? core.state.theme.tintColor : core.state.theme.textColor
         
         return cell
     }
