@@ -88,9 +88,10 @@ struct AppState: State {
         case let event as Updated<[Theme]>:
             allThemes = event.payload
             guard let user = currentUser else { return }
-            theme = event.payload.filter { $0.id == user.themeID }.first ?? defaultTheme
-        case let event as Selected<Theme>:
-            theme = event.item ?? defaultTheme
+            let updatedTheme = event.payload.filter { $0.id == user.themeID }.first
+            if let newTheme = updatedTheme {
+                theme = newTheme
+            }
         default:
             break
         }

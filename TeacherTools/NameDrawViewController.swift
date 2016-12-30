@@ -226,6 +226,7 @@ extension NameDrawViewController: UITableViewDataSource, UITableViewDelegate {
         let studentAtRow = selectedStudents.reversed()[indexPath.row]
         cell.textLabel?.text = studentAtRow.displayedName
         cell.textLabel?.font = core.state.theme.font(withSize: 15)
+        cell.textLabel?.textColor = core.state.theme.textColor
         cell.backgroundColor = .clear
         
         return cell

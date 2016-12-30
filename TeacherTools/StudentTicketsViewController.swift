@@ -20,7 +20,8 @@ class StudentTicketsViewController: UIViewController, AutoStoryboardInitializabl
     var core = App.core
     var isShowingSteppers = false {
         didSet {
-            editButton.tintColor = isShowingSteppers ? core.state.theme.tintColor : .darkGray
+            let title = isShowingSteppers ? "Done" : "Edit"
+            editButton.title = title
             editButton.setTitleTextAttributes([NSFontAttributeName: core.state.theme.font(withSize: 17)], for: .normal)
         }
     }
@@ -80,6 +81,16 @@ extension StudentTicketsViewController: Subscriber {
         updateUI(with: state.theme)
     }
     
+    func updateUI(with theme: Theme) {
+        backgroundImageView.image = theme.mainImage.image
+        let borderImage = theme.borderImage.image.stretchableImage(withLeftCapWidth: 0, topCapHeight: 0)
+        navigationController?.navigationBar.setBackgroundImage(borderImage, for: .default)
+        editButton.tintColor = theme.textColor
+        editButton.setTitleTextAttributes([NSFontAttributeName: core.state.theme.font(withSize: 17)], for: .normal)
+        dismissButton.tintColor = theme.textColor
+        updateSegmentedControl(with: theme)
+    }
+    
 }
 
 
@@ -101,15 +112,6 @@ extension StudentTicketsViewController {
             updatedStudent.tickets = newTicketValue
             core.fire(command: UpdateObject(object: updatedStudent))
         }
-    }
-    
-    func updateUI(with theme: Theme) {
-        backgroundImageView.image = theme.mainImage.image
-        let borderImage = theme.borderImage.image.stretchableImage(withLeftCapWidth: 0, topCapHeight: 0)
-        navigationController?.navigationBar.setBackgroundImage(borderImage, for: .default)
-        editButton.tintColor = theme.tintColor
-        dismissButton.tintColor = theme.tintColor
-        updateSegmentedControl(with: theme)
     }
     
 }

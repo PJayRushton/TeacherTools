@@ -10,6 +10,7 @@ import UIKit
 
 class ThemeSelectionViewController: UIViewController, AutoStoryboardInitializable {
 
+    @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
     
     fileprivate var flowLayout = UICollectionViewFlowLayout()
@@ -19,7 +20,9 @@ class ThemeSelectionViewController: UIViewController, AutoStoryboardInitializabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUp()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         core.add(subscriber: self)
@@ -37,25 +40,45 @@ class ThemeSelectionViewController: UIViewController, AutoStoryboardInitializabl
 extension ThemeSelectionViewController: Subscriber {
     
     func update(with state: AppState) {
-        
+        dataSource.themes = state.allThemes.sorted(by: { first, second -> Bool in
+            return first.isDefault
+        })
+        collectionView.reloadData()
+        updateUI(with: state.theme)
+    }
+    
+    func updateUI(with theme: Theme) {
+        let navFont = navigationController?.navigationBar.titleTextAttributes![NSFontAttributeName] as? UIFont
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: theme.textColor, NSFontAttributeName: theme.font(withSize: navFont?.pointSize ?? 30)]
+        navigationController?.navigationBar.tintColor = theme.tintColor
+        backgroundImageView.image = theme.mainImage.image
+        let borderImage = theme.borderImage.image.stretchableImage(withLeftCapWidth: 0, topCapHeight: 0)
+        navigationController?.navigationBar.setBackgroundImage(borderImage, for: .default)
     }
     
 }
 
 
+// MARK: - Fileprivate 
 
-
-extension ThemeSelectionViewController {
+extension ThemeSelectionViewController: UICollectionViewDelegate {
     
     fileprivate func setUp() {
         let nib = UINib(nibName: String(describing: ThemeCollectionViewCell.self), bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: ThemeCollectionViewCell.reuseIdentifier)
-        let height = collectionView.bounds.height
-        flowLayout.itemSize = CGSize(width: height * 0.75, height: height - 16)
-        flowLayout.scrollDirection = .horizontal
+        
+        let margin: CGFloat = 16
+        let columns: CGFloat = 2
+        let totalMarginSpace: CGFloat = margin * (columns + 1)
+        let screenWidthMinusMargin: CGFloat = view.frame.size.width - totalMarginSpace
+        let cellWidth = screenWidthMinusMargin / columns
+        flowLayout.itemSize = CGSize(width: cellWidth, height: cellWidth * 1.2)
+        flowLayout.scrollDirection = .vertical
+        flowLayout.sectionInset = UIEdgeInsets(top: margin, left: margin, bottom: 0, right: margin)
         collectionView.collectionViewLayout = flowLayout
         collectionView.dataSource = dataSource
     }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedTheme = dataSource.themes[indexPath.item]
         if selectedTheme.isLocked {
@@ -66,6 +89,7 @@ extension ThemeSelectionViewController {
             collectionView.reloadData()
         }
     }
+    
     func showProVC() {
         let proVC = ProViewController.initializeFromStoryboard().embededInNavigationController
         present(proVC, animated: true, completion: nil)

@@ -23,12 +23,6 @@ class ThemeCollectionViewCell: UICollectionViewCell, AutoReuseIdentifiable {
         super.awakeFromNib()
         mainView.layer.cornerRadius = 5
     }
-    
-    override var isSelected: Bool {
-        didSet {
-
-        }
-    }
 
     func update(with theme: Theme, isLocked: Bool = true, isSelected: Bool) {
         mainView.layer.borderColor = isSelected ? UIColor.appleBlue.cgColor : UIColor.darkGray.cgColor

@@ -174,11 +174,11 @@ extension StudentListViewController {
         navigationController?.navigationBar.setBackgroundImage(borderImage, for: .default)
         
         for barButton in [plusBarButton, saveBarButton, cancelBarButton, editBarButton] {
-            barButton.tintColor = theme.tintColor
+            barButton.tintColor = theme.textColor
             barButton.setTitleTextAttributes([NSFontAttributeName: theme.font(withSize: 20)], for: .normal)
         }
         plusBarButton.setTitleTextAttributes([NSFontAttributeName: theme.font(withSize: theme.plusButtonSize)], for: .normal)
-        navBarButton.tintColor = theme.tintColor
+        navBarButton.tintColor = theme.textColor
         navBarButton.update(with: theme)
         updateRightBarButton()
         updateSegmentedControl(theme: theme)

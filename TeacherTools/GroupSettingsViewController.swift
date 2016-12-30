@@ -32,6 +32,7 @@ class GroupSettingsViewController: UITableViewController, AutoStoryboardInitiali
     fileprivate var flexy = UIBarButtonItem()
     fileprivate var toolbarTapRecognizer = UITapGestureRecognizer()
     fileprivate let appStoreURL = URL(string: "itms-apps://itunes.apple.com/app/id977797579")
+    fileprivate let versionLabel = UILabel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,6 +85,7 @@ extension GroupSettingsViewController: Subscriber {
         let proText = state.currentUser!.isPro ? "Thanks for upgrading to pro!" : "Upgrade to PRO!"
         upgradeLabel.text = proText
         updateUI(with: state.theme)
+        tableView.reloadData()
     }
     
     func updateUI(with theme: Theme) {
@@ -101,6 +103,8 @@ extension GroupSettingsViewController: Subscriber {
         }
         upgradeLabel.textColor = core.state.currentUser!.isPro ? theme.textColor : .appleBlue
         deleteLabel.textColor = .red
+        versionLabel.font = theme.font(withSize: 12)
+        versionLabel.textColor = theme.textColor
     }
     
 }
@@ -233,14 +237,13 @@ extension GroupSettingsViewController {
     }
     
     fileprivate func setUpVersionFooter() {
-        let label = UILabel()
-        label.frame = CGRect(x: 0, y: -2, width: view.frame.size.width * 0.95, height: 20)
-        label.font = core.state.theme.font(withSize: 12)
-        label.textAlignment = .right
-        label.textColor = core.state.theme.textColor
-        label.text = versionDescription
+        versionLabel.frame = CGRect(x: 0, y: -2, width: view.frame.size.width * 0.95, height: 20)
+        versionLabel.font = core.state.theme.font(withSize: 12)
+        versionLabel.textColor = core.state.theme.textColor
+        versionLabel.textAlignment = .right
+        versionLabel.text = versionDescription
         let footerView = UIView()
-        footerView.addSubview(label)
+        footerView.addSubview(versionLabel)
         tableView.tableFooterView = footerView
     }
 
