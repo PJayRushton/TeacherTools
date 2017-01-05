@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		89BC487FCE0780964367567B /* Pods_TeacherTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69357F37EE10855051CFE784 /* Pods_TeacherTools.framework */; };
 		A11EE95D1DC6CD3C002C9228 /* NSDate+ValueType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11EE95C1DC6CD3C002C9228 /* NSDate+ValueType.swift */; };
 		A11EE95F1DC6CEB6002C9228 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A11EE95E1DC6CEB6002C9228 /* GoogleService-Info.plist */; };
 		A11EE9611DC6F19E002C9228 /* TestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11EE9601DC6F19E002C9228 /* TestHelper.swift */; };
@@ -113,6 +112,7 @@
 		A1CC0ABB1DC7B7F700C0575F /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14160B81DC66F1200C4F5BB /* CloudKit.framework */; };
 		A1D1B4341DCC136D00AF5452 /* AddGroupTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D1B4331DCC136D00AF5452 /* AddGroupTableCell.swift */; };
 		A1D67EFE1DC95B38002F73D2 /* GroupSettingsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1D67EFD1DC95B38002F73D2 /* GroupSettingsViewController.storyboard */; };
+		F3F38D1C4192E182CBE439B6 /* Pods_TeacherTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D3DAA9ED955FCB45EDED3BB /* Pods_TeacherTools.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -129,9 +129,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		388B3E3DF2BF8837E1045F75 /* Pods-TeacherTools.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeacherTools.release.xcconfig"; path = "Pods/Target Support Files/Pods-TeacherTools/Pods-TeacherTools.release.xcconfig"; sourceTree = "<group>"; };
-		69357F37EE10855051CFE784 /* Pods_TeacherTools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TeacherTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		83A6EABC9A6480FA8D2F5042 /* Pods-TeacherTools.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeacherTools.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TeacherTools/Pods-TeacherTools.debug.xcconfig"; sourceTree = "<group>"; };
+		3D3DAA9ED955FCB45EDED3BB /* Pods_TeacherTools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TeacherTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DFEA81636FC7D4309C84A3D /* Pods-TeacherTools.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeacherTools.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TeacherTools/Pods-TeacherTools.debug.xcconfig"; sourceTree = "<group>"; };
+		6FBC2BCE33D97F5162D6332D /* Pods-TeacherTools.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeacherTools.release.xcconfig"; path = "Pods/Target Support Files/Pods-TeacherTools/Pods-TeacherTools.release.xcconfig"; sourceTree = "<group>"; };
 		A11EE95C1DC6CD3C002C9228 /* NSDate+ValueType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+ValueType.swift"; sourceTree = "<group>"; };
 		A11EE95E1DC6CEB6002C9228 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A11EE9601DC6F19E002C9228 /* TestHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestHelper.swift; sourceTree = "<group>"; };
@@ -253,19 +253,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				A19DB8DE1DF1E09A00D4C386 /* StoreKit.framework in Frameworks */,
-				89BC487FCE0780964367567B /* Pods_TeacherTools.framework in Frameworks */,
 				A1CC0ABB1DC7B7F700C0575F /* CloudKit.framework in Frameworks */,
+				F3F38D1C4192E182CBE439B6 /* Pods_TeacherTools.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6E68EE35A39EEA5B1FC5D49F /* Pods */ = {
+		1413F5DBF020FA30C6298190 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				83A6EABC9A6480FA8D2F5042 /* Pods-TeacherTools.debug.xcconfig */,
-				388B3E3DF2BF8837E1045F75 /* Pods-TeacherTools.release.xcconfig */,
+				4DFEA81636FC7D4309C84A3D /* Pods-TeacherTools.debug.xcconfig */,
+				6FBC2BCE33D97F5162D6332D /* Pods-TeacherTools.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -276,7 +276,7 @@
 				A14160831DC669F100C4F5BB /* TeacherTools */,
 				A14160821DC669F100C4F5BB /* Products */,
 				A14160B51DC66ED900C4F5BB /* Frameworks */,
-				6E68EE35A39EEA5B1FC5D49F /* Pods */,
+				1413F5DBF020FA30C6298190 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -337,7 +337,7 @@
 				A14160BA1DC66F2600C4F5BB /* Security.framework */,
 				A14160B81DC66F1200C4F5BB /* CloudKit.framework */,
 				A14160B61DC66ED900C4F5BB /* CFNetwork.framework */,
-				69357F37EE10855051CFE784 /* Pods_TeacherTools.framework */,
+				3D3DAA9ED955FCB45EDED3BB /* Pods_TeacherTools.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -494,13 +494,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A14160961DC669F100C4F5BB /* Build configuration list for PBXNativeTarget "TeacherTools" */;
 			buildPhases = (
-				87BD63B213596B8913D50666 /* [CP] Check Pods Manifest.lock */,
+				FC3E06FEE881405024256EC5 /* [CP] Check Pods Manifest.lock */,
 				A141607D1DC669F100C4F5BB /* Sources */,
 				A141607E1DC669F100C4F5BB /* Frameworks */,
 				A141607F1DC669F100C4F5BB /* Resources */,
 				A14160C71DC66FE500C4F5BB /* Embed Frameworks */,
-				A306F8B835E0EDDC9E1AEEEA /* [CP] Embed Pods Frameworks */,
-				A9D60822F1810C2BB9FC28FD /* [CP] Copy Pods Resources */,
+				D22A75A8C0CACB0107257930 /* [CP] Embed Pods Frameworks */,
+				B87B14D166A4385EFB1DB416 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -518,7 +518,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = AppsByPJ;
 				TargetAttributes = {
 					A14160801DC669F100C4F5BB = {
@@ -586,22 +586,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		87BD63B213596B8913D50666 /* [CP] Check Pods Manifest.lock */ = {
+		B87B14D166A4385EFB1DB416 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "[CP] Check Pods Manifest.lock";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TeacherTools/Pods-TeacherTools-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A306F8B835E0EDDC9E1AEEEA /* [CP] Embed Pods Frameworks */ = {
+		D22A75A8C0CACB0107257930 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -616,19 +616,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TeacherTools/Pods-TeacherTools-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A9D60822F1810C2BB9FC28FD /* [CP] Copy Pods Resources */ = {
+		FC3E06FEE881405024256EC5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TeacherTools/Pods-TeacherTools-resources.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -843,7 +843,7 @@
 		};
 		A14160971DC669F100C4F5BB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 83A6EABC9A6480FA8D2F5042 /* Pods-TeacherTools.debug.xcconfig */;
+			baseConfigurationReference = 4DFEA81636FC7D4309C84A3D /* Pods-TeacherTools.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -864,7 +864,7 @@
 		};
 		A14160981DC669F100C4F5BB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 388B3E3DF2BF8837E1045F75 /* Pods-TeacherTools.release.xcconfig */;
+			baseConfigurationReference = 6FBC2BCE33D97F5162D6332D /* Pods-TeacherTools.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;

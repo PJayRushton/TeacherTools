@@ -34,7 +34,7 @@ class StudentTicketTableCell: UITableViewCell, AutoReuseIdentifiable {
         
         readyOnlyStack.isHidden = false
         stepper.isHidden = true
-        stepper.labelSlideLength = 10
+//        stepper.labelSlideLength = 10
     }
     
     override func prepareForReuse() {

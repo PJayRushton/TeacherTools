@@ -160,7 +160,7 @@ import UIKit
     /**
         Width of the sliding animation. When buttons clicked, the middle label does a slide animation towards to the clicked button. Defaults to 5.
     */
-    public var labelSlideLength: CGFloat = 5
+    let labelSlideLength: CGFloat = 5
 
     /// Duration of the sliding animation
     let labelSlideDuration = TimeInterval(0.1)
