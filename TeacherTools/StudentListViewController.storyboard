@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -148,19 +149,137 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="backgroundImageView" destination="aoz-Tg-vj0" id="d3w-yx-WOp"/>
+                        <outlet property="emptyStateView" destination="Psu-zJ-469" id="6yD-fB-dhc"/>
                         <outlet property="navBarButton" destination="46K-XO-Qvr" id="SZz-gb-iXW"/>
                         <outlet property="newEntryView" destination="VLj-hh-dcm" id="BjL-Eo-BPT"/>
                         <outlet property="newStudentTextField" destination="lhQ-Dn-23x" id="993-NO-dWf"/>
                         <outlet property="segmentedControl" destination="a8b-RM-7dH" id="LKb-K1-WCY"/>
                         <outlet property="tableView" destination="HEl-lB-rc1" id="LTJ-Do-Pho"/>
+                        <outletCollection property="emptyStateLabels" destination="NXo-zU-1Ve" collectionClass="NSMutableArray" id="AGT-A4-xjJ"/>
+                        <outletCollection property="emptyStateLabels" destination="NXo-zU-1Ve" collectionClass="NSMutableArray" id="sIw-xg-fFn"/>
+                        <outletCollection property="emptyStateLabels" destination="rkg-HO-1Fc" collectionClass="NSMutableArray" id="9rw-YD-HjF"/>
+                        <outletCollection property="emptyStateLabels" destination="id8-UC-xUt" collectionClass="NSMutableArray" id="TJB-wc-4nM"/>
+                        <outletCollection property="emptyStateImages" destination="dEe-WY-ExN" collectionClass="NSMutableArray" id="1FM-WA-WW4"/>
+                        <outletCollection property="emptyStateImages" destination="eyl-qh-CC0" collectionClass="NSMutableArray" id="IHA-Ii-hc0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Kr-RP-Zfd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="Psu-zJ-469">
+                    <rect key="frame" x="0.0" y="0.0" width="371" height="505"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="5el-nt-QXC">
+                            <rect key="frame" x="20" y="164.5" width="331" height="176.5"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="This class doesn't have any students!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NXo-zU-1Ve">
+                                    <rect key="frame" x="0.0" y="0.0" width="331" height="48"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="a4G-iK-6Te">
+                                    <rect key="frame" x="0.0" y="77.5" width="331" height="99"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k5C-0o-BeV" userLabel="Paste view">
+                                            <rect key="frame" x="0.0" y="0.0" width="110.5" height="99"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="m3v-nZ-p0S">
+                                                    <rect key="frame" x="8" y="8" width="94.5" height="83"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="999" image="linesLarge" translatesAutoresizingMaskIntoConstraints="NO" id="dEe-WY-ExN">
+                                                            <rect key="frame" x="0.0" y="0.0" width="94.5" height="34"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="34" id="HiP-ZA-ovj"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Paste a class list" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rkg-HO-1Fc">
+                                                            <rect key="frame" x="0.0" y="42" width="94.5" height="41"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <gestureRecognizers/>
+                                            <constraints>
+                                                <constraint firstItem="m3v-nZ-p0S" firstAttribute="top" secondItem="k5C-0o-BeV" secondAttribute="topMargin" id="Akb-f8-hdB"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="m3v-nZ-p0S" secondAttribute="trailing" id="lYm-Fp-iFp"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="m3v-nZ-p0S" secondAttribute="bottom" id="v7O-S8-KmX"/>
+                                                <constraint firstItem="m3v-nZ-p0S" firstAttribute="leading" secondItem="k5C-0o-BeV" secondAttribute="leadingMargin" id="vLb-IV-XWn"/>
+                                            </constraints>
+                                            <connections>
+                                                <outletCollection property="gestureRecognizers" destination="6ix-TT-y0l" appends="YES" id="dJW-fV-cDS"/>
+                                            </connections>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Z3-MK-WeA" userLabel="Spacer view">
+                                            <rect key="frame" x="110.5" y="0.0" width="110" height="99"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LRD-fR-Ner" userLabel="Paste view">
+                                            <rect key="frame" x="220.5" y="0.0" width="110.5" height="99"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ef3-fC-0lr">
+                                                    <rect key="frame" x="8" y="8" width="94.5" height="83"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="999" image="plus" translatesAutoresizingMaskIntoConstraints="NO" id="eyl-qh-CC0">
+                                                            <rect key="frame" x="0.0" y="0.0" width="94.5" height="34"/>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Add a single student" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="id8-UC-xUt">
+                                                            <rect key="frame" x="0.0" y="42" width="94.5" height="41"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <gestureRecognizers/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="ef3-fC-0lr" secondAttribute="bottom" id="2Bl-mP-vRT"/>
+                                                <constraint firstItem="ef3-fC-0lr" firstAttribute="leading" secondItem="LRD-fR-Ner" secondAttribute="leadingMargin" id="7y9-vE-7Vw"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="ef3-fC-0lr" secondAttribute="trailing" id="YDQ-ww-zbb"/>
+                                                <constraint firstItem="ef3-fC-0lr" firstAttribute="top" secondItem="LRD-fR-Ner" secondAttribute="topMargin" id="vC7-h3-aNb"/>
+                                            </constraints>
+                                            <connections>
+                                                <outletCollection property="gestureRecognizers" destination="C3Y-0Q-Nx8" appends="YES" id="4nU-Xn-sqZ"/>
+                                            </connections>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="eyl-qh-CC0" firstAttribute="height" secondItem="dEe-WY-ExN" secondAttribute="height" id="soH-Rd-VX0"/>
+                                    </constraints>
+                                </stackView>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="5el-nt-QXC" firstAttribute="height" secondItem="Psu-zJ-469" secondAttribute="height" multiplier="0.35" id="0ae-6P-fNa"/>
+                        <constraint firstItem="5el-nt-QXC" firstAttribute="centerY" secondItem="Psu-zJ-469" secondAttribute="centerY" id="hTB-As-pgT"/>
+                        <constraint firstItem="5el-nt-QXC" firstAttribute="leading" secondItem="Psu-zJ-469" secondAttribute="leadingMargin" constant="12" id="onf-LT-adh"/>
+                        <constraint firstAttribute="trailingMargin" secondItem="5el-nt-QXC" secondAttribute="trailing" constant="12" id="t1y-ff-cUE"/>
+                    </constraints>
+                </view>
+                <tapGestureRecognizer id="6ix-TT-y0l">
+                    <connections>
+                        <action selector="pasteViewTapped:" destination="EzV-k8-Tpm" id="75R-Ur-Otb"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="C3Y-0Q-Nx8">
+                    <connections>
+                        <action selector="addViewTapped:" destination="EzV-k8-Tpm" id="a0I-91-3JV"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="61.600000000000001" y="75.112443778110944"/>
         </scene>
     </scenes>
     <resources>
         <image name="greenChalkboard" width="595" height="335"/>
+        <image name="linesLarge" width="64" height="46"/>
+        <image name="plus" width="20" height="20"/>
     </resources>
 </document>

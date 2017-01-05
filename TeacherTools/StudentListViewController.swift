@@ -11,6 +11,10 @@ import BetterSegmentedControl
 
 class StudentListViewController: UIViewController, AutoStoryboardInitializable {
     
+    @IBOutlet var emptyStateView: UIView!
+    @IBOutlet var emptyStateImages: [UIImageView]!
+    @IBOutlet var emptyStateLabels: [UILabel]!
+    
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var navBarButton: NavBarButton!
     @IBOutlet weak var tableView: UITableView!
@@ -23,6 +27,8 @@ class StudentListViewController: UIViewController, AutoStoryboardInitializable {
     var students = [Student]() {
         didSet {
             tableView.reloadData()
+            let shouldShowEmptyView = core.state.groupsAreLoaded && students.isEmpty
+            tableView.backgroundView = shouldShowEmptyView ? emptyStateView : nil
         }
     }
     
@@ -71,6 +77,14 @@ class StudentListViewController: UIViewController, AutoStoryboardInitializable {
         currentSortType = selectedSortType
     }
     
+    @IBAction func pasteViewTapped(_ sender: UITapGestureRecognizer) {
+        pasteButtonPressed()
+    }
+    
+    @IBAction func addViewTapped(_ sender: UITapGestureRecognizer) {
+        startEditing()
+    }
+    
     func editButtonPressed(_ sender: UIBarButtonItem) {
         tableView.isEditing = !tableView.isEditing
         tableView.reloadData()
@@ -103,11 +117,11 @@ extension StudentListViewController: Subscriber {
 extension StudentListViewController {
     
     func setUp() {
-        plusBarButton = UIBarButtonItem(title: "+", style: .plain, target: self, action: #selector(startEditing))
+        plusBarButton = UIBarButtonItem(image: UIImage(named: "plus"), style: .plain, target: self, action: #selector(startEditing))
         plusBarButton.setTitleTextAttributes([NSFontAttributeName: core.state.theme.font(withSize: core.state.theme.plusButtonSize)], for: .normal)
         pasteBarButton = UIBarButtonItem(image: UIImage(named: "lines"), style: .plain, target: self, action: #selector(pasteButtonPressed))
         saveBarButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveNewStudent))
-        cancelBarButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(saveNewStudent))
+        cancelBarButton = UIBarButtonItem(image: UIImage(named: "x"), style: .plain, target: self, action: #selector(saveNewStudent))
         editBarButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editButtonPressed(_:)))
         doneBarButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(editButtonPressed(_:)))
         navigationItem.setLeftBarButton(editBarButton, animated: true)
@@ -176,6 +190,10 @@ extension StudentListViewController {
     }
     
     func updateUI(with theme: Theme) {
+        for label in emptyStateLabels {
+            label.textColor = theme.textColor
+            label.font = theme.font(withSize: label.font.pointSize)
+        }
         backgroundImageView.image = theme.mainImage.image
         let borderImage = theme.borderImage.image.stretchableImage(withLeftCapWidth: 0, topCapHeight: 0)
         navigationController?.navigationBar.setBackgroundImage(borderImage, for: .default)

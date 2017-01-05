@@ -28,6 +28,7 @@ struct AppState: State {
     var selectedGroup: Group?
     var currentStudents = [Student]()
     var allStudents = [Student]()
+    var hasSubscribedToStudents = false
     var theme = defaultTheme
     var allThemes = [Theme]()
     var iaps = [SKProduct]()
@@ -76,7 +77,9 @@ struct AppState: State {
             allStudents = event.payload
             guard let group = selectedGroup else { break }
             currentStudents = currentStudents(of: group)
-            if event.payload.count == 1 {
+            
+            if !hasSubscribedToStudents {
+                hasSubscribedToStudents = true
                 App.core.fire(command: SubscribeToStudents())
             }
         case let event as SortStudents:
