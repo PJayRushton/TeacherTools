@@ -180,7 +180,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Tickets" id="yW4-N0-wMN">
-                        <barButtonItem key="leftBarButtonItem" title="Edit" style="plain" id="t0p-cn-bg3">
+                        <barButtonItem key="leftBarButtonItem" title="Edit" id="t0p-cn-bg3">
                             <connections>
                                 <action selector="editButtonPressed:" destination="mqg-NK-qv1" id="db0-2b-5gf"/>
                             </connections>

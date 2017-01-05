@@ -22,11 +22,12 @@ struct SaveNewUser: Command {
             case .success:
                 if let cloudKitId = user.cloudKitId {
                     core.fire(event: ICloudUserIdentified(icloudId: cloudKitId))
-                    let newGroup = Group(name: "Your First Class!")
-                    core.fire(command: CreateGroup(group: newGroup))
                 } else {
                     core.fire(event: Selected<User>(user))
                 }
+                let id = self.networkAccess.groupsRef(userId: user.id).childByAutoId().key
+                let newGroup = Group(id: id, name: "Your First Class!")
+                core.fire(command: CreateGroup(group: newGroup))
             case let .failure(error):
                 core.fire(event: ErrorEvent(error: error, message: nil))
             }

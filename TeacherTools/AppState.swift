@@ -76,6 +76,9 @@ struct AppState: State {
             allStudents = event.payload
             guard let group = selectedGroup else { break }
             currentStudents = currentStudents(of: group)
+            if event.payload.count == 1 {
+                App.core.fire(command: SubscribeToStudents())
+            }
         case let event as SortStudents:
             currentStudents.sort(by: event.sort)
         case _ as ShuffleTeams:

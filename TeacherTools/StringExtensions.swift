@@ -39,4 +39,9 @@ extension String {
         return true
     }
     
+    func studentList() -> [FullName] {
+        let names = self.components(separatedBy: "\n")
+        return names.flatMap { $0.parsed() }
+    }
+    
 }

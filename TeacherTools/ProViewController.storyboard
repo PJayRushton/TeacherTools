@@ -6,6 +6,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,30 +23,180 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TG9-6j-0ol">
-                                <rect key="frame" x="113" y="316" width="148" height="34"/>
-                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
-                                <state key="normal" title="Upgrade to Pro"/>
-                                <connections>
-                                    <action selector="upgradeButtonPressed:" destination="GW0-o2-16X" eventType="touchUpInside" id="chx-70-f18"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G3X-PC-TLz">
-                                <rect key="frame" x="79" y="421" width="216" height="30"/>
-                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="14"/>
-                                <state key="normal" title="Restore previous purchases"/>
-                                <connections>
-                                    <action selector="restoreButtonPressed:" destination="GW0-o2-16X" eventType="touchUpInside" id="0HD-4y-jsX"/>
-                                    <action selector="upgradeButtonPressed:" destination="GW0-o2-16X" eventType="touchUpInside" id="jU8-gm-N90"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="1mC-cH-Aw5">
+                                <rect key="frame" x="47" y="64" width="281" height="579"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qHg-Ma-NhZ" userLabel="Spacer view">
+                                        <rect key="frame" x="0.0" y="0.0" width="281" height="58"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="What you'll get:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="86S-w4-RDt">
+                                        <rect key="frame" x="52.5" y="58" width="176" height="34"/>
+                                        <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k1z-A5-AUI" userLabel="Spacer view">
+                                        <rect key="frame" x="0.0" y="92" width="281" height="32"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="JZI-p6-7Vs"/>
+                                        </constraints>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="248" verticalCompressionResistancePriority="1000" axis="vertical" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="wUi-g5-99o">
+                                        <rect key="frame" x="0.0" y="124" width="281" height="173.5"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="1000" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="w8V-af-4q5" userLabel="classes stack">
+                                                <rect key="frame" x="0.0" y="0.0" width="281" height="44"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lines" translatesAutoresizingMaskIntoConstraints="NO" id="YSx-Qx-FpR">
+                                                        <rect key="frame" x="0.0" y="0.0" width="26" height="44"/>
+                                                    </imageView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eNr-Kb-7P0">
+                                                        <rect key="frame" x="42" y="0.0" width="239" height="44"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unlimited classes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iks-SJ-WIr">
+                                                                <rect key="frame" x="0.0" y="0.0" width="239" height="25.5"/>
+                                                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="18"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create as many classes as you need" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lSB-Aj-HLq">
+                                                                <rect key="frame" x="0.0" y="25.5" width="239" height="18.5"/>
+                                                                <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="13"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="1000" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="HWH-Jh-GQh" userLabel="Themes stack">
+                                                <rect key="frame" x="0.0" y="55.5" width="281" height="44"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="themes" translatesAutoresizingMaskIntoConstraints="NO" id="OSr-EW-2Xj">
+                                                        <rect key="frame" x="0.0" y="0.0" width="26" height="44"/>
+                                                    </imageView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="h6M-RX-taw">
+                                                        <rect key="frame" x="42" y="0.0" width="239" height="44"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Themes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xoP-Ok-B0c">
+                                                                <rect key="frame" x="0.0" y="0.0" width="239" height="25.5"/>
+                                                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="18"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get access to all 4 sweet themes!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kZW-dV-o6d">
+                                                                <rect key="frame" x="0.0" y="25.5" width="239" height="18.5"/>
+                                                                <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="13"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="1000" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="N8G-t1-elK" userLabel="Weighted draw stack">
+                                                <rect key="frame" x="0.0" y="111" width="281" height="62.5"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ticket" translatesAutoresizingMaskIntoConstraints="NO" id="KYI-KK-VG3">
+                                                        <rect key="frame" x="0.0" y="0.0" width="26" height="62.5"/>
+                                                        <color key="tintColor" red="0.9882352941176471" green="0.41176470588235292" blue="0.43529411764705883" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </imageView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="GWr-p0-qJc">
+                                                        <rect key="frame" x="42" y="0.0" width="239" height="62.5"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weighted name draw" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GtU-Jb-ClD">
+                                                                <rect key="frame" x="0.0" y="0.0" width="239" height="25.5"/>
+                                                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="18"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Give students extra tickets in the name draw like a real raffle!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QBh-HR-J0q">
+                                                                <rect key="frame" x="0.0" y="25.5" width="239" height="37"/>
+                                                                <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="13"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="YSx-Qx-FpR" firstAttribute="width" secondItem="KYI-KK-VG3" secondAttribute="width" id="gb8-CG-8dt"/>
+                                            <constraint firstItem="YSx-Qx-FpR" firstAttribute="width" secondItem="OSr-EW-2Xj" secondAttribute="width" id="juF-tu-HmB"/>
+                                        </constraints>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ARa-gj-cm4" userLabel="Spacer View">
+                                        <rect key="frame" x="0.0" y="297.5" width="281" height="32"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8yO-cQ-Gjf">
+                                        <rect key="frame" x="61.5" y="329.5" width="158.5" height="70"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yVZ-4l-jzp">
+                                                <rect key="frame" x="8" y="8" width="142.5" height="54"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" text="Upgrade to Pro!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yeP-Ei-zav">
+                                                        <rect key="frame" x="0.0" y="0.0" width="142.5" height="28.5"/>
+                                                        <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="20"/>
+                                                        <color key="textColor" red="0.96862745100000003" green="0.97647058819999999" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="$1.99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TKO-0k-TYX">
+                                                        <rect key="frame" x="0.0" y="28.5" width="142.5" height="25.5"/>
+                                                        <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="18"/>
+                                                        <color key="textColor" red="0.96862745100000003" green="0.97647058819999999" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137254901957" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstItem="yVZ-4l-jzp" firstAttribute="trailing" secondItem="8yO-cQ-Gjf" secondAttribute="trailingMargin" id="6DS-n0-bwU"/>
+                                            <constraint firstItem="yVZ-4l-jzp" firstAttribute="top" secondItem="8yO-cQ-Gjf" secondAttribute="topMargin" id="TY6-At-4Zz"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="yVZ-4l-jzp" secondAttribute="bottom" id="jOg-Eu-jwm"/>
+                                            <constraint firstItem="yVZ-4l-jzp" firstAttribute="leading" secondItem="8yO-cQ-Gjf" secondAttribute="leadingMargin" id="mo4-Vh-dDY"/>
+                                        </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="vLe-He-eID" appends="YES" id="Q1n-UA-B9L"/>
+                                        </connections>
+                                    </view>
+                                    <view contentMode="scaleToFill" horizontalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="xOB-sI-JA0" userLabel="Spacer view">
+                                        <rect key="frame" x="0.0" y="399.5" width="281" height="144.5"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G3X-PC-TLz">
+                                        <rect key="frame" x="41.5" y="544" width="198" height="35"/>
+                                        <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="16"/>
+                                        <state key="normal" title="Restore previous purchases">
+                                            <color key="titleColor" red="0.0" green="0.47843137254901957" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="restoreButtonPressed:" destination="GW0-o2-16X" eventType="touchUpInside" id="0HD-4y-jsX"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="wUi-g5-99o" firstAttribute="height" secondItem="1mC-cH-Aw5" secondAttribute="height" multiplier="0.3" id="0s8-4C-lOm"/>
+                                    <constraint firstItem="k1z-A5-AUI" firstAttribute="width" secondItem="qHg-Ma-NhZ" secondAttribute="width" id="9SX-mf-YOc"/>
+                                    <constraint firstItem="qHg-Ma-NhZ" firstAttribute="height" secondItem="1mC-cH-Aw5" secondAttribute="height" multiplier="0.1" id="Gfw-ND-wVY"/>
+                                    <constraint firstItem="ARa-gj-cm4" firstAttribute="width" secondItem="qHg-Ma-NhZ" secondAttribute="width" id="HeX-Uz-5AI"/>
+                                    <constraint firstItem="xOB-sI-JA0" firstAttribute="width" secondItem="qHg-Ma-NhZ" secondAttribute="width" id="YEr-yh-zcm"/>
+                                    <constraint firstItem="qHg-Ma-NhZ" firstAttribute="width" secondItem="1mC-cH-Aw5" secondAttribute="width" id="c6L-Tn-hUr"/>
+                                    <constraint firstItem="ARa-gj-cm4" firstAttribute="height" secondItem="k1z-A5-AUI" secondAttribute="height" id="zs6-Vc-AmP"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="TG9-6j-0ol" firstAttribute="centerX" secondItem="EuT-sI-OKO" secondAttribute="centerX" id="BYi-cv-kkB"/>
-                            <constraint firstItem="G3X-PC-TLz" firstAttribute="top" secondItem="TG9-6j-0ol" secondAttribute="bottom" constant="71" id="CIE-a5-4lC"/>
-                            <constraint firstItem="TG9-6j-0ol" firstAttribute="centerY" secondItem="EuT-sI-OKO" secondAttribute="centerY" id="WRU-z8-1We"/>
-                            <constraint firstItem="G3X-PC-TLz" firstAttribute="centerX" secondItem="TG9-6j-0ol" secondAttribute="centerX" id="wts-j2-B9d"/>
+                            <constraint firstItem="1mC-cH-Aw5" firstAttribute="centerX" secondItem="EuT-sI-OKO" secondAttribute="centerX" id="Cu5-E8-wtb"/>
+                            <constraint firstItem="pha-wd-vBK" firstAttribute="top" secondItem="1mC-cH-Aw5" secondAttribute="bottom" constant="24" id="Ehn-wL-lkc"/>
+                            <constraint firstItem="1mC-cH-Aw5" firstAttribute="top" secondItem="qQ7-Cw-RtS" secondAttribute="bottom" id="ciN-v2-b7J"/>
+                            <constraint firstItem="1mC-cH-Aw5" firstAttribute="width" secondItem="EuT-sI-OKO" secondAttribute="width" multiplier="0.75" id="xPH-6e-XKX"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Pro Upgrade" id="Dhe-TG-5eA">
@@ -56,12 +208,22 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="upgradeButton" destination="TG9-6j-0ol" id="f3W-S9-naw"/>
+                        <outlet property="upgradeBorderView" destination="8yO-cQ-Gjf" id="A7Y-BV-UK9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zfD-NR-0NR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="vLe-He-eID">
+                    <connections>
+                        <action selector="upgradeViewPressed:" destination="GW0-o2-16X" id="YqI-qG-lCv"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-458" y="27"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="lines" width="24" height="17"/>
+        <image name="themes" width="23" height="22"/>
+        <image name="ticket" width="26" height="26"/>
+    </resources>
 </document>

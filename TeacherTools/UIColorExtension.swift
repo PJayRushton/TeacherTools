@@ -10,7 +10,7 @@ import UIKit
 
 extension UIColor {
     
-    class var ticketRed: UIColor { return #colorLiteral(red: 0.9876169562, green: 0.4118406773, blue: 0.4343959093, alpha: 1) }
+    class var ticketRed: UIColor { return #colorLiteral(red: 0.9882352941, green: 0.4117647059, blue: 0.4352941176, alpha: 1) }
     class var coolBlue: UIColor {
         return try! UIColor(hex: "4DA6BD")
     }

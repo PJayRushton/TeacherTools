@@ -118,9 +118,8 @@ extension GroupListViewController: UITableViewDataSource, UITableViewDelegate {
                     self.dismiss(animated: true, completion: nil)
                 })
             } else {
-                self.dismiss(animated: true) {
-                    self.proCompletion?()
-                }
+                self.dismiss(animated: true, completion: nil)
+                self.proCompletion?()
             }
         }
     }

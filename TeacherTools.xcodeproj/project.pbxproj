@@ -16,6 +16,7 @@
 		A11EE96D1DC73CBC002C9228 /* StudentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11EE96C1DC73CBC002C9228 /* StudentTableViewCell.swift */; };
 		A11EE96F1DC73CD1002C9228 /* StudentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A11EE96E1DC73CD1002C9228 /* StudentTableViewCell.xib */; };
 		A11EE9711DC79516002C9228 /* UpdateObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11EE9701DC79516002C9228 /* UpdateObject.swift */; };
+		A12F010E1E1BFD19005BB06B /* SaveStudentList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12F010D1E1BFD19005BB06B /* SaveStudentList.swift */; };
 		A13683771DFC889500015F06 /* UpdateTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13683761DFC889500015F06 /* UpdateTheme.swift */; };
 		A13683791DFC8DC700015F06 /* SubscribeToThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13683781DFC8DC700015F06 /* SubscribeToThemes.swift */; };
 		A14160851DC669F100C4F5BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160841DC669F100C4F5BB /* AppDelegate.swift */; };
@@ -73,8 +74,10 @@
 		A151FB461E12E13800FD63A1 /* GroupSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A151FB451E12E13800FD63A1 /* GroupSettingsViewController.swift */; };
 		A151FB4A1E14A37A00FD63A1 /* ThemeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A151FB491E14A37A00FD63A1 /* ThemeSelectionViewController.swift */; };
 		A151FB4C1E14A39300FD63A1 /* ThemeSelectionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A151FB4B1E14A39300FD63A1 /* ThemeSelectionViewController.storyboard */; };
+		A151FB4E1E1872AF00FD63A1 /* AddStudentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A151FB4D1E1872AF00FD63A1 /* AddStudentsViewController.swift */; };
+		A151FB501E18730300FD63A1 /* AddStudentsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A151FB4F1E18730300FD63A1 /* AddStudentsViewController.storyboard */; };
+		A151FB521E18750E00FD63A1 /* UITextViewWithPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A151FB511E18750E00FD63A1 /* UITextViewWithPlaceholder.swift */; };
 		A161423C1DCD6E4E00C800A1 /* UpdateGroupLastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A161423B1DCD6E4E00C800A1 /* UpdateGroupLastView.swift */; };
-		A161423E1DCD71CD00C800A1 /* DeleteAllStudents.swift in Sources */ = {isa = PBXBuildFile; fileRef = A161423D1DCD71CD00C800A1 /* DeleteAllStudents.swift */; };
 		A16142401DCDF4F200C800A1 /* CreateGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A161423F1DCDF4F200C800A1 /* CreateGroup.swift */; };
 		A16142421DCDF50300C800A1 /* CreateStudent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16142411DCDF50300C800A1 /* CreateStudent.swift */; };
 		A16142441DCDFBD900C800A1 /* AddStudentToGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16142431DCDFBD900C800A1 /* AddStudentToGroup.swift */; };
@@ -137,6 +140,7 @@
 		A11EE96C1DC73CBC002C9228 /* StudentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentTableViewCell.swift; sourceTree = "<group>"; };
 		A11EE96E1DC73CD1002C9228 /* StudentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudentTableViewCell.xib; sourceTree = "<group>"; };
 		A11EE9701DC79516002C9228 /* UpdateObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateObject.swift; sourceTree = "<group>"; };
+		A12F010D1E1BFD19005BB06B /* SaveStudentList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveStudentList.swift; sourceTree = "<group>"; };
 		A13683761DFC889500015F06 /* UpdateTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateTheme.swift; sourceTree = "<group>"; };
 		A13683781DFC8DC700015F06 /* SubscribeToThemes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscribeToThemes.swift; sourceTree = "<group>"; };
 		A14160811DC669F100C4F5BB /* TeacherTools.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeacherTools.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -202,8 +206,10 @@
 		A151FB451E12E13800FD63A1 /* GroupSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupSettingsViewController.swift; sourceTree = "<group>"; };
 		A151FB491E14A37A00FD63A1 /* ThemeSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeSelectionViewController.swift; sourceTree = "<group>"; };
 		A151FB4B1E14A39300FD63A1 /* ThemeSelectionViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ThemeSelectionViewController.storyboard; sourceTree = "<group>"; };
+		A151FB4D1E1872AF00FD63A1 /* AddStudentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddStudentsViewController.swift; sourceTree = "<group>"; };
+		A151FB4F1E18730300FD63A1 /* AddStudentsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddStudentsViewController.storyboard; sourceTree = "<group>"; };
+		A151FB511E18750E00FD63A1 /* UITextViewWithPlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextViewWithPlaceholder.swift; sourceTree = "<group>"; };
 		A161423B1DCD6E4E00C800A1 /* UpdateGroupLastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateGroupLastView.swift; sourceTree = "<group>"; };
-		A161423D1DCD71CD00C800A1 /* DeleteAllStudents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteAllStudents.swift; sourceTree = "<group>"; };
 		A161423F1DCDF4F200C800A1 /* CreateGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroup.swift; sourceTree = "<group>"; };
 		A16142411DCDF50300C800A1 /* CreateStudent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateStudent.swift; sourceTree = "<group>"; };
 		A16142431DCDFBD900C800A1 /* AddStudentToGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddStudentToGroup.swift; sourceTree = "<group>"; };
@@ -317,6 +323,7 @@
 				A19DB8E11DF1E8EB00D4C386 /* TTProducts.swift */,
 				A1A168191DF242CE00C0B759 /* UIApplication+TopMostViewController.swift */,
 				A19DB8CE1DF095AB00D4C386 /* UIColorExtension.swift */,
+				A151FB511E18750E00FD63A1 /* UITextViewWithPlaceholder.swift */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
@@ -380,6 +387,7 @@
 		A14160E11DC676B400C4F5BB /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				A151FB4F1E18730300FD63A1 /* AddStudentsViewController.storyboard */,
 				A147CFA41DCA331800C9860F /* CustomTabBarController.storyboard */,
 				A14160881DC669F100C4F5BB /* GroupListViewController.storyboard */,
 				A1D67EFD1DC95B38002F73D2 /* GroupSettingsViewController.storyboard */,
@@ -401,6 +409,7 @@
 			isa = PBXGroup;
 			children = (
 				A1D1B4331DCC136D00AF5452 /* AddGroupTableCell.swift */,
+				A151FB4D1E1872AF00FD63A1 /* AddStudentsViewController.swift */,
 				A147CFA01DCA328100C9860F /* CustomTabBarController.swift */,
 				A14160861DC669F100C4F5BB /* GroupListViewController.swift */,
 				A151FB451E12E13800FD63A1 /* GroupSettingsViewController.swift */,
@@ -442,7 +451,6 @@
 				A16142431DCDFBD900C800A1 /* AddStudentToGroup.swift */,
 				A161423F1DCDF4F200C800A1 /* CreateGroup.swift */,
 				A16142411DCDF50300C800A1 /* CreateStudent.swift */,
-				A161423D1DCD71CD00C800A1 /* DeleteAllStudents.swift */,
 				A1CC0AB81DC7A14800C0575F /* DeleteObject.swift */,
 				A1C919D41DDAC96F00A7B477 /* DeleteStudent.swift */,
 				A14160E71DC67E1700C4F5BB /* DeleteUsers.swift */,
@@ -451,17 +459,18 @@
 				A19DB8E31DF2237000D4C386 /* GoPro.swift */,
 				A19DB8E71DF229E900D4C386 /* MarkUserPro.swift */,
 				A14160AF1DC66DEC00C4F5BB /* SaveNewUser.swift */,
+				A12F010D1E1BFD19005BB06B /* SaveStudentList.swift */,
 				A14160FC1DC6904400C4F5BB /* SubscribeToAllTheThings.swift */,
 				A14160F41DC6888200C4F5BB /* SubscribeToGroups.swift */,
 				A16142691DCE4E8D00C800A1 /* SubscribeToReachability.swift */,
 				A14160FA1DC68F9400C4F5BB /* SubscribeToStudents.swift */,
-				A14160EA1DC67E7700C4F5BB /* SubscribeToUsers.swift */,
 				A13683781DFC8DC700015F06 /* SubscribeToThemes.swift */,
+				A14160EA1DC67E7700C4F5BB /* SubscribeToUsers.swift */,
 				A161423B1DCD6E4E00C800A1 /* UpdateGroupLastView.swift */,
 				A11EE9701DC79516002C9228 /* UpdateObject.swift */,
 				A1ADE47F1DCF8A16001434EF /* UpdateTeamSize.swift */,
-				A14160B11DC66DF300C4F5BB /* UpdateUser.swift */,
 				A13683761DFC889500015F06 /* UpdateTheme.swift */,
+				A14160B11DC66DF300C4F5BB /* UpdateUser.swift */,
 			);
 			name = Commands;
 			sourceTree = "<group>";
@@ -566,6 +575,7 @@
 				A11EE96F1DC73CD1002C9228 /* StudentTableViewCell.xib in Resources */,
 				A141608F1DC669F100C4F5BB /* Assets.xcassets in Resources */,
 				A1A168211DF5B1B300C0B759 /* drumroll.mp3 in Resources */,
+				A151FB501E18730300FD63A1 /* AddStudentsViewController.storyboard in Resources */,
 				A147CFBF1DCAB81700C9860F /* LoadingImageViewController.storyboard in Resources */,
 				A147CFAD1DCA404100C9860F /* StudentRandomizerViewController.storyboard in Resources */,
 				A141608A1DC669F100C4F5BB /* GroupListViewController.storyboard in Resources */,
@@ -648,10 +658,12 @@
 				A147CFAA1DCA336D00C9860F /* CustomTabBarProtocols.swift in Sources */,
 				A13683771DFC889500015F06 /* UpdateTheme.swift in Sources */,
 				A14160B21DC66DF300C4F5BB /* UpdateUser.swift in Sources */,
+				A151FB521E18750E00FD63A1 /* UITextViewWithPlaceholder.swift in Sources */,
 				A161426C1DCF43A100C800A1 /* RandomizerCollectionViewCell.swift in Sources */,
 				A151FB461E12E13800FD63A1 /* GroupSettingsViewController.swift in Sources */,
 				A14160D51DC6758700C4F5BB /* KeyType.swift in Sources */,
 				A14160E61DC67AA900C4F5BB /* FirebaseNetworkAccess.swift in Sources */,
+				A151FB4E1E1872AF00FD63A1 /* AddStudentsViewController.swift in Sources */,
 				A14160DD1DC6758700C4F5BB /* ValueType.swift in Sources */,
 				A151FB4A1E14A37A00FD63A1 /* ThemeSelectionViewController.swift in Sources */,
 				A1B6DDEC1DEBADEE00A1DA18 /* StudentTicketTableCell.swift in Sources */,
@@ -684,7 +696,6 @@
 				A1CC0AB91DC7A14800C0575F /* DeleteObject.swift in Sources */,
 				A14160D41DC6758700C4F5BB /* JSON.swift in Sources */,
 				A14160AE1DC66DC900C4F5BB /* UserMiddleware.swift in Sources */,
-				A161423E1DCD71CD00C800A1 /* DeleteAllStudents.swift in Sources */,
 				A16142401DCDF4F200C800A1 /* CreateGroup.swift in Sources */,
 				A1ADE47E1DCF82D6001434EF /* RandomizerHeaderView.swift in Sources */,
 				A14160851DC669F100C4F5BB /* AppDelegate.swift in Sources */,
@@ -710,6 +721,7 @@
 				A14160AC1DC66DBC00C4F5BB /* GetICloudUser.swift in Sources */,
 				A14160D31DC6758700C4F5BB /* Error.swift in Sources */,
 				A14160A81DC66D4800C4F5BB /* SegueHandlerType.swift in Sources */,
+				A12F010E1E1BFD19005BB06B /* SaveStudentList.swift in Sources */,
 				A14160DA1DC6758700C4F5BB /* Unmarshaling.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

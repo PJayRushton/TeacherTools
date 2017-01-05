@@ -133,7 +133,7 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="g9U-TY-4pv">
-                        <nil key="title"/>
+                        <barButtonItem key="backBarButtonItem" title=" " id="ANt-9q-cOl"/>
                         <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="46K-XO-Qvr" customClass="NavBarButton" customModule="TeacherTools" customModuleProvider="target">
                             <rect key="frame" x="113" y="7" width="150" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

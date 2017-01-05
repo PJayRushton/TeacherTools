@@ -17,14 +17,21 @@ struct DeleteObject<T: Identifiable>: Command {
             switch result {
             case .success:
                 guard let group = self.object as? Group else { return }
+                self.deleteStudents(group: group, state: state)
                 core.fire(event: DisplaySuccessMessage(message: "Class deleted!"))
-                core.fire(command: DeleteAllStudents(group: group))
                 core.fire(event: Selected<Group>(nil))
                 let newGroups = state.groups.filter { $0.id != group.id }
                 core.fire(event: Updated<[Group]>(newGroups))
             case let .failure(error):
                 core.fire(event: ErrorEvent(error: error, message: nil))
             }
+        }
+    }
+    
+    fileprivate func deleteStudents(group: Group, state: AppState) {
+        let studentsToDelete = state.allStudents.filter { group.studentIds.contains($0.id) }
+        for student in studentsToDelete {
+            networkAccess.deleteObject(at: student.ref, completion: nil)
         }
     }
     

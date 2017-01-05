@@ -13,6 +13,7 @@ struct SubscribeToStudents: Command {
     func execute(state: AppState, core: Core<AppState>) {
         guard let currentUser = state.currentUser else { return }
         let ref = networkAccess.studentsRef(userId: currentUser.id)
+        ref.removeAllObservers()
         networkAccess.subscribe(to: ref) { result in
             let studentsResult = result.map { (json: JSONObject) -> [Student] in
                 return json.parsedObjects()

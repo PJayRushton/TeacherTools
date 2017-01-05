@@ -116,15 +116,21 @@ extension IAPHelper: SKPaymentTransactionObserver {
             }
         }
     }
+    public func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
+        print("Finished restoring completed transactions\(queue)")
+    }
     
+    public func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {
+        print("Restore **FAILED**\n\(queue)\n\(error)")
+    }
     private func complete(transaction: SKPaymentTransaction) {
-        deliverPurchaseNotificationFor(identifier: transaction.payment.productIdentifier)
+        deliverPurchaseNotification(for: transaction.payment.productIdentifier)
         SKPaymentQueue.default().finishTransaction(transaction)
     }
     
     private func restore(transaction: SKPaymentTransaction) {
         guard let productIdentifier = transaction.original?.payment.productIdentifier else { return }
-        deliverPurchaseNotificationFor(identifier: productIdentifier)
+        deliverPurchaseNotification(for: productIdentifier)
         SKPaymentQueue.default().finishTransaction(transaction)
     }
     
@@ -138,7 +144,7 @@ extension IAPHelper: SKPaymentTransactionObserver {
         SKPaymentQueue.default().finishTransaction(transaction)
     }
     
-    private func deliverPurchaseNotificationFor(identifier: String?) {
+    private func deliverPurchaseNotification(for identifier: String?) {
         guard let identifier = identifier else { return }
         purchasedProductIdentifiers.insert(identifier)
         core.fire(command: MarkUserPro())

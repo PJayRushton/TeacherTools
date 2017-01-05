@@ -33,7 +33,14 @@ struct Student: Marshaling, Unmarshaling, Identifiable {
     var ref: FIRDatabaseReference {
         return FirebaseNetworkAccess.sharedInstance.studentsRef(userId: App.core.state.currentUser!.id).child(id)
     }
-
+    
+    init(id: String, fullName: FullName) {
+        self.id = id
+        self.firstName = fullName.first
+        self.lastName = fullName.last
+        self.tickets = 1
+    }
+    
     init(id: String, name: String, tickets: Int = 1) {
         self.id = id
         self.firstName = name.parsed().first

@@ -27,6 +27,7 @@ class StudentListViewController: UIViewController, AutoStoryboardInitializable {
     }
     
     fileprivate var plusBarButton = UIBarButtonItem()
+    fileprivate var pasteBarButton = UIBarButtonItem()
     fileprivate var saveBarButton = UIBarButtonItem()
     fileprivate var cancelBarButton = UIBarButtonItem()
     fileprivate var doneBarButton = UIBarButtonItem()
@@ -104,6 +105,7 @@ extension StudentListViewController {
     func setUp() {
         plusBarButton = UIBarButtonItem(title: "+", style: .plain, target: self, action: #selector(startEditing))
         plusBarButton.setTitleTextAttributes([NSFontAttributeName: core.state.theme.font(withSize: core.state.theme.plusButtonSize)], for: .normal)
+        pasteBarButton = UIBarButtonItem(image: UIImage(named: "lines"), style: .plain, target: self, action: #selector(pasteButtonPressed))
         saveBarButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveNewStudent))
         cancelBarButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(saveNewStudent))
         editBarButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editButtonPressed(_:)))
@@ -152,6 +154,11 @@ extension StudentListViewController {
         }
     }
     
+    func pasteButtonPressed() {
+        let addStudentsVC = AddStudentsViewController.initializeFromStoryboard()
+        navigationController?.pushViewController(addStudentsVC, animated: true)
+    }
+    
     func saveNewStudent() {
         if newStudentTextField.text!.isEmpty { isAdding = false; return }
         if let newStudentName = newStudentTextField.text, newStudentName.isEmpty == false {
@@ -173,7 +180,7 @@ extension StudentListViewController {
         let borderImage = theme.borderImage.image.stretchableImage(withLeftCapWidth: 0, topCapHeight: 0)
         navigationController?.navigationBar.setBackgroundImage(borderImage, for: .default)
         
-        for barButton in [plusBarButton, saveBarButton, cancelBarButton, editBarButton] {
+        for barButton in [plusBarButton, pasteBarButton, saveBarButton, cancelBarButton, editBarButton] {
             barButton.tintColor = theme.textColor
             barButton.setTitleTextAttributes([NSFontAttributeName: theme.font(withSize: 20)], for: .normal)
         }
@@ -265,7 +272,7 @@ extension StudentListViewController: UITextFieldDelegate {
                 navigationItem.setRightBarButton(cancelBarButton, animated: false)
             }
         } else {
-            navigationItem.setRightBarButton(plusBarButton, animated: false)
+            navigationItem.setRightBarButtonItems([plusBarButton, pasteBarButton], animated: true)
         }
     }
     

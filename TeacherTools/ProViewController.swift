@@ -10,16 +10,15 @@ import UIKit
 
 class ProViewController: UIViewController, AutoStoryboardInitializable {
     
-    @IBOutlet weak var upgradeButton: UIButton!
+    @IBOutlet weak var upgradeBorderView: UIView!
+
     fileprivate var sharedStore = TTProducts.store
     var core = App.core
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let currentUser = core.state.currentUser, currentUser.isPro == false else {
-            upgradeButton.isEnabled = false
-            return
-        }
+        upgradeBorderView.layer.cornerRadius = 5
+        upgradeBorderView.backgroundColor = .appleBlue
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,13 +35,12 @@ class ProViewController: UIViewController, AutoStoryboardInitializable {
         dismiss(animated: true, completion: nil)
     }
 
-    @IBAction func upgradeButtonPressed(_ sender: UIButton) {
+    @IBAction func upgradeViewPressed(_ sender: UITapGestureRecognizer) {
         core.fire(command: GoPro())
     }
-    
+
     @IBAction func restoreButtonPressed(_ sender: UIButton) {
         sharedStore.restorePurchases()
-        core.fire(command: MarkUserPro())
     }
     
 }
@@ -54,8 +52,9 @@ extension ProViewController: Subscriber {
     
     func update(with state: AppState) {
         guard let user = state.currentUser else { return }
-        let title = user.isPro ? "Thanks for support Teacher Tools!" : "Upgrade to Pro\n($1.99)"
-        upgradeButton.setTitle(title, for: .normal)
+        if user.isPro {
+            dismiss(animated: true, completion: nil)
+        }
     }
     
 }

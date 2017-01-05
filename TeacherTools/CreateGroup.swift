@@ -16,7 +16,7 @@ struct CreateGroup: Command {
         networkAccess.addObject(at: group.ref, parameters: group.marshaled()) { result in
             switch result {
             case .success:
-                if core.state.groups.isEmpty {
+                if core.state.groups.count == 1 {
                     core.fire(command: SubscribeToGroups())
                 }
                 core.fire(event: Selected<Group>(self.group))
