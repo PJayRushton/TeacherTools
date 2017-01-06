@@ -61,8 +61,13 @@ class NameDrawViewController: UIViewController, AutoStoryboardInitializable {
     }
     
     @IBAction func ticketsButtonPressed(_ sender: UIBarButtonItem) {
-        let studentTicketsVC = StudentTicketsViewController.initializeFromStoryboard().embededInNavigationController
-        present(studentTicketsVC, animated: true, completion: nil)
+        if let currentUser = core.state.currentUser, currentUser.isPro {
+            let studentTicketsVC = StudentTicketsViewController.initializeFromStoryboard().embededInNavigationController
+            present(studentTicketsVC, animated: true, completion: nil)
+        } else {
+            let proViewController = ProViewController.initializeFromStoryboard().embededInNavigationController
+            present(proViewController, animated: true, completion: nil)
+        }
     }
     
 }
