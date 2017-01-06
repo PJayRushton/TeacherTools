@@ -13,17 +13,21 @@ typealias FullName = (first: String, last: String?)
 extension String {
     
     func parsed() -> FullName {
-        if self.contains(",") {
-            let noSpaces = self.replacingOccurrences(of: " ", with: "")
+        var nameString = self
+        if let lastChar = nameString.characters.last, lastChar == "," {
+            nameString.characters.removeLast()
+        }
+        if nameString.contains(",") {
+            let noSpaces = nameString.replacingOccurrences(of: " ", with: "")
             let parts = noSpaces.components(separatedBy: ",")
-            guard let firstName = parts.last, let lastName = parts.first else { return (first: self, last: nil) }
+            guard let firstName = parts.last, let lastName = parts.first else { return (first: nameString, last: nil) }
             return (first: firstName, last: lastName)
-        } else if self.contains(" ") {
-            let parts = self.components(separatedBy: " ")
-            guard let firstName = parts.first, let lastName = parts.last else { return (first: self, last: nil) }
+        } else if nameString.contains(" ") {
+            let parts = nameString.components(separatedBy: " ")
+            guard let firstName = parts.first, let lastName = parts.last else { return (first: nameString, last: nil) }
             return (first: firstName, last: lastName)
         } else {
-            return (first: self, last: nil)
+            return (first: nameString, last: nil)
         }
     }
     
@@ -40,7 +44,7 @@ extension String {
     }
     
     func studentList() -> [FullName] {
-        let names = self.components(separatedBy: "\n")
+        let names = self.components(separatedBy: "\n").filter { $0.isEmpty == false }
         return names.flatMap { $0.parsed() }
     }
     

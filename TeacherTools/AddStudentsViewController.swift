@@ -53,6 +53,10 @@ class AddStudentsViewController: UIViewController, AutoStoryboardInitializable {
         }
     }
 
+    @IBAction func viewTapped(_ sender: Any) {
+        view.endEditing(true)
+    }
+    
 }
 
 // MARK: - Subscriber

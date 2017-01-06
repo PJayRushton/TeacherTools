@@ -25,13 +25,14 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="A33-U3-i9G">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Tno-sB-ctM">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Tno-sB-ctM">
                                 <rect key="frame" x="16" y="88" width="343" height="511"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dgF-cP-bW0">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
+                                        <rect key="frame" x="131.5" y="0.0" width="80" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="P0W-JU-ahI"/>
+                                            <constraint firstAttribute="width" constant="80" id="c1J-am-7I4"/>
                                         </constraints>
                                         <state key="normal" title="Paste"/>
                                         <connections>
@@ -45,7 +46,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="455"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="LDd-x5-6Y3" id="Y1n-dU-hS0"/>
                                                 </connections>
@@ -69,9 +70,13 @@
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="lrb-4P-h3L" firstAttribute="width" secondItem="Tno-sB-ctM" secondAttribute="width" id="xKp-J5-xOp"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="leadingMargin" secondItem="Tno-sB-ctM" secondAttribute="leading" id="CSF-ew-hPk"/>
                             <constraint firstItem="A33-U3-i9G" firstAttribute="leading" secondItem="6Jb-AA-W9O" secondAttribute="leading" id="JOZ-f6-dri"/>
@@ -82,6 +87,9 @@
                             <constraint firstAttribute="trailing" secondItem="A33-U3-i9G" secondAttribute="trailing" id="dkO-VK-Zx8"/>
                             <constraint firstItem="tqe-So-fJm" firstAttribute="top" secondItem="A33-U3-i9G" secondAttribute="bottom" id="kpp-vU-et9"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="PJr-Os-g39" appends="YES" id="blK-CW-R1b"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Easy Add" id="Ewg-mg-aGM">
                         <barButtonItem key="rightBarButtonItem" title="Save" id="9mC-7S-rGr">
@@ -100,6 +108,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DVm-Rh-4IW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="PJr-Os-g39">
+                    <connections>
+                        <action selector="viewTapped:" destination="LDd-x5-6Y3" id="Zh3-KC-GdN"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="229.59999999999999" y="157.87106446776613"/>
         </scene>
