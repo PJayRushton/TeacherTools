@@ -319,7 +319,11 @@ extension GroupSettingsViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40
+        return 50
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 44
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -338,7 +342,7 @@ extension GroupSettingsViewController {
         bottomLineView.backgroundColor = tableView.separatorColor
         bottomLineView.translatesAutoresizingMaskIntoConstraints = false
         headerView.addSubview(bottomLineView)
-        headerView.addConstraint(bottomLineView.heightAnchor.constraint(equalToConstant: 1))
+        headerView.addConstraint(bottomLineView.heightAnchor.constraint(equalToConstant: 2))
         headerView.addConstraint(bottomLineView.leadingAnchor.constraint(equalTo: headerView.leadingAnchor))
         headerView.addConstraint(bottomLineView.trailingAnchor.constraint(equalTo: headerView.trailingAnchor))
         headerView.addConstraint(bottomLineView.bottomAnchor.constraint(equalTo: headerView.bottomAnchor))

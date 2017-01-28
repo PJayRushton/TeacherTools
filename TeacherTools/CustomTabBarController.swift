@@ -28,7 +28,7 @@ final class CustomTabBarController: UITabBarController {
         var dataObject: TabDataObject {
             switch self {
             case .list:
-                return TabDataObject(title: NSLocalizedString("List", comment: ""), image: UIImage(named: "lists"))
+                return TabDataObject(title: NSLocalizedString("Students", comment: ""), image: UIImage(named: "clipboard"))
             case .groups:
                 return TabDataObject(title: NSLocalizedString("Groups", comment: ""), image: UIImage(named: "groups"))
             case .drawName:
