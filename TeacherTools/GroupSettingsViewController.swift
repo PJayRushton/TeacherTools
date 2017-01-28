@@ -14,13 +14,14 @@ class GroupSettingsViewController: UITableViewController, AutoStoryboardInitiali
     @IBOutlet weak var groupNameTextField: UITextField!
     @IBOutlet weak var lastNameLabel: UILabel!
     @IBOutlet weak var lastNameSwitch: UISwitch!
+    @IBOutlet weak var exportImageView: UIImageView!
+    @IBOutlet weak var exportLabel: UILabel!
     @IBOutlet weak var deleteLabel: UILabel!
 
     @IBOutlet weak var themeLabel: UILabel!
     @IBOutlet weak var themeNameLabel: UILabel!
     @IBOutlet weak var rateLabel: UILabel!
     @IBOutlet weak var shareLabel: UILabel!
-    @IBOutlet weak var shareImageView: UIImageView!
     @IBOutlet weak var upgradeLabel: UILabel!
     
     var core = App.core
@@ -95,9 +96,9 @@ extension GroupSettingsViewController: Subscriber {
         lastNameSwitch.onTintColor = theme.tintColor
         groupNameTextField.textColor = theme.textColor
         groupNameTextField.font = theme.font(withSize: 19)
-        shareImageView.tintColor = .white
+        exportImageView.tintColor = .white
         
-        for label in [groupNameLabel, lastNameLabel, deleteLabel, themeLabel, themeNameLabel, rateLabel, shareLabel, upgradeLabel] {
+        for label in [groupNameLabel, lastNameLabel, exportLabel, deleteLabel, themeLabel, themeNameLabel, rateLabel, shareLabel, upgradeLabel] {
             label?.font = theme.font(withSize: 17)
             label?.textColor = theme.textColor
         }
@@ -178,6 +179,9 @@ extension GroupSettingsViewController {
         let alert = UIAlertController(title: "Are you sure?", message: message, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { _ in
             self.core.fire(command: DeleteObject(object: group))
+            guard let customTabBarController = self.tabBarController as? CustomTabBarController else { return }
+            customTabBarController.selectedIndex = 0
+            customTabBarController.customTabBar.selectedIndex = 0
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
@@ -236,6 +240,15 @@ extension GroupSettingsViewController {
         core.fire(command: UpdateUser(user: user))
     }
     
+    fileprivate func showExportShareSheet() {
+        let textToShare = Exporter().exportStudentList(state: core.state)
+        let objectsToShare: [Any] = [textToShare]
+        
+        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+        activityVC.excludedActivityTypes = [UIActivityType.airDrop, .addToReadingList, .assignToContact, .openInIBooks, .postToTencentWeibo, .postToVimeo, .print, .saveToCameraRoll, .postToWeibo, .postToFlickr]
+        present(activityVC, animated: true, completion: nil)
+    }
+    
     fileprivate func setUpVersionFooter() {
         versionLabel.frame = CGRect(x: 0, y: -2, width: view.frame.size.width * 0.95, height: 20)
         versionLabel.font = core.state.theme.font(withSize: 12)
@@ -268,6 +281,11 @@ extension GroupSettingsViewController: UITextFieldDelegate {
         updateToolbar()
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        saveClassName()
+        return true
+    }
+    
 }
 
 
@@ -282,7 +300,7 @@ extension GroupSettingsViewController {
         var rows: [TableRow] {
             switch self {
             case .group:
-                return [.className, .lastFirst, .delete]
+                return [.className, .lastFirst, .export, .delete]
             case .app:
                 return [.theme, .rate, .share, .pro]
             }
@@ -292,6 +310,7 @@ extension GroupSettingsViewController {
     enum TableRow {
         case className
         case lastFirst
+        case export
         case delete
         case theme
         case rate
@@ -326,7 +345,7 @@ extension GroupSettingsViewController {
         
         switch TableSection(rawValue: section)! {
         case .group:
-            label.text = "Group Settings"
+            label.text = "Class Settings"
         case .app:
             label.text = "App Settings"
         }
@@ -342,6 +361,8 @@ extension GroupSettingsViewController {
         case .lastFirst:
             lastNameSwitch.isOn = !lastNameSwitch.isOn
             lastNameSwitchChanged(lastNameSwitch)
+        case .export:
+            showExportShareSheet()
         case .delete:
             if core.state.groups.count == 1 {
                 presentNoDeleteAlert()

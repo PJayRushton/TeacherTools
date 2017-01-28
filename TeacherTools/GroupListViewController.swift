@@ -15,9 +15,10 @@ class GroupListViewController: UIViewController, AutoStoryboardInitializable {
     
     var core = App.core
     var groups: [Group] {
-        return core.state.groups.sorted { $0.lastViewDate > $1.lastViewDate }
+        return core.state.groups.sorted { $0.name < $1.name }
     }
     var proCompletion: (() -> Void)?
+    var arrowCompletion: ((Bool) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,11 +27,13 @@ class GroupListViewController: UIViewController, AutoStoryboardInitializable {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         core.add(subscriber: self)
+        arrowCompletion?(true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         core.remove(subscriber: self)
+        arrowCompletion?(false)
     }
 
 }
@@ -53,12 +56,12 @@ extension GroupListViewController {
     
     func addNewGroup() {
         guard let currentUser = core.state.currentUser else {
-            core.fire(event: ErrorEvent(error: nil, message: "Error creating new group"))
+            core.fire(event: ErrorEvent(error: nil, message: "Error creating new class"))
             return
         }
         let ref = FirebaseNetworkAccess.sharedInstance.groupsRef(userId: currentUser.id).childByAutoId()
-        let newGroupGroups = core.state.groups.filter { $0.name.lowercased().contains("new group") }
-        let newGroup = Group(id: ref.key, name: "New Group \(newGroupGroups.count + 1)")
+        let newGroupGroups = core.state.groups.filter { $0.name.lowercased().contains("new class") }
+        let newGroup = Group(id: ref.key, name: "New Class \(newGroupGroups.count + 1)")
         core.fire(command: CreateGroup(group: newGroup))
     }
     

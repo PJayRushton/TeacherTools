@@ -14,7 +14,6 @@ struct Group: Identifiable {
     var id: String
     var name: String
     var creationDate: Date
-    var lastViewDate: Date
     var teamSize = 2
     var studentIds: [String]
     
@@ -27,11 +26,10 @@ struct Group: Identifiable {
         }
     }
     
-    init(id: String = "", name: String, creationDate: Date = Date(), lastViewDate: Date = Date(), groupSize: Int = 2, studentIds: [String] = [String](), teamSize: Int = 2) {
+    init(id: String = "", name: String, creationDate: Date = Date(), groupSize: Int = 2, studentIds: [String] = [String](), teamSize: Int = 2) {
         self.id = id
         self.name = name
         self.creationDate = creationDate
-        self.lastViewDate = lastViewDate
         self.studentIds = studentIds
         self.teamSize = teamSize
     }
@@ -44,7 +42,6 @@ extension Group: Unmarshaling, Marshaling {
         id = try object.value(for: "id")
         name = try object.value(for: "name")
         creationDate = try object.value(for: "creationDate")
-        lastViewDate = try object.value(for: "lastViewDate")
         let size: Int? = try? object.value(for: "teamSize")
         teamSize = size ?? 2
 
@@ -61,7 +58,6 @@ extension Group: Unmarshaling, Marshaling {
         json["id"] = id
         json["name"] = name
         json["creationDate"] = creationDate.iso8601String
-        json["lastViewDate"] = lastViewDate.iso8601String
         json["studentIds"] = studentIds.marshaled()
         json["teamSize"] = teamSize
         

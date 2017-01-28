@@ -60,6 +60,10 @@ class StudentListViewController: UIViewController, AutoStoryboardInitializable {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         core.add(subscriber: self)
+        
+        if !navBarButton.isPointingDown {
+            animateArrow(up: false)
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -193,6 +197,9 @@ extension StudentListViewController {
         for label in emptyStateLabels {
             label.textColor = theme.textColor
             label.font = theme.font(withSize: label.font.pointSize)
+        }
+        for image in emptyStateImages {
+            image.tintColor = theme.tintColor
         }
         backgroundImageView.image = theme.mainImage.image
         let borderImage = theme.borderImage.image.stretchableImage(withLeftCapWidth: 0, topCapHeight: 0)
@@ -380,12 +387,13 @@ extension StudentListViewController: SegueHandling {
                 let proViewController = ProViewController.initializeFromStoryboard().embededInNavigationController
                 self.present(proViewController, animated: true, completion: nil)
             }
-            animateArrow(up: true)
+            groupSwitcher.arrowCompletion = { up in
+                self.animateArrow(up: up)
+            }
         }
     }
     
     fileprivate func animateArrow(up: Bool = true) {
-        
         UIView.animate(withDuration: 0.25) {
             let transform = up ? CGAffineTransform(rotationAngle: -CGFloat.pi) : CGAffineTransform(rotationAngle: CGFloat.pi * 2)
             self.navBarButton.icon.transform = transform
@@ -398,11 +406,6 @@ extension StudentListViewController: UIPopoverPresentationControllerDelegate {
     
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return .none
-    }
-    
-    func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
-        animateArrow(up: false)
-        return true
     }
     
 }

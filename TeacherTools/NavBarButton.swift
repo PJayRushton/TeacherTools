@@ -56,6 +56,10 @@ import UIKit
         }
     }
     
+    var isPointingDown: Bool {
+        return icon.transform == CGAffineTransform.identity
+    }
+    
     func update(with theme: Theme) {
         mainTitleLabel.font = theme.font(withSize: 20)
         subtitleLabel.font = theme.font(withSize: 14)

@@ -15,6 +15,7 @@
 		A11EE96D1DC73CBC002C9228 /* StudentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11EE96C1DC73CBC002C9228 /* StudentTableViewCell.swift */; };
 		A11EE96F1DC73CD1002C9228 /* StudentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A11EE96E1DC73CD1002C9228 /* StudentTableViewCell.xib */; };
 		A11EE9711DC79516002C9228 /* UpdateObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11EE9701DC79516002C9228 /* UpdateObject.swift */; };
+		A12759D11E3C4D6400A0AF5F /* Exporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12759D01E3C4D6400A0AF5F /* Exporter.swift */; };
 		A12F010E1E1BFD19005BB06B /* SaveStudentList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12F010D1E1BFD19005BB06B /* SaveStudentList.swift */; };
 		A13683771DFC889500015F06 /* UpdateTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13683761DFC889500015F06 /* UpdateTheme.swift */; };
 		A13683791DFC8DC700015F06 /* SubscribeToThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13683781DFC8DC700015F06 /* SubscribeToThemes.swift */; };
@@ -76,7 +77,6 @@
 		A151FB4E1E1872AF00FD63A1 /* AddStudentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A151FB4D1E1872AF00FD63A1 /* AddStudentsViewController.swift */; };
 		A151FB501E18730300FD63A1 /* AddStudentsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A151FB4F1E18730300FD63A1 /* AddStudentsViewController.storyboard */; };
 		A151FB521E18750E00FD63A1 /* UITextViewWithPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A151FB511E18750E00FD63A1 /* UITextViewWithPlaceholder.swift */; };
-		A161423C1DCD6E4E00C800A1 /* UpdateGroupLastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A161423B1DCD6E4E00C800A1 /* UpdateGroupLastView.swift */; };
 		A16142401DCDF4F200C800A1 /* CreateGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A161423F1DCDF4F200C800A1 /* CreateGroup.swift */; };
 		A16142421DCDF50300C800A1 /* CreateStudent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16142411DCDF50300C800A1 /* CreateStudent.swift */; };
 		A16142441DCDFBD900C800A1 /* AddStudentToGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16142431DCDFBD900C800A1 /* AddStudentToGroup.swift */; };
@@ -140,6 +140,7 @@
 		A11EE96C1DC73CBC002C9228 /* StudentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentTableViewCell.swift; sourceTree = "<group>"; };
 		A11EE96E1DC73CD1002C9228 /* StudentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudentTableViewCell.xib; sourceTree = "<group>"; };
 		A11EE9701DC79516002C9228 /* UpdateObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateObject.swift; sourceTree = "<group>"; };
+		A12759D01E3C4D6400A0AF5F /* Exporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exporter.swift; sourceTree = "<group>"; };
 		A12F010D1E1BFD19005BB06B /* SaveStudentList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveStudentList.swift; sourceTree = "<group>"; };
 		A13683761DFC889500015F06 /* UpdateTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateTheme.swift; sourceTree = "<group>"; };
 		A13683781DFC8DC700015F06 /* SubscribeToThemes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscribeToThemes.swift; sourceTree = "<group>"; };
@@ -209,7 +210,6 @@
 		A151FB4D1E1872AF00FD63A1 /* AddStudentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddStudentsViewController.swift; sourceTree = "<group>"; };
 		A151FB4F1E18730300FD63A1 /* AddStudentsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddStudentsViewController.storyboard; sourceTree = "<group>"; };
 		A151FB511E18750E00FD63A1 /* UITextViewWithPlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextViewWithPlaceholder.swift; sourceTree = "<group>"; };
-		A161423B1DCD6E4E00C800A1 /* UpdateGroupLastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateGroupLastView.swift; sourceTree = "<group>"; };
 		A161423F1DCDF4F200C800A1 /* CreateGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroup.swift; sourceTree = "<group>"; };
 		A16142411DCDF50300C800A1 /* CreateStudent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateStudent.swift; sourceTree = "<group>"; };
 		A16142431DCDFBD900C800A1 /* AddStudentToGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddStudentToGroup.swift; sourceTree = "<group>"; };
@@ -311,6 +311,7 @@
 				A147CFA61DCA336D00C9860F /* CustomTabBar.swift */,
 				A147CFA71DCA336D00C9860F /* CustomTabBarProtocols.swift */,
 				A1B1A2071DC8BD4300D80E53 /* DateHelper.swift */,
+				A12759D01E3C4D6400A0AF5F /* Exporter.swift */,
 				A11EE95E1DC6CEB6002C9228 /* GoogleService-Info.plist */,
 				A19DB8DF1DF1E1DA00D4C386 /* IAPHelper.swift */,
 				A147CFB41DCAB34400C9860F /* NavBarButton.swift */,
@@ -466,7 +467,6 @@
 				A14160FA1DC68F9400C4F5BB /* SubscribeToStudents.swift */,
 				A13683781DFC8DC700015F06 /* SubscribeToThemes.swift */,
 				A14160EA1DC67E7700C4F5BB /* SubscribeToUsers.swift */,
-				A161423B1DCD6E4E00C800A1 /* UpdateGroupLastView.swift */,
 				A11EE9701DC79516002C9228 /* UpdateObject.swift */,
 				A1ADE47F1DCF8A16001434EF /* UpdateTeamSize.swift */,
 				A13683761DFC889500015F06 /* UpdateTheme.swift */,
@@ -639,7 +639,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A161426E1DCF7B1500C800A1 /* RandomizerDatasource.swift in Sources */,
-				A161423C1DCD6E4E00C800A1 /* UpdateGroupLastView.swift in Sources */,
 				A1A1681A1DF242CE00C0B759 /* UIApplication+TopMostViewController.swift in Sources */,
 				A14160EF1DC6833200C4F5BB /* Group.swift in Sources */,
 				A14160B41DC66E0300C4F5BB /* User.swift in Sources */,
@@ -671,6 +670,7 @@
 				A14160F31DC686FF00C4F5BB /* Arrays.swift in Sources */,
 				A1A1681C1DF31B4900C0B759 /* ThemeCollectionViewCell.swift in Sources */,
 				A161426A1DCE4E8D00C800A1 /* SubscribeToReachability.swift in Sources */,
+				A12759D11E3C4D6400A0AF5F /* Exporter.swift in Sources */,
 				A1C919D51DDAC96F00A7B477 /* DeleteStudent.swift in Sources */,
 				A147CFA11DCA328100C9860F /* CustomTabBarController.swift in Sources */,
 				A1B1A2081DC8BD4300D80E53 /* DateHelper.swift in Sources */,

@@ -61,11 +61,8 @@ struct UserMiddleware: Middleware {
             App.core.fire(command: GetIAPs())
         case let event as Updated<[Group]>:
             guard state.selectedGroup == nil else { break }
-            let sortedGroups = event.payload.sorted { $0.lastViewDate > $1.lastViewDate }
+            let sortedGroups = event.payload.sorted { $0.name < $1.name }
             App.core.fire(event: Selected<Group>(sortedGroups.first))
-        case let event as Selected<Group>:
-            guard let group = event.item else { return }
-            App.core.fire(command: UpdateGroupLastView(group: group))
         default:
             break
         }
