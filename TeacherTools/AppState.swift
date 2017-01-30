@@ -27,6 +27,7 @@ struct AppState: State {
     var groupsAreLoaded = false
     var selectedGroup: Group?
     var currentStudents = [Student]()
+    var absentStudents = [Student]()
     var allStudents = [Student]()
     var hasSubscribedToStudents = false
     var theme = defaultTheme
@@ -63,11 +64,15 @@ struct AppState: State {
             guard let group = selectedGroup, let index = allGroups.index(of: group) else { break }
             let updatedSelectedGroup = allGroups[index]
             selectedGroup = updatedSelectedGroup
-            currentStudents = currentStudents(of: updatedSelectedGroup)
+            currentStudents = currentStudents(of: updatedSelectedGroup, absents: absentStudents)
         case let event as Selected<Group>:
             selectedGroup = event.item
+            
+            if selectedGroup != event.item {
+                absentStudents.removeAll()
+            }
             if let group = event.item {
-                currentStudents = currentStudents(of: group)
+                currentStudents = currentStudents(of: group, absents: absentStudents)
             } else {
                 currentStudents = [Student]()
             }
@@ -76,7 +81,7 @@ struct AppState: State {
         case let event as Updated<[Student]>:
             allStudents = event.payload
             guard let group = selectedGroup else { break }
-            currentStudents = currentStudents(of: group)
+            currentStudents = currentStudents(of: group, absents: absentStudents)
             
             if !hasSubscribedToStudents {
                 hasSubscribedToStudents = true
@@ -84,6 +89,18 @@ struct AppState: State {
             }
         case let event as SortStudents:
             currentStudents.sort(by: event.sort)
+        case let event as MarkStudentAbsent:
+            guard let _ = currentStudents.index(of: event.student) else { return }
+            absentStudents.append(event.student)
+            
+            guard let group = selectedGroup else { return }
+            currentStudents = currentStudents(of: group, absents: absentStudents)
+        case let event as MarkStudentPresent:
+            guard let index = absentStudents.index(of: event.student) else { return }
+            absentStudents.remove(at: index)
+            
+            guard let group = selectedGroup else { return }
+            currentStudents = currentStudents(of: group, absents: absentStudents)
         case _ as ShuffleTeams:
             currentStudents = currentStudents.shuffled()
             
@@ -103,10 +120,11 @@ struct AppState: State {
         }
     }
     
-    func currentStudents(of group: Group) -> [Student] {
-        return allStudents.filter { group.studentIds.contains($0.id) }.sorted { $0.displayedName < $1.displayedName }
+    func currentStudents(of group: Group, absents: [Student]) -> [Student] {
+        var currentStudents = allStudents.filter { group.studentIds.contains($0.id) }
+        currentStudents = currentStudents.filter { !absents.contains($0) }
+        return currentStudents.sorted { $0.displayedName < $1.displayedName }
     }
-    
     
 }
 
@@ -154,6 +172,15 @@ struct ShuffleTeams: Event { }
 struct SortStudents: Event {
     var sort: (Student, Student) -> Bool
 }
+
+struct MarkStudentAbsent: Event {
+    var student: Student
+}
+
+struct MarkStudentPresent: Event {
+    var student: Student
+}
+
 
 struct UploadStatusUpdated: Event {
     var success: Bool?

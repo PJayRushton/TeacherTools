@@ -24,13 +24,8 @@ class StudentListViewController: UIViewController, AutoStoryboardInitializable {
 
     var core = App.core
     var group: Group?
-    var students = [Student]() {
-        didSet {
-            tableView.reloadData()
-            let shouldShowEmptyView = core.state.groupsAreLoaded && students.isEmpty
-            tableView.backgroundView = shouldShowEmptyView ? emptyStateView : nil
-        }
-    }
+    var students = [Student]()
+    var absentStudents = [Student]()
     
     fileprivate var plusBarButton = UIBarButtonItem()
     fileprivate var pasteBarButton = UIBarButtonItem()
@@ -42,6 +37,7 @@ class StudentListViewController: UIViewController, AutoStoryboardInitializable {
     var currentSortType: SortType = App.core.state.currentUser!.lastFirst ? .last : .first {
         didSet {
             students = currentSortType.sort(students)
+            tableView.reloadData()
             isAdding = false
         }
     }
@@ -103,14 +99,20 @@ class StudentListViewController: UIViewController, AutoStoryboardInitializable {
 extension StudentListViewController: Subscriber {
     
     func update(with state: AppState) {
-        if let group = state.selectedGroup {
-            self.group = group
-            navBarButton.mainTitle = group.name
-        }
-        navBarButton.subTitle = "\(state.currentStudents.count) students"
+        guard let group = state.selectedGroup else { return }
+        self.group = group
+        navBarButton.mainTitle = group.name
+        let count = allStudents.filter { group.studentIds.contains($0.id) }.count
+        navBarButton.subTitle = "\(count) students"
+        absentStudents = state.absentStudents
         students = currentSortType.sort(state.currentStudents)
         newStudentTextField.text = ""
+        
+        let shouldShowEmptyView = core.state.groupsAreLoaded && students.isEmpty
+        tableView.backgroundView = shouldShowEmptyView ? emptyStateView : nil
+
         updateUI(with: state.theme)
+        tableView.reloadData()
     }
     
 }
@@ -236,13 +238,18 @@ extension StudentListViewController {
 
 extension StudentListViewController: UITableViewDataSource, UITableViewDelegate {
 
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return absentStudents.isEmpty ? 1 : 2
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return students.count
+        return section == 0 ? students.count : absentStudents.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: StudentTableViewCell.reuseIdentifier) as! StudentTableViewCell
-        cell.update(with: students[indexPath.row], theme: core.state.theme, isEditing: tableView.isEditing)
+        let student = indexPath.section == 1 ? absentStudents[indexPath.row] : students[indexPath.row]
+        cell.update(with: student, theme: core.state.theme, isEditing: tableView.isEditing)
         cell.delegate = self
         
         return cell
@@ -256,19 +263,35 @@ extension StudentListViewController: UITableViewDataSource, UITableViewDelegate 
         }
     }
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return section == 1 ? "Absent" : nil
+    }
+    
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            let studentToX = students[indexPath.row]
-            if let cell = tableView.cellForRow(at: indexPath) as? StudentTableViewCell {
-                cell.textField.resignFirstResponder()
-            }
-            core.fire(command: DeleteStudent(student: studentToX))
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let absentAction = UITableViewRowAction(style: .normal, title: "Absent", handler: { action, indexPath in
+            self.core.fire(event: MarkStudentAbsent(student: self.students[indexPath.row]))
+        })
+        let presentAction = UITableViewRowAction(style: .normal, title: "Present", handler: { action, indexPath in
+            self.core.fire(event: MarkStudentPresent(student: self.absentStudents[indexPath.row]))
+        })
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete", handler: { action, indexPath in
+            let studentToX = indexPath.section == 0 ? self.students[indexPath.row] : self.absentStudents[indexPath.row]
+            self.core.fire(command: DeleteStudent(student: studentToX))
+        })
+        switch indexPath.section {
+        case 0:
+            return [deleteAction, absentAction]
+        case 1:
+            return [deleteAction, presentAction]
+        default:
+            return []
         }
     }
+
 }
 
 

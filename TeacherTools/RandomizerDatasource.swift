@@ -12,7 +12,14 @@ class RandomizerDataSource: NSObject, UICollectionViewDataSource {
     
     var core = App.core
     var students = [Student]()
+    var absentStudents = [Student]()
     var teamSize = 2
+    var group: Group? {
+        didSet {
+            guard group != oldValue else { return }
+            absentStudents.removeAll()
+        }
+    }
     
     var remainder: Int {
         return students.count % teamSize
@@ -28,37 +35,47 @@ class RandomizerDataSource: NSObject, UICollectionViewDataSource {
     }
 
     var numberOfTeams: Int {
-        let standardNumberOfTeams = students.count / teamSize
-        if remainder == 2 && teamSize == 3 {
+        // Rule of thumb: if there are more than 2 remainder students, they form their own group
+        var standardNumberOfTeams = students.count / teamSize
+        
+        if absentStudents.count > 0 {
+            standardNumberOfTeams += 1 // Absent students have their own section
+        }
+        if remainder == 2 && teamSize == 3 { // If team size is 3 and there are exactly 2 remaining, they also form their own group
             return standardNumberOfTeams + 1
         }
         return remainder > 2 ? standardNumberOfTeams + 1 : standardNumberOfTeams
     }
     
     func teamSize(forSection section: Int) -> Int {
-        let isLastSection = section == numberOfTeams - 1
-        let isPenultimateSection = section == numberOfTeams - 2
+        let hasAbsentSection = absentStudents.count > 0
+        let isLastSection = hasAbsentSection ? section == numberOfTeams - 2 : section == numberOfTeams - 1
+        
+        if hasAbsentSection && section == numberOfTeams - 1 {
+            return absentStudents.count
+        }
         
         switch remainder {
         case 0:
             return teamSize
         case 1:
-            return isLastSection ? teamSize + 1 : teamSize
-        case 2:
-            if teamSize == 3 {
-                if isLastSection {
-                    return  remainder
-                } else if isPenultimateSection {
-                    return teamSize
-                }
+            if isLastSection {
+                return teamSize + 1
             }
-            return isLastSection || isPenultimateSection ? teamSize + 1 : teamSize
+            return teamSize
         default:
-            return isLastSection ? remainder : teamSize
+            if isLastSection {
+                return remainder
+            }
+            return teamSize
         }
     }
     
     func students(inSection section: Int) -> [Student] {
+        if absentStudents.count > 0 && section == numberOfTeams - 1 {
+            return absentStudents
+        }
+        
         let lowBoundSection = section == 0 ? 0 : section - 1
         let lowBound = section * teamSize(forSection: lowBoundSection)
         let highBound = lowBound + teamSize(forSection: section)
@@ -70,6 +87,10 @@ class RandomizerDataSource: NSObject, UICollectionViewDataSource {
     }
     
     func title(forSection section: Int) -> String {
+        if section == numberOfTeams - 1 && absentStudents.count > 0 {
+            return "ABSENT"
+        }
+        
         var headerString = "Team \(section + 1)"
         if teamSize(forSection: section) != teamSize {
             headerString +=  " (\(teamSize(forSection: section)))"
@@ -107,8 +128,10 @@ extension RandomizerDataSource: Subscriber {
     
     func update(with state: AppState) {
         students = state.currentStudents
+        absentStudents = state.absentStudents
         guard let selectedGroup = state.selectedGroup else { teamSize = 2; return }
         teamSize = selectedGroup.teamSize
+        group = selectedGroup
     }
     
 }

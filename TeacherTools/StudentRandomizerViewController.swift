@@ -12,6 +12,7 @@ class StudentRandomizerViewController: UIViewController, AutoStoryboardInitializ
     
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var shuffleBarButton: UIBarButtonItem!
+    @IBOutlet weak var instructionLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var sizeBarButton: UIBarButtonItem!
 
@@ -19,6 +20,14 @@ class StudentRandomizerViewController: UIViewController, AutoStoryboardInitializ
     fileprivate let margin: CGFloat = 16.0
     fileprivate var core = App.core
     fileprivate var layout = UICollectionViewFlowLayout()
+    
+    var shouldHideInstructions: Bool {
+        get {
+            return UserDefaults.standard.bool(forKey: "shouldHideInstructions")
+        } set {
+            UserDefaults.standard.set(newValue, forKey: "shouldHideInstructions")
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,6 +75,12 @@ extension StudentRandomizerViewController {
         collectionView.dataSource = dataSource
         collectionView.contentInset = UIEdgeInsets.zero
         collectionView.collectionViewLayout = layout
+        
+        if shouldHideInstructions {
+            instructionLabel.isHidden = true
+        } else {
+            shouldHideInstructions = true
+        }
     }
     
     func updateCollectionView(group: Group) {
@@ -83,6 +98,8 @@ extension StudentRandomizerViewController {
         backgroundImageView.image = theme.mainImage.image
         let borderImage = theme.borderImage.image.stretchableImage(withLeftCapWidth: 0, topCapHeight: 0)
         navigationController?.navigationBar.setBackgroundImage(borderImage, for: .default)
+        instructionLabel.font = theme.font(withSize: 17)
+        instructionLabel.textColor = theme.textColor
     }
 
 }
@@ -94,6 +111,19 @@ extension StudentRandomizerViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: margin, bottom: 0, right: margin)
+    }
+    
+}
+
+extension StudentRandomizerViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let studentAtItem = dataSource.student(at: indexPath)
+        if dataSource.absentStudents.isEmpty == false && indexPath.section == dataSource.numberOfTeams - 1 {
+            core.fire(event: MarkStudentPresent(student: studentAtItem))
+        } else {
+            core.fire(event: MarkStudentAbsent(student: studentAtItem))
+        }
     }
     
 }
