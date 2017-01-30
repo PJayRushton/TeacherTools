@@ -37,12 +37,14 @@ struct UserMiddleware: Middleware {
             }
             let identifiedUsersByCK = EntityDatabase.shared.users.filter { $0.cloudKitId == event.icloudId }
             let identifiedUsersByDevice = EntityDatabase.shared.users.filter { $0.deviceId == UIDevice.current.identifierForVendor?.uuidString }
-            if identifiedUsersByCK.count == 1 && event.icloudId != nil, let ckUser = identifiedUsersByCK.first {
+            
+            if identifiedUsersByCK.count == 1 && event.icloudId != nil, let ckUser = identifiedUsersByCK.first { // IDEAL
                 App.core.fire(event: Selected<User>(ckUser))
                 print("USER IDENTIFIED BY iCLOUD ID \(ckUser.cloudKitId), \nfirebaseID: \(ckUser.id)")
-            } else if identifiedUsersByDevice.count == 1, let deviceUser = identifiedUsersByDevice.first {
-                print("USER IDENTIFIED BY DEVICE ID \(deviceUser.deviceId)")
+            } else if identifiedUsersByDevice.count == 1, let deviceUser = identifiedUsersByDevice.first { // No iCloud - Use device id
                 App.core.fire(event: Selected<User>(deviceUser))
+                print("USER IDENTIFIED BY DEVICE ID \(deviceUser.deviceId)")
+                
                 if let icloudID = event.icloudId {
                     let updatedUser = deviceUser
                     updatedUser.cloudKitId = icloudID
