@@ -19,4 +19,12 @@ import UIKit
 
 final class LoadingImageViewController: UIViewController, AutoStoryboardInitializable {
     
+    @IBOutlet weak var appleImageView: UIImageView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        appleImageView.rotate()
+    }
+    
 }

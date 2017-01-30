@@ -129,12 +129,12 @@ extension UIViewController {
 
 extension UIView {
     
-    func rotate() {
+    func rotate(duration: CFTimeInterval = 2, count: Float = Float.greatestFiniteMagnitude) {
         let rotation : CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
         rotation.toValue = NSNumber(value: M_PI * 2)
-        rotation.duration = 0.5
+        rotation.duration = duration
         rotation.isCumulative = true
-        rotation.repeatCount = 2
+        rotation.repeatCount = count
         layer.add(rotation, forKey: "rotationAnimation")
     }
     

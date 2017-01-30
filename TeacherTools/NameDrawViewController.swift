@@ -139,7 +139,7 @@ extension NameDrawViewController {
             drawNameGesture.isEnabled = false
             topLabel.text = "???"
             animator.addAnimations {
-                self.topLabel.rotate()
+                self.topLabel.rotate(duration: 0.5, count: 2)
                 self.topLabel.transform = CGAffineTransform(scaleX: 5, y: 5)
                 self.topLabel.transform = CGAffineTransform(scaleX: 1, y: 1)
             }
