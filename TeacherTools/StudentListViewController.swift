@@ -271,15 +271,26 @@ extension StudentListViewController: UITableViewDataSource, UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let absentAction = UITableViewRowAction(style: .normal, title: "Absent", handler: { action, indexPath in
-            self.core.fire(event: MarkStudentAbsent(student: self.students[indexPath.row]))
-        })
-        let presentAction = UITableViewRowAction(style: .normal, title: "Present", handler: { action, indexPath in
-            self.core.fire(event: MarkStudentPresent(student: self.absentStudents[indexPath.row]))
-        })
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete", handler: { action, indexPath in
             let studentToX = indexPath.section == 0 ? self.students[indexPath.row] : self.absentStudents[indexPath.row]
             self.core.fire(command: DeleteStudent(student: studentToX))
+        })
+        
+        guard let currentUser = core.state.currentUser else { return [deleteAction] }
+        
+        let absentAction = UITableViewRowAction(style: .normal, title: "Absent", handler: { action, indexPath in
+            if currentUser.isPro {
+                self.core.fire(event: MarkStudentAbsent(student: self.students[indexPath.row]))
+            } else {
+                self.goPro()
+            }
+        })
+        let presentAction = UITableViewRowAction(style: .normal, title: "Present", handler: { action, indexPath in
+            if currentUser.isPro {
+                self.core.fire(event: MarkStudentPresent(student: self.absentStudents[indexPath.row]))
+            } else {
+                self.goPro()
+            }
         })
         switch indexPath.section {
         case 0:
@@ -287,10 +298,15 @@ extension StudentListViewController: UITableViewDataSource, UITableViewDelegate 
         case 1:
             return [deleteAction, presentAction]
         default:
-            return []
+            return [deleteAction]
         }
     }
 
+    func goPro() {
+        let proVC = ProViewController.initializeFromStoryboard().embededInNavigationController
+        present(proVC, animated: true, completion: nil)
+    }
+    
 }
 
 

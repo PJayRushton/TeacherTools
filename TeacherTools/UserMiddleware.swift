@@ -37,13 +37,17 @@ struct UserMiddleware: Middleware {
             }
             let identifiedUsersByCK = EntityDatabase.shared.users.filter { $0.cloudKitId == event.icloudId }
             let identifiedUsersByDevice = EntityDatabase.shared.users.filter { $0.deviceId == UIDevice.current.identifierForVendor?.uuidString }
-            if identifiedUsersByCK.count == 1 && event.icloudId != nil {
-                App.core.fire(event: Selected<User>(identifiedUsersByCK.first!))
-                print("USER IDENTIFIED BY iCLOUD ID \(identifiedUsersByCK.first!.cloudKitId), \nfirebaseID: \(identifiedUsersByCK.first!.id)")
-                
-            } else if identifiedUsersByDevice.count == 1 {
-                print("USER IDENTIFIED BY DEVICE ID \(identifiedUsersByCK.first!.deviceId)")
-                App.core.fire(event: Selected<User>(identifiedUsersByDevice.first!))
+            if identifiedUsersByCK.count == 1 && event.icloudId != nil, let ckUser = identifiedUsersByCK.first {
+                App.core.fire(event: Selected<User>(ckUser))
+                print("USER IDENTIFIED BY iCLOUD ID \(ckUser.cloudKitId), \nfirebaseID: \(ckUser.id)")
+            } else if identifiedUsersByDevice.count == 1, let deviceUser = identifiedUsersByDevice.first {
+                print("USER IDENTIFIED BY DEVICE ID \(deviceUser.deviceId)")
+                App.core.fire(event: Selected<User>(deviceUser))
+                if let icloudID = event.icloudId {
+                    let updatedUser = deviceUser
+                    updatedUser.cloudKitId = icloudID
+                    App.core.fire(command: UpdateUser(user: updatedUser))
+                }
             } else if identifiedUsersByCK.count > 1 {
                 App.core.fire(command: DeleteUsers(users: identifiedUsersByCK))
             } else if identifiedUsersByDevice.count > 1 {

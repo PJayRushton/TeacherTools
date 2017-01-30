@@ -118,11 +118,16 @@ extension StudentRandomizerViewController: UICollectionViewDelegateFlowLayout {
 extension StudentRandomizerViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let studentAtItem = dataSource.student(at: indexPath)
-        if dataSource.absentStudents.isEmpty == false && indexPath.section == dataSource.numberOfTeams - 1 {
-            core.fire(event: MarkStudentPresent(student: studentAtItem))
+        if let currentUser = core.state.currentUser, currentUser.isPro {
+            let studentAtItem = dataSource.student(at: indexPath)
+            if dataSource.absentStudents.isEmpty == false && indexPath.section == dataSource.numberOfTeams - 1 {
+                core.fire(event: MarkStudentPresent(student: studentAtItem))
+            } else {
+                core.fire(event: MarkStudentAbsent(student: studentAtItem))
+            }
         } else {
-            core.fire(event: MarkStudentAbsent(student: studentAtItem))
+            let proVC = ProViewController.initializeFromStoryboard().embededInNavigationController
+            present(proVC, animated: true, completion: nil)
         }
     }
     

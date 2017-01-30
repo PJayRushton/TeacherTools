@@ -96,7 +96,7 @@ extension GroupSettingsViewController: Subscriber {
         lastNameSwitch.onTintColor = theme.tintColor
         groupNameTextField.textColor = theme.textColor
         groupNameTextField.font = theme.font(withSize: 19)
-        exportImageView.tintColor = .white
+        exportImageView.tintColor = theme.textColor
         
         for label in [groupNameLabel, lastNameLabel, exportLabel, deleteLabel, themeLabel, themeNameLabel, rateLabel, shareLabel, upgradeLabel] {
             label?.font = theme.font(withSize: 17)
@@ -319,7 +319,7 @@ extension GroupSettingsViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50
+        return 44
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -328,24 +328,16 @@ extension GroupSettingsViewController {
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
+        headerView.backgroundColor = core.state.theme.tintColor
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = core.state.theme.font(withSize: 17)
-        label.textColor = core.state.theme.textColor
+        label.textColor = core.state.theme.isDefault ? .white : core.state.theme.textColor
         label.textAlignment = .center
         headerView.addSubview(label)
         headerView.addConstraint(headerView.centerYAnchor.constraint(equalTo: label.centerYAnchor))
         headerView.addConstraint(headerView.layoutMarginsGuide.leadingAnchor.constraint(equalTo: label.leadingAnchor))
         headerView.addConstraint(headerView.layoutMarginsGuide.trailingAnchor.constraint(equalTo: label.trailingAnchor))
-        
-        let bottomLineView = UIView()
-        bottomLineView.backgroundColor = tableView.separatorColor
-        bottomLineView.translatesAutoresizingMaskIntoConstraints = false
-        headerView.addSubview(bottomLineView)
-        headerView.addConstraint(bottomLineView.heightAnchor.constraint(equalToConstant: 2))
-        headerView.addConstraint(bottomLineView.leadingAnchor.constraint(equalTo: headerView.leadingAnchor))
-        headerView.addConstraint(bottomLineView.trailingAnchor.constraint(equalTo: headerView.trailingAnchor))
-        headerView.addConstraint(bottomLineView.bottomAnchor.constraint(equalTo: headerView.bottomAnchor))
         
         switch TableSection(rawValue: section)! {
         case .group:
