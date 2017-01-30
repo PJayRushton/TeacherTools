@@ -102,8 +102,7 @@ extension StudentListViewController: Subscriber {
         guard let group = state.selectedGroup else { return }
         self.group = group
         navBarButton.mainTitle = group.name
-        let count = allStudents.filter { group.studentIds.contains($0.id) }.count
-        navBarButton.subTitle = "\(count) students"
+        navBarButton.subTitle = "\(group.studentIds.count) students"
         absentStudents = state.absentStudents
         students = currentSortType.sort(state.currentStudents)
         newStudentTextField.text = ""
