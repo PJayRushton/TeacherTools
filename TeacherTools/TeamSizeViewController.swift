@@ -14,7 +14,6 @@ class TeamSizeViewController: UIViewController {
     @IBOutlet weak var topLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
 
-
     var core = App.core
     var maxSize = 4
     var currentSize = 2
@@ -62,7 +61,7 @@ extension TeamSizeViewController: Subscriber {
 extension TeamSizeViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return maxSize > 2 ?  maxSize - 1 : 0
+        return maxSize > 2 ?  maxSize - 1 : 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
