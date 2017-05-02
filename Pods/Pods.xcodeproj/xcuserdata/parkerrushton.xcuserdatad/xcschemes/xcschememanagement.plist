@@ -4,16 +4,6 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Appirater-Appirater.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Appirater.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>BetterSegmentedControl.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,11 +37,6 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>049E104BC405685F4B6FFC4EDDC8B004</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>107A9565F9DF88517DFD3E28C05B2B96</key>
 		<dict>
 			<key>primary</key>
@@ -67,22 +52,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A8C8D601E92B0B40F48C791C48F237AE</key>
+		<key>A353E951151FF1B5D9BD458BAC5A977D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BA246B1D4146EA3A8FD5C06949A7B09A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>C052BEBFBD0AB5218CC64BA3450F6547</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C7E27398B04EB3E1EDDF1AABEAB23112</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>ECAC630C0F6C48AA96144453FAA4F8AF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
