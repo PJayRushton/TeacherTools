@@ -13,7 +13,7 @@ import StoreKit
 // MARK: - APP
 
 enum App {
-    static let core = Core(state: AppState(), middlewares: [UserMiddleware(), ErrorHUDMiddleware(), AppearanceMiddleware()])
+    static let core = Core(state: AppState(), middlewares: [ErrorHUDMiddleware(), AppearanceMiddleware()])
 }
 
 
@@ -23,6 +23,7 @@ struct AppState: State {
     
     var currentICloudId: String?
     var currentUser: User?
+    var isSubscribedToCurrentUser = false
     var groups = [Group]()
     var groupsAreLoaded = false
     var selectedGroup: Group?
@@ -55,6 +56,8 @@ struct AppState: State {
             currentUser = event.item
             currentICloudId = event.item == nil ? nil : event.item?.cloudKitId
             theme = allThemes.filter { $0.id == event.item?.themeID }.first ?? defaultTheme
+        case _ as Subscribed<User>:
+            isSubscribedToCurrentUser = true
             
             // GROUPS
         case let event as Updated<[Group]>:
@@ -80,13 +83,10 @@ struct AppState: State {
             // STUDENTS
         case let event as Updated<[Student]>:
             allStudents = event.payload
+            hasSubscribedToStudents = true
+            
             guard let group = selectedGroup else { break }
             currentStudents = currentStudents(of: group, absents: absentStudents)
-            
-            if !hasSubscribedToStudents {
-                hasSubscribedToStudents = true
-                App.core.fire(command: SubscribeToStudents())
-            }
         case let event as SortStudents:
             currentStudents.sort(by: event.sort)
         case let event as MarkStudentAbsent:
@@ -186,11 +186,6 @@ struct UploadStatusUpdated: Event {
     var success: Bool?
 }
 
-struct ReachablilityChanged: Event {
-    var reachable: Bool
-}
-
 struct SubscriptionStatusUpdated: Event {
     var preAuth: Bool
 }
-

@@ -13,12 +13,14 @@ struct GetICloudUser: Command {
     
     func execute(state: AppState, core: Core<AppState>) {
         let container = CKContainer.default()
-        container.fetchUserRecordID { recordID, error in
-            if let error = error {
+        container.fetchUserRecordID { recordId, error in
+            if let recordId = recordId, error == nil {
+                let iCloudId = recordId.recordName
+                core.fire(event: ICloudUserIdentified(icloudId: iCloudId))
+                core.fire(command: GetCurrentUser(iCloudId: iCloudId))
+            } else {
                 core.fire(event: ErrorEvent(error: error, message: nil))
                 core.fire(event: ICloudUserIdentified(icloudId: nil))
-            } else {
-                core.fire(event: ICloudUserIdentified(icloudId: recordID?.recordName))
             }
         }
     }

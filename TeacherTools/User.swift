@@ -13,7 +13,6 @@ final class User: Marshaling, Unmarshaling {
     
     var id: String
     var cloudKitId: String?
-    var deviceId:  String
     var creationDate: Date
     var firstName: String?
     var themeID: String
@@ -27,10 +26,9 @@ final class User: Marshaling, Unmarshaling {
         return purchases.map { $0.productId }.contains(TTProducts.proUpgrade)
     }
     
-    init(id: String = "", cloudKitId: String? = nil, deviceId: String = "", creationDate: Date = Date(), firstName: String? = nil, themeID: String = "-KYnZO6lWYBECsy4U3fN", lastFirst: Bool = false, purchases: Set<TTPurchase> = []) {
+    init(id: String = "", cloudKitId: String? = nil, creationDate: Date = Date(), firstName: String? = nil, themeID: String = "-KYnZO6lWYBECsy4U3fN", lastFirst: Bool = false, purchases: Set<TTPurchase> = []) {
         self.id = id
         self.cloudKitId = cloudKitId
-        self.deviceId = deviceId
         self.creationDate = creationDate
         self.firstName = firstName
         self.themeID = themeID
@@ -40,8 +38,7 @@ final class User: Marshaling, Unmarshaling {
     
     init(object: MarshaledObject) throws {
         id = try object.value(for: "id")
-        cloudKitId = try object.value(for: "iCloudId")
-        deviceId = try object.value(for: "deviceId")
+        cloudKitId = try object.value(for: Keys.iCloudIdKey)
         creationDate = try object.value(for: "creationDate")
         firstName = try object.value(for: "firstName")
         themeID = try object.value(for: "theme")
@@ -53,8 +50,7 @@ final class User: Marshaling, Unmarshaling {
     func marshaled() -> JSONObject {
         var json = JSONObject()
         json["id"] = id
-        json["iCloudId"] = cloudKitId
-        json["deviceId"] = deviceId
+        json[Keys.iCloudIdKey] = cloudKitId
         json["creationDate"] = creationDate.iso8601String
         json["firstName"] = firstName
         json["purchases"] = purchases.marshaled()

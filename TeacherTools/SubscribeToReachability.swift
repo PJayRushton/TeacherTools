@@ -8,6 +8,10 @@
 
 import Foundation
 
+struct ReachablilityChanged: Event {
+    var reachable: Bool
+}
+
 struct SubscribeToReachability: Command {
     
     func execute(state: AppState, core: Core<AppState>) {

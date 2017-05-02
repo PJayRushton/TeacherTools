@@ -16,10 +16,15 @@ struct CreateGroup: Command {
         networkAccess.addObject(at: group.ref, parameters: group.marshaled()) { result in
             switch result {
             case .success:
-                if core.state.groups.count == 1 {
-                    core.fire(command: SubscribeToGroups())
-                }
                 core.fire(event: Selected<Group>(self.group))
+                
+                guard let currentUser = state.currentUser else { return }
+                let fakeStudentRef = self.networkAccess.studentsRef(userId: currentUser.id).child("fake")
+                self.networkAccess.updateObject(at: fakeStudentRef, parameters: ["fake": true], completion: { result in
+                    if case .success = result, !state.hasSubscribedToStudents {
+                        core.fire(command: SubscribeToStudents())
+                    }
+                })
             case let .failure(error):
                 core.fire(event: ErrorEvent(error: error, message: nil))
             }

@@ -47,7 +47,7 @@ struct ErrorHUDMiddleware: Middleware {
     func process(event: Event, state: AppState) {
         switch event {
         case let event as ErrorEvent:
-            print("ERROR:\(event.error) WITH MESSAGE: \(event.message)")
+            print("ERROR:\(String(describing: event.error)) WITH MESSAGE: \(String(describing: event.message))")
             
             guard let message = event.message else { break }
             silva(title: message, barColor: state.theme.tintColor)

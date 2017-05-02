@@ -8,7 +8,7 @@
 
 import Foundation
 
-let fakeUser = User(id: "-Kud72jKowj03jA3", cloudKitId: "_And;lkfjieb894j9gry", deviceId: "SBACO-LKDJF-OKEJF-78DO8", creationDate: Date(), firstName: "Lord Farquad")
+let fakeUser = User(id: "-Kud72jKowj03jA3", cloudKitId: "_And;lkfjieb894j9gry", creationDate: Date(), firstName: "Lord Farquad")
 
 let group1Id = "09oi;q4oraeh"
 let group2Id = "jsqar8efd8"
