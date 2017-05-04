@@ -21,5 +21,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         return true
     }
+    
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        if core.state.currentUser == nil {
+            core.fire(command: GetICloudUser())
+        }
+        if let mainVC = application.topViewController() as? MainViewController {
+            mainVC.loadingImageVC.appleImageView.rotate()
+        }
+    }
 
 }

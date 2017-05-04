@@ -22,7 +22,7 @@ class MainViewController: UIViewController {
     var core = App.core
     
     let tabBarViewController = CustomTabBarController.initializeFromStoryboard()
-    fileprivate let loadingImageVC = LoadingImageViewController.initializeFromStoryboard()
+    let loadingImageVC = LoadingImageViewController.initializeFromStoryboard()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,9 +31,6 @@ class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         core.add(subscriber: self)
-//        core.fire(command: LoadFakeUser())
-//        core.fire(command: LoadFakeGroups())
-//        core.fire(command: LoadFakeStudents())
     }
     
     override func viewDidAppear(_ animated: Bool) {

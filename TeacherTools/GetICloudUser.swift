@@ -21,8 +21,19 @@ struct GetICloudUser: Command {
             } else {
                 core.fire(event: ErrorEvent(error: error, message: nil))
                 core.fire(event: ICloudUserIdentified(icloudId: nil))
+                self.postErrorNotification()
             }
         }
     }
     
+    func postErrorNotification() {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) { 
+            NotificationCenter.default.post(name: NSNotification.Name.iCloudError, object: nil)
+        }
+    }
+    
+}
+
+extension NSNotification.Name {
+    static let iCloudError = NSNotification.Name(rawValue: "iCloudError")
 }
