@@ -11,6 +11,7 @@ import Whisper
 
 class GroupListViewController: UIViewController, AutoStoryboardInitializable {
 
+    @IBOutlet weak var xButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     
     var core = App.core
@@ -36,6 +37,10 @@ class GroupListViewController: UIViewController, AutoStoryboardInitializable {
         arrowCompletion?(false)
     }
 
+    @IBAction func xButtonPressed(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
+    
 }
 
 
@@ -44,9 +49,16 @@ class GroupListViewController: UIViewController, AutoStoryboardInitializable {
 extension GroupListViewController: Subscriber {
     
     func update(with state: AppState) {
+        updateUI(with: state.theme)
         tableView.reloadData()
-        preferredContentSize = CGSize(width: 0, height: tableView.contentSize.height)
-        tableView.backgroundView = state.theme.mainImage.imageView
+    }
+    
+    func updateUI(with theme: Theme) {
+        tableView.backgroundView = theme.mainImage.imageView
+        let borderImage = theme.borderImage.image.stretchableImage(withLeftCapWidth: 0, topCapHeight: 0)
+        navigationController?.navigationBar.setBackgroundImage(borderImage, for: .default)
+        xButton.tintColor = theme.textColor
+        xButton.setTitleTextAttributes([NSFontAttributeName: theme.font(withSize: 20)], for: .normal)
     }
 
 }

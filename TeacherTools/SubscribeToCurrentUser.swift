@@ -24,7 +24,6 @@ struct SubscribeToCurrentUser: Command {
     
     func execute(state: AppState, core: Core<AppState>) {
         let ref = networkAccess.usersRef.child(id)
-        networkAccess.unsubscribe(from: ref)
         
         let dispatchGroup = DispatchGroup()
         

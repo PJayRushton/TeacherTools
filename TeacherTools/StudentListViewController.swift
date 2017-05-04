@@ -135,7 +135,7 @@ extension StudentListViewController {
         
         let nib = UINib(nibName: String(describing: StudentTableViewCell.self), bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: StudentTableViewCell.reuseIdentifier)
-        tableView.rowHeight = 50.0
+        tableView.rowHeight = 45.0
         resetAllCells()
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardDidShow), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
@@ -416,11 +416,7 @@ extension StudentListViewController: SegueHandling {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segueIdentifier(for: segue) {
         case .showGroupSwitcher:
-            let groupSwitcher = segue.destination as! GroupListViewController
-            groupSwitcher.popoverPresentationController?.delegate = self
-            groupSwitcher.popoverPresentationController?.sourceView = navigationController?.navigationBar
-            let sourceRect = navBarButton.frame.insetBy(dx: -8.0, dy: -8.0)
-            groupSwitcher.popoverPresentationController?.sourceRect = sourceRect
+            guard let groupSwitcherNav = segue.destination as? UINavigationController, let groupSwitcher = groupSwitcherNav.viewControllers.first as? GroupListViewController else { return }
             groupSwitcher.proCompletion = {
                 let proViewController = ProViewController.initializeFromStoryboard().embededInNavigationController
                 self.present(proViewController, animated: true, completion: nil)

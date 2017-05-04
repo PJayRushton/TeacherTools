@@ -13,7 +13,7 @@ struct GetCurrentUser: Command {
     var iCloudId: String
     
     func execute(state: AppState, core: Core<AppState>) {
-        let query = networkAccess.usersRef.queryOrdered(byChild: iCloudId).queryEqual(toValue: iCloudId)
+        let query = networkAccess.usersRef.queryOrdered(byChild: Keys.iCloudIdKey).queryEqual(toValue: iCloudId)
         networkAccess.getData(withQuery: query) { result in
             let userResult = result.map { (json: JSONObject) -> User in
                 guard let key = json.keys.first else { throw MarshalError.nullValue(key: "User Search Failed")}

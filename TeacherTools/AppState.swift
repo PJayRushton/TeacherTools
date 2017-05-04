@@ -64,10 +64,17 @@ struct AppState: State {
             let allGroups = event.payload
             groups = allGroups
             groupsAreLoaded = true
-            guard let group = selectedGroup, let index = allGroups.index(of: group) else { break }
-            let updatedSelectedGroup = allGroups[index]
-            selectedGroup = updatedSelectedGroup
-            currentStudents = currentStudents(of: updatedSelectedGroup, absents: absentStudents)
+            
+            if let group = selectedGroup, let index = allGroups.index(of: group) {
+                let newSelectedGroup = allGroups[index]
+                selectedGroup = newSelectedGroup
+                currentStudents = currentStudents(of: newSelectedGroup, absents: absentStudents)
+            } else if !event.payload.isEmpty {
+                selectedGroup = event.payload.first
+                currentStudents = currentStudents(of: selectedGroup!, absents: absentStudents)
+            } else {
+                selectedGroup = nil
+            }
         case let event as Selected<Group>:
             selectedGroup = event.item
             
