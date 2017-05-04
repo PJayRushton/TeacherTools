@@ -19,7 +19,7 @@ struct CreateGroup: Command {
                 core.fire(event: Selected<Group>(self.group))
                 
                 guard let currentUser = state.currentUser else { return }
-                let fakeStudentRef = self.networkAccess.studentsRef(userId: currentUser.id).child("fake")
+                let fakeStudentRef = self.networkAccess.studentsRef(userId: currentUser.id)
                 self.networkAccess.updateObject(at: fakeStudentRef, parameters: ["fake": true], completion: { result in
                     if case .success = result, !state.hasSubscribedToStudents {
                         core.fire(command: SubscribeToStudents())

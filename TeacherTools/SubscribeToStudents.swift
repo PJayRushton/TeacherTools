@@ -24,6 +24,7 @@ struct SubscribeToStudents: Command {
             case let .success(students):
                 core.fire(event: Updated<[Student]>(students))
             case let .failure(error):
+                core.fire(event: Updated<[Student]>([]))
                 core.fire(event: ErrorEvent(error: error, message: nil))
             }
         }
