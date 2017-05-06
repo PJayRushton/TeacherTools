@@ -11,21 +11,34 @@ import UIKit
 class StudentRandomizerViewController: UIViewController, AutoStoryboardInitializable {
     
     @IBOutlet weak var backgroundImageView: UIImageView!
-    @IBOutlet weak var shuffleBarButton: UIBarButtonItem!
     @IBOutlet weak var instructionLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var sizeBarButton: UIBarButtonItem!
 
     fileprivate let dataSource = RandomizerDataSource()
     fileprivate let margin: CGFloat = 16.0
+    fileprivate let maxHeight: CGFloat = 60
     fileprivate var core = App.core
     fileprivate var layout = UICollectionViewFlowLayout()
     
+    var rowHeight: CGFloat = 44.0 {
+        didSet {
+            guard rowHeight != oldValue else { return }
+            collectionView.collectionViewLayout.invalidateLayout()
+        }
+    }
+    
+    var headerHeight: CGFloat = 50.0 {
+        didSet {
+            guard headerHeight != oldValue else { return }
+            collectionView.collectionViewLayout.invalidateLayout()
+        }
+    }
+    
     var shouldHideInstructions: Bool {
         get {
-            return UserDefaults.standard.bool(forKey: "shouldHideInstructions")
+            return UserDefaults.standard.bool(forKey: #function)
         } set {
-            UserDefaults.standard.set(newValue, forKey: "shouldHideInstructions")
+            UserDefaults.standard.set(newValue, forKey: #function)
         }
     }
     
@@ -59,7 +72,6 @@ extension StudentRandomizerViewController: Subscriber {
     func update(with state: AppState) {
         title = state.selectedGroup?.name
         guard let selectedGroup = state.selectedGroup else { return }
-        sizeBarButton.title = "\(selectedGroup.teamSize)"
         updateCollectionView(group: selectedGroup)
         updateUI(with: state.theme)
     }
@@ -88,9 +100,11 @@ extension StudentRandomizerViewController {
         let columns = min(teamSize, 4)
         let totalMarginSpace: CGFloat = margin * (columns + 1)
         let screenWidthMinusMargin: CGFloat = view.frame.size.width - totalMarginSpace
-        layout.itemSize = CGSize(width: screenWidthMinusMargin / columns, height: 44)
+        rowHeight = maxHeight * CGFloat(group.displayDensity)
+        headerHeight = max(rowHeight * 1.1, 26)
+        layout.itemSize = CGSize(width: screenWidthMinusMargin / columns, height: rowHeight)
         layout.sectionHeadersPinToVisibleBounds = true
-        layout.headerReferenceSize = CGSize(width: collectionView.bounds.width, height: 50)
+        layout.headerReferenceSize = CGSize(width: collectionView.bounds.width, height: headerHeight)
         collectionView.reloadData()
     }
     

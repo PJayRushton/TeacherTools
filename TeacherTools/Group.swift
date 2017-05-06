@@ -12,10 +12,11 @@ import Firebase
 struct Group: Identifiable {
     
     var id: String
-    var name: String
     var creationDate: Date
-    var teamSize = 2
+    var displayDensity: Float = 0.6
+    var name: String
     var studentIds: [String]
+    var teamSize = 2
     
     var ref: FIRDatabaseReference {
         let currentUser = App.core.state.currentUser!
@@ -26,10 +27,11 @@ struct Group: Identifiable {
         }
     }
     
-    init(id: String = "", name: String, creationDate: Date = Date(), groupSize: Int = 2, studentIds: [String] = [String](), teamSize: Int = 2) {
+    init(id: String = "", name: String, creationDate: Date = Date(), displayDensity: Float = 0.6, groupSize: Int = 2, studentIds: [String] = [String](), teamSize: Int = 2) {
         self.id = id
         self.name = name
         self.creationDate = creationDate
+        self.displayDensity = displayDensity
         self.studentIds = studentIds
         self.teamSize = teamSize
     }
@@ -42,6 +44,8 @@ extension Group: Unmarshaling, Marshaling {
         id = try object.value(for: "id")
         name = try object.value(for: "name")
         creationDate = try object.value(for: "creationDate")
+        let density: Float? = try? object.value(for: "displayDensity")
+        displayDensity = density ?? 0.6
         let size: Int? = try? object.value(for: "teamSize")
         teamSize = size ?? 2
 
@@ -58,6 +62,7 @@ extension Group: Unmarshaling, Marshaling {
         json["id"] = id
         json["name"] = name
         json["creationDate"] = creationDate.iso8601String
+        json["displayDensity"] = displayDensity
         json["studentIds"] = studentIds.marshaled()
         json["teamSize"] = teamSize
         

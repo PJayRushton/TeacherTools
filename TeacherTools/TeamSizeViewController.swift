@@ -13,7 +13,9 @@ class TeamSizeViewController: UIViewController {
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var topLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-
+    @IBOutlet weak var footerLabel: UILabel!
+    @IBOutlet weak var densitySlider: UISlider!
+    
     var core = App.core
     var maxSize = 4
     var currentSize = 2
@@ -31,8 +33,29 @@ class TeamSizeViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         core.remove(subscriber: self)
+        saveUpdatedGroup()
+    }
+    
+    @IBAction func sliderChanged(_ sender: UISlider) {
+        updateGroup(with: sender.value)
     }
 
+}
+
+extension TeamSizeViewController {
+    
+    fileprivate func updateGroup(with density: Float) {
+        guard var currentGroup = core.state.selectedGroup else { return }
+        currentGroup.displayDensity = density
+        core.fire(event: Selected<Group>(currentGroup))
+    }
+    
+    
+    fileprivate func saveUpdatedGroup() {
+        guard let currentGroup = core.state.selectedGroup else { return }
+        core.fire(command: UpdateObject(object: currentGroup))
+    }
+    
 }
 
 
@@ -47,12 +70,21 @@ extension TeamSizeViewController: Subscriber {
         tableView.reloadData()
         preferredContentSize = CGSize(width: 200, height: tableView.contentSize.height + 44)
         updateUI(with: state.theme)
+        
+        if let stateDensity = state.selectedGroup?.displayDensity, densitySlider.value != stateDensity {
+            densitySlider.setValue(stateDensity, animated: true)
+        }
     }
     
     func updateUI(with theme: Theme) {
         backgroundImageView.image = theme.mainImage.image
         topLabel.font = theme.font(withSize: topLabel.font.pointSize)
         topLabel.textColor = theme.textColor
+        footerLabel.font = theme.font(withSize: topLabel.font.pointSize)
+        footerLabel.textColor = theme.textColor
+        densitySlider.minimumTrackTintColor = theme.tintColor
+        densitySlider.maximumTrackTintColor = theme.tintColor
+        densitySlider.thumbTintColor = theme.textColor
     }
 
 }

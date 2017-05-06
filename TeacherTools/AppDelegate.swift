@@ -18,7 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FIRApp.configure()
         core.fire(command: GetICloudUser())
-
+        
+        if !Platform.isSimulator {
+//            FIRDatabase.database().persistenceEnabled = true
+        }
+        FIRDatabase.database().persistenceEnabled = true
+        
         return true
     }
     

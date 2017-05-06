@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="P5o-AB-U7E">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="P5o-AB-U7E">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,34 +19,64 @@
                         <viewControllerLayoutGuide type="bottom" id="Rvi-7k-YX1"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="KKi-zu-rgP">
-                        <rect key="frame" x="0.0" y="0.0" width="150" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="greenChalkboard" translatesAutoresizingMaskIntoConstraints="NO" id="MeL-Zl-xb1">
-                                <rect key="frame" x="0.0" y="20" width="150" height="280"/>
+                                <rect key="frame" x="0.0" y="20" width="200" height="280"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="cqN-yu-haG">
-                                <rect key="frame" x="0.0" y="36" width="150" height="264"/>
+                                <rect key="frame" x="0.0" y="36" width="200" height="264"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Groups of:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a9M-tA-pZ8">
-                                        <rect key="frame" x="0.0" y="0.0" width="150" height="23"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="23"/>
                                         <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8Lk-Ec-d57">
-                                        <rect key="frame" x="0.0" y="23" width="150" height="241"/>
+                                        <rect key="frame" x="0.0" y="23" width="200" height="241"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <view key="tableFooterView" contentMode="scaleToFill" id="C2R-LP-h7w" userLabel="Footer View">
+                                            <rect key="frame" x="0.0" y="72" width="200" height="94"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4NY-eG-UTB">
+                                                    <rect key="frame" x="8" y="8" width="184" height="78"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="Display Density" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xqe-N5-zqQ">
+                                                            <rect key="frame" x="0.0" y="0.0" width="184" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.59999999999999998" minValue="0.20000000000000001" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="KuX-vB-PIe">
+                                                            <rect key="frame" x="-2" y="20.5" width="188" height="58.5"/>
+                                                            <connections>
+                                                                <action selector="sliderChanged:" destination="0JV-dn-ysP" eventType="valueChanged" id="SxT-ec-Gaq"/>
+                                                            </connections>
+                                                        </slider>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="4NY-eG-UTB" firstAttribute="top" secondItem="C2R-LP-h7w" secondAttribute="topMargin" id="2x0-ue-fyF"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="4NY-eG-UTB" secondAttribute="trailing" id="Gnr-DZ-3Ls"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="4NY-eG-UTB" secondAttribute="bottom" id="Jxy-Uz-M1d"/>
+                                                <constraint firstItem="4NY-eG-UTB" firstAttribute="leading" secondItem="C2R-LP-h7w" secondAttribute="leadingMargin" id="MFX-Hh-JSC"/>
+                                            </constraints>
+                                        </view>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="NumberCell" textLabel="3NZ-PL-VdF" style="IBUITableViewCellStyleDefault" id="aBS-5R-skR">
-                                                <rect key="frame" x="0.0" y="28" width="150" height="44"/>
+                                                <rect key="frame" x="0.0" y="28" width="200" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aBS-5R-skR" id="tHg-U9-D2W">
-                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="43"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="200" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3NZ-PL-VdF">
-                                                            <rect key="frame" x="15" y="0.0" width="120" height="43"/>
+                                                            <rect key="frame" x="15" y="0.0" width="170" height="43.5"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="30"/>
@@ -79,9 +109,11 @@
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="150" height="300"/>
+                    <size key="freeformSize" width="200" height="300"/>
                     <connections>
                         <outlet property="backgroundImageView" destination="MeL-Zl-xb1" id="vaT-ns-Vb6"/>
+                        <outlet property="densitySlider" destination="KuX-vB-PIe" id="ksk-GJ-URe"/>
+                        <outlet property="footerLabel" destination="xqe-N5-zqQ" id="iCp-qm-9O8"/>
                         <outlet property="tableView" destination="8Lk-Ec-d57" id="2BE-La-aLa"/>
                         <outlet property="topLabel" destination="a9M-tA-pZ8" id="cWf-iB-p7f"/>
                     </connections>
@@ -122,13 +154,13 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="ufu-iw-LUJ">
                                             <size key="itemSize" width="126" height="50"/>
-                                            <size key="headerReferenceSize" width="50" height="50"/>
+                                            <size key="headerReferenceSize" width="50" height="24"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RandomizerCollectionViewCell" id="xwX-04-uJC" customClass="RandomizerCollectionViewCell" customModule="TeacherTools" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="50" width="126" height="50"/>
+                                                <rect key="frame" x="0.0" y="24" width="126" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                     <rect key="frame" x="0.0" y="0.0" width="126" height="50"/>
@@ -137,19 +169,19 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uja-PX-Z6g">
                                                             <rect key="frame" x="0.0" y="0.0" width="126" height="50"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Student name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="V7E-5F-ik0">
-                                                                    <rect key="frame" x="8" y="8" width="110" height="34"/>
-                                                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Student name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="V7E-5F-ik0">
+                                                                    <rect key="frame" x="4" y="0.0" width="118" height="50"/>
+                                                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="32"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <constraints>
-                                                                <constraint firstItem="V7E-5F-ik0" firstAttribute="top" secondItem="uja-PX-Z6g" secondAttribute="topMargin" id="bNZ-Uy-mVb"/>
-                                                                <constraint firstAttribute="bottomMargin" secondItem="V7E-5F-ik0" secondAttribute="bottom" id="cPF-uz-O5L"/>
-                                                                <constraint firstItem="V7E-5F-ik0" firstAttribute="leading" secondItem="uja-PX-Z6g" secondAttribute="leadingMargin" id="mjR-gS-ixo"/>
-                                                                <constraint firstAttribute="trailingMargin" secondItem="V7E-5F-ik0" secondAttribute="trailing" id="udA-NX-uSW"/>
+                                                                <constraint firstItem="V7E-5F-ik0" firstAttribute="top" secondItem="uja-PX-Z6g" secondAttribute="top" id="bNZ-Uy-mVb"/>
+                                                                <constraint firstAttribute="bottom" secondItem="V7E-5F-ik0" secondAttribute="bottom" id="cPF-uz-O5L"/>
+                                                                <constraint firstItem="V7E-5F-ik0" firstAttribute="leading" secondItem="uja-PX-Z6g" secondAttribute="leading" constant="4" id="mjR-gS-ixo"/>
+                                                                <constraint firstAttribute="trailing" secondItem="V7E-5F-ik0" secondAttribute="trailing" constant="4" id="udA-NX-uSW"/>
                                                             </constraints>
                                                         </view>
                                                     </subviews>
@@ -167,24 +199,24 @@
                                             </collectionViewCell>
                                         </cells>
                                         <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RandomizerHeaderView" id="aUp-aN-oGs" customClass="RandomizerHeaderView" customModule="TeacherTools" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="24"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Team 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jq3-F9-hCu">
-                                                    <rect key="frame" x="0.0" y="20" width="375" height="24"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Team 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="Jq3-F9-hCu">
+                                                    <rect key="frame" x="0.0" y="8" width="375" height="12"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="24" id="Ru4-7g-vMO"/>
+                                                        <constraint firstAttribute="height" constant="12" id="Ru4-7g-vMO"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="Jq3-F9-hCu" secondAttribute="trailing" id="2Qq-Ah-ewm"/>
-                                                <constraint firstItem="Jq3-F9-hCu" firstAttribute="top" secondItem="aUp-aN-oGs" secondAttribute="top" constant="20" id="G2F-iw-zoJ"/>
+                                                <constraint firstItem="Jq3-F9-hCu" firstAttribute="top" secondItem="aUp-aN-oGs" secondAttribute="top" constant="8" id="G2F-iw-zoJ"/>
                                                 <constraint firstItem="Jq3-F9-hCu" firstAttribute="leading" secondItem="aUp-aN-oGs" secondAttribute="leading" id="b0E-6d-3nG"/>
-                                                <constraint firstAttribute="bottom" secondItem="Jq3-F9-hCu" secondAttribute="bottom" constant="6" id="sCa-r0-R7y"/>
+                                                <constraint firstAttribute="bottom" secondItem="Jq3-F9-hCu" secondAttribute="bottom" constant="4" id="sCa-r0-R7y"/>
                                             </constraints>
                                             <connections>
                                                 <outlet property="textLabel" destination="Jq3-F9-hCu" id="llP-9S-YUV"/>
@@ -210,7 +242,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="if5-fd-HWm">
-                        <barButtonItem key="leftBarButtonItem" title="2" id="j4K-1q-XbY">
+                        <barButtonItem key="leftBarButtonItem" image="settings" id="j4K-1q-XbY">
                             <connections>
                                 <segue destination="0JV-dn-ysP" kind="popoverPresentation" identifier="presentTeamSizeSelection" popoverAnchorBarButtonItem="j4K-1q-XbY" id="QP4-eq-fXG">
                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
@@ -228,8 +260,6 @@
                         <outlet property="backgroundImageView" destination="Vny-R7-9AA" id="bLU-kh-BG0"/>
                         <outlet property="collectionView" destination="bg0-Aj-3B9" id="IMS-MS-ylV"/>
                         <outlet property="instructionLabel" destination="4bH-pg-JVm" id="w7Q-5c-Vzr"/>
-                        <outlet property="shuffleBarButton" destination="fGN-fs-Ngd" id="5s0-NT-Xby"/>
-                        <outlet property="sizeBarButton" destination="j4K-1q-XbY" id="X25-OC-QaD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UaE-bM-lPb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -239,6 +269,7 @@
     </scenes>
     <resources>
         <image name="greenChalkboard" width="595" height="335"/>
-        <image name="shuffle" width="20" height="18"/>
+        <image name="settings" width="30" height="30"/>
+        <image name="shuffle" width="22" height="19"/>
     </resources>
 </document>
