@@ -23,7 +23,6 @@ open class IAPHelper: NSObject  {
     public init(productIds: Set<ProductIdentifier>) {
         productIdentifiers = productIds
         for productIdentifier in productIds {
-            
             if let user = core.state.currentUser, user.purchases.map( { $0.productId }).contains(productIdentifier) {
                 purchasedProductIdentifiers.insert(productIdentifier)
                 print("Previously purchased: \(productIdentifier)")
@@ -46,8 +45,8 @@ extension IAPHelper {
         productsRequestCompletionHandler = completionHandler
         
         productsRequest = SKProductsRequest(productIdentifiers: productIdentifiers)
-        productsRequest!.delegate = self
-        productsRequest!.start()
+        productsRequest?.delegate = self
+        productsRequest?.start()
     }
     
     public func buyProduct(_ product: SKProduct) {
@@ -77,7 +76,6 @@ extension IAPHelper: SKProductsRequestDelegate {
     
     public func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         let products = response.products
-        print("Loaded list of products...")
         productsRequestCompletionHandler?(true, products)
         clearRequestAndHandler()
         
@@ -87,6 +85,7 @@ extension IAPHelper: SKProductsRequestDelegate {
     }
     
     public func request(_ request: SKRequest, didFailWithError error: Error) {
+        AnalyticsHelper.logEvent(.productRequestFailure)
         productsRequestCompletionHandler?(false, nil)
         clearRequestAndHandler()
     }
@@ -104,7 +103,7 @@ extension IAPHelper: SKPaymentTransactionObserver {
     
     public func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         for transaction in transactions {
-            switch (transaction.transactionState) {
+            switch transaction.transactionState {
             case .purchased:
                 complete(transaction: transaction)
             case .restored:
@@ -121,6 +120,7 @@ extension IAPHelper: SKPaymentTransactionObserver {
     }
     
     public func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {
+        AnalyticsHelper.logEvent(.productRestoreFailiure)
         print("Restore **FAILED**\n\(queue)\n\(error)")
     }
     private func complete(transaction: SKPaymentTransaction) {
@@ -129,23 +129,23 @@ extension IAPHelper: SKPaymentTransactionObserver {
     }
     
     private func restore(transaction: SKPaymentTransaction) {
-        guard let productIdentifier = transaction.original?.payment.productIdentifier else { return }
+        AnalyticsHelper.logEvent(.proRestored)
+        let productIdentifier = transaction.original?.payment.productIdentifier ?? transaction.payment.productIdentifier
         deliverPurchaseNotification(for: productIdentifier)
         SKPaymentQueue.default().finishTransaction(transaction)
     }
     
     private func fail(transaction: SKPaymentTransaction) {
+        AnalyticsHelper.logEvent(.productPurchaseFailure)
         if let transactionError = transaction.error as NSError? {
             if transactionError.code != SKError.paymentCancelled.rawValue {
                 print("Transaction Error: \(String(describing: transaction.error?.localizedDescription))")
             }
         }
-        
         SKPaymentQueue.default().finishTransaction(transaction)
     }
     
-    private func deliverPurchaseNotification(for identifier: String?) {
-        guard let identifier = identifier else { return }
+    private func deliverPurchaseNotification(for identifier: String) {
         purchasedProductIdentifiers.insert(identifier)
         core.fire(command: MarkUserPro())
     }

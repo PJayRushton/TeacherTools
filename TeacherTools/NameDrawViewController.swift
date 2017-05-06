@@ -185,6 +185,7 @@ extension NameDrawViewController {
         tableView.reloadData()
         updateCountLabel()
         topLabel.text = emptyStudentsString
+        AnalyticsHelper.logEvent(.nameDrawUsed)
     }
     
     fileprivate func allDrawnString() -> String {

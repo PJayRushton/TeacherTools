@@ -83,10 +83,12 @@ extension ThemeSelectionViewController: UICollectionViewDelegate {
         let selectedTheme = dataSource.themes[indexPath.item]
         if selectedTheme.isLocked {
             showProVC()
+            AnalyticsHelper.logEvent(.themeChangeAttempt)
         } else if selectedTheme.id != core.state.currentUser?.themeID, let currentUser = core.state.currentUser {
             currentUser.themeID = selectedTheme.id
             core.fire(command: UpdateUser(user: currentUser))
             collectionView.reloadData()
+            AnalyticsHelper.logEvent(.themeChanged)
         }
     }
     

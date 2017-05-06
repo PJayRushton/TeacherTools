@@ -20,6 +20,7 @@ class AddStudentsViewController: UIViewController, AutoStoryboardInitializable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        AnalyticsHelper.logEvent(.classPasteViewed)
         setUp()
     }
     
@@ -51,6 +52,7 @@ class AddStudentsViewController: UIViewController, AutoStoryboardInitializable {
         } else {
             showPasteConfirmation()
         }
+        AnalyticsHelper.logEvent(.classPasteUsed)
     }
 
     @IBAction func viewTapped(_ sender: Any) {

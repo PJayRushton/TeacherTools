@@ -20,9 +20,13 @@ class TeamSizeViewController: UIViewController {
     var maxSize = 4
     var currentSize = 2
     let cellId = "NumberCell"
+    
+    fileprivate var originalDensity: Float = 0.6
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let selectedGroup = core.state.selectedGroup else { return }
+        originalDensity = selectedGroup.displayDensity
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -38,6 +42,7 @@ class TeamSizeViewController: UIViewController {
     
     @IBAction func sliderChanged(_ sender: UISlider) {
         updateGroup(with: sender.value)
+        
     }
 
 }
@@ -52,8 +57,9 @@ extension TeamSizeViewController {
     
     
     fileprivate func saveUpdatedGroup() {
-        guard let currentGroup = core.state.selectedGroup else { return }
+        guard let currentGroup = core.state.selectedGroup, currentGroup.displayDensity != originalDensity else { return }
         core.fire(command: UpdateObject(object: currentGroup))
+        AnalyticsHelper.logEvent(.teamDensityAltered)
     }
     
 }

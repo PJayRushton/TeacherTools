@@ -17,6 +17,7 @@ class ProViewController: UIViewController, AutoStoryboardInitializable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        AnalyticsHelper.logEvent(.proLaunched)
         upgradeBorderView.layer.cornerRadius = 5
         upgradeBorderView.backgroundColor = .appleBlue
     }
@@ -36,10 +37,12 @@ class ProViewController: UIViewController, AutoStoryboardInitializable {
     }
 
     @IBAction func upgradeViewPressed(_ sender: UITapGestureRecognizer) {
+        AnalyticsHelper.logEvent(.proPressed)
         core.fire(command: GoPro())
     }
 
     @IBAction func restoreButtonPressed(_ sender: UIButton) {
+        AnalyticsHelper.logEvent(.restorePressed)
         sharedStore.restorePurchases()
     }
     

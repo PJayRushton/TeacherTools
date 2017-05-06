@@ -23,7 +23,7 @@ final class User: Marshaling, Unmarshaling {
         return App.core.state.allThemes.filter { $0.id == themeID }.first
     }
     var isPro: Bool {
-        return purchases.map { $0.productId }.contains(TTProducts.proUpgrade)
+        return purchases.map { $0.productId }.contains(TTProducts.proUpgrade) || UserDefaults.standard.userIsPro
     }
     
     init(id: String = "", cloudKitId: String? = nil, creationDate: Date = Date(), firstName: String? = nil, themeID: String = "-KYnZO6lWYBECsy4U3fN", lastFirst: Bool = false, purchases: Set<TTPurchase> = []) {
