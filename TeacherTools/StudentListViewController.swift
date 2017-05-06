@@ -304,6 +304,9 @@ extension StudentListViewController: UITableViewDataSource, UITableViewDelegate 
 
     func goPro() {
         let proVC = ProViewController.initializeFromStoryboard().embededInNavigationController
+        proVC.modalPresentationStyle = .popover
+        proVC.popoverPresentationController?.sourceView = navBarButton
+        proVC.popoverPresentationController?.sourceRect = navBarButton.bounds
         present(proVC, animated: true, completion: nil)
     }
     

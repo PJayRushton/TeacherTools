@@ -158,6 +158,10 @@ extension GroupSettingsViewController {
     
     func showProVC() {
         let proVC = ProViewController.initializeFromStoryboard().embededInNavigationController
+        proVC.modalPresentationStyle = .popover
+        let proIndexPath = IndexPath(row: TableSection.app.rows.index(of: .pro)!, section: TableSection.app.rawValue)
+        proVC.popoverPresentationController?.sourceRect = tableView.cellForRow(at: proIndexPath)!.contentView.frame
+        proVC.popoverPresentationController?.sourceView = tableView.cellForRow(at: proIndexPath)?.contentView
         present(proVC, animated: true, completion: nil)
     }
     

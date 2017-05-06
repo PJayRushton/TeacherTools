@@ -10,6 +10,7 @@ import UIKit
 
 class ThemeSelectionViewController: UIViewController, AutoStoryboardInitializable {
 
+    @IBOutlet weak var proButton: UIBarButtonItem!
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -48,6 +49,7 @@ extension ThemeSelectionViewController: Subscriber {
             return first.isDefault
         })
         collectionView.reloadData()
+        navigationItem.rightBarButtonItem = state.currentUser != nil && state.currentUser!.isPro ? nil : proButton
         updateUI(with: state.theme)
     }
     

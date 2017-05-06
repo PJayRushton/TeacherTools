@@ -62,6 +62,7 @@
                     <connections>
                         <outlet property="backgroundImageView" destination="9up-PZ-G4N" id="gVD-xx-0Ap"/>
                         <outlet property="collectionView" destination="bPT-Il-uQs" id="s6b-cT-sf3"/>
+                        <outlet property="proButton" destination="1G4-w5-fyT" id="Ld9-D2-kZj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7KA-eQ-CHK" userLabel="First Responder" sceneMemberID="firstResponder"/>
