@@ -14,6 +14,7 @@ class GroupSettingsViewController: UITableViewController, AutoStoryboardInitiali
     @IBOutlet weak var groupNameTextField: UITextField!
     @IBOutlet weak var lastNameLabel: UILabel!
     @IBOutlet weak var lastNameSwitch: UISwitch!
+    @IBOutlet weak var exportBarButton: UIBarButtonItem!
     @IBOutlet weak var exportImageView: UIImageView!
     @IBOutlet weak var exportLabel: UILabel!
     @IBOutlet weak var deleteLabel: UILabel!
@@ -48,6 +49,10 @@ class GroupSettingsViewController: UITableViewController, AutoStoryboardInitiali
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         core.remove(subscriber: self)
+    }
+    
+    @IBAction func exportButtonPressed(_ sender: UIBarButtonItem) {
+        showExportShareSheet()
     }
     
     @IBAction func groupNameTextFieldChanged(_ sender: UITextField) {
@@ -96,6 +101,7 @@ extension GroupSettingsViewController: Subscriber {
         lastNameSwitch.onTintColor = theme.tintColor
         groupNameTextField.textColor = theme.textColor
         groupNameTextField.font = theme.font(withSize: 19)
+        exportBarButton.tintColor = theme.tintColor
         exportImageView.tintColor = theme.textColor
         
         for label in [groupNameLabel, lastNameLabel, exportLabel, deleteLabel, themeLabel, themeNameLabel, rateLabel, shareLabel, upgradeLabel] {
@@ -143,6 +149,10 @@ extension GroupSettingsViewController {
         }
         let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
         activityVC.excludedActivityTypes = [UIActivityType.airDrop, .addToReadingList, .assignToContact, .openInIBooks, .postToTencentWeibo, .postToVimeo, .print, .saveToCameraRoll, .postToWeibo, .postToFlickr]
+        activityVC.modalPresentationStyle = .popover
+        let shareIndexPath = IndexPath(row: TableSection.app.rows.index(of: .share)!, section: TableSection.app.rawValue)
+        activityVC.popoverPresentationController?.sourceRect = tableView.cellForRow(at: shareIndexPath)!.contentView.frame
+        activityVC.popoverPresentationController?.sourceView = tableView.cellForRow(at: shareIndexPath)?.contentView
         present(activityVC, animated: true, completion: nil)
     }
     
@@ -241,11 +251,13 @@ extension GroupSettingsViewController {
     }
     
     fileprivate func showExportShareSheet() {
-        let textToShare = Exporter().exportStudentList(state: core.state)
+        let textToShare = Exporter.exportStudentList(state: core.state)
         let objectsToShare: [Any] = [textToShare]
         
         let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
         activityVC.excludedActivityTypes = [UIActivityType.airDrop, .addToReadingList, .assignToContact, .openInIBooks, .postToTencentWeibo, .postToVimeo, .print, .saveToCameraRoll, .postToWeibo, .postToFlickr]
+        activityVC.modalPresentationStyle = .popover
+        activityVC.popoverPresentationController?.barButtonItem = exportBarButton
         present(activityVC, animated: true, completion: nil)
     }
     
@@ -323,7 +335,7 @@ extension GroupSettingsViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44
+        return Platform.isPad || UIDevice.current.type.isPlusSize ? 60 : 44
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

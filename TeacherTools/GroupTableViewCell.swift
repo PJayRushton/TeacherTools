@@ -38,11 +38,9 @@ class GroupTableViewCell: UITableViewCell, AutoReuseIdentifiable {
     }
     
     func update(with theme: Theme) {
-        var size = titleLabel.font.pointSize
-        titleLabel.font = theme.font(withSize: size)
+        titleLabel.font = theme.font(withSize: 24)
         titleLabel.textColor = theme.textColor
-        size = subtitleLabel.font.pointSize
-        subtitleLabel.font = theme.font(withSize: size)
+        subtitleLabel.font = theme.font(withSize: 15)
         subtitleLabel.textColor = theme.textColor
     }
     

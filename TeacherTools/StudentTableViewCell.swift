@@ -35,10 +35,11 @@ class StudentTableViewCell: UITableViewCell, AutoReuseIdentifiable {
     }
     
     fileprivate func update(with theme: Theme) {
-        saveButton.tintColor = theme.tintColor
+        saveButton.backgroundColor = theme.tintColor
+        saveButton.setTitleColor(.white, for: .normal)
         saveButton.titleLabel?.font = theme.font(withSize: 22)
         textField.textColor = theme.textColor
-        textField.font = theme.font(withSize: textField.font!.pointSize)
+        textField.font = theme.font(withSize: 22)
     }
 
     @IBAction func saveButtonPressed(_ sender: UIButton) {
@@ -71,7 +72,6 @@ extension StudentTableViewCell {
 extension StudentTableViewCell: UITextFieldDelegate {
     
     func toggleSaveButton(show: Bool) {
-//        self.saveButton.isHidden = !show
         UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
             self.saveButton.isHidden = !show
         }, completion: nil)

@@ -74,7 +74,7 @@ extension TeamSizeViewController: Subscriber {
         currentSize = selectedGroup.teamSize
         maxSize = selectedGroup.studentIds.count / 2
         tableView.reloadData()
-        preferredContentSize = CGSize(width: 200, height: tableView.contentSize.height + 44)
+        preferredContentSize = CGSize(width: 250, height: tableView.contentSize.height + 44)
         updateUI(with: state.theme)
         
         if let stateDensity = state.selectedGroup?.displayDensity, densitySlider.value != stateDensity {
@@ -84,9 +84,9 @@ extension TeamSizeViewController: Subscriber {
     
     func updateUI(with theme: Theme) {
         backgroundImageView.image = theme.mainImage.image
-        topLabel.font = theme.font(withSize: topLabel.font.pointSize)
+        topLabel.font = theme.font(withSize: 18)
         topLabel.textColor = theme.textColor
-        footerLabel.font = theme.font(withSize: topLabel.font.pointSize)
+        footerLabel.font = theme.font(withSize: 18)
         footerLabel.textColor = theme.textColor
         densitySlider.minimumTrackTintColor = theme.tintColor
         densitySlider.maximumTrackTintColor = theme.tintColor
@@ -106,7 +106,7 @@ extension TeamSizeViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
         let sizeForRow = indexPath.row + 2
         cell.textLabel?.text = "\(sizeForRow)"
-        cell.textLabel?.font = core.state.theme.font(withSize: cell.textLabel?.font.pointSize ?? 30)
+        cell.textLabel?.font = core.state.theme.font(withSize: 30)
         let sizeIsCurrentlySelected = core.state.selectedGroup!.teamSize == sizeForRow
         cell.textLabel?.textColor = sizeIsCurrentlySelected ? core.state.theme.tintColor : core.state.theme.textColor
         

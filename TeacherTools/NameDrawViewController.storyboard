@@ -49,12 +49,24 @@
                                         <constraints>
                                             <constraint firstItem="PDH-gD-bEM" firstAttribute="top" secondItem="RKQ-cH-U7E" secondAttribute="top" constant="16" id="1Ir-o9-gQd"/>
                                             <constraint firstItem="PDH-gD-bEM" firstAttribute="leading" secondItem="RKQ-cH-U7E" secondAttribute="leading" constant="24" id="Dj1-pv-y2e"/>
+                                            <constraint firstAttribute="height" constant="150" id="HCF-rG-hQ4"/>
                                             <constraint firstAttribute="height" constant="100" id="OXz-VT-CQv"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="KV3-bK-ldn" secondAttribute="trailing" id="TNw-fQ-GBv"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="KV3-bK-ldn" secondAttribute="bottom" id="ZP3-uw-e7R"/>
                                             <constraint firstAttribute="trailing" secondItem="PDH-gD-bEM" secondAttribute="trailing" constant="24" id="aeo-7k-afA"/>
                                             <constraint firstAttribute="bottom" secondItem="PDH-gD-bEM" secondAttribute="bottom" constant="16" id="jio-R4-5zv"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="HCF-rG-hQ4"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <mask key="constraints">
+                                                <include reference="HCF-rG-hQ4"/>
+                                                <exclude reference="OXz-VT-CQv"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="3tz-To-YK4" appends="YES" id="Dsf-Ir-0jf"/>
                                         </connections>

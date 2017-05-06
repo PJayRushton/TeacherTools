@@ -106,6 +106,7 @@
 		A1BD1C891EB92FA10033D316 /* SubscribeToCurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BD1C881EB92FA10033D316 /* SubscribeToCurrentUser.swift */; };
 		A1BD1C8B1EBE018D0033D316 /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BD1C8A1EBE018D0033D316 /* Platform.swift */; };
 		A1BD1C8D1EBE49010033D316 /* AnalyticsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BD1C8C1EBE49010033D316 /* AnalyticsHelper.swift */; };
+		A1BD1C8F1EBE6FBB0033D316 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BD1C8E1EBE6FBB0033D316 /* Device.swift */; };
 		A1C0EEFE1E0BA29300D0A596 /* AudioHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C0EEFD1E0BA29300D0A596 /* AudioHelper.swift */; };
 		A1C0EF001E0D8E3C00D0A596 /* ThemesCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C0EEFF1E0D8E3C00D0A596 /* ThemesCollectionViewDataSource.swift */; };
 		A1C919D51DDAC96F00A7B477 /* DeleteStudent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C919D41DDAC96F00A7B477 /* DeleteStudent.swift */; };
@@ -188,7 +189,6 @@
 		A14160FA1DC68F9400C4F5BB /* SubscribeToStudents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscribeToStudents.swift; sourceTree = "<group>"; };
 		A14160FE1DC694BA00C4F5BB /* GroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
 		A141611E1DC69AEB00C4F5BB /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
-		A14161221DC6A55300C4F5BB /* GroupToolCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupToolCollectionViewCell.swift; sourceTree = "<group>"; };
 		A147CFA01DCA328100C9860F /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		A147CFA41DCA331800C9860F /* CustomTabBarController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CustomTabBarController.storyboard; sourceTree = "<group>"; };
 		A147CFA61DCA336D00C9860F /* CustomTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
@@ -241,6 +241,7 @@
 		A1BD1C881EB92FA10033D316 /* SubscribeToCurrentUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscribeToCurrentUser.swift; sourceTree = "<group>"; };
 		A1BD1C8A1EBE018D0033D316 /* Platform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
 		A1BD1C8C1EBE49010033D316 /* AnalyticsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsHelper.swift; sourceTree = "<group>"; };
+		A1BD1C8E1EBE6FBB0033D316 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		A1C0EEFD1E0BA29300D0A596 /* AudioHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioHelper.swift; sourceTree = "<group>"; };
 		A1C0EEFF1E0D8E3C00D0A596 /* ThemesCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemesCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		A1C919D41DDAC96F00A7B477 /* DeleteStudent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteStudent.swift; sourceTree = "<group>"; };
@@ -330,6 +331,7 @@
 				A1A168191DF242CE00C0B759 /* UIApplication+TopMostViewController.swift */,
 				A19DB8CE1DF095AB00D4C386 /* UIColorExtension.swift */,
 				A151FB511E18750E00FD63A1 /* UITextViewWithPlaceholder.swift */,
+				A1BD1C8E1EBE6FBB0033D316 /* Device.swift */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
@@ -419,7 +421,6 @@
 				A14160861DC669F100C4F5BB /* GroupListViewController.swift */,
 				A151FB451E12E13800FD63A1 /* GroupSettingsViewController.swift */,
 				A14160FE1DC694BA00C4F5BB /* GroupTableViewCell.swift */,
-				A14161221DC6A55300C4F5BB /* GroupToolCollectionViewCell.swift */,
 				A147CFBC1DCAB80600C9860F /* LoadingImageViewController.swift */,
 				A147CFBA1DCAB7C500C9860F /* MainViewController.swift */,
 				A147CFB01DCA4FA000C9860F /* NameDrawViewController.swift */,
@@ -699,6 +700,7 @@
 				A1C0EEFE1E0BA29300D0A596 /* AudioHelper.swift in Sources */,
 				A1C0EF001E0D8E3C00D0A596 /* ThemesCollectionViewDataSource.swift in Sources */,
 				A1BD1C891EB92FA10033D316 /* SubscribeToCurrentUser.swift in Sources */,
+				A1BD1C8F1EBE6FBB0033D316 /* Device.swift in Sources */,
 				A14160F91DC68C2300C4F5BB /* Result.swift in Sources */,
 				A1CC0AB91DC7A14800C0575F /* DeleteObject.swift in Sources */,
 				A14160D41DC6758700C4F5BB /* JSON.swift in Sources */,
@@ -867,6 +869,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.PJayRushton.Teacher-Resources";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -888,6 +891,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.PJayRushton.Teacher-Resources";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

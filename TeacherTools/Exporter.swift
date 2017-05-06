@@ -10,7 +10,7 @@ import Foundation
 
 struct Exporter {
     
-    func exportStudentList(state: AppState) -> String {
+    static func exportStudentList(state: AppState) -> String {
         let students = state.currentStudents
         let names = students.map { $0.displayedName }
         return names.joined(separator: "\n")

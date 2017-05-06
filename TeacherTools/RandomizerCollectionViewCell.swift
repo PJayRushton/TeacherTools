@@ -24,7 +24,7 @@ class RandomizerCollectionViewCell: UICollectionViewCell, AutoReuseIdentifiable 
         textLabel.text = student.displayedName
         borderView.layer.borderColor = theme.tintColor.cgColor
         textLabel.textColor = theme.textColor
-        textLabel.font = theme.font(withSize: textLabel.font.pointSize)
+        textLabel.font = theme.font(withSize: 32)
     }
     
 }

@@ -47,7 +47,7 @@ final class CustomTabBarController: UITabBarController {
     @IBOutlet var customTabBar: CustomTabBar!
     
     var core = App.core
-    fileprivate let tabBarHeight: CGFloat = 48.0
+    fileprivate let tabBarHeight: CGFloat = Platform.isPad ? 60 : 48.0
     
     
     // MARK: - Lifecycle overrides

@@ -63,9 +63,13 @@ class NameDrawViewController: UIViewController, AutoStoryboardInitializable {
     @IBAction func ticketsButtonPressed(_ sender: UIBarButtonItem) {
         if let currentUser = core.state.currentUser, currentUser.isPro {
             let studentTicketsVC = StudentTicketsViewController.initializeFromStoryboard().embededInNavigationController
+            studentTicketsVC.modalPresentationStyle = .popover
+            studentTicketsVC.popoverPresentationController?.barButtonItem = sender
             present(studentTicketsVC, animated: true, completion: nil)
         } else {
             let proViewController = ProViewController.initializeFromStoryboard().embededInNavigationController
+            proViewController.modalPresentationStyle = .popover
+            proViewController.popoverPresentationController?.barButtonItem = sender
             present(proViewController, animated: true, completion: nil)
         }
     }
@@ -89,8 +93,8 @@ extension NameDrawViewController: Subscriber {
         
         topLabel.textColor = theme.textColor
         countLabel.textColor = theme.textColor
-        topLabel.font = theme.font(withSize: topLabel.font.pointSize)
-        countLabel.font = theme.font(withSize: countLabel.font.pointSize)
+        topLabel.font = theme.font(withSize: Platform.isPad ? 40 : 35)
+        countLabel.font = theme.font(withSize: Platform.isPad ? 18 : 15)
     }
     
 }
@@ -231,7 +235,7 @@ extension NameDrawViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath)
         let studentAtRow = selectedStudents.reversed()[indexPath.row]
         cell.textLabel?.text = studentAtRow.displayedName
-        cell.textLabel?.font = core.state.theme.font(withSize: 15)
+        cell.textLabel?.font = core.state.theme.font(withSize: Platform.isPad ? 20 : 15)
         cell.textLabel?.textColor = core.state.theme.textColor
         cell.backgroundColor = .clear
         

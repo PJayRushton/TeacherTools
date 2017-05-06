@@ -17,6 +17,8 @@ class ProViewController: UIViewController, AutoStoryboardInitializable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        preferredContentSize = CGSize(width: view.bounds.width * 0.6, height: view.bounds.height * 0.6)
         AnalyticsHelper.logEvent(.proLaunched)
         upgradeBorderView.layer.cornerRadius = 5
         upgradeBorderView.backgroundColor = .appleBlue

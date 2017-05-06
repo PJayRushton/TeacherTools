@@ -139,7 +139,9 @@
                             <rect key="frame" x="112.5" y="7" width="150" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <connections>
-                                <segue destination="NMX-Sg-q2Y" kind="presentation" identifier="showGroupSwitcher" id="6ef-as-WkY"/>
+                                <segue destination="NMX-Sg-q2Y" kind="popoverPresentation" identifier="showGroupSwitcher" popoverAnchorView="46K-XO-Qvr" id="6ef-as-WkY">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
                             </connections>
                         </button>
                     </navigationItem>
@@ -154,7 +156,6 @@
                         <outlet property="segmentedControl" destination="a8b-RM-7dH" id="LKb-K1-WCY"/>
                         <outlet property="tableView" destination="HEl-lB-rc1" id="LTJ-Do-Pho"/>
                         <outletCollection property="emptyStateLabels" destination="NXo-zU-1Ve" collectionClass="NSMutableArray" id="AGT-A4-xjJ"/>
-                        <outletCollection property="emptyStateLabels" destination="NXo-zU-1Ve" collectionClass="NSMutableArray" id="sIw-xg-fFn"/>
                         <outletCollection property="emptyStateLabels" destination="rkg-HO-1Fc" collectionClass="NSMutableArray" id="9rw-YD-HjF"/>
                         <outletCollection property="emptyStateLabels" destination="id8-UC-xUt" collectionClass="NSMutableArray" id="TJB-wc-4nM"/>
                         <outletCollection property="emptyStateImages" destination="dEe-WY-ExN" collectionClass="NSMutableArray" id="1FM-WA-WW4"/>

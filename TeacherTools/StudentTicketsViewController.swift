@@ -38,6 +38,7 @@ class StudentTicketsViewController: UIViewController, AutoStoryboardInitializabl
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        preferredContentSize = CGSize(width: view.bounds.width * 0.6, height: view.bounds.height * 0.75)
     }
     
     override func viewWillAppear(_ animated: Bool) {

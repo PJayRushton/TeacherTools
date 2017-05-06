@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,14 +16,14 @@
             <rect key="frame" x="0.0" y="0.0" width="381" height="61"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JLl-Xo-SCK" id="g1z-u0-tye">
-                <rect key="frame" x="0.0" y="0.0" width="381" height="60"/>
+                <rect key="frame" x="0.0" y="0.0" width="381" height="60.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="5mt-8N-5qu">
-                        <rect key="frame" x="16" y="8" width="357" height="45"/>
+                        <rect key="frame" x="16" y="0.0" width="365" height="60.5"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="John Doe" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nPi-nc-q6M">
-                                <rect key="frame" x="0.0" y="0.0" width="309" height="45"/>
+                                <rect key="frame" x="0.0" y="0.0" width="301" height="60.5"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
@@ -33,8 +33,9 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4i6-ah-U2F">
-                                <rect key="frame" x="317" y="0.0" width="40" height="45"/>
+                                <rect key="frame" x="309" y="0.0" width="56" height="60.5"/>
                                 <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
+                                <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                                 <state key="normal" title="Save"/>
                                 <connections>
                                     <action selector="saveButtonPressed:" destination="JLl-Xo-SCK" eventType="touchUpInside" id="gVo-fe-5IN"/>
@@ -44,10 +45,10 @@
                     </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailingMargin" secondItem="5mt-8N-5qu" secondAttribute="trailing" id="7CV-3k-Hhv"/>
+                    <constraint firstAttribute="trailing" secondItem="5mt-8N-5qu" secondAttribute="trailing" id="7CV-3k-Hhv"/>
                     <constraint firstItem="5mt-8N-5qu" firstAttribute="leading" secondItem="g1z-u0-tye" secondAttribute="leadingMargin" constant="8" id="CuP-aK-aRs"/>
-                    <constraint firstAttribute="topMargin" secondItem="5mt-8N-5qu" secondAttribute="top" id="ZxY-dH-29Z"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="5mt-8N-5qu" secondAttribute="bottom" id="bKf-LL-iI7"/>
+                    <constraint firstAttribute="top" secondItem="5mt-8N-5qu" secondAttribute="top" id="ZxY-dH-29Z"/>
+                    <constraint firstAttribute="bottom" secondItem="5mt-8N-5qu" secondAttribute="bottom" id="bKf-LL-iI7"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

@@ -135,7 +135,7 @@ extension StudentListViewController {
         
         let nib = UINib(nibName: String(describing: StudentTableViewCell.self), bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: StudentTableViewCell.reuseIdentifier)
-        tableView.rowHeight = 45.0
+        tableView.rowHeight = Platform.isPad ? 60 : 45.0
         resetAllCells()
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardDidShow), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
@@ -197,7 +197,7 @@ extension StudentListViewController {
     func updateUI(with theme: Theme) {
         for label in emptyStateLabels {
             label.textColor = theme.textColor
-            label.font = theme.font(withSize: label.font.pointSize)
+            label.font = theme.font(withSize: 18)
         }
         for image in emptyStateImages {
             image.tintColor = theme.tintColor
@@ -215,7 +215,7 @@ extension StudentListViewController {
         navBarButton.update(with: theme)
         updateRightBarButton()
         updateSegmentedControl(theme: theme)
-        newStudentTextField.font = theme.font(withSize: newStudentTextField.font?.pointSize ?? 20)
+        newStudentTextField.font = theme.font(withSize: 20)
         newStudentTextField.textColor = theme.textColor
     }
     

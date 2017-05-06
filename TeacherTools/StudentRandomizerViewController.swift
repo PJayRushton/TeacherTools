@@ -16,7 +16,8 @@ class StudentRandomizerViewController: UIViewController, AutoStoryboardInitializ
 
     fileprivate let dataSource = RandomizerDataSource()
     fileprivate let margin: CGFloat = 16.0
-    fileprivate let maxHeight: CGFloat = 60
+    fileprivate let maxHeight: CGFloat = Platform.isPad ? 80 : 60
+    fileprivate let minHeaderHeight: CGFloat = Platform.isPad ? 40 : 28
     fileprivate var core = App.core
     fileprivate var layout = UICollectionViewFlowLayout()
     
@@ -101,7 +102,7 @@ extension StudentRandomizerViewController {
         let totalMarginSpace: CGFloat = margin * (columns + 1)
         let screenWidthMinusMargin: CGFloat = view.frame.size.width - totalMarginSpace
         rowHeight = maxHeight * CGFloat(group.displayDensity)
-        headerHeight = max(rowHeight * 1.1, 26)
+        headerHeight = max(rowHeight * 1.1, minHeaderHeight)
         layout.itemSize = CGSize(width: screenWidthMinusMargin / columns, height: rowHeight)
         layout.sectionHeadersPinToVisibleBounds = true
         layout.headerReferenceSize = CGSize(width: collectionView.bounds.width, height: headerHeight)

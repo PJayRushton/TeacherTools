@@ -57,7 +57,7 @@ class StudentTicketTableCell: UITableViewCell, AutoReuseIdentifiable {
         nameLabel.font = theme.font(withSize: 20)
         ticketImageView.tintColor = stepper.value == 1 ? UIColor.ticketRed.withAlphaComponent(0.6) : .ticketRed
         countLabel.textColor = theme.textColor
-        countLabel.font = theme.font(withSize: countLabel.font.pointSize)
+        countLabel.font = theme.font(withSize: 17)
         stepper.buttonsFont = theme.font(withSize: 22)
         stepper.buttonsBackgroundColor = theme.tintColor
         stepper.buttonsTextColor = .white

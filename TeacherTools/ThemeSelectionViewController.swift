@@ -33,6 +33,10 @@ class ThemeSelectionViewController: UIViewController, AutoStoryboardInitializabl
         core.remove(subscriber: self)
     }
     
+    @IBAction func proButtonPressed(_ sender: UIBarButtonItem) {
+        showProVC()
+    }
+    
 }
 
 // MARK: - Subscriber
@@ -48,8 +52,7 @@ extension ThemeSelectionViewController: Subscriber {
     }
     
     func updateUI(with theme: Theme) {
-        let navFont = navigationController?.navigationBar.titleTextAttributes![NSFontAttributeName] as? UIFont
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: theme.textColor, NSFontAttributeName: theme.font(withSize: navFont?.pointSize ?? 30)]
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: theme.textColor, NSFontAttributeName: theme.font(withSize: 22)]
         navigationController?.navigationBar.tintColor = theme.tintColor
         backgroundImageView.image = theme.mainImage.image
         let borderImage = theme.borderImage.image.stretchableImage(withLeftCapWidth: 0, topCapHeight: 0)
@@ -94,6 +97,8 @@ extension ThemeSelectionViewController: UICollectionViewDelegate {
     
     func showProVC() {
         let proVC = ProViewController.initializeFromStoryboard().embededInNavigationController
+        proVC.modalPresentationStyle = .popover
+        proVC.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
         present(proVC, animated: true, completion: nil)
     }
 

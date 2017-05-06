@@ -76,7 +76,8 @@ struct Theme: Marshaling {
     }
     
     func font(withSize size: CGFloat) -> UIFont {
-        return fontType.font(withSize: size)
+        let adjustedSize = Platform.isPad ? size * 1.3 : size
+        return fontType.font(withSize: adjustedSize)
     }
     
     func marshaled() -> JSONObject {
