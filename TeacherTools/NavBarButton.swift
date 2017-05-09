@@ -62,7 +62,11 @@ import UIKit
     
     func update(with group: Group?) {
         mainTitle = group?.name ?? "Create your first class!"
-        subTitle = group == nil ? nil : "\(group!.studentIds.count) students"
+        subTitle = nil
+        
+        if let group = group {
+            subtitleLabel.text = group.studentIds.isEmpty ? "empty" : "\(group.studentIds.count) students"
+        }
     }
     
     func update(with theme: Theme) {

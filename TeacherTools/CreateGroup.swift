@@ -10,13 +10,16 @@ import Foundation
 
 struct CreateGroup: Command {
     
-    var group: Group
+    var name: String
     
     func execute(state: AppState, core: Core<AppState>) {
-        networkAccess.addObject(at: group.ref, parameters: group.marshaled()) { result in
+        guard let user = state.currentUser else { return }
+        let ref = networkAccess.groupsRef(userId: user.id).childByAutoId()
+        let newGroup = Group(id: ref.key, name: name)
+        networkAccess.addObject(at: ref, parameters: newGroup.marshaled()) { result in
             switch result {
             case .success:
-                core.fire(event: Selected<Group>(self.group))
+                core.fire(event: Selected<Group>(newGroup))
                 
                 guard let currentUser = state.currentUser else { return }
                 let fakeStudentRef = self.networkAccess.studentsRef(userId: currentUser.id)

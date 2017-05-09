@@ -32,6 +32,13 @@ class GroupListViewController: UIViewController, AutoStoryboardInitializable {
         arrowCompletion?(true)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if core.state.groups.isEmpty {
+            presentNewGroupAlert()
+        }
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         core.remove(subscriber: self)
@@ -67,15 +74,31 @@ extension GroupListViewController: Subscriber {
 
 extension GroupListViewController {
     
-    func addNewGroup() {
-        guard let currentUser = core.state.currentUser else {
-            core.fire(event: ErrorEvent(error: nil, message: "Error creating new class"))
-            return
+    func presentNewGroupAlert() {
+        let alert = UIAlertController(title: "New Class", message: nil, preferredStyle: .alert)
+        let saveAction = UIAlertAction(title: "Save", style: .default) { _ in
+            guard let textField = alert.textFields?.first, let groupName = textField.text else { return }
+            self.saveNewGroup(withName: groupName)
         }
-        let ref = FirebaseNetworkAccess.sharedInstance.groupsRef(userId: currentUser.id).childByAutoId()
-        let newGroupGroups = core.state.groups.filter { $0.name.lowercased().contains("new class") }
-        let newGroup = Group(id: ref.key, name: "New Class \(newGroupGroups.count + 1)")
-        core.fire(command: CreateGroup(group: newGroup))
+        
+        alert.addTextField { textField in
+            textField.placeholder = NSLocalizedString("Enter class name", comment: "Placeholder to enter class name")
+            textField.autocapitalizationType = .words
+            NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextFieldTextDidChange, object: textField, queue: OperationQueue.main, using: { _ in
+                saveAction.isEnabled = textField.text != nil && !textField.text!.isEmpty
+            })
+            
+        }
+        alert.addAction(saveAction)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func saveNewGroup(withName name: String) {
+        core.fire(command: CreateGroup(name: name))
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.8) { 
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
 }
@@ -124,15 +147,10 @@ extension GroupListViewController: UITableViewDataSource, UITableViewDelegate {
         switch TableSection(rawValue: indexPath.section)! {
         case .groupList:
             core.fire(event: Selected<Group>(groups[indexPath.row]))
-            let tabBarController = CustomTabBarController.initializeFromStoryboard()
-            navigationController?.pushViewController(tabBarController, animated: true)
             dismiss(animated: true, completion: nil)
         case .add:
             if let user = core.state.currentUser, user.isPro || core.state.groups.count == 0 {
-                addNewGroup()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                    self.dismiss(animated: true, completion: nil)
-                })
+                presentNewGroupAlert()
             } else {
                 self.dismiss(animated: true, completion: nil)
                 self.proCompletion?()
