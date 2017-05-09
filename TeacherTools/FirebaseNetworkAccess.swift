@@ -91,7 +91,7 @@ struct FirebaseNetworkAccess {
     
     func getData(withQuery query: FIRDatabaseQuery, completion: ResultCompletion?) {
         query.observeSingleEvent(of: .value, with: { snap in
-            if snap.exists(), let json = snap.value as? JSONObject {
+            if let json = snap.value as? JSONObject {
                 completion?(.success(json))
             } else {
                 completion?(.failure(FirebaseError.incorrectlyFormedData))

@@ -55,7 +55,7 @@ struct AppState: State {
         case let event as Selected<User>:
             currentUser = event.item
             currentICloudId = event.item == nil ? nil : event.item?.cloudKitId
-            theme = allThemes.filter { $0.id == event.item?.themeID }.first ?? defaultTheme
+            theme = allThemes.first { $0.id == event.item?.themeID } ?? defaultTheme
         case _ as Subscribed<User>:
             isSubscribedToCurrentUser = true
             
@@ -117,11 +117,8 @@ struct AppState: State {
             // APPEARANCE
         case let event as Updated<[Theme]>:
             allThemes = event.payload
-            guard let user = currentUser else { return }
-            let updatedTheme = event.payload.filter { $0.id == user.themeID }.first
-            if let newTheme = updatedTheme {
-                theme = newTheme
-            }
+            guard let user = currentUser, let updatedTheme = event.payload.first(where: { $0.id == user.themeID }) else { break }
+            theme = updatedTheme
         default:
             break
         }

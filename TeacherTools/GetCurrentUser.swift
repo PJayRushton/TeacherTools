@@ -28,7 +28,6 @@ struct GetCurrentUser: Command {
             case let .failure(error):
                 core.fire(event: Selected<User>(nil))
                 core.fire(command: SaveNewUser(iCloudId: self.iCloudId))
-                core.fire(event: ErrorEvent(error: error, message: "Unable to find user with iCloudId: \(self.iCloudId)"))
             }
         }
     }

@@ -13,7 +13,7 @@ struct SubscribeToGroups: Command {
     func execute(state: AppState, core: Core<AppState>) {
         guard let currentUser = state.currentUser else { return }
         let ref = networkAccess.groupsRef(userId: currentUser.id)
-        ref.removeAllObservers()
+        
         networkAccess.subscribe(to: ref) { result in
             let groupsResult = result.map { (json: JSONObject) -> [Group] in
                 return json.parsedObjects()

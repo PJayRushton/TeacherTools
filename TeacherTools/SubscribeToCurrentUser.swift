@@ -42,15 +42,15 @@ struct SubscribeToCurrentUser: Command {
         }
         
         dispatchGroup.notify(queue: .main) {
-            core.fire(command: SubscribeToGroups())
-            core.fire(command: SubscribeToStudents())
-            
             self.networkAccess.subscribe(to: ref, completion: { result in
                 let userResult = result.map(User.init)
                 switch userResult {
                 case let .success(user):
                     core.fire(event: Selected<User>(user))
                     core.fire(event: Subscribed<User>(user))
+                    
+                    core.fire(command: SubscribeToGroups())
+                    core.fire(command: SubscribeToStudents())
                 case let .failure(error):
                     core.fire(event: Selected<User>(nil))
                     core.fire(event: ErrorEvent(error: error, message: nil))
