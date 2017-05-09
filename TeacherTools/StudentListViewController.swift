@@ -11,13 +11,16 @@ import BetterSegmentedControl
 
 class StudentListViewController: UIViewController, AutoStoryboardInitializable {
     
-    @IBOutlet var emptyStateView: UIView!
+    @IBOutlet var noGroupsView: UIView!
+    
+    @IBOutlet var emptyGroupView: UIView!
     @IBOutlet var emptyStateImages: [UIImageView]!
     @IBOutlet var emptyStateLabels: [UILabel]!
     
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var navBarButton: NavBarButton!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableSortHeader: UIView!
     @IBOutlet weak var newEntryView: UIView!
     @IBOutlet weak var newStudentTextField: UITextField!
     @IBOutlet weak var segmentedControl: BetterSegmentedControl!
@@ -65,7 +68,6 @@ class StudentListViewController: UIViewController, AutoStoryboardInitializable {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         core.remove(subscriber: self)
-        NotificationCenter.default.removeObserver(self)
     }
     
     @IBAction func newStudentTextFieldChanged(_ sender: UITextField) {
@@ -99,18 +101,26 @@ class StudentListViewController: UIViewController, AutoStoryboardInitializable {
 extension StudentListViewController: Subscriber {
     
     func update(with state: AppState) {
+        newStudentTextField.text = ""
+        updateUI(with: state.theme)
+        tableView.tableHeaderView = state.selectedGroup == nil ? nil : tableSortHeader
+        
+        tableView.backgroundView = nil
+        if state.groups.isEmpty {
+            tableView.backgroundView = noGroupsView
+        } else if let selectedGroup = state.selectedGroup, selectedGroup.studentIds.isEmpty {
+            tableView.backgroundView = emptyGroupView
+        }
+
+        navBarButton.update(with: state.selectedGroup)
         guard let group = state.selectedGroup else { return }
         self.group = group
-        navBarButton.mainTitle = group.name
-        navBarButton.subTitle = "\(group.studentIds.count) students"
         absentStudents = state.absentStudents
         students = currentSortType.sort(state.currentStudents)
-        newStudentTextField.text = ""
         
         let shouldShowEmptyView = core.state.groupsAreLoaded && students.isEmpty
-        tableView.backgroundView = shouldShowEmptyView ? emptyStateView : nil
+        tableView.backgroundView = shouldShowEmptyView ? emptyGroupView : nil
 
-        updateUI(with: state.theme)
         tableView.reloadData()
     }
     
@@ -385,13 +395,13 @@ extension StudentListViewController {
     }
     
     func updateSegmentedControl(theme: Theme) {
-        segmentedControl.titles = SortType.allValues.map { $0.buttonTitle }
-        segmentedControl.backgroundColor = .clear
-        segmentedControl.titleColor = theme.textColor
-        segmentedControl.titleFont = theme.font(withSize: 16)
-        segmentedControl.selectedTitleFont = theme.font(withSize: 18)
-        segmentedControl.indicatorViewBackgroundColor = theme.tintColor
-        segmentedControl.cornerRadius = 5
+        segmentedControl?.titles = SortType.allValues.map { $0.buttonTitle }
+        segmentedControl?.backgroundColor = .clear
+        segmentedControl?.titleColor = theme.textColor
+        segmentedControl?.titleFont = theme.font(withSize: 16)
+        segmentedControl?.selectedTitleFont = theme.font(withSize: 18)
+        segmentedControl?.indicatorViewBackgroundColor = theme.tintColor
+        segmentedControl?.cornerRadius = 5
     }
     
 }

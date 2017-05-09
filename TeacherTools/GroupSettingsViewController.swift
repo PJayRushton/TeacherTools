@@ -376,11 +376,7 @@ extension GroupSettingsViewController {
         case .export:
             showExportShareSheet()
         case .delete:
-            if core.state.groups.count == 1 {
-                presentNoDeleteAlert()
-            } else {
-                presentDeleteConfirmation()
-            }
+            presentDeleteConfirmation()
         case .theme:
             showThemeSelectionVC()
         case .rate:

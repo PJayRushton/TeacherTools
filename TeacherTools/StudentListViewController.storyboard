@@ -149,17 +149,20 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="backgroundImageView" destination="aoz-Tg-vj0" id="d3w-yx-WOp"/>
-                        <outlet property="emptyStateView" destination="Psu-zJ-469" id="6yD-fB-dhc"/>
+                        <outlet property="emptyGroupView" destination="Psu-zJ-469" id="NhG-2j-U4H"/>
                         <outlet property="navBarButton" destination="46K-XO-Qvr" id="SZz-gb-iXW"/>
                         <outlet property="newEntryView" destination="VLj-hh-dcm" id="BjL-Eo-BPT"/>
                         <outlet property="newStudentTextField" destination="lhQ-Dn-23x" id="993-NO-dWf"/>
+                        <outlet property="noGroupsView" destination="4K1-ZG-tOP" id="ZB3-C5-2ln"/>
                         <outlet property="segmentedControl" destination="a8b-RM-7dH" id="LKb-K1-WCY"/>
+                        <outlet property="tableSortHeader" destination="Kz8-Tg-hke" id="KUL-rB-gEJ"/>
                         <outlet property="tableView" destination="HEl-lB-rc1" id="LTJ-Do-Pho"/>
                         <outletCollection property="emptyStateLabels" destination="NXo-zU-1Ve" collectionClass="NSMutableArray" id="AGT-A4-xjJ"/>
                         <outletCollection property="emptyStateLabels" destination="rkg-HO-1Fc" collectionClass="NSMutableArray" id="9rw-YD-HjF"/>
                         <outletCollection property="emptyStateLabels" destination="id8-UC-xUt" collectionClass="NSMutableArray" id="TJB-wc-4nM"/>
                         <outletCollection property="emptyStateImages" destination="dEe-WY-ExN" collectionClass="NSMutableArray" id="1FM-WA-WW4"/>
                         <outletCollection property="emptyStateImages" destination="eyl-qh-CC0" collectionClass="NSMutableArray" id="IHA-Ii-hc0"/>
+                        <outletCollection property="emptyStateLabels" destination="KE9-Nw-ulx" collectionClass="NSMutableArray" id="vhG-Y3-o5t"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Kr-RP-Zfd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -262,6 +265,35 @@
                         <constraint firstAttribute="trailingMargin" secondItem="5el-nt-QXC" secondAttribute="trailing" constant="12" id="t1y-ff-cUE"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" id="4K1-ZG-tOP">
+                    <rect key="frame" x="0.0" y="0.0" width="303" height="303"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="eYd-ZP-Kq8">
+                            <rect key="frame" x="45.5" y="20" width="212" height="125"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowUp" translatesAutoresizingMaskIntoConstraints="NO" id="j0c-rg-sH5">
+                                    <rect key="frame" x="0.0" y="0.0" width="212" height="60"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="60" id="K4h-4c-ozz"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap up here to get started with your first class!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KE9-Nw-ulx">
+                                    <rect key="frame" x="0.0" y="84" width="212" height="41"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="eYd-ZP-Kq8" firstAttribute="centerX" secondItem="4K1-ZG-tOP" secondAttribute="centerX" id="GYq-dH-sn2"/>
+                        <constraint firstItem="eYd-ZP-Kq8" firstAttribute="width" secondItem="4K1-ZG-tOP" secondAttribute="width" multiplier="0.7" id="fL3-tP-nLT"/>
+                        <constraint firstItem="eYd-ZP-Kq8" firstAttribute="top" secondItem="4K1-ZG-tOP" secondAttribute="top" constant="20" id="hGd-Kd-mWf"/>
+                    </constraints>
+                </view>
                 <tapGestureRecognizer id="6ix-TT-y0l">
                     <connections>
                         <action selector="pasteViewTapped:" destination="EzV-k8-Tpm" id="75R-Ur-Otb"/>
@@ -277,6 +309,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrowUp" width="91" height="112"/>
         <image name="greenChalkboard" width="595" height="335"/>
         <image name="linesLarge" width="64" height="46"/>
         <image name="plus" width="20" height="20"/>

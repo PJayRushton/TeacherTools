@@ -60,9 +60,14 @@ import UIKit
         return icon.transform == CGAffineTransform.identity
     }
     
+    func update(with group: Group?) {
+        mainTitle = group?.name ?? "Create your first class!"
+        subTitle = group == nil ? nil : "\(group!.studentIds.count) students"
+    }
+    
     func update(with theme: Theme) {
-        mainTitleLabel.font = theme.font(withSize: 20)
-        subtitleLabel.font = theme.font(withSize: 14)
+        mainTitleLabel.font = theme.font(withSize: Platform.isPad ? 18 : 20)
+        subtitleLabel.font = theme.font(withSize: Platform.isPad ? 12 : 14)
     }
     
 }
