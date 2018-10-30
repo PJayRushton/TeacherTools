@@ -11,70 +11,78 @@ import UIKit
 @IBDesignable public class GMStepper: UIControl {
 
     /// Current value of the stepper. Defaults to 0.
-    @IBInspectable public var value: Double = 0 {
+    @objc @IBInspectable public var value: Double = 0 {
         didSet {
             value = min(maximumValue, max(minimumValue, value))
 
-            let isInteger = floor(value) == value
-            
-            //
-            // If we have items, we will display them as steps
-            //
-            
-            if isInteger && stepValue == 1.0 && items.count > 0 {
-                label.text = items[Int(value)]
-            }
-            else if showIntegerIfDoubleIsInteger && isInteger {
-                label.text = String(stringInterpolationSegment: Int(value))
-            } else {
-                label.text = String(stringInterpolationSegment: value)
-            }
+            label.text = formattedValue
 
             if oldValue != value {
                 sendActions(for: .valueChanged)
             }
         }
     }
+    
+    private var formattedValue: String? {
+        let isInteger = Decimal(value).exponent >= 0
+        
+        // If we have items, we will display them as steps
+        if isInteger && stepValue == 1.0 && items.count > 0 {
+            return items[Int(value)]
+        }
+        else {
+            return formatter.string(from: NSNumber(value: value))
+        }
+    }
+
 
     /// Minimum value. Must be less than maximumValue. Defaults to 0.
-    @IBInspectable public var minimumValue: Double = 0 {
+    @objc @IBInspectable public var minimumValue: Double = 0 {
         didSet {
             value = min(maximumValue, max(minimumValue, value))
         }
     }
 
     /// Maximum value. Must be more than minimumValue. Defaults to 100.
-    @IBInspectable public var maximumValue: Double = 100 {
+    @objc @IBInspectable public var maximumValue: Double = 100 {
         didSet {
             value = min(maximumValue, max(minimumValue, value))
         }
     }
 
     /// Step/Increment value as in UIStepper. Defaults to 1.
-    @IBInspectable public var stepValue: Double = 1
+    @objc @IBInspectable public var stepValue: Double = 1 {
+        didSet {
+            setupNumberFormatter()
+        }
+    }
 
     /// The same as UIStepper's autorepeat. If true, holding on the buttons or keeping the pan gesture alters the value repeatedly. Defaults to true.
-    @IBInspectable public var autorepeat: Bool = true
+    @objc @IBInspectable public var autorepeat: Bool = true
 
     /// If the value is integer, it is shown without floating point.
-    @IBInspectable public var showIntegerIfDoubleIsInteger: Bool = true
+    @objc @IBInspectable public var showIntegerIfDoubleIsInteger: Bool = true {
+        didSet {
+            setupNumberFormatter()
+        }
+    }
 
     /// Text on the left button. Be sure that it fits in the button. Defaults to "−".
-    @IBInspectable public var leftButtonText: String = "−" {
+    @objc @IBInspectable public var leftButtonText: String = "−" {
         didSet {
             leftButton.setTitle(leftButtonText, for: .normal)
         }
     }
 
     /// Text on the right button. Be sure that it fits in the button. Defaults to "+".
-    @IBInspectable public var rightButtonText: String = "+" {
+    @objc @IBInspectable public var rightButtonText: String = "+" {
         didSet {
             rightButton.setTitle(rightButtonText, for: .normal)
         }
     }
 
     /// Text color of the buttons. Defaults to white.
-    @IBInspectable public var buttonsTextColor: UIColor = UIColor.white {
+    @objc @IBInspectable public var buttonsTextColor: UIColor = UIColor.white {
         didSet {
             for button in [leftButton, rightButton] {
                 button.setTitleColor(buttonsTextColor, for: .normal)
@@ -83,7 +91,7 @@ import UIKit
     }
 
     /// Background color of the buttons. Defaults to dark blue.
-    @IBInspectable public var buttonsBackgroundColor: UIColor = UIColor(red:0.21, green:0.5, blue:0.74, alpha:1) {
+    @objc @IBInspectable public var buttonsBackgroundColor: UIColor = UIColor(red:0.21, green:0.5, blue:0.74, alpha:1) {
         didSet {
             for button in [leftButton, rightButton] {
                 button.backgroundColor = buttonsBackgroundColor
@@ -93,7 +101,7 @@ import UIKit
     }
 
     /// Font of the buttons. Defaults to AvenirNext-Bold, 20.0 points in size.
-    public var buttonsFont = UIFont(name: "AvenirNext-Bold", size: 20.0)! {
+    @objc public var buttonsFont = UIFont(name: "AvenirNext-Bold", size: 20.0)! {
         didSet {
             for button in [leftButton, rightButton] {
                 button.titleLabel?.font = buttonsFont
@@ -102,28 +110,35 @@ import UIKit
     }
 
     /// Text color of the middle label. Defaults to white.
-    @IBInspectable public var labelTextColor: UIColor = UIColor.white {
+    @objc @IBInspectable public var labelTextColor: UIColor = UIColor.white {
         didSet {
             label.textColor = labelTextColor
         }
     }
 
     /// Text color of the middle label. Defaults to lighter blue.
-    @IBInspectable public var labelBackgroundColor: UIColor = UIColor(red:0.26, green:0.6, blue:0.87, alpha:1) {
+    @objc @IBInspectable public var labelBackgroundColor: UIColor = UIColor(red:0.26, green:0.6, blue:0.87, alpha:1) {
         didSet {
             label.backgroundColor = labelBackgroundColor
         }
     }
 
     /// Font of the middle label. Defaults to AvenirNext-Bold, 25.0 points in size.
-    public var labelFont = UIFont(name: "AvenirNext-Bold", size: 25.0)! {
+    @objc public var labelFont = UIFont(name: "AvenirNext-Bold", size: 25.0)! {
         didSet {
             label.font = labelFont
         }
     }
+       /// Corner radius of the middle label. Defaults to 0.
+    @objc @IBInspectable public var labelCornerRadius: CGFloat = 0 {
+        didSet {
+            label.layer.cornerRadius = labelCornerRadius
+        
+            }
+    }
 
     /// Corner radius of the stepper's layer. Defaults to 4.0.
-    @IBInspectable public var cornerRadius: CGFloat = 4.0 {
+    @objc @IBInspectable public var cornerRadius: CGFloat = 4.0 {
         didSet {
             layer.cornerRadius = cornerRadius
             clipsToBounds = true
@@ -131,7 +146,7 @@ import UIKit
     }
     
     /// Border width of the stepper and middle label's layer. Defaults to 0.0.
-    @IBInspectable public var borderWidth: CGFloat = 0.0 {
+    @objc @IBInspectable public var borderWidth: CGFloat = 0.0 {
         didSet {
             layer.borderWidth = borderWidth
             label.layer.borderWidth = borderWidth
@@ -139,7 +154,7 @@ import UIKit
     }
     
     /// Color of the border of the stepper and middle label's layer. Defaults to clear color.
-    @IBInspectable public var borderColor: UIColor = UIColor.clear {
+    @objc @IBInspectable public var borderColor: UIColor = UIColor.clear {
         didSet {
             layer.borderColor = borderColor.cgColor
             label.layer.borderColor = borderColor.cgColor
@@ -147,7 +162,7 @@ import UIKit
     }
 
     /// Percentage of the middle label's width. Must be between 0 and 1. Defaults to 0.5. Be sure that it is wide enough to show the value.
-    @IBInspectable public var labelWidthWeight: CGFloat = 0.5 {
+    @objc @IBInspectable public var labelWidthWeight: CGFloat = 0.5 {
         didSet {
             labelWidthWeight = min(1, max(0, labelWidthWeight))
             setNeedsLayout()
@@ -155,8 +170,11 @@ import UIKit
     }
 
     /// Color of the flashing animation on the buttons in case the value hit the limit.
-    @IBInspectable public var limitHitAnimationColor: UIColor = UIColor(red:0.26, green:0.6, blue:0.87, alpha:1)
+    @objc @IBInspectable public var limitHitAnimationColor: UIColor = UIColor(red:0.26, green:0.6, blue:0.87, alpha:1)
 
+    /// Formatter for displaying the current value
+    let formatter = NumberFormatter()
+    
     /**
         Width of the sliding animation. When buttons clicked, the middle label does a slide animation towards to the clicked button. Defaults to 5.
     */
@@ -177,6 +195,7 @@ import UIKit
         button.addTarget(self, action: #selector(GMStepper.leftButtonTouchDown), for: .touchDown)
         button.addTarget(self, action: #selector(GMStepper.buttonTouchUp), for: .touchUpInside)
         button.addTarget(self, action: #selector(GMStepper.buttonTouchUp), for: .touchUpOutside)
+        button.addTarget(self, action: #selector(GMStepper.buttonTouchUp), for: .touchCancel)
         return button
     }()
 
@@ -189,20 +208,19 @@ import UIKit
         button.addTarget(self, action: #selector(GMStepper.rightButtonTouchDown), for: .touchDown)
         button.addTarget(self, action: #selector(GMStepper.buttonTouchUp), for: .touchUpInside)
         button.addTarget(self, action: #selector(GMStepper.buttonTouchUp), for: .touchUpOutside)
+        button.addTarget(self, action: #selector(GMStepper.buttonTouchUp), for: .touchCancel)
         return button
     }()
 
     lazy var label: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        if self.showIntegerIfDoubleIsInteger && floor(self.value) == self.value {
-            label.text = String(stringInterpolationSegment: Int(self.value))
-        } else {
-            label.text = String(stringInterpolationSegment: self.value)
-        }
+        label.text = formattedValue
         label.textColor = self.labelTextColor
         label.backgroundColor = self.labelBackgroundColor
         label.font = self.labelFont
+        label.layer.cornerRadius = self.labelCornerRadius
+        label.layer.masksToBounds = true
         label.isUserInteractionEnabled = true
         let panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(GMStepper.handlePan))
         panRecognizer.maximumNumberOfTouches = 1
@@ -234,26 +252,9 @@ import UIKit
     }
     
     
-    public var items : [String] = [] {
+    @objc public var items : [String] = [] {
         didSet {
-            let isInteger = floor(value) == value
-            
-            //
-            // If we have items, we will display them as steps
-            //
-            
-            if isInteger && stepValue == 1.0 && items.count > 0 {
-                
-                var value = Int(self.value)
-                
-                if value >= items.count {
-                    value = items.count - 1
-                    self.value = Double(value)
-                }
-                else {
-                    label.text = items[value]
-                }
-            }
+            label.text = formattedValue
         }
     }
 
@@ -280,17 +281,17 @@ import UIKit
         }
     }
 
-    required public init?(coder aDecoder: NSCoder) {
+    @objc required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
 
-    public override init(frame: CGRect) {
+    @objc public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
 
-    func setup() {
+    fileprivate func setup() {
         addSubview(leftButton)
         addSubview(rightButton)
         addSubview(label)
@@ -298,8 +299,19 @@ import UIKit
         backgroundColor = buttonsBackgroundColor
         layer.cornerRadius = cornerRadius
         clipsToBounds = true
+        labelOriginalCenter = label.center
 
-        NotificationCenter.default.addObserver(self, selector: #selector(GMStepper.reset), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
+        setupNumberFormatter()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(GMStepper.reset), name: UIApplication.willResignActiveNotification, object: nil)
+    }
+    
+    func setupNumberFormatter() {
+        let decValue = Decimal(stepValue)
+        let digits = decValue.significantFractionalDecimalDigits
+        formatter.minimumIntegerDigits = 1
+        formatter.minimumFractionDigits = showIntegerIfDoubleIsInteger ? 0 : digits
+        formatter.maximumFractionDigits = digits
     }
 
     public override func layoutSubviews() {
@@ -320,8 +332,9 @@ import UIKit
             value += stepValue
         } else if stepperState == .ShouldDecrease {
             value -= stepValue
-        }   
+        }
     }
+    
 
     deinit {
         resetTimer()
@@ -344,7 +357,7 @@ import UIKit
 
 // MARK: Pan Gesture
 extension GMStepper {
-    func handlePan(gesture: UIPanGestureRecognizer) {
+    @objc func handlePan(gesture: UIPanGestureRecognizer) {
         switch gesture.state {
         case .began:
             leftButton.isEnabled = false
@@ -394,7 +407,7 @@ extension GMStepper {
         }
     }
 
-    func reset() {
+    @objc func reset() {
         panState = .Stable
         stepperState = .Stable
         resetTimer()
@@ -413,7 +426,7 @@ extension GMStepper {
 
 // MARK: Button Events
 extension GMStepper {
-    func leftButtonTouchDown(button: UIButton) {
+    @objc func leftButtonTouchDown(button: UIButton) {
         rightButton.isEnabled = false
         label.isUserInteractionEnabled = false
         resetTimer()
@@ -427,7 +440,7 @@ extension GMStepper {
 
     }
 
-    func rightButtonTouchDown(button: UIButton) {
+    @objc func rightButtonTouchDown(button: UIButton) {
         leftButton.isEnabled = false
         label.isUserInteractionEnabled = false
         resetTimer()
@@ -440,7 +453,7 @@ extension GMStepper {
         }
     }
 
-    func buttonTouchUp(button: UIButton) {
+    @objc func buttonTouchUp(button: UIButton) {
         reset()
     }
 }
@@ -485,7 +498,7 @@ extension GMStepper {
 
 // MARK: Timer
 extension GMStepper {
-    func handleTimerFire(timer: Timer) {
+    @objc func handleTimerFire(timer: Timer) {
         timerFireCount += 1
 
         if timerFireCount % timerFireCountModulo == 0 {
@@ -504,6 +517,11 @@ extension GMStepper {
             timerFireCount = 0
         }
     }
+}
 
 
+extension Decimal {
+    var significantFractionalDecimalDigits: Int {
+        return max(-exponent, 0)
+    }
 }
