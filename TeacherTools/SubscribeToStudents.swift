@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Marshal
 
 struct SubscribeToStudents: Command {
     

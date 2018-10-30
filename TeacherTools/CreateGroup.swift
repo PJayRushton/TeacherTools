@@ -13,9 +13,9 @@ struct CreateGroup: Command {
     var name: String
     
     func execute(state: AppState, core: Core<AppState>) {
-        guard let user = state.currentUser else { return }
-        let ref = networkAccess.groupsRef(userId: user.id).childByAutoId()
-        let newGroup = Group(id: ref.key, name: name)
+        guard let user = state.currentUser, case let ref = networkAccess.groupsRef(userId: user.id).childByAutoId(), let key = ref.key else { return }
+        
+        let newGroup = Group(id: key, name: name)
         networkAccess.addObject(at: ref, parameters: newGroup.jsonObject()) { result in
             switch result {
             case .success:

@@ -31,17 +31,6 @@
 		A14160B01DC66DEC00C4F5BB /* SaveNewUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160AF1DC66DEC00C4F5BB /* SaveNewUser.swift */; };
 		A14160B21DC66DF300C4F5BB /* UpdateUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160B11DC66DF300C4F5BB /* UpdateUser.swift */; };
 		A14160B41DC66E0300C4F5BB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160B31DC66E0300C4F5BB /* User.swift */; };
-		A14160D31DC6758700C4F5BB /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160C81DC6758700C4F5BB /* Error.swift */; };
-		A14160D41DC6758700C4F5BB /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160C91DC6758700C4F5BB /* JSON.swift */; };
-		A14160D51DC6758700C4F5BB /* KeyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160CA1DC6758700C4F5BB /* KeyType.swift */; };
-		A14160D61DC6758700C4F5BB /* MarshalDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160CB1DC6758700C4F5BB /* MarshalDictionary.swift */; };
-		A14160D71DC6758700C4F5BB /* MarshaledObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160CC1DC6758700C4F5BB /* MarshaledObject.swift */; };
-		A14160D81DC6758700C4F5BB /* Marshaling.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160CD1DC6758700C4F5BB /* Marshaling.swift */; };
-		A14160D91DC6758700C4F5BB /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160CE1DC6758700C4F5BB /* Operators.swift */; };
-		A14160DA1DC6758700C4F5BB /* Unmarshaling.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160CF1DC6758700C4F5BB /* Unmarshaling.swift */; };
-		A14160DB1DC6758700C4F5BB /* UnmarshalingWithContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160D01DC6758700C4F5BB /* UnmarshalingWithContext.swift */; };
-		A14160DC1DC6758700C4F5BB /* UnmarshalUpdating.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160D11DC6758700C4F5BB /* UnmarshalUpdating.swift */; };
-		A14160DD1DC6758700C4F5BB /* ValueType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160D21DC6758700C4F5BB /* ValueType.swift */; };
 		A14160E61DC67AA900C4F5BB /* FirebaseNetworkAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160A91DC66D6700C4F5BB /* FirebaseNetworkAccess.swift */; };
 		A14160E81DC67E1700C4F5BB /* DeleteUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160E71DC67E1700C4F5BB /* DeleteUsers.swift */; };
 		A14160ED1DC6806200C4F5BB /* ErrorHUDMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14160EC1DC6806200C4F5BB /* ErrorHUDMiddleware.swift */; };
@@ -164,17 +153,6 @@
 		A14160BA1DC66F2600C4F5BB /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		A14160BC1DC66F2E00C4F5BB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		A14160BE1DC66F4500C4F5BB /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		A14160C81DC6758700C4F5BB /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
-		A14160C91DC6758700C4F5BB /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
-		A14160CA1DC6758700C4F5BB /* KeyType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyType.swift; sourceTree = "<group>"; };
-		A14160CB1DC6758700C4F5BB /* MarshalDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarshalDictionary.swift; sourceTree = "<group>"; };
-		A14160CC1DC6758700C4F5BB /* MarshaledObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarshaledObject.swift; sourceTree = "<group>"; };
-		A14160CD1DC6758700C4F5BB /* Marshaling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Marshaling.swift; sourceTree = "<group>"; };
-		A14160CE1DC6758700C4F5BB /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
-		A14160CF1DC6758700C4F5BB /* Unmarshaling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unmarshaling.swift; sourceTree = "<group>"; };
-		A14160D01DC6758700C4F5BB /* UnmarshalingWithContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnmarshalingWithContext.swift; sourceTree = "<group>"; };
-		A14160D11DC6758700C4F5BB /* UnmarshalUpdating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnmarshalUpdating.swift; sourceTree = "<group>"; };
-		A14160D21DC6758700C4F5BB /* ValueType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueType.swift; sourceTree = "<group>"; };
 		A14160E71DC67E1700C4F5BB /* DeleteUsers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteUsers.swift; sourceTree = "<group>"; };
 		A14160EC1DC6806200C4F5BB /* ErrorHUDMiddleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorHUDMiddleware.swift; sourceTree = "<group>"; };
 		A14160EE1DC6833200C4F5BB /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
@@ -295,7 +273,6 @@
 				A14160E31DC6770A00C4F5BB /* Model */,
 				A14160E21DC6770300C4F5BB /* UI */,
 				A14160E11DC676B400C4F5BB /* Storyboards */,
-				A14160DE1DC6758D00C4F5BB /* Marshal */,
 				A14160A61DC66D3800C4F5BB /* Shared */,
 				A1A1681F1DF5B17B00C0B759 /* Supporting files */,
 			);
@@ -339,25 +316,6 @@
 				3D3DAA9ED955FCB45EDED3BB /* Pods_TeacherTools.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		A14160DE1DC6758D00C4F5BB /* Marshal */ = {
-			isa = PBXGroup;
-			children = (
-				A14160C81DC6758700C4F5BB /* Error.swift */,
-				A14160C91DC6758700C4F5BB /* JSON.swift */,
-				A14160CA1DC6758700C4F5BB /* KeyType.swift */,
-				A14160CB1DC6758700C4F5BB /* MarshalDictionary.swift */,
-				A14160CC1DC6758700C4F5BB /* MarshaledObject.swift */,
-				A14160CD1DC6758700C4F5BB /* Marshaling.swift */,
-				A14160CE1DC6758700C4F5BB /* Operators.swift */,
-				A14160CF1DC6758700C4F5BB /* Unmarshaling.swift */,
-				A14160D01DC6758700C4F5BB /* UnmarshalingWithContext.swift */,
-				A14160D11DC6758700C4F5BB /* UnmarshalUpdating.swift */,
-				A14160D21DC6758700C4F5BB /* ValueType.swift */,
-				A11EE95C1DC6CD3C002C9228 /* NSDate+ValueType.swift */,
-			);
-			name = Marshal;
 			sourceTree = "<group>";
 		};
 		A14160DF1DC6768100C4F5BB /* Reactor */ = {
@@ -473,6 +431,7 @@
 		A1A1681F1DF5B17B00C0B759 /* Supporting files */ = {
 			isa = PBXGroup;
 			children = (
+				A11EE95C1DC6CD3C002C9228 /* NSDate+ValueType.swift */,
 				A1994A1D2188C26C007CD206 /* Reactor.swift */,
 				A141608E1DC669F100C4F5BB /* Assets.xcassets */,
 				A14160931DC669F100C4F5BB /* Info.plist */,
@@ -515,7 +474,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = AppsByPJ;
 				TargetAttributes = {
 					A14160801DC669F100C4F5BB = {
@@ -642,13 +601,9 @@
 				A1A1681A1DF242CE00C0B759 /* UIApplication+TopMostViewController.swift in Sources */,
 				A14160EF1DC6833200C4F5BB /* Group.swift in Sources */,
 				A14160B41DC66E0300C4F5BB /* User.swift in Sources */,
-				A14160DC1DC6758700C4F5BB /* UnmarshalUpdating.swift in Sources */,
 				A16142441DCDFBD900C800A1 /* AddStudentToGroup.swift in Sources */,
 				A1C919D71DDACE0000A7B477 /* StringExtensions.swift in Sources */,
-				A14160D91DC6758700C4F5BB /* Operators.swift in Sources */,
-				A14160DB1DC6758700C4F5BB /* UnmarshalingWithContext.swift in Sources */,
 				A14160F51DC6888200C4F5BB /* SubscribeToGroups.swift in Sources */,
-				A14160D61DC6758700C4F5BB /* MarshalDictionary.swift in Sources */,
 				A14160FF1DC694BA00C4F5BB /* GroupTableViewCell.swift in Sources */,
 				A1B6DDE81DEBAA5E00A1DA18 /* StudentTicketsViewController.swift in Sources */,
 				A14160B01DC66DEC00C4F5BB /* SaveNewUser.swift in Sources */,
@@ -659,10 +614,8 @@
 				A151FB521E18750E00FD63A1 /* UITextViewWithPlaceholder.swift in Sources */,
 				A161426C1DCF43A100C800A1 /* RandomizerCollectionViewCell.swift in Sources */,
 				A151FB461E12E13800FD63A1 /* GroupSettingsViewController.swift in Sources */,
-				A14160D51DC6758700C4F5BB /* KeyType.swift in Sources */,
 				A14160E61DC67AA900C4F5BB /* FirebaseNetworkAccess.swift in Sources */,
 				A151FB4E1E1872AF00FD63A1 /* AddStudentsViewController.swift in Sources */,
-				A14160DD1DC6758700C4F5BB /* ValueType.swift in Sources */,
 				A151FB4A1E14A37A00FD63A1 /* ThemeSelectionViewController.swift in Sources */,
 				A1B6DDEC1DEBADEE00A1DA18 /* StudentTicketTableCell.swift in Sources */,
 				A19DB8E81DF229E900D4C386 /* MarkUserPro.swift in Sources */,
@@ -684,7 +637,6 @@
 				A1ADE4801DCF8A16001434EF /* UpdateTeamSize.swift in Sources */,
 				A147CFBB1DCAB7C500C9860F /* MainViewController.swift in Sources */,
 				A14160E81DC67E1700C4F5BB /* DeleteUsers.swift in Sources */,
-				A14160D81DC6758700C4F5BB /* Marshaling.swift in Sources */,
 				A13683791DFC8DC700015F06 /* SubscribeToThemes.swift in Sources */,
 				A14160A51DC66D2F00C4F5BB /* StoryboardInitializable.swift in Sources */,
 				A19DB8DA1DF1D6C400D4C386 /* ProViewController.swift in Sources */,
@@ -694,7 +646,6 @@
 				A1BD1C8F1EBE6FBB0033D316 /* Device.swift in Sources */,
 				A14160F91DC68C2300C4F5BB /* Result.swift in Sources */,
 				A1CC0AB91DC7A14800C0575F /* DeleteObject.swift in Sources */,
-				A14160D41DC6758700C4F5BB /* JSON.swift in Sources */,
 				A16142401DCDF4F200C800A1 /* CreateGroup.swift in Sources */,
 				A1ADE47E1DCF82D6001434EF /* RandomizerHeaderView.swift in Sources */,
 				A14160851DC669F100C4F5BB /* AppDelegate.swift in Sources */,
@@ -702,7 +653,6 @@
 				A19DB8CF1DF095AB00D4C386 /* UIColorExtension.swift in Sources */,
 				A11EE96D1DC73CBC002C9228 /* StudentTableViewCell.swift in Sources */,
 				A14160ED1DC6806200C4F5BB /* ErrorHUDMiddleware.swift in Sources */,
-				A14160D71DC6758700C4F5BB /* MarshaledObject.swift in Sources */,
 				A19DB8E61DF2246000D4C386 /* GetIAPs.swift in Sources */,
 				A19DB8E21DF1E8EB00D4C386 /* TTProducts.swift in Sources */,
 				A19DB8E41DF2237000D4C386 /* GoPro.swift in Sources */,
@@ -717,10 +667,8 @@
 				A147CFAF1DCA410400C9860F /* StudentRandomizerViewController.swift in Sources */,
 				A141611F1DC69AEB00C4F5BB /* Theme.swift in Sources */,
 				A14160AC1DC66DBC00C4F5BB /* GetICloudUser.swift in Sources */,
-				A14160D31DC6758700C4F5BB /* Error.swift in Sources */,
 				A14160A81DC66D4800C4F5BB /* SegueHandlerType.swift in Sources */,
 				A12F010E1E1BFD19005BB06B /* SaveStudentList.swift in Sources */,
-				A14160DA1DC6758700C4F5BB /* Unmarshaling.swift in Sources */,
 				A1BD1C871EB9289B0033D316 /* Keys.swift in Sources */,
 				A1BD1C851EB9276F0033D316 /* GetCurrentUser.swift in Sources */,
 			);
@@ -757,15 +705,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
@@ -807,15 +763,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;

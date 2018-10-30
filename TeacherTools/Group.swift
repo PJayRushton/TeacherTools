@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import Marshal
 
 struct Group: Identifiable {
     
@@ -18,7 +19,7 @@ struct Group: Identifiable {
     var studentIds: [String]
     var teamSize = 2
     
-    var ref: FIRDatabaseReference {
+    var ref: DatabaseReference {
         return FirebaseNetworkAccess.sharedInstance.groupsRef(userId: App.core.state.currentUser!.id).child(id)
     }
     

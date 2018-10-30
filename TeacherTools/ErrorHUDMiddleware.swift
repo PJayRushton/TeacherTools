@@ -92,7 +92,7 @@ extension String {
     
     var displayTime: TimeInterval {
         var timeToDisplay = 1.0
-        let characterCount = self.characters.count
+        let characterCount = self.count
         timeToDisplay += Double(characterCount) * 0.06 as TimeInterval
         
         return timeToDisplay

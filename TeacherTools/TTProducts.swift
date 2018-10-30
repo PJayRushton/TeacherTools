@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import Marshal
 
 struct TTProducts {
     
@@ -82,7 +83,7 @@ extension TTPurchase: Hashable {
 
 extension TTPurchase: Identifiable {
     
-    var ref: FIRDatabaseReference {
+    var ref: DatabaseReference {
         let userId = App.core.state.currentUser?.id
         return FirebaseNetworkAccess.sharedInstance.usersRef.child(userId!).child("purchases").child(id)
     }

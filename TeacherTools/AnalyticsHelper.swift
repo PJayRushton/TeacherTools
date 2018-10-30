@@ -34,7 +34,7 @@ struct AnalyticsHelper {
     
     static func logEvent(_ name: AnalyticsEventName) {
         guard !Platform.isSimulator else { return }
-        FIRAnalytics.logEvent(withName: name.rawValue, parameters: nil)
+        Analytics.logEvent(name.rawValue, parameters: nil)
     }
     
 }

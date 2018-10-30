@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Marshal
 
 extension Collection where Self: ExpressibleByDictionaryLiteral, Self.Key == String, Self.Value == Any {
     

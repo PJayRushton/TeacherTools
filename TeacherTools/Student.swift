@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import Marshal
 
 struct Student: Identifiable, NameSortable {
     
@@ -30,18 +31,18 @@ struct Student: Identifiable, NameSortable {
         return currentUser.lastFirst ? "\(lastName), \(firstName)" : "\(firstName) \(lastName)"
     }
     
-    var ref: FIRDatabaseReference {
+    var ref: DatabaseReference {
         return FirebaseNetworkAccess.sharedInstance.studentsRef(userId: App.core.state.currentUser!.id).child(id)
     }
     
-    init(id: String, fullName: FullName) {
+    init(id: String = UUID().uuidString, fullName: FullName) {
         self.id = id
         self.firstName = fullName.first
         self.lastName = fullName.last
         self.tickets = 1
     }
     
-    init(id: String, name: String, tickets: Int = 1) {
+    init(id: String = UUID().uuidString, name: String, tickets: Int = 1) {
         self.id = id
         let parsedName = name.parsed()
         self.firstName = parsedName.first

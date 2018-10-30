@@ -40,8 +40,7 @@ import UIKit
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        #warning ("Fix this")
-        //        NotificationCenter.default.addObserver(self, selector: #selector(textViewDidChange), name: Notification.Name., object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(textViewDidChange), name: UITextView.textDidChangeNotification, object: nil)
         placeholderLabel.text = placeholder
         placeholderLabel.font = App.core.state.theme.font(withSize: 17)
         addSubview(placeholderLabel)

@@ -15,7 +15,7 @@ struct SaveStudentList: Command {
     
     func execute(state: AppState, core: Core<AppState>) {
         guard let currentUser = state.currentUser, let currentGroup = state.selectedGroup else { return }
-        let students = names.flatMap { Student(id: networkAccess.studentsRef(userId: currentUser.id).childByAutoId().key, fullName: $0) }
+        let students = names.map { Student(fullName: $0) }
         
         for (index, student) in students.enumerated() {
             networkAccess.addObject(at: student.ref, parameters: student.jsonObject()) { _ in

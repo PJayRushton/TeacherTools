@@ -195,9 +195,7 @@ extension StudentListViewController {
                 core.fire(event: ErrorEvent(error: nil, message: "Unaccepted name format"))
                 return
             }
-            guard let currentUser = core.state.currentUser else { return }
-            let id = FirebaseNetworkAccess.sharedInstance.studentsRef(userId: currentUser.id).childByAutoId()
-            let newStudent = Student(id: id.key, name: newStudentName)
+            let newStudent = Student(name: newStudentName)
             core.fire(command: CreateStudent(student: newStudent))
         } else {
             isAdding = false
@@ -395,11 +393,15 @@ extension StudentListViewController {
     }
     
     func updateSegmentedControl(theme: Theme) {
-        segmentedControl?.titles = SortType.allValues.map { $0.buttonTitle }
+        let titles = SortType.allValues.map { $0.buttonTitle }
+        segmentedControl?.segments = LabelSegment.segments(withTitles: titles,
+                                                          normalBackgroundColor: .clear,
+                                                          normalFont: theme.font(withSize: 16),
+                                                          normalTextColor: theme.textColor,
+                                                          selectedBackgroundColor: .clear,
+                                                          selectedFont: theme.font(withSize: 18),
+                                                          selectedTextColor: theme.textColor)
         segmentedControl?.backgroundColor = .clear
-        segmentedControl?.titleColor = theme.textColor
-        segmentedControl?.titleFont = theme.font(withSize: 16)
-        segmentedControl?.selectedTitleFont = theme.font(withSize: 18)
         segmentedControl?.indicatorViewBackgroundColor = theme.tintColor
         segmentedControl?.cornerRadius = 5
     }

@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import Marshal
 
 final class User: Unmarshaling {
     
@@ -76,7 +77,7 @@ extension User: JSONMarshaling {
 
 extension User: Identifiable {
     
-    var ref: FIRDatabaseReference {
+    var ref: DatabaseReference {
         return FirebaseNetworkAccess.sharedInstance.usersRef.child(id)
     }
     

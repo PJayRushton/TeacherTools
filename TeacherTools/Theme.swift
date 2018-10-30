@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import Marshal
 
 enum BackgroundImage: String {
     case white, black, greenChalkboard, blackChalkboard
@@ -87,7 +88,7 @@ struct Theme {
 
 extension Theme: Identifiable {
     
-    var ref: FIRDatabaseReference {
+    var ref: DatabaseReference {
         return FirebaseNetworkAccess.sharedInstance.allThemesRef.child(id)
     }
     

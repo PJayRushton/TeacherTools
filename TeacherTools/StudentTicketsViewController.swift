@@ -16,7 +16,7 @@ class StudentTicketsViewController: UIViewController, AutoStoryboardInitializabl
     @IBOutlet weak var dismissButton: UIBarButtonItem!
     @IBOutlet weak var segmentedControl: BetterSegmentedControl!
     @IBOutlet weak var tableView: UITableView!
-
+    
     var core = App.core
     var isShowingSteppers = false {
         didSet {
@@ -35,7 +35,7 @@ class StudentTicketsViewController: UIViewController, AutoStoryboardInitializabl
             students = currentSortType.sort(students)
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         preferredContentSize = CGSize(width: view.bounds.width * 0.6, height: view.bounds.height * 0.75)
@@ -148,49 +148,53 @@ extension StudentTicketsViewController: UITableViewDataSource, UITableViewDelega
 
 extension StudentTicketsViewController {
     
-enum SortType: Int {
-    case first
-    case last
-    case tickets
-    
-    var buttonTitle: String {
-        switch self {
-        case .first:
-            return "First"
-        case .last:
-            return "Last"
-        case .tickets:
-            return "# Tickets"
-        }
-    }
-    
-    var sort: (([Student]) -> [Student]) {
-        switch self {
-        case .first:
-            return { students in
-                return students.sorted(by: { $0.firstName < $1.firstName })
-            }
-        case .last:
-            return { students in
-                return students.sorted(by: { ($0.lastName ?? $0.firstName) < ($1.lastName ?? $1.firstName) })
-            }
-        case .tickets:
-            return { students in
-                return students.sorted(by: { $0.tickets > $1.tickets })
+    enum SortType: Int {
+        case first
+        case last
+        case tickets
+        
+        var buttonTitle: String {
+            switch self {
+            case .first:
+                return "First"
+            case .last:
+                return "Last"
+            case .tickets:
+                return "# Tickets"
             }
         }
+        
+        var sort: (([Student]) -> [Student]) {
+            switch self {
+            case .first:
+                return { students in
+                    return students.sorted(by: { $0.firstName < $1.firstName })
+                }
+            case .last:
+                return { students in
+                    return students.sorted(by: { ($0.lastName ?? $0.firstName) < ($1.lastName ?? $1.firstName) })
+                }
+            case .tickets:
+                return { students in
+                    return students.sorted(by: { $0.tickets > $1.tickets })
+                }
+            }
+        }
+        static let allValues = [SortType.first, .last, .tickets]
     }
-    static let allValues = [SortType.first, .last, .tickets]
-}
-
-func updateSegmentedControl(with theme: Theme) {
-    segmentedControl.titles = SortType.allValues.map { $0.buttonTitle }
-    segmentedControl.backgroundColor = .clear
-    segmentedControl.titleColor = theme.textColor
-    segmentedControl.titleFont = theme.font(withSize: 16)
-    segmentedControl.selectedTitleFont = theme.font(withSize: 18)
-    segmentedControl.indicatorViewBackgroundColor = theme.tintColor
-    segmentedControl.cornerRadius = 5
-}
-
+    
+    func updateSegmentedControl(with theme: Theme) {
+        let titles = SortType.allValues.map { $0.buttonTitle }
+        segmentedControl.segments = LabelSegment.segments(withTitles: titles,
+                                                          normalBackgroundColor: .clear,
+                                                          normalFont: theme.font(withSize: 16),
+                                                          normalTextColor: theme.textColor,
+                                                          selectedBackgroundColor: .clear,
+                                                          selectedFont: theme.font(withSize: 18),
+                                                          selectedTextColor: theme.textColor)
+        segmentedControl.backgroundColor = .clear
+        segmentedControl.indicatorViewBackgroundColor = theme.tintColor
+        segmentedControl.cornerRadius = 5
+    }
+    
 }

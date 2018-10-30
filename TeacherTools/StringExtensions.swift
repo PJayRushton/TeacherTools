@@ -14,8 +14,8 @@ extension String {
     
     func parsed() -> FullName {
         var nameString = self
-        if let lastChar = nameString.characters.last, lastChar == "," {
-            nameString.characters.removeLast()
+        if let lastChar = nameString.last, lastChar == "," {
+            nameString.removeLast()
         }
         if nameString.contains(",") {
             let noSpaces = nameString.replacingOccurrences(of: " ", with: "")
@@ -45,7 +45,7 @@ extension String {
     
     func studentList() -> [FullName] {
         let names = self.components(separatedBy: "\n").filter { $0.isEmpty == false }
-        return names.flatMap { $0.parsed() }
+        return names.map { $0.parsed() }
     }
     
 }

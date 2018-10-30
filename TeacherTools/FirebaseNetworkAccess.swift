@@ -8,11 +8,12 @@
 
 import Foundation
 import Firebase
+import Marshal
 
 struct NoOp: Event { }
 protocol Identifiable: Equatable, JSONMarshaling, Unmarshaling {
     var id: String { get set }
-    var ref: FIRDatabaseReference { get }
+    var ref: DatabaseReference { get }
 }
 
 func ==<T: Identifiable>(lhs: T, rhs: T) -> Bool {
@@ -33,30 +34,30 @@ struct FirebaseNetworkAccess {
     
     // MARK: - Properties
     
-    let rootRef = FIRDatabase.database().reference()
+    let rootRef = Database.database().reference()
     var core = App.core
     
     
     /// **root/users**
-    var usersRef: FIRDatabaseReference {
+    var usersRef: DatabaseReference {
         return rootRef.child("users")
     }
     
     /// **root/groups/{userId}**
-    func groupsRef(userId: String) -> FIRDatabaseReference {
+    func groupsRef(userId: String) -> DatabaseReference {
         return rootRef.child("groups").child(userId)
     }
     
     /// **root/students/{userId}
-    func studentsRef(userId: String) -> FIRDatabaseReference {
+    func studentsRef(userId: String) -> DatabaseReference {
         return rootRef.child("students").child(userId)
     }
 
-    var allThemesRef: FIRDatabaseReference {
+    var allThemesRef: DatabaseReference {
         return rootRef.child("allThemes")
     }
     
-    func setValue(at ref: FIRDatabaseReference, parameters: JSONObject, completion: ResultCompletion?) {
+    func setValue(at ref: DatabaseReference, parameters: JSONObject, completion: ResultCompletion?) {
         ref.setValue(parameters) { error, ref in
             if let error = error {
                 completion?(Result.failure(error))
@@ -66,7 +67,7 @@ struct FirebaseNetworkAccess {
         }
     }
     
-    func createNewAutoChild(at ref: FIRDatabaseReference, parameters: JSONObject, completion: @escaping ResultCompletion) {
+    func createNewAutoChild(at ref: DatabaseReference, parameters: JSONObject, completion: @escaping ResultCompletion) {
         ref.childByAutoId().setValue(parameters) { error, ref in
             if let error = error {
                 completion(Result.failure(error))
@@ -80,7 +81,7 @@ struct FirebaseNetworkAccess {
     
     // Retrieve
     
-    func getData(at ref: FIRDatabaseReference, completion: ResultCompletion?) {
+    func getData(at ref: DatabaseReference, completion: ResultCompletion?) {
         ref.observeSingleEvent(of: .value, with: { snap in
             if let snapJSON = snap.value as? JSONObject , snap.exists() {
                 completion?(Result.success(snapJSON))
@@ -90,7 +91,7 @@ struct FirebaseNetworkAccess {
         })
     }
     
-    func getData(withQuery query: FIRDatabaseQuery, completion: ResultCompletion?) {
+    func getData(withQuery query: DatabaseQuery, completion: ResultCompletion?) {
         query.observeSingleEvent(of: .value, with: { snap in
             if let json = snap.value as? JSONObject {
                 completion?(.success(json))
@@ -100,8 +101,8 @@ struct FirebaseNetworkAccess {
         })
     }
     
-    func getKeys(at ref: FIRDatabaseReference, completion: @escaping ((Result<[String]>) -> Void)) {
-        ref.observeSingleEvent(of: FIRDataEventType.value, with: { snap in
+    func getKeys(at ref: DatabaseReference, completion: @escaping ((Result<[String]>) -> Void)) {
+        ref.observeSingleEvent(of: DataEventType.value, with: { snap in
             if let usernames = (snap.value as AnyObject).allKeys as? [String] , snap.exists() {
                 completion(Result.success(usernames))
             } else {
@@ -113,7 +114,7 @@ struct FirebaseNetworkAccess {
     
     // Update
     
-    func updateObject(at ref: FIRDatabaseReference, parameters: JSONObject, completion: ResultCompletion?) {
+    func updateObject(at ref: DatabaseReference, parameters: JSONObject, completion: ResultCompletion?) {
         ref.updateChildValues(parameters) { error, firebase in
             if let error = error {
                 completion?(Result.failure(error))
@@ -123,7 +124,7 @@ struct FirebaseNetworkAccess {
         }
     }
     
-    func addObject(at ref: FIRDatabaseReference, parameters: JSONObject, completion: ResultCompletion?) {
+    func addObject(at ref: DatabaseReference, parameters: JSONObject, completion: ResultCompletion?) {
         ref.updateChildValues(parameters) { error, ref in
             if let error = error {
                 completion?(Result.failure(error))
@@ -136,7 +137,7 @@ struct FirebaseNetworkAccess {
     
     // Delete
     
-    func deleteObject(at ref: FIRDatabaseReference, completion: ResultCompletion?) {
+    func deleteObject(at ref: DatabaseReference, completion: ResultCompletion?) {
         ref.removeValue { error, ref in
             if let error = error {
                 completion?(Result.failure(error))
@@ -149,7 +150,7 @@ struct FirebaseNetworkAccess {
     
     // MARK: - Subscriptions
     
-    func subscribe(to ref: FIRDatabaseReference, completion: @escaping ResultCompletion) {
+    func subscribe(to ref: DatabaseReference, completion: @escaping ResultCompletion) {
         ref.observe(.value, with: { snap in
             if let snapJSON = snap.value as? JSONObject, snap.exists() {
                 completion(Result.success(snapJSON))
@@ -183,7 +184,7 @@ struct FirebaseNetworkAccess {
 //        }
 //    }
     
-    func unsubscribe(from ref: FIRDatabaseReference) {
+    func unsubscribe(from ref: DatabaseReference) {
         ref.removeAllObservers()
     }
     

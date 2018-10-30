@@ -15,7 +15,8 @@ struct SaveNewUser: Command {
     
     func execute(state: AppState, core: Core<AppState>) {
         let ref = networkAccess.usersRef.childByAutoId()
-        let user = User(id: ref.key, cloudKitId: iCloudId, firstName: "First Name")
+        guard let id = ref.key else { return }
+        let user = User(id: id, cloudKitId: iCloudId, firstName: "First Name")
         
         networkAccess.setValue(at: ref, parameters: user.jsonObject()) { result in
             switch result {
