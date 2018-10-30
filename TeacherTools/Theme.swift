@@ -42,7 +42,7 @@ enum FontType: String {
     
 }
 
-struct Theme: Marshaling {
+struct Theme {
     
     var id: String
     var name: String
@@ -63,8 +63,8 @@ struct Theme: Marshaling {
         guard let currentUser = App.core.state.currentUser else { return true }
         return !currentUser.isPro
     }
-
-    init(id: String = "", name: String = "", mainImage: BackgroundImage, borderImage: Banner, tintColor: UIColor, textColor: UIColor, fontType: FontType, isDefault: Bool = false) {
+    
+    init(id: String = UUID().uuidString, name: String = "", mainImage: BackgroundImage, borderImage: Banner, tintColor: UIColor, textColor: UIColor, fontType: FontType, isDefault: Bool = false) {
         self.id = id
         self.name = name
         self.mainImage = mainImage
@@ -80,21 +80,10 @@ struct Theme: Marshaling {
         return fontType.font(withSize: adjustedSize)
     }
     
-    func marshaled() -> JSONObject {
-        var json = JSONObject()
-        json["id"] = id
-        json["name"] = name
-        json["mainImage"] = mainImage.rawValue
-        json["borderImage"] = borderImage.rawValue
-        json["tintColor"] = tintColor.hexValue
-        json["textColor"] = textColor.hexValue
-        json["fontType"] = fontType.rawValue
-        json["isDefault"] = isDefault
-        
-        return json
-    }
-    
 }
+
+
+// MARK: - Identifiable
 
 extension Theme: Identifiable {
     
@@ -104,7 +93,50 @@ extension Theme: Identifiable {
     
 }
 
+
+// MARK: - Unmarshaling
+
+extension Theme: Unmarshaling {
+    
+    init(object: MarshaledObject) throws {
+        id = try object.value(for: Keys.id)
+        name = try object.value(for: Keys.name)
+        mainImage = try object.value(for: Keys.mainImage)
+        borderImage = try object.value(for: Keys.borderImage)
+        tintColor = try object.value(for: Keys.tintColor)
+        textColor = try object.value(for: Keys.textColor)
+        fontType = try object.value(for: Keys.fontType)
+        isDefault = try object.value(for: Keys.isDefault)
+    }
+    
+}
+
+
+// MARK: - Marshaling
+
+extension Theme: JSONMarshaling {
+    
+    func jsonObject() -> JSONObject {
+        var json = JSONObject()
+        json[Keys.id] = id
+        json[Keys.name] = name
+        json[Keys.mainImage] = mainImage.rawValue
+        json[Keys.borderImage] = borderImage.rawValue
+        json[Keys.tintColor] = tintColor.hexValue
+        json[Keys.textColor] = textColor.hexValue
+        json[Keys.fontType] = fontType.rawValue
+        json[Keys.isDefault] = isDefault
+        
+        return json
+    }
+    
+}
+
+
+// MARK: - Equatable
+
 extension Theme: Equatable { }
+
 func ==(lhs: Theme, rhs: Theme) -> Bool {
     return lhs.mainImage == rhs.mainImage &&
         lhs.borderImage == rhs.borderImage &&
@@ -112,22 +144,9 @@ func ==(lhs: Theme, rhs: Theme) -> Bool {
         lhs.textColor == rhs.textColor
 }
 
-extension Theme: Unmarshaling {
-    
-    init(object: MarshaledObject) throws {
-        id = try object.value(for: "id")
-        name = try object.value(for: "name")
-        mainImage = try object.value(for: "mainImage")
-        borderImage = try object.value(for: "borderImage")
-        tintColor = try object.value(for: "tintColor")
-        textColor = try object.value(for: "textColor")
-        fontType = try object.value(for: "fontType")
-        isDefault = try object.value(for: "isDefault")
-    }
-    
-}
 
 var defaultTheme: Theme {
     return whiteTheme
 }
+
 fileprivate let whiteTheme = Theme(mainImage: .white, borderImage: .metal, tintColor: .appleBlue, textColor: .darkGray, fontType: .chalkBoard, isDefault: true)

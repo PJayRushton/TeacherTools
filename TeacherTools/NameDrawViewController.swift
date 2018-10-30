@@ -216,8 +216,8 @@ extension NameDrawViewController {
         return true
     }
     
-    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
-        if motion == UIEventSubtype.motionShake {
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        if motion == UIEvent.EventSubtype.motionShake {
             presentAnimationAlert()
         }
     }

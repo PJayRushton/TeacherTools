@@ -21,7 +21,7 @@ struct AddStudent: Command {
     func execute(state: AppState, core: Core<AppState>) {
         var updatedGroup = group
         updatedGroup.studentIds.append(student.id)
-        networkAccess.updateObject(at: updatedGroup.ref, parameters: updatedGroup.marshaled()) { result in
+        networkAccess.updateObject(at: updatedGroup.ref, parameters: updatedGroup.jsonObject()) { result in
             switch result {
             case .success:
                 break

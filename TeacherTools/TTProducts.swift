@@ -20,43 +20,67 @@ func resourceNameForProductIdentifier(_ productIdentifier: String) -> String? {
     return productIdentifier.components(separatedBy: ".").last
 }
 
-struct TTPurchase: Marshaling {
+struct TTPurchase: JSONMarshaling {
     
     var id: String
     var productId: ProductIdentifier
     var purchaseDate: Date
     
-    func marshaled() -> JSONObject {
+}
+
+
+// MARK: - Unmarshaling
+
+extension TTPurchase: Unmarshaling {
+    
+    init(object: MarshaledObject) throws {
+        id = try object.value(for: Keys.id)
+        productId = try object.value(for: Keys.productId)
+        purchaseDate = try object.value(for: Keys.date)
+    }
+    
+}
+
+
+// MARK: - Marshaling
+
+extension TTPurchase {
+    
+    func jsonObject() -> JSONObject {
         var object = JSONObject()
-        object["id"] = id
-        object["productId"] = productId
-        object["date"] = purchaseDate.iso8601String
+        object[Keys.id] = id
+        object[Keys.productId] = productId
+        object[Keys.date] = purchaseDate.iso8601String
         
         return object
     }
     
 }
 
-extension TTPurchase: Unmarshaling {
-    
-    init(object: MarshaledObject) throws {
-        id = try object.value(for: "id")
-        productId = try object.value(for: "productId")
-        purchaseDate = try object.value(for: "date")
-    }
-    
-}
+
+// MARK: - Equatable
+
+extension TTPurchase: Equatable { }
 
 func ==(lhs: TTPurchase, rhs: TTPurchase) -> Bool {
     return lhs.productId == rhs.productId
 }
 
 
-extension TTPurchase: Identifiable, Hashable, Equatable {
+// MARK: - Hashable
+
+extension TTPurchase: Hashable {
     
     var hashValue: Int {
         return productId.hashValue
     }
+
+}
+
+
+// MARK: - Identifiable {
+
+extension TTPurchase: Identifiable {
     
     var ref: FIRDatabaseReference {
         let userId = App.core.state.currentUser?.id

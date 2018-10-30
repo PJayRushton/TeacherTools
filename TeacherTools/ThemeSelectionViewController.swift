@@ -54,7 +54,7 @@ extension ThemeSelectionViewController: Subscriber {
     }
     
     func updateUI(with theme: Theme) {
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: theme.textColor, NSFontAttributeName: theme.font(withSize: 22)]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: theme.textColor, NSAttributedString.Key.font: theme.font(withSize: 22)]
         navigationController?.navigationBar.tintColor = theme.tintColor
         backgroundImageView.image = theme.mainImage.image
         let borderImage = theme.borderImage.image.stretchableImage(withLeftCapWidth: 0, topCapHeight: 0)

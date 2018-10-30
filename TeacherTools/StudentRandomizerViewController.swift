@@ -71,7 +71,7 @@ class StudentRandomizerViewController: UIViewController, AutoStoryboardInitializ
 extension StudentRandomizerViewController: Subscriber {
     
     func update(with state: AppState) {
-        title = state.selectedGroup?.name
+        navigationItem.title = state.selectedGroup?.name
         guard let selectedGroup = state.selectedGroup else { return }
         updateCollectionView(group: selectedGroup)
         updateUI(with: state.theme)

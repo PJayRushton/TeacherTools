@@ -77,7 +77,7 @@ extension AddStudentsViewController: Subscriber {
         fakePlaceholderLabel.textColor = theme.textColor.withAlphaComponent(0.4)
         fakePlaceholderLabel.font = theme.font(withSize: 19)
         pasteButton.titleLabel?.font = theme.font(withSize: 24)
-        saveButton.setTitleTextAttributes([NSFontAttributeName: theme.font(withSize: 17)], for: .normal)
+        saveButton.setTitleTextAttributes([NSAttributedString.Key.font: theme.font(withSize: 17)], for: .normal)
     }
     
 }
@@ -90,21 +90,21 @@ extension AddStudentsViewController {
         textView.layer.borderWidth = 1
         fakePlaceholderLabel.text = "If you already copied a class list, tap the paste button!\n\nOtherwise you can:\n1. Go copy a class list now and come back to paste it\n 2. Add students manually.\n\nTo manually add names:\nEnter names on separate lines. Either like this:\nJohn  - or this:\nJohn Doe  - or this:\nDoe, John"
         updateUIAfterKeystroke()
-        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardDidShow), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardDidHide), name: NSNotification.Name.UIKeyboardDidHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardDidShow), name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardDidHide), name: UIResponder.keyboardDidHideNotification, object: nil)
     }
     
-    func handleKeyboardDidShow(notification: NSNotification) {
+    @objc func handleKeyboardDidShow(notification: NSNotification) {
         var keyboardHeight: CGFloat = 216
         
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             keyboardHeight = keyboardSize.height
         }
         let insets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight * 0.8, right: 0)
         textView.contentInset = insets
     }
     
-    func handleKeyboardDidHide() {
+    @objc func handleKeyboardDidHide() {
         textView.contentInset = UIEdgeInsets.zero
     }
 

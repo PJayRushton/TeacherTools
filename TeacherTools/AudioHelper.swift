@@ -28,7 +28,6 @@ class AudioHelper {
     init?(resource: AudioResource) {
         do {
             player = try AVAudioPlayer(contentsOf: resource.url)
-            player.prepareToPlay()
         } catch {
             print(error)
             return nil
@@ -36,6 +35,7 @@ class AudioHelper {
     }
     
     func play() {
+        player.prepareToPlay()
         player.play()
     }
     

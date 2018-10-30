@@ -22,7 +22,7 @@ class StudentTicketsViewController: UIViewController, AutoStoryboardInitializabl
         didSet {
             let title = isShowingSteppers ? "Done" : "Edit"
             editButton.title = title
-            editButton.setTitleTextAttributes([NSFontAttributeName: core.state.theme.font(withSize: 17)], for: .normal)
+            editButton.setTitleTextAttributes([NSAttributedString.Key.font: core.state.theme.font(withSize: 17)], for: .normal)
         }
     }
     var students = [Student]() {
@@ -87,7 +87,7 @@ extension StudentTicketsViewController: Subscriber {
         let borderImage = theme.borderImage.image.stretchableImage(withLeftCapWidth: 0, topCapHeight: 0)
         navigationController?.navigationBar.setBackgroundImage(borderImage, for: .default)
         editButton.tintColor = theme.textColor
-        editButton.setTitleTextAttributes([NSFontAttributeName: core.state.theme.font(withSize: 17)], for: .normal)
+        editButton.setTitleTextAttributes([NSAttributedString.Key.font: core.state.theme.font(withSize: 17)], for: .normal)
         dismissButton.tintColor = theme.textColor
         updateSegmentedControl(with: theme)
     }

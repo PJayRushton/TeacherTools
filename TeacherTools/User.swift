@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-final class User: Marshaling, Unmarshaling {
+final class User: Unmarshaling {
     
     var id: String
     var cloudKitId: String?
@@ -26,7 +26,7 @@ final class User: Marshaling, Unmarshaling {
         return purchases.map { $0.productId }.contains(TTProducts.proUpgrade) || UserDefaults.standard.userIsPro
     }
     
-    init(id: String = "", cloudKitId: String? = nil, creationDate: Date = Date(), firstName: String? = nil, themeID: String = "-KYnZO6lWYBECsy4U3fN", lastFirst: Bool = false, purchases: Set<TTPurchase> = []) {
+    init(id: String = UUID().uuidString, cloudKitId: String? = nil, creationDate: Date = Date(), firstName: String? = nil, themeID: String = "-KYnZO6lWYBECsy4U3fN", lastFirst: Bool = false, purchases: Set<TTPurchase> = []) {
         self.id = id
         self.cloudKitId = cloudKitId
         self.creationDate = creationDate
@@ -36,26 +36,35 @@ final class User: Marshaling, Unmarshaling {
         self.purchases = purchases
     }
     
+    // MARK: - Unmarshaling
+    
     init(object: MarshaledObject) throws {
-        id = try object.value(for: "id")
+        id = try object.value(for: Keys.id)
         cloudKitId = try object.value(for: Keys.iCloudIdKey)
-        creationDate = try object.value(for: "creationDate")
-        firstName = try object.value(for: "firstName")
-        themeID = try object.value(for: "theme")
-        lastFirst = try object.value(for: "lastFirst")
-        let purchasesJSON: JSONObject? = try object.value(for: "purchases")
+        creationDate = try object.value(for: Keys.creationDate)
+        firstName = try object.value(for: Keys.firstName)
+        themeID = try object.value(for: Keys.theme)
+        lastFirst = try object.value(for: Keys.lastFirst)
+        let purchasesJSON: JSONObject? = try object.value(for: Keys.purchases)
         purchases = Set<TTPurchase>(purchasesJSON.parsedObjects())
     }
     
-    func marshaled() -> JSONObject {
+}
+
+
+//  MARK - Marshaling
+
+extension User: JSONMarshaling {
+    
+    func jsonObject() -> JSONObject {
         var json = JSONObject()
-        json["id"] = id
+        json[Keys.id] = id
         json[Keys.iCloudIdKey] = cloudKitId
-        json["creationDate"] = creationDate.iso8601String
-        json["firstName"] = firstName
-        json["purchases"] = purchases.marshaled()
-        json["lastFirst"] = lastFirst
-        json["theme"] = themeID
+        json[Keys.creationDate] = creationDate.iso8601String
+        json[Keys.firstName] = firstName
+        json[Keys.purchases] = purchases.jsonObject()
+        json[Keys.lastFirst] = lastFirst
+        json[Keys.theme] = themeID
         
         return json
     }

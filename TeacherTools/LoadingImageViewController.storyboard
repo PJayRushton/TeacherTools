@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -27,7 +25,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="xXc-Qf-oY1">
-                                <rect key="frame" x="86" y="255" width="204" height="157"/>
+                                <rect key="frame" x="85.5" y="255" width="204" height="157"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Teacher Tools" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDH-sv-0qX">
                                         <rect key="frame" x="0.0" y="0.0" width="204" height="33"/>
@@ -36,16 +34,16 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="apple" translatesAutoresizingMaskIntoConstraints="NO" id="3au-k5-ORd">
-                                        <rect key="frame" x="57" y="57" width="90" height="100"/>
+                                        <rect key="frame" x="52" y="57" width="100" height="100"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="3au-k5-ORd" secondAttribute="height" multiplier="551:616" id="4fJ-sF-MHV"/>
+                                            <constraint firstAttribute="width" secondItem="3au-k5-ORd" secondAttribute="height" id="4fJ-sF-MHV"/>
                                             <constraint firstAttribute="height" constant="100" id="LQ4-cg-wRe"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
                             </stackView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chalkboard_bottom" translatesAutoresizingMaskIntoConstraints="NO" id="ufc-oQ-RJZ">
-                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="663" width="375" height="4"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -53,11 +51,11 @@
                             <constraint firstItem="60c-kk-M3F" firstAttribute="top" secondItem="ufc-oQ-RJZ" secondAttribute="bottom" id="1EF-pw-vJZ"/>
                             <constraint firstItem="ufc-oQ-RJZ" firstAttribute="leading" secondItem="b2u-qD-HKY" secondAttribute="leading" id="8tf-ZQ-F29"/>
                             <constraint firstItem="7dL-JM-Uez" firstAttribute="leading" secondItem="b2u-qD-HKY" secondAttribute="leading" id="Avl-Dn-hzE"/>
-                            <constraint firstItem="60c-kk-M3F" firstAttribute="top" secondItem="7dL-JM-Uez" secondAttribute="bottom" id="EO1-6a-opa"/>
+                            <constraint firstAttribute="bottom" secondItem="7dL-JM-Uez" secondAttribute="bottom" id="EO1-6a-opa"/>
                             <constraint firstItem="xXc-Qf-oY1" firstAttribute="centerX" secondItem="b2u-qD-HKY" secondAttribute="centerX" id="K86-h7-Spi"/>
                             <constraint firstAttribute="trailing" secondItem="ufc-oQ-RJZ" secondAttribute="trailing" id="Piy-Sg-zNy"/>
                             <constraint firstItem="xXc-Qf-oY1" firstAttribute="centerY" secondItem="b2u-qD-HKY" secondAttribute="centerY" id="Plg-pP-Xbu"/>
-                            <constraint firstItem="7dL-JM-Uez" firstAttribute="top" secondItem="b2u-qD-HKY" secondAttribute="topMargin" id="ax3-So-QhM"/>
+                            <constraint firstItem="7dL-JM-Uez" firstAttribute="top" secondItem="b2u-qD-HKY" secondAttribute="top" id="ax3-So-QhM"/>
                             <constraint firstAttribute="trailing" secondItem="7dL-JM-Uez" secondAttribute="trailing" id="hnY-Fw-JQs"/>
                         </constraints>
                     </view>
@@ -72,7 +70,7 @@
     </scenes>
     <resources>
         <image name="apple" width="551" height="616"/>
-        <image name="blackChalkboard" width="1358" height="905"/>
-        <image name="chalkboard_bottom" width="320" height="50"/>
+        <image name="blackChalkboard" width="2716" height="1810"/>
+        <image name="chalkboard_bottom" width="28.799999237060547" height="4.5"/>
     </resources>
 </document>

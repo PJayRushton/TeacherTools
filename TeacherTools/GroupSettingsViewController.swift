@@ -148,7 +148,7 @@ extension GroupSettingsViewController {
             objectsToShare.append(appStoreURL)
         }
         let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-        activityVC.excludedActivityTypes = [UIActivityType.airDrop, .addToReadingList, .assignToContact, .openInIBooks, .postToTencentWeibo, .postToVimeo, .print, .saveToCameraRoll, .postToWeibo, .postToFlickr]
+        activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, .addToReadingList, .assignToContact, .openInIBooks, .postToTencentWeibo, .postToVimeo, .print, .saveToCameraRoll, .postToWeibo, .postToFlickr]
         activityVC.modalPresentationStyle = .popover
         let shareIndexPath = IndexPath(row: TableSection.app.rows.index(of: .share)!, section: TableSection.app.rawValue)
         activityVC.popoverPresentationController?.sourceRect = tableView.cellForRow(at: shareIndexPath)!.contentView.frame
@@ -193,15 +193,14 @@ extension GroupSettingsViewController {
         let alert = UIAlertController(title: "Are you sure?", message: message, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { _ in
             self.core.fire(command: DeleteObject(object: group))
-            guard let customTabBarController = self.tabBarController as? CustomTabBarController else { return }
-            customTabBarController.selectedIndex = 0
-            customTabBarController.customTabBar.selectedIndex = 0
+            guard let tabBarController = self.tabBarController as? MainTabBarController else { return }
+            tabBarController.selectedIndex = 0
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
     }
 
-    func saveClassName() {
+    @objc func saveClassName() {
         guard var group = group, let name = groupNameTextField.text else {
             core.fire(event: ErrorEvent(error: nil, message: "Error saving class"))
             return
@@ -217,7 +216,7 @@ extension GroupSettingsViewController {
         groupNameTextField.resignFirstResponder()
     }
 
-    func toolbarTapped() {
+    @objc func toolbarTapped() {
         if isNewGroupName {
             saveClassName()
         } else {
@@ -225,7 +224,7 @@ extension GroupSettingsViewController {
         }
     }
     
-    func doneButtonPressed() {
+    @objc func doneButtonPressed() {
         view.endEditing(true)
     }
     
@@ -233,7 +232,7 @@ extension GroupSettingsViewController {
         flexy = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: #selector(toolbarTapped))
         saveBarButton = UIBarButtonItem(title: NSLocalizedString("Save", comment: ""), style: .plain, target: self, action: #selector(saveClassName))
         doneBarButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneButtonPressed))
-        saveBarButton.setTitleTextAttributes([NSFontAttributeName: core.state.theme.font(withSize: 20)], for: .normal)
+        saveBarButton.setTitleTextAttributes([NSAttributedString.Key.font: core.state.theme.font(withSize: 20)], for: .normal)
         toolbarTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(toolbarTapped))
         toolbar.addGestureRecognizer(toolbarTapRecognizer)
         toolbar.setItems([flexy, saveBarButton, flexy], animated: false)
@@ -259,7 +258,7 @@ extension GroupSettingsViewController {
         let objectsToShare: [Any] = [textToShare]
         
         let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-        activityVC.excludedActivityTypes = [UIActivityType.airDrop, .addToReadingList, .assignToContact, .openInIBooks, .postToTencentWeibo, .postToVimeo, .print, .saveToCameraRoll, .postToWeibo, .postToFlickr]
+        activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, .addToReadingList, .assignToContact, .openInIBooks, .postToTencentWeibo, .postToVimeo, .print, .saveToCameraRoll, .postToWeibo, .postToFlickr]
         activityVC.modalPresentationStyle = .popover
         activityVC.popoverPresentationController?.barButtonItem = exportBarButton
         present(activityVC, animated: true, completion: nil)

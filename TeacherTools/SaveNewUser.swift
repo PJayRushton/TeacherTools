@@ -17,7 +17,7 @@ struct SaveNewUser: Command {
         let ref = networkAccess.usersRef.childByAutoId()
         let user = User(id: ref.key, cloudKitId: iCloudId, firstName: "First Name")
         
-        networkAccess.setValue(at: ref, parameters: user.marshaled()) { result in
+        networkAccess.setValue(at: ref, parameters: user.jsonObject()) { result in
             switch result {
             case .success:
                 core.fire(command: SubscribeToCurrentUser(id: user.id))

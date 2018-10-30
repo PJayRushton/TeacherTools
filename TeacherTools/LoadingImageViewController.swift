@@ -33,7 +33,7 @@ final class LoadingImageViewController: UIViewController, AutoStoryboardInitiali
         appleImageView.rotate()
     }
     
-    func presentICloudAlert() {
+    @objc func presentICloudAlert() {
         let alert = UIAlertController(title: NSLocalizedString("iCloud error", comment: "There was an error with iCloud"), message: NSLocalizedString("Teacher Tools uses iCloud to sync your data. Make sure you've given Teacher Tools iCloud access from the settings app", comment: ""), preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Settings", style: .default, handler: { _ in
             self.openSettings()
@@ -47,7 +47,7 @@ final class LoadingImageViewController: UIViewController, AutoStoryboardInitiali
     
     fileprivate func openSettings() {
         var settingsURL: URL?
-        settingsURL = URL(string:"App-Prefs:") ?? URL(string: UIApplicationOpenSettingsURLString)
+        settingsURL = URL(string:"App-Prefs:") ?? URL(string: UIApplication.openSettingsURLString)
         guard let url = settingsURL , UIApplication.shared.canOpenURL(url) else { return }
         UIApplication.shared.open(url)
     }

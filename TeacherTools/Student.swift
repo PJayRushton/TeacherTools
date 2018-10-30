@@ -9,7 +9,7 @@
 import Foundation
 import Firebase
 
-struct Student: Marshaling, Unmarshaling, Identifiable {
+struct Student: Identifiable, NameSortable {
     
     var id: String
     var firstName: String
@@ -43,24 +43,39 @@ struct Student: Marshaling, Unmarshaling, Identifiable {
     
     init(id: String, name: String, tickets: Int = 1) {
         self.id = id
-        self.firstName = name.parsed().first
-        self.lastName = name.parsed().last
+        let parsedName = name.parsed()
+        self.firstName = parsedName.first
+        self.lastName = parsedName.last
         self.tickets = tickets
     }
     
+}
+
+
+// MARK: - Marshaling
+
+extension Student: Unmarshaling {
+    
     init(object: MarshaledObject) throws {
-        id = try object.value(for: "id")
-        firstName = try object.value(for: "firstName")
-        lastName = try object.value(for: "lastName")
-        tickets = try object.value(for: "tickets")
+        id = try object.value(for: Keys.id)
+        firstName = try object.value(for: Keys.firstName)
+        lastName = try object.value(for: Keys.lastName)
+        tickets = try object.value(for: Keys.tickets)
     }
     
-    func marshaled() -> JSONObject {
+}
+
+
+// MARK: - Marshaling
+
+extension Student: JSONMarshaling {
+    
+    func jsonObject() -> JSONObject {
         var json = JSONObject()
-        json["id"] = id
-        json["firstName"] = firstName
-        json["lastName"] = lastName
-        json["tickets"] = tickets
+        json[Keys.id] = id
+        json[Keys.firstName] = firstName
+        json[Keys.lastName] = lastName
+        json[Keys.tickets] = tickets
         
         return json
     }

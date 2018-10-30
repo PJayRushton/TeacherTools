@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Whisper
 
 class GroupListViewController: UIViewController, AutoStoryboardInitializable {
 
@@ -66,7 +65,7 @@ extension GroupListViewController: Subscriber {
         let borderImage = theme.borderImage.image.stretchableImage(withLeftCapWidth: 0, topCapHeight: 0)
         navigationController?.navigationBar.setBackgroundImage(borderImage, for: .default)
         xButton.tintColor = theme.textColor
-        xButton.setTitleTextAttributes([NSFontAttributeName: theme.font(withSize: 20)], for: .normal)
+        xButton.setTitleTextAttributes([NSAttributedString.Key.font: theme.font(withSize: 20)], for: .normal)
     }
 
 }
@@ -84,7 +83,7 @@ extension GroupListViewController {
         alert.addTextField { textField in
             textField.placeholder = NSLocalizedString("Enter class name", comment: "Placeholder to enter class name")
             textField.autocapitalizationType = .words
-            NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextFieldTextDidChange, object: textField, queue: OperationQueue.main, using: { _ in
+            NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: textField, queue: OperationQueue.main, using: { _ in
                 saveAction.isEnabled = textField.text != nil && !textField.text!.isEmpty
             })
             

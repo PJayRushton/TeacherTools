@@ -13,7 +13,7 @@ struct CreateStudent: Command {
     var student: Student
     
     func execute(state: AppState, core: Core<AppState>) {
-        networkAccess.addObject(at: student.ref, parameters: student.marshaled()) { result in
+        networkAccess.addObject(at: student.ref, parameters: student.jsonObject()) { result in
             switch result {
             case .success:
                 if state.allStudents.isEmpty {

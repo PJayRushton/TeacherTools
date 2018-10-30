@@ -67,6 +67,25 @@ extension Subscriber {
 public struct Subscription<StateType: State> {
     private(set) weak var subscriber: AnySubscriber? = nil
     let selector: ((StateType) -> Any)?
+    let notifyQueue: DispatchQueue
+
+    fileprivate func notify(with state: StateType) {
+        if Thread.isMainThread {
+            finishNotify(with: state)
+        } else {
+            notifyQueue.async {
+                self.finishNotify(with: state)
+            }
+        }
+    }
+    
+    fileprivate func finishNotify(with state: StateType) {
+        if let selector = self.selector {
+            self.subscriber?._update(with: selector(state))
+        } else {
+            self.subscriber?._update(with: state)
+        }
+    }
 }
 
 
@@ -75,15 +94,29 @@ public struct Subscription<StateType: State> {
 
 public class Core<StateType: State> {
     
-    private var subscriptions = [Subscription<StateType>]()
-    private var middlewares = [Middlewares<StateType>]()
+    private let jobQueue:DispatchQueue = DispatchQueue(label: "reactor.core.queue", qos: .userInitiated, attributes: [])
+
+    private let subscriptionsSyncQueue = DispatchQueue(label: "reactor.core.subscription.sync")
+    private var _subscriptions = [Subscription<StateType>]()
+    private var subscriptions: [Subscription<StateType>] {
+        get {
+            return subscriptionsSyncQueue.sync {
+                return self._subscriptions
+            }
+        }
+        set {
+            subscriptionsSyncQueue.sync {
+                self._subscriptions = newValue
+            }
+        }
+    }
+
+    private let middlewares: [Middlewares<StateType>]
     public private (set) var state: StateType {
         didSet {
             subscriptions = subscriptions.filter { $0.subscriber != nil }
-            DispatchQueue.main.async {
-                for subscription in self.subscriptions {
-                    self.publishStateChange(subscriber: subscription.subscriber, selector: subscription.selector)
-                }
+            for subscription in subscriptions {
+                subscription.notify(with: state)
             }
         }
     }
@@ -96,32 +129,56 @@ public class Core<StateType: State> {
     
     // MARK: - Subscriptions
     
-    public func add(subscriber: AnySubscriber, selector: ((StateType) -> Any)? = nil) {
+    public func add(subscriber: AnySubscriber, notifyOnQueue queue: DispatchQueue? = DispatchQueue.main, selector: ((StateType) -> Any)? = nil) {
+        if Thread.isMainThread {
+            finishAdd(subscriber: subscriber, notifyQueue: queue, selector: selector)
+        } else {
+            jobQueue.async {
+                self.finishAdd(subscriber: subscriber, notifyQueue: queue, selector: selector)
+            }
+        }
+    }
+    
+    private func finishAdd(subscriber: AnySubscriber, notifyQueue: DispatchQueue?, selector: ((StateType) -> Any)?) {
         guard !subscriptions.contains(where: {$0.subscriber === subscriber}) else { return }
-        subscriptions.append(Subscription(subscriber: subscriber, selector: selector))
-        publishStateChange(subscriber: subscriber, selector: selector)
+        let subscription = Subscription(subscriber: subscriber, selector: selector, notifyQueue: notifyQueue ?? jobQueue)
+        subscriptions.append(subscription)
+        subscription.notify(with: state)
     }
     
     public func remove(subscriber: AnySubscriber) {
         subscriptions = subscriptions.filter { $0.subscriber !== subscriber }
     }
     
-    private func publishStateChange(subscriber: AnySubscriber?, selector: ((StateType) -> Any)?) {
-        if let selector = selector {
-            subscriber?._update(with: selector(self.state))
-        } else {
-            subscriber?._update(with: self.state)
-        }
-    }
-    
     // MARK: - Events
     
     public func fire(event: Event) {
-        state.react(to: event)
+        if Thread.isMainThread {
+            finishFire(event: event)
+        } else {
+            jobQueue.async {
+                self.finishFire(event: event)
+            }
+        }
+    }
+    
+    private func finishFire(event: Event) {
+        self.state.react(to: event)
+        let state = self.state
         middlewares.forEach { $0.middleware._process(event: event, state: state) }
     }
     
     public func fire<C: Command>(command: C) where C.StateType == StateType {
+        if Thread.isMainThread {
+            finishFire(command: command)
+        } else {
+            jobQueue.async {
+                self.finishFire(command: command)
+            }
+        }
+    }
+    
+    private func finishFire<C: Command>(command: C) where C.StateType == StateType {
         command.execute(state: state, core: self)
     }
     

@@ -37,7 +37,7 @@ extension UIApplication {
     }
     
     var isActive: Bool {
-        return self.applicationState == UIApplicationState.active
+        return self.applicationState == UIApplication.State.active
     }
     
 }

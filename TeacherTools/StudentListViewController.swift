@@ -37,7 +37,7 @@ class StudentListViewController: UIViewController, AutoStoryboardInitializable {
     fileprivate var doneBarButton = UIBarButtonItem()
     fileprivate var editBarButton = UIBarButtonItem()
     
-    var currentSortType: SortType = App.core.state.currentUser!.lastFirst ? .last : .first {
+    var currentSortType: SortType = App.core.state.currentUser?.lastFirst == true ? .last : .first {
         didSet {
             students = currentSortType.sort(students)
             tableView.reloadData()
@@ -87,7 +87,7 @@ class StudentListViewController: UIViewController, AutoStoryboardInitializable {
         startEditing()
     }
     
-    func editButtonPressed(_ sender: UIBarButtonItem) {
+    @objc func editButtonPressed(_ sender: UIBarButtonItem) {
         tableView.isEditing = !tableView.isEditing
         tableView.reloadData()
         navigationItem.leftBarButtonItem = tableView.isEditing ? doneBarButton : editBarButton
@@ -133,7 +133,7 @@ extension StudentListViewController {
     
     func setUp() {
         plusBarButton = UIBarButtonItem(image: UIImage(named: "plus"), style: .plain, target: self, action: #selector(startEditing))
-        plusBarButton.setTitleTextAttributes([NSFontAttributeName: core.state.theme.font(withSize: core.state.theme.plusButtonSize)], for: .normal)
+        plusBarButton.setTitleTextAttributes([NSAttributedString.Key.font: core.state.theme.font(withSize: core.state.theme.plusButtonSize)], for: .normal)
         pasteBarButton = UIBarButtonItem(image: UIImage(named: "lines"), style: .plain, target: self, action: #selector(pasteButtonPressed))
         saveBarButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveNewStudent))
         cancelBarButton = UIBarButtonItem(image: UIImage(named: "x"), style: .plain, target: self, action: #selector(saveNewStudent))
@@ -148,21 +148,21 @@ extension StudentListViewController {
         tableView.rowHeight = Platform.isPad ? 60 : 45.0
         resetAllCells()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardDidShow), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardDidHide), name: NSNotification.Name.UIKeyboardDidHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardDidShow), name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardDidHide), name: UIResponder.keyboardDidHideNotification, object: nil)
     }
     
-    func handleKeyboardDidShow(notification: NSNotification) {
+    @objc func handleKeyboardDidShow(notification: NSNotification) {
         var keyboardHeight: CGFloat = 216
         
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             keyboardHeight = keyboardSize.height
         }
         let insets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight, right: 0)
         tableView.contentInset = insets
     }
     
-    func handleKeyboardDidHide() {
+    @objc func handleKeyboardDidHide() {
         tableView.contentInset = UIEdgeInsets.zero
     }
     
@@ -183,12 +183,12 @@ extension StudentListViewController {
         }
     }
     
-    func pasteButtonPressed() {
+    @objc func pasteButtonPressed() {
         let addStudentsVC = AddStudentsViewController.initializeFromStoryboard()
         navigationController?.pushViewController(addStudentsVC, animated: true)
     }
     
-    func saveNewStudent() {
+    @objc func saveNewStudent() {
         if newStudentTextField.text!.isEmpty { isAdding = false; return }
         if let newStudentName = newStudentTextField.text, newStudentName.isEmpty == false {
             guard newStudentName.isValidName else {
@@ -218,9 +218,9 @@ extension StudentListViewController {
         
         for barButton in [plusBarButton, pasteBarButton, saveBarButton, cancelBarButton, editBarButton] {
             barButton.tintColor = theme.textColor
-            barButton.setTitleTextAttributes([NSFontAttributeName: theme.font(withSize: 20)], for: .normal)
+            barButton.setTitleTextAttributes([NSAttributedString.Key.font: theme.font(withSize: 20)], for: .normal)
         }
-        plusBarButton.setTitleTextAttributes([NSFontAttributeName: theme.font(withSize: theme.plusButtonSize)], for: .normal)
+        plusBarButton.setTitleTextAttributes([NSAttributedString.Key.font: theme.font(withSize: theme.plusButtonSize)], for: .normal)
         navBarButton.tintColor = theme.textColor
         navBarButton.update(with: theme)
         updateRightBarButton()
@@ -229,7 +229,7 @@ extension StudentListViewController {
         newStudentTextField.textColor = theme.textColor
     }
     
-    func startEditing() {
+    @objc func startEditing() {
         isAdding = true
     }
     

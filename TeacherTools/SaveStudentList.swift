@@ -18,7 +18,7 @@ struct SaveStudentList: Command {
         let students = names.flatMap { Student(id: networkAccess.studentsRef(userId: currentUser.id).childByAutoId().key, fullName: $0) }
         
         for (index, student) in students.enumerated() {
-            networkAccess.addObject(at: student.ref, parameters: student.marshaled()) { _ in
+            networkAccess.addObject(at: student.ref, parameters: student.jsonObject()) { _ in
                 if index == students.count - 1 {
                     self.updateGroupStudents(students, currentGroup: currentGroup, user: currentUser)
                 }
@@ -38,11 +38,11 @@ struct SaveStudentList: Command {
             }
             var updatedGroup = currentGroup
             updatedGroup.studentIds = newStudentIds
-            networkAccess.updateObject(at: updatedGroup.ref, parameters: updatedGroup.marshaled(), completion: nil)
+            networkAccess.updateObject(at: updatedGroup.ref, parameters: updatedGroup.jsonObject(), completion: nil)
         } else {
             var updatedGroup = currentGroup
             updatedGroup.studentIds.append(contentsOf: newStudentIds)
-            networkAccess.updateObject(at: updatedGroup.ref, parameters: updatedGroup.marshaled(), completion: nil)
+            networkAccess.updateObject(at: updatedGroup.ref, parameters: updatedGroup.jsonObject(), completion: nil)
         }
     }
     

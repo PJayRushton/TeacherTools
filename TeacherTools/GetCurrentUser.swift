@@ -16,7 +16,9 @@ struct GetCurrentUser: Command {
         let query = networkAccess.usersRef.queryOrdered(byChild: Keys.iCloudIdKey).queryEqual(toValue: iCloudId)
         networkAccess.getData(withQuery: query) { result in
             let userResult = result.map { (json: JSONObject) -> User in
-                guard let key = json.keys.first else { throw MarshalError.nullValue(key: "User Search Failed")}
+                guard let key = json.keys.first else {
+                    throw MarshalError.nullValue(key: "User Search Failed")
+                }
                 let userJSON: JSONObject = try json.value(for: key)
                 return try User(object: userJSON)
             }
@@ -25,7 +27,7 @@ struct GetCurrentUser: Command {
                 core.fire(event: Selected<User>(user))
                 core.fire(command: SubscribeToCurrentUser(id: user.id))
                 core.fire(command: GetIAPs())
-            case let .failure(error):
+            case .failure:
                 core.fire(event: Selected<User>(nil))
                 core.fire(command: SaveNewUser(iCloudId: self.iCloudId))
             }

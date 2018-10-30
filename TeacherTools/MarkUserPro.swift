@@ -15,7 +15,7 @@ struct MarkUserPro: Command {
         guard let currentUser = core.state.currentUser, !currentUser.isPro else { return }
         let newPurchaseRef = currentUser.ref.child("purchases").childByAutoId()
         let proPurchase = TTPurchase(id: newPurchaseRef.key, productId: TTProducts.proUpgrade, purchaseDate: Date())
-        newPurchaseRef.updateChildValues(proPurchase.marshaled())
+        newPurchaseRef.updateChildValues(proPurchase.jsonObject())
     }
     
 }

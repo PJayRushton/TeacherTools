@@ -10,7 +10,7 @@ import Foundation
 import Firebase
 
 struct NoOp: Event { }
-protocol Identifiable: Equatable, Marshaling, Unmarshaling {
+protocol Identifiable: Equatable, JSONMarshaling, Unmarshaling {
     var id: String { get set }
     var ref: FIRDatabaseReference { get }
 }
@@ -25,6 +25,7 @@ enum FirebaseError: Error {
     case userRetrievalFailed(userId: String)
     case incorrectlyFormedData
 }
+
 
 struct FirebaseNetworkAccess {
     
@@ -158,11 +159,29 @@ struct FirebaseNetworkAccess {
         })
     }
     
-    func subscribeToReachability(completion: @escaping (Bool?) -> Void) {
-        FIRDatabase.database().reference(withPath: ".info/connected").observe(.value, with: { snapshot in
-            completion(snapshot.value as? Bool)
-        })
-    }
+//    func fullySubscribe(to ref: DatabaseReference, completion: @escaping ((Result<JSONObject>, DataEventType) -> Void)) {
+//        for eventType in [DataEventType.childAdded, .childChanged, .childRemoved] {
+//            ref.observe(eventType, with: { snap in
+//                if snap.exists(), let snapJSON = snap.value as? JSONObject {
+//                    completion(Result.success(snapJSON), eventType)
+//                } else {
+//                    completion(Result.failure(FirebaseError.incorrectlyFormedData), eventType)
+//                }
+//            })
+//        }
+//    }
+//
+//    func fullySubscribe(to query: DatabaseQuery, completion: @escaping ((Result<JSONObject>, DataEventType) -> Void)) {
+//        for eventType in [DataEventType.childAdded, .childChanged, .childRemoved] {
+//            query.observe(eventType, with: { snap in
+//                if snap.exists(), let snapJSON = snap.value as? JSONObject {
+//                    completion(Result.success(snapJSON), eventType)
+//                } else {
+//                    completion(Result.failure(FirebaseError.incorrectlyFormedData), eventType)
+//                }
+//            })
+//        }
+//    }
     
     func unsubscribe(from ref: FIRDatabaseReference) {
         ref.removeAllObservers()

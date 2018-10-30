@@ -1,19 +1,10 @@
 //
-//        .........     .........
-//      ......  ...........  .....
-//      ...        .....       ....
-//     ...         ....         ...
-//     ...       ........        ...
-//     ....      .... ....      ...
-//      ...      .... ....      ...
-//      .....     .......     ....
-//        ...      .....     ....
-//         ....             ....
-//           ....         ....
-//            .....     .....
-//              .....  ....
-//                .......
-//                  ...
+//  MainViewController.swift
+//  TeacherTools
+//
+//  Created by Parker Rushton on 11/2/16.
+//  Copyright © 2016 AppsByPJ. All rights reserved.
+//               ...
 
 import UIKit
 
@@ -21,7 +12,7 @@ class MainViewController: UIViewController {
 
     var core = App.core
     
-    let tabBarViewController = CustomTabBarController.initializeFromStoryboard()
+    let tabBarViewController = MainTabBarController.initializeFromStoryboard()
     let loadingImageVC = LoadingImageViewController.initializeFromStoryboard()
     
     override func viewDidLoad() {
@@ -35,7 +26,6 @@ class MainViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        core.fire(command: SubscribeToReachability())
         core.fire(command: SubscribeToThemes())
     }
     
@@ -64,22 +54,21 @@ extension MainViewController {
     
     fileprivate func presentApplication() {
         if tabBarViewController.parent == nil {
-            loadingImageVC.removeFromParentViewController()
+            loadingImageVC.removeFromParent()
             loadingImageVC.view.removeFromSuperview()
             
             tabBarViewController.selectedIndex = 0
-            tabBarViewController.customTabBar.selectedIndex = 0
-            addChildViewController(tabBarViewController)
+            addChild(tabBarViewController)
             view.addSubview(tabBarViewController.view)
         }
     }
 
     fileprivate func showLoadingScreen() {
-        tabBarViewController.removeFromParentViewController()
+        tabBarViewController.removeFromParent()
         if let index = view.subviews.index(of: loadingImageVC.view) {
-            view.bringSubview(toFront: view.subviews[index])
+            view.bringSubviewToFront(view.subviews[index])
         } else {
-            addChildViewController(loadingImageVC)
+            addChild(loadingImageVC)
             view.addSubview(loadingImageVC.view)
         }
     }

@@ -15,7 +15,7 @@ struct UpdateTeamSize: Command {
     func execute(state: AppState, core: Core<AppState>) {
         guard var updatedGroup = state.selectedGroup else { core.fire(event: NoOp()); return }
         updatedGroup.teamSize = size
-        networkAccess.updateObject(at: updatedGroup.ref, parameters: updatedGroup.marshaled()) { result in
+        networkAccess.updateObject(at: updatedGroup.ref, parameters: updatedGroup.jsonObject()) { result in
             switch result {
             case .success:
                 break

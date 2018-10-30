@@ -16,7 +16,7 @@ struct DeleteStudent: Command {
         networkAccess.deleteObject(at: student.ref, completion: nil)
         guard var editedGroup = state.selectedGroup, let studentIndex = editedGroup.studentIds.index(of: student.id) else { return }
         editedGroup.studentIds.remove(at: studentIndex)
-        networkAccess.updateObject(at: editedGroup.ref, parameters: editedGroup.marshaled(), completion: nil)
+        networkAccess.updateObject(at: editedGroup.ref, parameters: editedGroup.jsonObject(), completion: nil)
     }
     
 }

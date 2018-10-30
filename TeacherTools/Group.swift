@@ -33,18 +33,18 @@ struct Group: Identifiable {
     
 }
 
-extension Group: Unmarshaling, Marshaling {
+
+// MARK: - Unmarshaling
+
+extension Group: Unmarshaling {
     
     init(object: MarshaledObject) throws {
-        id = try object.value(for: "id")
-        name = try object.value(for: "name")
-        creationDate = try object.value(for: "creationDate")
-        let density: Float? = try? object.value(for: "displayDensity")
-        displayDensity = density ?? 0.6
-        let size: Int? = try? object.value(for: "teamSize")
-        teamSize = size ?? 2
-
-        let studentsDict: JSONObject? = try? object.value(for: "studentIds")
+        id = try object.value(for: Keys.id)
+        name = try object.value(for: Keys.name)
+        creationDate = try object.value(for: Keys.creationDate)
+        displayDensity = try object.value(for: Keys.displayDensity) ?? 0.6
+        teamSize = try object.value(for: Keys.teamSize) ?? 2
+        let studentsDict: JSONObject? = try? object.value(for: Keys.studentIds)
         if let studentsDict = studentsDict {
             studentIds = Array(studentsDict.keys)
         } else {
@@ -52,14 +52,21 @@ extension Group: Unmarshaling, Marshaling {
         }
     }
     
-    func marshaled() -> JSONObject {
+}
+
+
+// MARK: - Marshaling
+
+extension Group: JSONMarshaling {
+    
+    func jsonObject() -> JSONObject {
         var json = JSONObject()
-        json["id"] = id
-        json["name"] = name
-        json["creationDate"] = creationDate.iso8601String
-        json["displayDensity"] = displayDensity
-        json["studentIds"] = studentIds.marshaled()
-        json["teamSize"] = teamSize
+        json[Keys.id] = id
+        json[Keys.name] = name
+        json[Keys.creationDate] = creationDate.iso8601String
+        json[Keys.displayDensity] = displayDensity
+        json[Keys.studentIds] = studentIds.jsonObject()
+        json[Keys.teamSize] = teamSize
         
         return json
     }

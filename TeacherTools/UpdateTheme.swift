@@ -16,7 +16,7 @@ struct UpdateTheme: Command {
         guard let currentUser = core.state.currentUser else { return }
         currentUser.themeID = theme.id
         let ref = networkAccess.usersRef.child(currentUser.id)
-        networkAccess.updateObject(at: ref, parameters: currentUser.marshaled(), completion: nil)
+        networkAccess.updateObject(at: ref, parameters: currentUser.jsonObject(), completion: nil)
     }
     
 }
