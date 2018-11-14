@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,10 +14,6 @@
         <scene sceneID="sxe-xt-9lp">
             <objects>
                 <viewController storyboardIdentifier="StudentTicketsViewController" automaticallyAdjustsScrollViewInsets="NO" id="mqg-NK-qv1" customClass="StudentTicketsViewController" customModule="TeacherTools" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="n9I-zD-v5d"/>
-                        <viewControllerLayoutGuide type="bottom" id="FzG-QK-dKA"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ne4-Wq-foh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -32,12 +27,12 @@
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="57" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rzj-3n-BXu">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="563"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <view key="tableHeaderView" contentMode="scaleToFill" id="gUJ-Xa-olp" userLabel="Header view">
+                                        <view key="tableHeaderView" contentMode="scaleToFill" misplaced="YES" id="gUJ-Xa-olp" userLabel="Header view">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="54"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Prs-uc-16o" customClass="BetterSegmentedControl" customModule="BetterSegmentedControl">
-                                                    <rect key="frame" x="8" y="8" width="359" height="38"/>
+                                                    <rect key="frame" x="8" y="28" width="359" height="25"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <connections>
                                                         <action selector="segmentedControlValueChanged:" destination="mqg-NK-qv1" eventType="valueChanged" id="0b0-E1-8go"/>
@@ -52,7 +47,7 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="Prs-uc-16o" secondAttribute="bottom" id="yjx-9J-ern"/>
                                             </constraints>
                                         </view>
-                                        <view key="tableFooterView" contentMode="scaleToFill" id="SbD-wO-ERw" userLabel="Footer view">
+                                        <view key="tableFooterView" contentMode="scaleToFill" misplaced="YES" id="SbD-wO-ERw" userLabel="Footer view">
                                             <rect key="frame" x="0.0" y="139" width="375" height="24"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -66,26 +61,26 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="daD-d2-ksW">
-                                                            <rect key="frame" x="16" y="12" width="343" height="32.5"/>
+                                                            <rect key="frame" x="16" y="15" width="343" height="27"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="NameLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Bb-rF-Y9h">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="108" height="32.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="108" height="27"/>
                                                                     <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="18"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <view contentMode="scaleToFill" horizontalHuggingPriority="999" translatesAutoresizingMaskIntoConstraints="NO" id="KdG-8v-7Yu">
-                                                                    <rect key="frame" x="108" y="0.0" width="101" height="32.5"/>
+                                                                    <rect key="frame" x="108" y="0.0" width="87.5" height="27"/>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 </view>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="siW-3q-2Xx" userLabel="Image stack">
-                                                                    <rect key="frame" x="209" y="0.0" width="31" height="32.5"/>
+                                                                    <rect key="frame" x="195.5" y="0.0" width="44.5" height="27"/>
                                                                     <subviews>
                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ticket" translatesAutoresizingMaskIntoConstraints="NO" id="C1J-an-mCE">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="12.5" height="32.5"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="26" height="27"/>
                                                                         </imageView>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ZA-G5-OzP">
-                                                                            <rect key="frame" x="20.5" y="0.0" width="10.5" height="32.5"/>
+                                                                            <rect key="frame" x="34" y="0.0" width="10.5" height="27"/>
                                                                             <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
@@ -93,7 +88,7 @@
                                                                     </subviews>
                                                                 </stackView>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OgC-gd-ALg" customClass="GMStepper" customModule="GMStepper">
-                                                                    <rect key="frame" x="240" y="0.0" width="103" height="32.5"/>
+                                                                    <rect key="frame" x="240" y="0.0" width="103" height="27"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
@@ -169,15 +164,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="eWg-oP-xkf" firstAttribute="top" secondItem="n9I-zD-v5d" secondAttribute="bottom" id="CEA-JQ-hL2"/>
-                            <constraint firstAttribute="trailing" secondItem="zBW-Zh-H85" secondAttribute="trailing" id="OJJ-h7-fJM"/>
-                            <constraint firstItem="zBW-Zh-H85" firstAttribute="leading" secondItem="Ne4-Wq-foh" secondAttribute="leading" id="TCx-g4-jb8"/>
-                            <constraint firstAttribute="trailing" secondItem="eWg-oP-xkf" secondAttribute="trailing" id="VMk-O8-rRR"/>
-                            <constraint firstItem="eWg-oP-xkf" firstAttribute="leading" secondItem="Ne4-Wq-foh" secondAttribute="leading" id="n8F-XB-ea6"/>
-                            <constraint firstItem="FzG-QK-dKA" firstAttribute="top" secondItem="zBW-Zh-H85" secondAttribute="bottom" id="nFp-ob-CyM"/>
-                            <constraint firstItem="zBW-Zh-H85" firstAttribute="top" secondItem="n9I-zD-v5d" secondAttribute="bottom" id="uEv-Ho-W3Z"/>
-                            <constraint firstItem="FzG-QK-dKA" firstAttribute="top" secondItem="eWg-oP-xkf" secondAttribute="bottom" id="vue-df-jr0"/>
+                            <constraint firstItem="eWg-oP-xkf" firstAttribute="top" secondItem="Ne4-Wq-foh" secondAttribute="top" id="CEA-JQ-hL2"/>
+                            <constraint firstItem="ncs-26-L9G" firstAttribute="trailing" secondItem="zBW-Zh-H85" secondAttribute="trailing" id="OJJ-h7-fJM"/>
+                            <constraint firstItem="zBW-Zh-H85" firstAttribute="leading" secondItem="ncs-26-L9G" secondAttribute="leading" id="TCx-g4-jb8"/>
+                            <constraint firstItem="ncs-26-L9G" firstAttribute="trailing" secondItem="eWg-oP-xkf" secondAttribute="trailing" id="VMk-O8-rRR"/>
+                            <constraint firstItem="eWg-oP-xkf" firstAttribute="leading" secondItem="ncs-26-L9G" secondAttribute="leading" id="n8F-XB-ea6"/>
+                            <constraint firstItem="ncs-26-L9G" firstAttribute="bottom" secondItem="zBW-Zh-H85" secondAttribute="bottom" id="nFp-ob-CyM"/>
+                            <constraint firstItem="zBW-Zh-H85" firstAttribute="top" secondItem="ncs-26-L9G" secondAttribute="top" id="uEv-Ho-W3Z"/>
+                            <constraint firstAttribute="bottom" secondItem="eWg-oP-xkf" secondAttribute="bottom" id="vue-df-jr0"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="ncs-26-L9G"/>
                     </view>
                     <navigationItem key="navigationItem" title="Tickets" id="yW4-N0-wMN">
                         <barButtonItem key="leftBarButtonItem" title="Edit" id="t0p-cn-bg3">
@@ -206,7 +202,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="greenChalkboard" width="595" height="335"/>
+        <image name="greenChalkboard" width="286.10702514648438" height="161"/>
         <image name="ticket" width="26" height="26"/>
         <image name="x" width="20" height="20"/>
     </resources>

@@ -14,7 +14,6 @@ class GroupSettingsViewController: UITableViewController, AutoStoryboardInitiali
     @IBOutlet weak var groupNameTextField: UITextField!
     @IBOutlet weak var lastNameLabel: UILabel!
     @IBOutlet weak var lastNameSwitch: UISwitch!
-    @IBOutlet weak var exportBarButton: UIBarButtonItem!
     @IBOutlet weak var exportImageView: UIImageView!
     @IBOutlet weak var exportLabel: UILabel!
     @IBOutlet weak var deleteLabel: UILabel!
@@ -49,10 +48,6 @@ class GroupSettingsViewController: UITableViewController, AutoStoryboardInitiali
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         core.remove(subscriber: self)
-    }
-    
-    @IBAction func exportButtonPressed(_ sender: UIBarButtonItem) {
-        showExportShareSheet()
     }
     
     @IBAction func groupNameTextFieldChanged(_ sender: UITextField) {

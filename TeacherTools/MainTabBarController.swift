@@ -49,6 +49,7 @@ extension MainTabBarController: Subscriber {
         let currentTheme = state.theme
         tabBar.tintColor = currentTheme.tintColor
         tabBar.unselectedItemTintColor = currentTheme.textColor
+        tabBar.barStyle = currentTheme.name == "Whiteboard" ? .default : .black
     }
     
 }

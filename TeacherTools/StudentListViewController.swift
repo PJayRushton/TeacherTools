@@ -400,7 +400,7 @@ extension StudentListViewController {
                                                           normalTextColor: theme.textColor,
                                                           selectedBackgroundColor: .clear,
                                                           selectedFont: theme.font(withSize: 18),
-                                                          selectedTextColor: theme.textColor)
+                                                          selectedTextColor: .white)
         segmentedControl?.backgroundColor = .clear
         segmentedControl?.indicatorViewBackgroundColor = theme.tintColor
         segmentedControl?.cornerRadius = 5

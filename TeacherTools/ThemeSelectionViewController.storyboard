@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,16 +14,12 @@
         <scene sceneID="oam-Dx-tGl">
             <objects>
                 <viewController storyboardIdentifier="ThemeSelectionViewController" id="ODg-7j-tyQ" customClass="ThemeSelectionViewController" customModule="TeacherTools" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Miu-zg-PZJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="9LZ-Qp-gDE"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Bci-qu-A6D">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="greenChalkboard" translatesAutoresizingMaskIntoConstraints="NO" id="9up-PZ-G4N">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bPT-Il-uQs">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
@@ -41,15 +38,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="9up-PZ-G4N" firstAttribute="leading" secondItem="Bci-qu-A6D" secondAttribute="leading" id="3Jf-lB-oDX"/>
-                            <constraint firstItem="9up-PZ-G4N" firstAttribute="top" secondItem="Miu-zg-PZJ" secondAttribute="bottom" id="BhL-bd-ePJ"/>
-                            <constraint firstItem="bPT-Il-uQs" firstAttribute="leading" secondItem="Bci-qu-A6D" secondAttribute="leading" id="Kai-9a-mCg"/>
-                            <constraint firstAttribute="trailing" secondItem="bPT-Il-uQs" secondAttribute="trailing" id="LtZ-9w-zv6"/>
-                            <constraint firstAttribute="trailing" secondItem="9up-PZ-G4N" secondAttribute="trailing" id="Ynv-P5-Z8i"/>
-                            <constraint firstItem="9LZ-Qp-gDE" firstAttribute="top" secondItem="9up-PZ-G4N" secondAttribute="bottom" id="kl7-CU-6Ft"/>
-                            <constraint firstItem="9LZ-Qp-gDE" firstAttribute="top" secondItem="bPT-Il-uQs" secondAttribute="bottom" id="upY-Mo-jIp"/>
-                            <constraint firstItem="bPT-Il-uQs" firstAttribute="top" secondItem="Miu-zg-PZJ" secondAttribute="bottom" id="xoN-OW-VAb"/>
+                            <constraint firstItem="9up-PZ-G4N" firstAttribute="trailing" secondItem="Bci-qu-A6D" secondAttribute="trailing" id="2TL-6S-hge"/>
+                            <constraint firstItem="9up-PZ-G4N" firstAttribute="top" secondItem="Bci-qu-A6D" secondAttribute="top" id="E9Y-Jf-q2k"/>
+                            <constraint firstItem="bPT-Il-uQs" firstAttribute="leading" secondItem="Sef-Ja-meW" secondAttribute="leading" id="Kai-9a-mCg"/>
+                            <constraint firstItem="Sef-Ja-meW" firstAttribute="trailing" secondItem="bPT-Il-uQs" secondAttribute="trailing" id="LtZ-9w-zv6"/>
+                            <constraint firstItem="9up-PZ-G4N" firstAttribute="leading" secondItem="Bci-qu-A6D" secondAttribute="leading" id="ND7-Ie-qOP"/>
+                            <constraint firstItem="9up-PZ-G4N" firstAttribute="bottom" secondItem="Bci-qu-A6D" secondAttribute="bottom" id="Wez-BA-NCA"/>
+                            <constraint firstItem="Sef-Ja-meW" firstAttribute="bottom" secondItem="bPT-Il-uQs" secondAttribute="bottom" id="upY-Mo-jIp"/>
+                            <constraint firstItem="bPT-Il-uQs" firstAttribute="top" secondItem="Sef-Ja-meW" secondAttribute="top" id="xoN-OW-VAb"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Sef-Ja-meW"/>
                     </view>
                     <navigationItem key="navigationItem" title="Select a theme" id="UWq-QA-iqv">
                         <barButtonItem key="rightBarButtonItem" title="Pro" id="1G4-w5-fyT">
@@ -71,6 +69,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="greenChalkboard" width="595" height="335"/>
+        <image name="greenChalkboard" width="286.10702514648438" height="161"/>
     </resources>
 </document>

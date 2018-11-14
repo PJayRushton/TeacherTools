@@ -65,7 +65,7 @@ struct Theme {
         return !currentUser.isPro
     }
     
-    init(id: String = UUID().uuidString, name: String = "", mainImage: BackgroundImage, borderImage: Banner, tintColor: UIColor, textColor: UIColor, fontType: FontType, isDefault: Bool = false) {
+    init(id: String = "", name: String = "", mainImage: BackgroundImage, borderImage: Banner, tintColor: UIColor, textColor: UIColor, fontType: FontType, isDefault: Bool = false) {
         self.id = id
         self.name = name
         self.mainImage = mainImage

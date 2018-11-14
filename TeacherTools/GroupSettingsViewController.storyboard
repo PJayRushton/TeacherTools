@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Dgw-vH-YHj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Dgw-vH-YHj">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -289,16 +289,10 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Settings" id="zt2-os-GuE">
                         <barButtonItem key="backBarButtonItem" title=" " id="gU0-D0-yzJ"/>
-                        <barButtonItem key="rightBarButtonItem" image="share" id="zhe-iX-u8r">
-                            <connections>
-                                <action selector="exportButtonPressed:" destination="I4e-NU-ye8" id="ts1-x9-2uG"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="deleteLabel" destination="hbY-44-izJ" id="d97-6a-RjX"/>
-                        <outlet property="exportBarButton" destination="zhe-iX-u8r" id="CoE-aN-1j7"/>
                         <outlet property="exportImageView" destination="cC1-bJ-JyO" id="NWV-5L-U47"/>
                         <outlet property="exportLabel" destination="BV3-oR-j8N" id="cRB-p4-UTV"/>
                         <outlet property="groupNameLabel" destination="0Xb-RC-JUz" id="MXl-Dx-hap"/>
@@ -338,7 +332,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="settings" width="30" height="30"/>
+        <image name="settings" width="25" height="25"/>
         <image name="share" width="36" height="29"/>
     </resources>
 </document>
