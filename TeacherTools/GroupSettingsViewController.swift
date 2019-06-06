@@ -96,7 +96,6 @@ extension GroupSettingsViewController: Subscriber {
         lastNameSwitch.onTintColor = theme.tintColor
         groupNameTextField.textColor = theme.textColor
         groupNameTextField.font = theme.font(withSize: 19)
-        exportBarButton.tintColor = theme.tintColor
         exportImageView.tintColor = theme.textColor
         
         for label in [groupNameLabel, lastNameLabel, exportLabel, deleteLabel, themeLabel, themeNameLabel, rateLabel, shareLabel, upgradeLabel] {
@@ -255,7 +254,6 @@ extension GroupSettingsViewController {
         let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
         activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, .addToReadingList, .assignToContact, .openInIBooks, .postToTencentWeibo, .postToVimeo, .print, .saveToCameraRoll, .postToWeibo, .postToFlickr]
         activityVC.modalPresentationStyle = .popover
-        activityVC.popoverPresentationController?.barButtonItem = exportBarButton
         present(activityVC, animated: true, completion: nil)
     }
     

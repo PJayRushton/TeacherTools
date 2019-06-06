@@ -548,7 +548,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-TeacherTools/Pods-TeacherTools-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-TeacherTools/Pods-TeacherTools-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BetterSegmentedControl/BetterSegmentedControl.framework",
 				"${BUILT_PRODUCTS_DIR}/GMStepper/GMStepper.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
@@ -569,7 +569,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TeacherTools/Pods-TeacherTools-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TeacherTools/Pods-TeacherTools-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FC3E06FEE881405024256EC5 /* [CP] Check Pods Manifest.lock */ = {
