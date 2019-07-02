@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Marshal
 
 struct UpdateObject<T: Identifiable>: Command {
     

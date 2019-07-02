@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,32 +18,36 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="greenChalkboard" translatesAutoresizingMaskIntoConstraints="NO" id="eWg-oP-xkf">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="zBW-Zh-H85">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="57" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rzj-3n-BXu">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="563"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <view key="tableHeaderView" contentMode="scaleToFill" misplaced="YES" id="gUJ-Xa-olp" userLabel="Header view">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="54"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Prs-uc-16o" customClass="BetterSegmentedControl" customModule="BetterSegmentedControl">
-                                                    <rect key="frame" x="8" y="28" width="359" height="25"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" momentary="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kDh-gN-v2Y">
+                                                    <rect key="frame" x="8" y="28" width="359" height="26"/>
+                                                    <segments>
+                                                        <segment title="First"/>
+                                                        <segment title="Second"/>
+                                                        <segment title=""/>
+                                                    </segments>
                                                     <connections>
-                                                        <action selector="segmentedControlValueChanged:" destination="mqg-NK-qv1" eventType="valueChanged" id="0b0-E1-8go"/>
+                                                        <action selector="segmentedControlValueChanged:" destination="mqg-NK-qv1" eventType="valueChanged" id="b5j-8k-iGY"/>
                                                     </connections>
-                                                </view>
+                                                </segmentedControl>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstItem="Prs-uc-16o" firstAttribute="leading" secondItem="gUJ-Xa-olp" secondAttribute="leadingMargin" id="8sp-tq-Gls"/>
-                                                <constraint firstItem="Prs-uc-16o" firstAttribute="top" secondItem="gUJ-Xa-olp" secondAttribute="topMargin" id="W7R-0Z-TDn"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Prs-uc-16o" secondAttribute="trailing" id="ljw-KP-nYK"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="Prs-uc-16o" secondAttribute="bottom" id="yjx-9J-ern"/>
+                                                <constraint firstItem="kDh-gN-v2Y" firstAttribute="top" secondItem="gUJ-Xa-olp" secondAttribute="topMargin" id="0Mg-HW-iuM"/>
+                                                <constraint firstItem="kDh-gN-v2Y" firstAttribute="leading" secondItem="gUJ-Xa-olp" secondAttribute="leadingMargin" id="4Xy-BQ-gs5"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="kDh-gN-v2Y" secondAttribute="trailing" id="5ks-rD-xRF"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="kDh-gN-v2Y" secondAttribute="bottom" id="hOY-4t-oX3"/>
                                             </constraints>
                                         </view>
                                         <view key="tableFooterView" contentMode="scaleToFill" misplaced="YES" id="SbD-wO-ERw" userLabel="Footer view">
@@ -60,7 +63,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="56.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="daD-d2-ksW">
+                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="daD-d2-ksW">
                                                             <rect key="frame" x="16" y="15" width="343" height="27"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="NameLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Bb-rF-Y9h">
@@ -70,11 +73,11 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <view contentMode="scaleToFill" horizontalHuggingPriority="999" translatesAutoresizingMaskIntoConstraints="NO" id="KdG-8v-7Yu">
-                                                                    <rect key="frame" x="108" y="0.0" width="87.5" height="27"/>
+                                                                    <rect key="frame" x="116" y="0.0" width="72.5" height="27"/>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 </view>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="siW-3q-2Xx" userLabel="Image stack">
-                                                                    <rect key="frame" x="195.5" y="0.0" width="44.5" height="27"/>
+                                                                    <rect key="frame" x="196.5" y="0.0" width="44.5" height="27"/>
                                                                     <subviews>
                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ticket" translatesAutoresizingMaskIntoConstraints="NO" id="C1J-an-mCE">
                                                                             <rect key="frame" x="0.0" y="0.0" width="26" height="27"/>
@@ -87,39 +90,13 @@
                                                                         </label>
                                                                     </subviews>
                                                                 </stackView>
-                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OgC-gd-ALg" customClass="GMStepper" customModule="GMStepper">
-                                                                    <rect key="frame" x="240" y="0.0" width="103" height="27"/>
-                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                    <userDefinedRuntimeAttributes>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
-                                                                            <real key="value" value="1000"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="stepValue">
-                                                                            <real key="value" value="1"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="color" keyPath="buttonsBackgroundColor">
-                                                                            <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="color" keyPath="buttonsTextColor">
-                                                                            <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="color" keyPath="labelBackgroundColor">
-                                                                            <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="color" keyPath="labelTextColor">
-                                                                            <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="string" keyPath="rightButtonText" value="＋"/>
-                                                                        <userDefinedRuntimeAttribute type="string" keyPath="leftButtonText" value="－"/>
-                                                                    </userDefinedRuntimeAttributes>
+                                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Pmf-rU-K23">
+                                                                    <rect key="frame" x="249" y="0.0" width="94" height="29"/>
                                                                     <connections>
-                                                                        <action selector="stepperValueChanged:" destination="KUa-La-rfW" eventType="valueChanged" id="GPE-xT-iwh"/>
+                                                                        <action selector="stepperValueChanged:" destination="KUa-La-rfW" eventType="valueChanged" id="LjR-Db-L18"/>
                                                                     </connections>
-                                                                </view>
+                                                                </stepper>
                                                             </subviews>
-                                                            <constraints>
-                                                                <constraint firstItem="OgC-gd-ALg" firstAttribute="width" secondItem="daD-d2-ksW" secondAttribute="width" multiplier="0.3" id="8d9-H1-gX3"/>
-                                                            </constraints>
                                                         </stackView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -135,7 +112,7 @@
                                                     <outlet property="countLabel" destination="0ZA-G5-OzP" id="qFV-b0-32B"/>
                                                     <outlet property="nameLabel" destination="4Bb-rF-Y9h" id="Rj7-5r-mfH"/>
                                                     <outlet property="readyOnlyStack" destination="siW-3q-2Xx" id="Dqz-Rz-pad"/>
-                                                    <outlet property="stepper" destination="OgC-gd-ALg" id="xPO-Jf-u7v"/>
+                                                    <outlet property="stepper" destination="Pmf-rU-K23" id="AOd-sK-HcD"/>
                                                     <outlet property="ticketImageView" destination="C1J-an-mCE" id="EQX-5a-2ef"/>
                                                 </connections>
                                             </tableViewCell>
@@ -145,20 +122,6 @@
                                             <outlet property="delegate" destination="mqg-NK-qv1" id="vv0-MS-QqE"/>
                                         </connections>
                                     </tableView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BFq-BN-e4u">
-                                        <rect key="frame" x="0.0" y="563" width="375" height="40"/>
-                                        <color key="backgroundColor" red="0.92549020049999997" green="0.1215686277" blue="0.078431375319999996" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="bUQ-hN-Edb"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="16"/>
-                                        <state key="normal" title="Reset tickets">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="resetButtonPressed:" destination="mqg-NK-qv1" eventType="touchUpInside" id="oA3-ig-SdZ"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -176,14 +139,14 @@
                         <viewLayoutGuide key="safeArea" id="ncs-26-L9G"/>
                     </view>
                     <navigationItem key="navigationItem" title="Tickets" id="yW4-N0-wMN">
-                        <barButtonItem key="leftBarButtonItem" title="Edit" id="t0p-cn-bg3">
+                        <barButtonItem key="leftBarButtonItem" title="Reset" id="8Iu-VV-OPw">
                             <connections>
-                                <action selector="editButtonPressed:" destination="mqg-NK-qv1" id="db0-2b-5gf"/>
+                                <action selector="resetPressed" destination="mqg-NK-qv1" id="BZO-Dt-ace"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="x" id="cpY-ih-Nf5">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="cpY-ih-Nf5">
                             <connections>
-                                <action selector="dismissButtonPressed:" destination="mqg-NK-qv1" id="VUQ-ft-w1M"/>
+                                <action selector="doneButtonPressed" destination="mqg-NK-qv1" id="SDC-tN-dIM"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -191,8 +154,8 @@
                     <connections>
                         <outlet property="backgroundImageView" destination="eWg-oP-xkf" id="No3-hb-1Sa"/>
                         <outlet property="dismissButton" destination="cpY-ih-Nf5" id="EDU-7F-6JO"/>
-                        <outlet property="editButton" destination="t0p-cn-bg3" id="haV-aQ-ayk"/>
-                        <outlet property="segmentedControl" destination="Prs-uc-16o" id="3gO-kZ-z6F"/>
+                        <outlet property="resetButton" destination="8Iu-VV-OPw" id="3I8-cJ-qx0"/>
+                        <outlet property="segmentedControl" destination="kDh-gN-v2Y" id="oqV-wL-Ext"/>
                         <outlet property="tableView" destination="rzj-3n-BXu" id="yCg-4Q-99I"/>
                     </connections>
                 </viewController>
@@ -202,8 +165,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="greenChalkboard" width="286.10702514648438" height="161"/>
+        <image name="greenChalkboard" width="595.5" height="335"/>
         <image name="ticket" width="26" height="26"/>
-        <image name="x" width="20" height="20"/>
     </resources>
 </document>

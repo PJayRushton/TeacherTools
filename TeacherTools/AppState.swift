@@ -26,23 +26,30 @@ struct AppState: State {
     var isSubscribedToCurrentUser = false
     var groups = [Group]()
     var groupsAreLoaded = false
-    var selectedGroup: Group?
-    var currentStudents = [Student]()
     var absentStudents = [Student]()
     var allStudents = [Student]()
     var hasSubscribedToStudents = false
     var theme = defaultTheme
     var allThemes = [Theme]()
     var iaps = [SKProduct]()
-    
-    var isUsingTickets: Bool {
-        for student in currentStudents {
-            if student.tickets != 1 {
-                return true
-            }
+    var selectedGroupId: String? {
+        get {
+            dump(UserDefaults.standard.selectedGroupId)
+            return UserDefaults.standard.selectedGroupId
+        } set {
+            UserDefaults.standard.selectedGroupId = newValue
         }
-        
-        return false
+    }
+    
+    var currentStudents: [Student] {
+        guard let group = selectedGroup else { return [] }
+        return currentStudents(of: group, absents: absentStudents)
+    }
+    var selectedGroup: Group? {
+        return groups.first(where: { $0.id == selectedGroupId })
+    }
+    var isUsingTickets: Bool {
+        return currentStudents.first(where: { $0.tickets != 1 }) != nil
     }
     
     mutating func react(to event: Event) {
@@ -64,52 +71,34 @@ struct AppState: State {
             let allGroups = event.payload
             groups = allGroups
             groupsAreLoaded = true
+            let allIds = allGroups.map { $0.id }
             
-            if let group = selectedGroup, let index = allGroups.index(of: group) {
-                let newSelectedGroup = allGroups[index]
-                selectedGroup = newSelectedGroup
-                currentStudents = currentStudents(of: newSelectedGroup, absents: absentStudents)
-            } else if !event.payload.isEmpty {
-                selectedGroup = event.payload.first
-                currentStudents = currentStudents(of: selectedGroup!, absents: absentStudents)
+            if let selectedId = selectedGroupId {
+                if !allIds.contains(selectedId) {
+                    selectedGroupId = nil
+                }
             } else {
-                selectedGroup = nil
+                selectedGroupId = allIds.first
             }
+            
         case let event as Selected<Group>:
-            selectedGroup = event.item
+            selectedGroupId = event.item?.id
             
             if selectedGroup != event.item {
                 absentStudents.removeAll()
             }
-            if let group = event.item {
-                currentStudents = currentStudents(of: group, absents: absentStudents)
-            } else {
-                currentStudents = [Student]()
-            }
-            
             // STUDENTS
         case let event as Updated<[Student]>:
             allStudents = event.payload
             hasSubscribedToStudents = true
             
-            guard let group = selectedGroup else { break }
-            currentStudents = currentStudents(of: group, absents: absentStudents)
-        case let event as SortStudents:
-            currentStudents.sort(by: event.sort)
         case let event as MarkStudentAbsent:
             guard let _ = currentStudents.index(of: event.student) else { return }
             absentStudents.append(event.student)
             
-            guard let group = selectedGroup else { return }
-            currentStudents = currentStudents(of: group, absents: absentStudents)
         case let event as MarkStudentPresent:
             guard let index = absentStudents.index(of: event.student) else { return }
             absentStudents.remove(at: index)
-            
-            guard let group = selectedGroup else { return }
-            currentStudents = currentStudents(of: group, absents: absentStudents)
-        case _ as ShuffleTeams:
-            currentStudents = currentStudents.shuffled()
             
         case let event as Updated<[SKProduct]>:
             iaps = event.payload
@@ -173,10 +162,6 @@ struct ICloudUserIdentified: Event {
 
 struct ShuffleTeams: Event { }
 
-struct SortStudents: Event {
-    var sort: (Student, Student) -> Bool
-}
-
 struct MarkStudentAbsent: Event {
     var student: Student
 }
@@ -185,11 +170,23 @@ struct MarkStudentPresent: Event {
     var student: Student
 }
 
-
 struct UploadStatusUpdated: Event {
     var success: Bool?
 }
 
 struct SubscriptionStatusUpdated: Event {
     var preAuth: Bool
+}
+
+extension UserDefaults {
+    
+    var selectedGroupId: String? {
+        get {
+            return string(forKey: #function)
+        } set {
+            set(newValue, forKey: #function)
+            synchronize()
+        }
+    }
+    
 }

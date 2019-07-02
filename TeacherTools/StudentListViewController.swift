@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import BetterSegmentedControl
 
 class StudentListViewController: UIViewController, AutoStoryboardInitializable {
     
@@ -23,7 +22,7 @@ class StudentListViewController: UIViewController, AutoStoryboardInitializable {
     @IBOutlet weak var tableSortHeader: UIView!
     @IBOutlet weak var newEntryView: UIView!
     @IBOutlet weak var newStudentTextField: UITextField!
-    @IBOutlet weak var segmentedControl: BetterSegmentedControl!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
 
     var core = App.core
     var group: Group?
@@ -74,8 +73,8 @@ class StudentListViewController: UIViewController, AutoStoryboardInitializable {
         updateRightBarButton()
     }
     
-    @IBAction func segmentedControlValueChanged(_ sender: BetterSegmentedControl) {
-        guard let selectedSortType = SortType(rawValue: Int(sender.index)) else { return }
+    @IBAction func segmentedControlValueChanged(_ sender: UISegmentedControl) {
+        guard let selectedSortType = SortType(rawValue: sender.selectedSegmentIndex) else { return }
         currentSortType = selectedSortType
     }
     
@@ -393,17 +392,9 @@ extension StudentListViewController {
     }
     
     func updateSegmentedControl(theme: Theme) {
-        let titles = SortType.allValues.map { $0.buttonTitle }
-        segmentedControl?.segments = LabelSegment.segments(withTitles: titles,
-                                                          normalBackgroundColor: .clear,
-                                                          normalFont: theme.font(withSize: 16),
-                                                          normalTextColor: theme.textColor,
-                                                          selectedBackgroundColor: .clear,
-                                                          selectedFont: theme.font(withSize: 18),
-                                                          selectedTextColor: .white)
-        segmentedControl?.backgroundColor = .clear
-        segmentedControl?.indicatorViewBackgroundColor = theme.tintColor
-        segmentedControl?.cornerRadius = 5
+        SortType.allValues.forEach { segmentedControl.setTitle($0.buttonTitle, forSegmentAt: $0.rawValue) }
+        segmentedControl.tintColor = theme.tintColor
+        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: theme.font(withSize: 17)], for: .normal)
     }
     
 }

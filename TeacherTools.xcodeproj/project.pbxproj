@@ -100,6 +100,7 @@
 		A1CC0AB91DC7A14800C0575F /* DeleteObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CC0AB81DC7A14800C0575F /* DeleteObject.swift */; };
 		A1CC0ABB1DC7B7F700C0575F /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14160B81DC66F1200C4F5BB /* CloudKit.framework */; };
 		A1D1B4341DCC136D00AF5452 /* AddGroupTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D1B4331DCC136D00AF5452 /* AddGroupTableCell.swift */; };
+		A1D56A9622B0337400E7EA37 /* SortType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D56A9522B0337400E7EA37 /* SortType.swift */; };
 		A1D67EFE1DC95B38002F73D2 /* GroupSettingsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1D67EFD1DC95B38002F73D2 /* GroupSettingsViewController.storyboard */; };
 		F3F38D1C4192E182CBE439B6 /* Pods_TeacherTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D3DAA9ED955FCB45EDED3BB /* Pods_TeacherTools.framework */; };
 /* End PBXBuildFile section */
@@ -221,6 +222,7 @@
 		A1CC0AB81DC7A14800C0575F /* DeleteObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteObject.swift; sourceTree = "<group>"; };
 		A1CC0ABA1DC7B7F100C0575F /* TeacherTools.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TeacherTools.entitlements; sourceTree = "<group>"; };
 		A1D1B4331DCC136D00AF5452 /* AddGroupTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupTableCell.swift; sourceTree = "<group>"; };
+		A1D56A9522B0337400E7EA37 /* SortType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortType.swift; sourceTree = "<group>"; };
 		A1D67EFD1DC95B38002F73D2 /* GroupSettingsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GroupSettingsViewController.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -393,6 +395,7 @@
 			children = (
 				A14160EE1DC6833200C4F5BB /* Group.swift */,
 				A14160F01DC683C400C4F5BB /* Student.swift */,
+				A1D56A9522B0337400E7EA37 /* SortType.swift */,
 				A141611E1DC69AEB00C4F5BB /* Theme.swift */,
 				A19DB8E11DF1E8EB00D4C386 /* TTProducts.swift */,
 				A14160B31DC66E0300C4F5BB /* User.swift */,
@@ -500,6 +503,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -610,6 +614,7 @@
 				A147CFB11DCA4FA000C9860F /* NameDrawViewController.swift in Sources */,
 				A1BD1C8B1EBE018D0033D316 /* Platform.swift in Sources */,
 				A13683771DFC889500015F06 /* UpdateTheme.swift in Sources */,
+				A1D56A9622B0337400E7EA37 /* SortType.swift in Sources */,
 				A14160B21DC66DF300C4F5BB /* UpdateUser.swift in Sources */,
 				A151FB521E18750E00FD63A1 /* UITextViewWithPlaceholder.swift in Sources */,
 				A161426C1DCF43A100C800A1 /* RandomizerCollectionViewCell.swift in Sources */,
@@ -818,6 +823,7 @@
 					"$(PROJECT_DIR)/TeacherTools",
 				);
 				INFOPLIST_FILE = TeacherTools/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.PJayRushton.Teacher-Resources";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -839,6 +845,7 @@
 					"$(PROJECT_DIR)/TeacherTools",
 				);
 				INFOPLIST_FILE = TeacherTools/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.PJayRushton.Teacher-Resources";
 				PRODUCT_NAME = "$(TARGET_NAME)";

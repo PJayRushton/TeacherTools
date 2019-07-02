@@ -19,7 +19,9 @@ class NameDrawViewController: UIViewController, AutoStoryboardInitializable {
     
     fileprivate let cellReuseIdentifier = "NameDrawCell"
     fileprivate let emptyStudentsString = "Tap here to \ndraw a name!"
-    fileprivate let audioHelper = AudioHelper(resource: AudioHelper.AudioResource.drumroll)
+    lazy var audioHelper = {
+        AudioHelper(resource: AudioHelper.AudioResource.drumroll)
+    }()
     fileprivate var allStudents = [Student]()
     fileprivate var selectedStudents = [Student]()
     fileprivate var animator: UIViewPropertyAnimator!

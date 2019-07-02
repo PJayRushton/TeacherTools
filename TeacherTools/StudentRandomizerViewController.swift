@@ -59,7 +59,7 @@ class StudentRandomizerViewController: UIViewController, AutoStoryboardInitializ
     }
 
     @IBAction func shuffleButtonPressed(_ sender: UIBarButtonItem) {
-        core.fire(event: ShuffleTeams())
+        shuffleStudents()
     }
     
     
@@ -80,9 +80,9 @@ extension StudentRandomizerViewController: Subscriber {
 }
 
 
-// MARK: - Fileprivate
+// MARK: - Private
 
-extension StudentRandomizerViewController {
+private extension StudentRandomizerViewController {
     
     func setUp() {
         collectionView.dataSource = dataSource
@@ -115,6 +115,10 @@ extension StudentRandomizerViewController {
         navigationController?.navigationBar.setBackgroundImage(borderImage, for: .default)
         instructionLabel.font = theme.font(withSize: 17)
         instructionLabel.textColor = theme.textColor
+    }
+    
+    func shuffleStudents() {
+        dataSource.students.shuffle()
     }
 
 }

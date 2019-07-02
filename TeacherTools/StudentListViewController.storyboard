@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dvv-iA-hiv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dvv-iA-hiv">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -65,19 +65,23 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a8b-RM-7dH" customClass="BetterSegmentedControl" customModule="BetterSegmentedControl">
-                                                    <rect key="frame" x="8" y="8" width="359" height="34"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="4qR-3z-5Dg">
+                                                    <rect key="frame" x="16" y="28" width="343" height="29"/>
+                                                    <segments>
+                                                        <segment title="First"/>
+                                                        <segment title="Second"/>
+                                                        <segment title=""/>
+                                                    </segments>
                                                     <connections>
-                                                        <action selector="segmentedControlValueChanged:" destination="EzV-k8-Tpm" eventType="valueChanged" id="pHY-zG-8Mp"/>
+                                                        <action selector="segmentedControlValueChanged:" destination="EzV-k8-Tpm" eventType="valueChanged" id="4DQ-bM-8Bo"/>
                                                     </connections>
-                                                </view>
+                                                </segmentedControl>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="a8b-RM-7dH" secondAttribute="bottom" id="MH7-y0-DzJ"/>
-                                                <constraint firstItem="a8b-RM-7dH" firstAttribute="leading" secondItem="Kz8-Tg-hke" secondAttribute="leading" constant="8" id="gln-6K-njX"/>
-                                                <constraint firstItem="a8b-RM-7dH" firstAttribute="top" secondItem="Kz8-Tg-hke" secondAttribute="topMargin" id="tDb-TS-OSf"/>
-                                                <constraint firstAttribute="trailing" secondItem="a8b-RM-7dH" secondAttribute="trailing" constant="8" id="zcf-nt-d4l"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="4qR-3z-5Dg" secondAttribute="bottom" id="RdM-Wj-srE"/>
+                                                <constraint firstItem="4qR-3z-5Dg" firstAttribute="top" secondItem="Kz8-Tg-hke" secondAttribute="topMargin" id="coO-rL-7F1"/>
+                                                <constraint firstItem="4qR-3z-5Dg" firstAttribute="leading" secondItem="Kz8-Tg-hke" secondAttribute="leadingMargin" constant="8" id="eEK-ba-Tkr"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="4qR-3z-5Dg" secondAttribute="trailing" constant="8" id="zaj-DZ-qLM"/>
                                             </constraints>
                                         </view>
                                         <view key="tableFooterView" contentMode="scaleToFill" misplaced="YES" id="mQQ-p6-14x">
@@ -150,7 +154,7 @@
                         <outlet property="newEntryView" destination="VLj-hh-dcm" id="BjL-Eo-BPT"/>
                         <outlet property="newStudentTextField" destination="lhQ-Dn-23x" id="993-NO-dWf"/>
                         <outlet property="noGroupsView" destination="4K1-ZG-tOP" id="ZB3-C5-2ln"/>
-                        <outlet property="segmentedControl" destination="a8b-RM-7dH" id="LKb-K1-WCY"/>
+                        <outlet property="segmentedControl" destination="4qR-3z-5Dg" id="3HG-uR-cNV"/>
                         <outlet property="tableSortHeader" destination="Kz8-Tg-hke" id="KUL-rB-gEJ"/>
                         <outlet property="tableView" destination="HEl-lB-rc1" id="LTJ-Do-Pho"/>
                         <outletCollection property="emptyStateLabels" destination="NXo-zU-1Ve" collectionClass="NSMutableArray" id="AGT-A4-xjJ"/>
@@ -328,7 +332,7 @@
     <resources>
         <image name="arrowUp" width="91" height="112"/>
         <image name="clipboard-tab" width="20" height="30"/>
-        <image name="greenChalkboard" width="286.10702514648438" height="161"/>
+        <image name="greenChalkboard" width="595.5" height="335"/>
         <image name="linesLarge" width="64" height="46"/>
         <image name="plus" width="20" height="20"/>
     </resources>

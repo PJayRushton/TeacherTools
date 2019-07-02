@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import GMStepper
 
 class StudentTicketTableCell: UITableViewCell, AutoReuseIdentifiable {
     
@@ -15,14 +14,14 @@ class StudentTicketTableCell: UITableViewCell, AutoReuseIdentifiable {
     @IBOutlet weak var readyOnlyStack: UIStackView!
     @IBOutlet weak var ticketImageView: UIImageView!
     @IBOutlet weak var countLabel: UILabel!
-    @IBOutlet weak var stepper: GMStepper!
+    @IBOutlet weak var stepper: UIStepper!
     
     var stepperCompletion: ((Int) -> Void)?
     var student: Student?
     var isShowingStepper = false {
         didSet {
             UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
-                self.readyOnlyStack.isHidden = self.isShowingStepper
+//                self.readyOnlyStack.isHidden = self.isShowingStepper
                 self.stepper.isHidden = !self.isShowingStepper
                 self.stepper.alpha = self.isShowingStepper ? 1 : 0
             }, completion: nil)
@@ -34,7 +33,6 @@ class StudentTicketTableCell: UITableViewCell, AutoReuseIdentifiable {
         
         readyOnlyStack.isHidden = false
         stepper.isHidden = true
-//        stepper.labelSlideLength = 10
     }
     
     override func prepareForReuse() {
@@ -48,7 +46,7 @@ class StudentTicketTableCell: UITableViewCell, AutoReuseIdentifiable {
         self.student = student
         nameLabel.text = student.displayedName
         stepper.value = Double(student.tickets)
-        countLabel.text = "\(student.tickets)"
+        countLabel.text = String(student.tickets)
         updateUI(with: theme)
     }
     
@@ -58,19 +56,12 @@ class StudentTicketTableCell: UITableViewCell, AutoReuseIdentifiable {
         ticketImageView.tintColor = stepper.value == 1 ? UIColor.ticketRed.withAlphaComponent(0.6) : .ticketRed
         countLabel.textColor = theme.textColor
         countLabel.font = theme.font(withSize: 17)
-        stepper.buttonsFont = theme.font(withSize: 22)
-        stepper.buttonsBackgroundColor = theme.tintColor
-        stepper.buttonsTextColor = .white
-        stepper.labelFont = theme.font(withSize: 20)
-        stepper.labelTextColor = theme.tintColor
-        stepper.labelBackgroundColor = .white
-        stepper.borderColor = theme.tintColor
-        stepper.borderWidth = 2
     }
     
-    @IBAction func stepperValueChanged(_ sender: GMStepper) {
-        guard let student = student, Int(sender.value) != student.tickets else { return }
-        stepperCompletion?(Int(sender.value))
+    @IBAction func stepperValueChanged(_ sender: UIStepper) {
+        guard let student = student, case let newValue = Int(sender.value), newValue != student.tickets else { return }
+        countLabel.text = String(newValue)
+        stepperCompletion?(newValue)
     }
     
 }

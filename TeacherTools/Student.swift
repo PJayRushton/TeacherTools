@@ -21,8 +21,8 @@ struct Student: Identifiable, NameSortable {
             return (firstName, lastName)
         }
         set {
-            firstName = name.first
-            lastName = name.last
+            firstName = newValue.first
+            lastName = newValue.last
         }
     }
     
@@ -79,6 +79,53 @@ extension Student: JSONMarshaling {
         json[Keys.tickets] = tickets
         
         return json
+    }
+    
+}
+
+
+// MARK: - Hashable
+
+extension Student: Hashable {
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
+}
+
+
+// MARK: - Sequence Extension
+
+extension Sequence where Element == Student {
+    
+    func sorted(by type: SortType) -> [Element] {
+        switch type {
+        case .first:
+            return sortedByFirstName()
+        case .last:
+            return sortedByLastName()
+        case .tickets:
+            return sortedByTickets()
+        }
+    }
+    
+    func sortedByFirstName() -> [Element] {
+        return sorted { $0.firstName < $1.firstName }
+    }
+    
+    func sortedByLastName() -> [Element] {
+        return sorted { first, second in
+            if let firstLastName = first.lastName, let secondLastName = second.lastName {
+                return firstLastName < secondLastName
+            } else {
+                return first.firstName < second.firstName
+            }
+        }
+    }
+    
+    func sortedByTickets() -> [Element] {
+        return sorted(by: { $0.tickets > $1.tickets })
     }
     
 }
